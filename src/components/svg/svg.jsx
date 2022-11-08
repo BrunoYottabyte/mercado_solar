@@ -2186,6 +2186,56 @@ let Svg = () => <>
     </symbol>
 
 
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_happy"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        fillRule="evenodd"
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M18.496 22.101L8.39 27.154a2.642 2.642 0 01-3.05-.495v0a2.642 2.642 0 01-.494-3.05l5.053-10.105a1.334 1.334 0 012.135-.347l6.809 6.809a1.334 1.334 0 01-.347 2.135z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6.667 4v.667M6.667 9.333v-.666M9.334 6.667h-.667M4 6.667h.667M16 4a2.632 2.632 0 011.013 3.814L16 9.334M22.666 16l1.52-1.013A2.632 2.632 0 0128 16M25.333 22.667v.666M25.333 28v-.667M28 25.333h-.667M22.667 25.333h.666M25.333 4v.667M25.333 9.333v-.666M28 6.667h-.667M22.667 6.667h.666M18.666 13.333L20 12"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_rocket"
+      fill="none"
+      viewBox="0 0 34 34"
+    >
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M23.797 17.165L16.6 22.924a1.334 1.334 0 01-1.777-.099l-3.647-3.647a1.334 1.334 0 01-.099-1.776l5.76-7.199A13.877 13.877 0 0127.67 4.995v0c.737 0 1.334.597 1.334 1.334v0c0 4.215-1.916 8.202-5.208 10.836z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M22.336 18.334v5.845c0 .505-.286.967-.738 1.193l-3.222 1.611a1.334 1.334 0 01-1.862-.77l-.848-2.544M10.33 18.334l-2.542-.848a1.334 1.334 0 01-.771-1.862l1.611-3.222a1.334 1.334 0 011.193-.737h5.845"
+      ></path>
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.663 28.454l-3.668.551.551-3.668a2.74 2.74 0 012.303-2.303v0a2.74 2.74 0 013.117 3.117v0a2.74 2.74 0 01-2.303 2.303v0z"
+        clipRule="evenodd"
+      ></path>
+    </symbol>
+
 	</svg>
 </>;
 export default Svg

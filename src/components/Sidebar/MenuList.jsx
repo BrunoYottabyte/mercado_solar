@@ -4,7 +4,7 @@ import SvgUse from "../svg/svgUse";
 import SidebarIndex from "./SidebarIndex";
 import { useLocation, useNavigate } from 'react-router-dom'
 
-const MenuList = ({ item, nivel }) => {
+const MenuList = ({ item, nivel, closeSidemenu }) => {
 	const location = useLocation();
 	const navigate = useNavigate();
 
@@ -57,6 +57,7 @@ const MenuList = ({ item, nivel }) => {
 			<a onClick={() => {
 				if(item.link){
 					navigate(`${item.link}`)
+					setTimeout(closeSidemenu,200);
 				}
 			}} className="name-section" level={nivel}>
 				{item.title}

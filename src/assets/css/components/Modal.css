@@ -1,7 +1,7 @@
 @layer components {
 
 	.modal{
-		@apply transition-[opacity_transform_visibility] bg-white fixed opacity-0 pointer-events-none will-change-transform z-[99999] max-h-[80vh] overflow-auto rounded-md  translate-y-32 top-0 bottom-0 left-0 right-0 m-auto h-max;
+		@apply transition-[opacity_transform_visibility] bg-white fixed opacity-0 pointer-events-none will-change-transform !z-[999999999999999999999999999999] max-h-[80vh] overflow-auto rounded-md  translate-y-32 top-0 bottom-0 left-0 right-0 m-auto h-max;
 		&::-webkit-scrollbar{
 			@apply w-4 bg-neutral-30
 		}
@@ -15,7 +15,7 @@
 		}
 	}
 	.modal-fundo{
-		@apply fixed z-[999] bg-[rgba(0,_0,_0,_0.5)] top-0 left-0 pointer-events-none opacity-0 transition-opacity w-full h-full;
+		@apply fixed z-[999999999] bg-[rgba(0,_0,_0,_0.35)] top-0 left-0 pointer-events-none opacity-0 transition-opacity w-full h-full;
 		&.active{
 			@apply opacity-100 !pointer-events-auto cursor-pointer;
 

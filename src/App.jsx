@@ -50,6 +50,7 @@ import Sobre from './pages/Sobre';
 import PreProposta from './pages/Pre';
 import PedidosOrcamentos from './pages/PedidosOrcamentos';
 import Financeiro from './pages/Financeiro';
+import CriarConta from './pages/CriarConta';
 
 
 
@@ -63,12 +64,11 @@ document.body.addEventListener("DOMContentLoaded", () => document.body.classList
 		)
 	}
 	return (
-
-		
 		<Routes>
 			<Route path='/home' element={<Home />} />
 			<Route path='/sobre-nos' element={<Sobre />} />
-			<Route path='/pre-proposta' element={<PreProposta />} />
+			<Route path='/criar-conta' element={<CriarConta />} />
+
 			<Route path='/' element={
 				<PrivateRoute>
 					<AppLayout />
@@ -76,6 +76,7 @@ document.body.addEventListener("DOMContentLoaded", () => document.body.classList
 			}>
 				<Route index element={<PedidosOrcamentos/>} />
 				<Route path='/financeiro' element={<Financeiro/>} />
+				<Route path='/pre-proposta' element={<PreProposta />} />
 				{/* <Route path='/started' element={<Home />} />
 				<Route path='/trabalheConosco' element={<Home />} />
 				<Route path='/historia' element={<Home />} /> */}

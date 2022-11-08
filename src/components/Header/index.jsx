@@ -6,6 +6,7 @@ import DropdownContainer from "../DesignSystem/Dropdowns/DropdownContainer";
 import DropdownItem from "../DesignSystem/Dropdowns/DropdownItem";
 import SvgUse from "../svg/svgUse";
 import { useGlobalContext } from "../../context/GlobalContext";
+import { GLOBAL } from "../../utils/GLOBAL";
 
 const handleScrollAtivo = () => {
 	if (window.pageYOffset >= 20) document.body.classList.add("scroll-ativo");
@@ -13,13 +14,16 @@ const handleScrollAtivo = () => {
 		document.body.classList.remove("scroll-ativo");
 };
 
-const handleOpenSidemenu = () => {
-		document.querySelector('.sidebar-container').classList.add('active');
-}
+
 
 const Header = ({classeContainer, children}) => {
+	const {debounce} = GLOBAL
 	const { bread } = useGlobalContext();
 	useCallback(() => window.addEventListener("scroll", handleScrollAtivo), []);
+
+	const handleOpenSidemenu = () => {
+		document.querySelector('.sidebar-container').classList.add('active');
+	}
 
 	return (
 		<header className={`header-top md2:w-full ${classeContainer}`}>
@@ -27,7 +31,7 @@ const Header = ({classeContainer, children}) => {
 				{children}
 			{/* end mobile */}
 			<div className="content-header container flex items-center hidden">
-				<div className="icon-home" onClick={handleOpenSidemenu}>
+				<div className="icon-home" onClick={debounce(100, handleOpenSidemenu, 'open-modal-mobile')}>
 					<span></span><span></span><span></span>
 				</div>
 				<Breadcrumb data={bread} />

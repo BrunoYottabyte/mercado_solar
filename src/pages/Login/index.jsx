@@ -83,8 +83,8 @@ const Login = () => {
 							</linearGradient>
 							</defs>
 						</svg>		
-						<img src={overflowLogin} className="absolute top-0 left-0 w-full h-full z-[9999999999999999]" alt="mr sistemas escritos com uma cevada" />
-						<img src={logo} className="!max-w-[250px]" alt="mr sistemas escritos com uma cevada" />
+						<img src={overflowLogin} className="absolute top-0 left-0 w-full h-full z-[9999999999999999]" />
+						<img src={logo} className="!max-w-[250px]" alt="Logo mercado solar" />
 					</div>
 				</div>
 

@@ -135,7 +135,7 @@ const SidebarIndex = ({ menu, title }) => {
 				</header>
 				<ul>
 					{menu.map((item) => (
-						<MenuList key={item?.title} item={item} nivel={menu[0].nivel} />
+						<MenuList key={item?.title} closeSidemenu={closeSidemenu} item={item} nivel={menu[0].nivel} />
 					))}
 				</ul>
 			</aside>

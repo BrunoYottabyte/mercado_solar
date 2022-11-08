@@ -33,11 +33,11 @@ const Modal = ({ children, aberto = false, width, height }) => {
 	);
 };
 
-const ModalHeader = ({ text, close = true }) => {
+const ModalHeader = ({ text, close = true, classeHeader }) => {
 	const global = useGlobalContext();
 
 	return (
-		<header className="modal-header">
+		<header className={`modal-header ${classeHeader}`}>
 			{text}
 			{close && (
 				<button
