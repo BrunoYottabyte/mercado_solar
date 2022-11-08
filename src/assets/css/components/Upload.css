@@ -1,0 +1,265 @@
+@layer components {
+	.filepond--root {
+		@apply min-w-[225px] bg-white font-sans mt-8 max-h-[300px] overflow-y-auto;
+	}
+	.filepond--credits {
+		@apply hidden;
+	}
+	.filepond--drip {
+		@apply bg-transparent opacity-0;
+
+	}
+
+	.filepond--panel-root {
+		@apply bg-white;
+	}
+
+	.filepond--drop-label {
+	}
+
+	/*CSS ESPECIFICO*/
+	.upload-modal-estoque{
+		@apply cursor-pointer;
+		.filepond--root{
+			@apply  h-[100px] rounded-lg;
+		}
+		.filepond--drop-label {
+		
+		 @apply h-full ;
+		 /*background-image: url("data:image/svg+xml,%3csvg width='100%25'  height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='rgba(0,0,0,0.15)' stroke-width='1' stroke-dasharray='6%2c 20' stroke-dashoffset='' stroke-linecap='square'/%3e%3c/svg%3e");*/
+		
+		}	
+		.filepond--credits {
+			@apply !hidden;
+		}
+	}
+	.filepond-container.receitas {
+
+		@apply !my-auto;
+
+		.filepond--wrapper{
+			.filepond--root.filepond--hopper{
+				@apply !h-[176px];
+				
+				.filepond--drop-label{
+					@apply absolute top-0 bottom-0 my-auto;
+				}
+
+				.filepond--panel.filepond--panel-root{
+					@apply !h-[176px] !overflow-hidden;
+
+					.filepond--panel-top.filepond--panel-root{
+						@apply !h-[176px]
+					}
+				}
+			}
+		}
+
+		&.part-2{
+			.filepond--wrapper{
+				.filepond--root.filepond--hopper{
+					@apply !h-[116px];
+					
+					.filepond--drop-label{
+						@apply absolute top-0 bottom-0 my-auto;
+					}
+	
+					.filepond--panel.filepond--panel-root{
+						@apply !h-[116px] !overflow-hidden;
+	
+						.filepond--panel-top.filepond--panel-root{
+							@apply !h-[116px]
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/* .filepond-container{
+
+    
+    
+    .filepond--drop-label {
+        border: 2px dashed #DEE2E6;
+        margin-bottom: 1rem !important;
+        border-radius: 8px;
+        transition: background 0.3s ease;
+        cursor: pointer;
+        background: white;
+    
+        * {
+            cursor: pointer;
+        }
+    
+        label {
+            color: #495057;
+            font-weight: 600;
+        }
+    
+        &:hover,
+        &:active {
+            background: rgba(255, 255, 255, 0.1);
+        }
+    }
+    
+    .filepond--label-action {
+        color: #339af0;
+        text-decoration: initial !important;
+    }
+    
+    .filepond--list-scroller {
+        margin-top: 1rem !important;
+        background: white !important;
+    }
+    
+    .filepond--list {
+        margin-top: 1rem !important;
+        left: 0 !important;
+        right: 0 !important;
+    }
+    .filepond--drop-label.filepond--drop-label label {
+        font-weight: 600 !important;
+    }
+    .filepond--item {
+        height: 5rem !important;
+        border-radius: 8px;
+    
+        overflow: hidden !important;
+    
+        .filepond--file-wrapper {
+            height: 5rem !important;
+            border-radius: 8px;
+            background: linear-gradient(93.23deg, #339af0 0%, rgb(117, 190, 250) 29.06%, #53affa 58.17%);
+        }
+    
+        .filepond--file {
+            align-items: center;
+    
+            .filepond--file-info-main {
+                color: #f8f2fa !important;
+                font-size: 0.75rem;
+                margin-bottom: 4px;
+                font-weight: 600;
+            }
+    
+            .filepond--file-info-sub {
+                color: rgba(255, 255, 255, 0.87) !important;
+                font-weight: 500;
+                font-size: 0.75rem;
+            }
+        }
+    }
+    
+    .filepond--list-scroller[data-state="overflow"] {
+        -webkit-mask: initial !important;
+        mask: initial !important;
+    }
+    .filepond--file-action-button.filepond--action-remove-item {
+        cursor: pointer;
+    }
+}
+ */
+/* 
+.filepond--root {
+	background: white !important;
+	margin-top: 8px;
+	font-family: "Be Vietnam Pro", sans-serif !important;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.filepond--credits {
+	display: none;
+}
+
+.filepond--drip {
+	background: transparent !important;
+	opacity: 0 !important;
+}
+
+.filepond--panel-root {
+	background-color: white !important;
+}
+
+.filepond--drop-label {
+	border: 2px dashed #DEE2E6;
+	margin-bottom: 1rem !important;
+	border-radius: 8px;
+	transition: background 0.3s ease;
+	cursor: pointer;
+	background: white;
+
+	* {
+		cursor: pointer;
+	}
+
+	label {
+		color: #495057;
+		font-weight: 600;
+	}
+
+	&:hover,
+	&:active {
+		background: rgba(255, 255, 255, 0.1);
+	}
+}
+
+.filepond--label-action {
+	color: #339af0;
+	text-decoration: initial !important;
+}
+
+.filepond--list-scroller {
+	margin-top: 1rem !important;
+	background: white !important;
+}
+
+.filepond--list {
+	margin-top: 1rem !important;
+	left: 0 !important;
+	right: 0 !important;
+}
+.filepond--drop-label.filepond--drop-label label {
+	font-weight: 600 !important;
+}
+.filepond--item {
+	height: 5rem !important;
+	border-radius: 8px;
+
+	overflow: hidden !important;
+
+	.filepond--file-wrapper {
+		height: 5rem !important;
+		border-radius: 8px;
+		background: linear-gradient(93.23deg, #339af0 0%, rgb(117, 190, 250) 29.06%, #53affa 58.17%);
+	}
+
+	.filepond--file {
+		align-items: center;
+
+		.filepond--file-info-main {
+			color: #f8f2fa !important;
+			font-size: 0.75rem;
+			margin-bottom: 4px;
+			font-weight: 600;
+		}
+
+		.filepond--file-info-sub {
+			color: rgba(255, 255, 255, 0.87) !important;
+			font-weight: 500;
+			font-size: 0.75rem;
+		}
+	}
+}
+
+.filepond--list-scroller[data-state="overflow"] {
+	-webkit-mask: initial !important;
+	mask: initial !important;
+}
+.filepond--file-action-button.filepond--action-remove-item {
+	cursor: pointer;
+}
+
+*/

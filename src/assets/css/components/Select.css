@@ -1,0 +1,125 @@
+@layer components {
+	.select-container {
+		.select__control {
+			@apply h-40 cursor-pointer shadow-none bg-[#fff] border-transparent  rounded-md hover:border-transparent border-neutral-100-10;
+			.select__placeholder{
+				@apply text-sm;
+			}
+			&.select__control--menu-is-open {
+				@apply !bg-transparent !border-neutral-30 shadow-regular rounded-none rounded-t-md h-40 cursor-pointer border-transparent;
+			}
+			.select__indicator {
+				svg {
+					@apply w-16 h-16;
+				}
+			}
+			.select__indicator-separator {
+				@apply hidden;
+			}
+			.select__single-value {
+				/* @apply !text-neutral-75; */
+			}
+		}
+
+		&.bg-white {
+			.select__control {
+				background: white;
+			}
+		}
+
+		.select__menu {
+			@apply p-8 border -mt-1 border-neutral-30 shadow-regular rounded-none rounded-b-md  min-w-[160px] !right-0 left-[initial];
+
+			.select__option {
+				@apply hover:bg-neutral-10 h-40 rounded-md cursor-pointer flex items-center !font-medium ;
+				/* !text-neutral-75 */
+			}
+			.select__option--is-focused {
+				@apply bg-neutral-10;
+			}
+			.select__option--is-selected {
+				@apply !bg-neutral-20 text-current;
+			}
+		}
+
+		&.md {
+			* {
+				@apply !text-sm !font-medium;
+			}
+			.select__control {
+				@apply h-48;
+			}
+			.select__menu {
+				.select__option {
+					@apply h-48;
+				}
+			}
+		}
+
+		&.lg {
+			.select__control {
+				@apply h-56;
+			}
+			.select__menu {
+				.select__option {
+					@apply h-56;
+				}
+			}
+		}
+
+		&.select-multiple {
+			.select__value-container {
+				> div {
+					@apply !w-max;
+				}
+			}
+		}
+	}
+
+	.select-tela-estoque{
+
+		.select__placeholder{
+			@apply font-semibold text-sm text-neutral-70;
+		}
+	}
+
+	.page-materiaPrima{
+		.select__control {
+			@apply h-48;
+			/*  placeholder:!text-alert-red-100 */
+
+		}
+	}
+	.page-embalagem{
+		@apply rounded-t;
+		.select__control{
+			@apply !h-48 ; 
+			.select__single-value {
+				@apply !text-neutral-70;
+			}
+		}
+	}
+
+
+	.menuplacement-top{
+		.select__control {
+			@apply !rounded-lg;
+		}
+		.select__menu {
+			@apply shadow-none rounded-lg;
+		}
+	}
+
+	.alterar-receitas{
+		.select__control{
+			@apply !rounded-none !rounded-tr-md !h-[45px] w-[90px]
+		}
+	}
+
+	.cadastrar-bottom-none{
+		.select__control{
+			@apply !rounded-b-none
+		}
+	}
+
+}

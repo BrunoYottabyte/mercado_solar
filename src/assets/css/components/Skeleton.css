@@ -1,0 +1,10 @@
+@layer components {
+	.skeleton-container {
+		&.loading {
+			* {
+				box-shadow: initial !important;
+			}
+			@mixin skeletonContainer;
+		}
+	}
+}

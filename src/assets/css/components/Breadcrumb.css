@@ -1,0 +1,30 @@
+@layer components {
+	.breadcrumb-content {
+		@apply flex items-center gap-16 text-neutral-70 text-sm;
+
+		.breadcrumb-item {
+			@apply cursor-pointer font-medium select-none;
+
+			&.active {
+				@apply text-primary-pure;
+			}
+			a {
+				@apply pointer-events-none transition-[filter];
+			}
+			a[href] {
+				@apply pointer-events-auto;
+
+				&:hover {
+					@apply brightness-75;
+				}
+			}
+		}
+
+		svg {
+			@apply w-12 h-12 mx-auto text-neutral-70;
+		}
+		> svg {
+			@apply md:!hidden;
+		}
+	}
+}

@@ -1,0 +1,18 @@
+@layer components {
+	.container {
+		@apply mx-auto max-w-[1448px]  px-64 w-full md2:!px-16;
+
+		&.mobile{
+			@apply mt-[3.375rem] !p-24 flex flex-col gap-24 ;
+		}
+
+		&.modal-mobile-active{
+			@apply !mb-[var(--height)];
+		}
+
+		@media (max-width: 1448px) {
+			@apply max-w-[initial];
+		}
+
+	}
+}

@@ -1,0 +1,73 @@
+@layer components {
+
+	.modal{
+		@apply transition-[opacity_transform_visibility] bg-white fixed opacity-0 pointer-events-none will-change-transform z-[99999] max-h-[80vh] overflow-auto rounded-md  translate-y-32 top-0 bottom-0 left-0 right-0 m-auto h-max;
+		&::-webkit-scrollbar{
+			@apply w-4 bg-neutral-30
+		}
+		&::-webkit-scrollbar-thumb{
+			/* @apply bg-primary-40 */
+		}
+
+		&.active{
+			@apply translate-y-0 opacity-100 pointer-events-auto;
+
+		}
+	}
+	.modal-fundo{
+		@apply fixed z-[999] bg-[rgba(0,_0,_0,_0.5)] top-0 left-0 pointer-events-none opacity-0 transition-opacity w-full h-full;
+		&.active{
+			@apply opacity-100 !pointer-events-auto cursor-pointer;
+
+		}
+	}
+	.modal-content{
+		@apply flex flex-col h-max;
+	}
+	.modal-header {
+		@apply flex items-center px-24 pt-24 pb-16 bg-primary-pure text-white font-medium text-lg justify-between;
+			button{
+				@apply rounded-full h-32 w-32 bg-white-10-o grid place-items-center transition-transform border border-[rgba(255,_255,_255,_0.4)];
+				
+				&:hover{
+					@apply scale-125;
+				}
+			}
+		svg {
+			@apply w-12 h-12;
+		}
+	}
+
+
+	/***********************MODAL MOBILE*********************/
+
+	.modal-mobile-container{
+		@apply px-24 fixed z-50 bottom-0 translate-y-[125px] transition-transform ease-cubic duration-300 left-0 w-full h-full bg-white max-h-[115px] flex flex-col justify-center border border-transparent border-t-neutral-30;
+
+		&.active {
+			@apply translate-y-0;
+		}
+
+		.header{
+			@apply flex justify-between items-center;
+		}
+	}
+
+
+	.sendmodal-mobile-overlay{
+		@apply opacity-0 transition-opacity duration-500 pointer-events-none;
+
+		&.active {
+			@apply opacity-100 pointer-events-auto;
+		}
+	}
+	.sendmodal-mobile-container{
+		@apply opacity-0 translate-y-120 delay-150 transition-[transform_opacity] duration-1000 ease-cubic pointer-events-none;
+
+		&.active {
+			@apply opacity-100 translate-y-0 pointer-events-auto duration-300;
+		}
+	}
+
+
+}

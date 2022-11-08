@@ -1,0 +1,23 @@
+@layer components {
+	.avatar-container {
+		@apply flex items-center justify-center gap-8 shrink-0;
+
+		.perfil {
+			@apply w-[40px] h-[40px] rounded-[50%] overflow-hidden relative bg-neutral-60 grid place-items-center shrink-0;
+
+			svg {
+				@apply w-40 h-40  scale-125 relative -bottom-4  shrink-0;
+				/* text-neutral-80 */
+			}
+		}
+
+		&.md {
+			.perfil {
+				@apply w-[2.5rem] h-[2.5rem];
+				svg {
+					@apply w-32 h-32;
+				}
+			}
+		}
+	}
+} ;

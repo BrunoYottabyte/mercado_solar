@@ -1,0 +1,177 @@
+
+
+@layer components {
+	:root {
+		--sidebar-width-nv0: 5rem;
+	}
+	.sidebar-container {
+		@apply fixed w-[var(--sidebar-width-nv0)] border border-transparent border-r-neutral-100-10 h-screen text-neutral-100 left-0 top-0 z-[999999999999999999999999999999999];
+
+		.logo-close {
+			@apply relative top-0 object-cover transition-all duration-300 delay-300;
+		}
+
+		&:not(.active){
+			li[level="1"].selected{
+				@apply bg-neutral-100-10 relative transition-all duration-1000;
+			}
+		}
+
+		.logo-open {
+			@apply absolute object-cover transition-all duration-300 delay-100 opacity-0 pointer-events-none top-[1.5rem] !w-[100px] mx-auto;
+		}
+
+		.header-menu {
+			&[level="1"] {
+				@apply flex justify-center px-0 !mb-0 border-0 h-[7.5rem] relative;
+			}
+			.line-horizontal {
+				@apply block h-24 w-2 bg-[rgba(255,255,255,0.1)] absolute -left-1 top-0 bottom-0 my-auto rounded-r-md;
+			}
+
+			.icon-title {
+				@apply absolute top-0 bottom-0 w-40 h-full left-20 my-0 right-16 sm:hidden;
+			}
+
+			&[level="2"] {
+				.line-horizontal {
+					@apply block h-24 w-2 bg-primary-pure absolute -left-1 top-0 bottom-0 my-auto rounded-r-md;
+				}
+			}
+		}
+
+		.name-section {
+			@apply transition-opacity duration-700 opacity-0 ml-40;
+		}
+		.icon {
+			@apply w-24 !h-24 ml-[0.7rem] absolute;
+		}
+
+		&.active {
+			.name-section {
+				@apply opacity-100 left-40;
+			}
+		}
+
+		&:hover {
+			+ .overflow {
+				@apply pointer-events-auto;
+			}
+		}
+
+		&.open-menu-fixed {
+			+ .overflow {
+				@apply pointer-events-none;
+			}
+
+			.logo-close {
+				@apply -top-8 absolute animate-[hiddenMobile_0.5s_ease_forwards] delay-500;
+			}
+
+			.logo-open {
+				@apply animate-[showDesktop_0.3s_0.5s_ease_forwards] relative;
+			}
+		}
+
+		ul > li {
+			@apply cursor-pointer whitespace-nowrap flex-nowrap;
+		}
+
+		ul > li {
+			@apply mt-12;
+		}
+
+		.logo-close.active {
+			@apply absolute delay-75 -top-[16rem];
+		}
+
+		.logo-open.active {
+			@apply relative top-0 delay-150 opacity-100;
+		}
+	}
+
+	.sidebar-container[level="1"] {
+		@apply bg-white z-[999999999999999999999999999999999] w-[5rem] transition-all sm:w-0 overflow-hidden;
+
+		&.active {
+			@apply w-[21.25rem] sm:w-screen overflow-visible;
+		}
+
+		> ul li {
+			@apply mx-16 rounded-md hover:bg-white/10 flex;
+
+			> a {
+				@apply flex-1 p-8 cursor-pointer;
+			}
+		}
+
+		ul li.activeEffect {
+			@apply bg-white/10;
+		}
+
+		> ul li.active {
+			@apply bg-white/10;
+
+			> .sidebar-container[level="2"] {
+				@apply w-[21.25rem] transition-all duration-500 opacity-100 pointer-events-auto sm:duration-300 sm:w-screen;
+			}
+
+			&:has(ul > li) {
+				@apply cursor-default;
+			}
+		}
+	}
+
+	.sidebar-container[level="2"] {
+		/* header */
+		.box-title {
+			@apply flex justify-center sm:justify-between items-center px-16 py-16 w-full   bg-[rgba(255,255,255,0.1)];
+		}
+		/* end header */
+
+		@apply bg-[rgb(255,255,250)] shadow-md absolute left-[100%] top-0 z-[800] w-0 opacity-0 pointer-events-none sm:left-0 sm:transition-all sm:duration-300;
+		> ul li {
+			@apply mx-0 hover:bg-transparent;
+			&:hover {
+				> a {
+					@apply bg-white/10 rounded-md;
+				}
+			}
+			a {
+				@apply mx-8;
+			}
+		}
+
+		@media (min-width: 768px) {
+			> ul li:hover {
+				> .sidebar-container[level="3"] {
+					@apply w-[21.25rem] opacity-100 pointer-events-auto sm:w-screen;
+				}
+			}
+		}
+
+		@media (max-width: 768px) {
+			> ul li.active {
+				> .sidebar-container[level="3"] {
+					@apply w-[21.25rem] opacity-100 pointer-events-auto sm:duration-300 sm:w-screen;
+
+					ul > li {
+						@apply left-0 sm:pointer-events-auto;
+					}
+				}
+			}
+		}
+	}
+	.sidebar-container[level="3"] {
+		/* header */
+		.box-title {
+			@apply flex justify-center sm:justify-between py-16 w-full  bg-[rgba(255,255,255,0.1)];
+		}
+		/* end header */
+		@apply bg-[rgb(255,252,248)] shadow-md absolute left-[100%] z-[9900] top-0 w-0 opacity-0 pointer-events-none sm:left-0 sm:transition-all sm:duration-300;
+
+		ul > li {
+			@apply sm:pointer-events-none sm:relative sm:transition-all sm:-left-[21.25rem] sm:duration-500;
+		}
+	}
+}

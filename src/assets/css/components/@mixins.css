@@ -1,0 +1,29 @@
+@layer components {
+	@define-mixin skeletonContainer {
+		pointer-events: none;
+		position: relative;
+		overflow: hidden;
+
+		&:after {
+			content: "";
+			display: block;
+			z-index: 2;
+			top: 0;
+			left: 0;
+
+			position: absolute;
+			background: #efefef;
+			width: 100%;
+			height: 101%;
+			background: linear-gradient(to right,
+					rgba(255, 255, 255, 0),
+					rgba(255, 255, 255, 0.5) 50%,
+					rgba(255, 255, 255, 0) 80%),
+				#efefef;
+			background-repeat: repeat-y;
+			background-size: 50px 500px;
+			background-position: 0 0;
+			animation: shine 1s infinite ease-in-out;
+		}
+	}
+}

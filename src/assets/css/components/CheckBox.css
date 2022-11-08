@@ -1,0 +1,74 @@
+@layer components {
+	.checkbox-container {
+		@apply inline-flex gap-8 items-center cursor-pointer select-none;
+
+		> span {
+			@apply text-base font-medium  inline-flex items-center;
+			/* text-neutral-80 */
+		}
+
+		input {
+			@apply hidden;
+		}
+
+		.custom-checkbox {
+			@apply w-[24px] h-[24px] rounded-md border border-neutral-100-50  overflow-hidden shrink-0;
+			i {
+				@apply w-full h-full scale-0 transition-[transform_background] block rounded-md relative;
+				&:after{
+					content: "";
+					position:absolute;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					right: 0;
+					margin: auto;
+					background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxOSAxNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE3IDJMNy42MjY4MSAxMkwyIDUuOTk2OTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo=);
+					background-size: contain;
+					background-repeat: no-repeat;
+					background-position: 100%;
+					z-index: 2;
+					transition: transform .2s ease;
+					transform: scale(0);
+
+				}
+			}
+		}
+
+        &.sm{
+            .custom-checkbox{
+                @apply w-[16px] h-[16px];
+            }
+        }
+
+        &.md{
+            .custom-checkbox{
+                @apply w-[20px] h-[20px];
+            }
+        }
+
+		input:checked {
+			~ .custom-checkbox {
+				@apply border-transparent outline-transparent ; 
+				i{
+					@apply !scale-100  bg-primary-pure ;
+					&:after{
+						transform: scale(0.6) !important;
+					}
+					
+				}
+			}
+
+
+			~ .custom-checkbox ~ span {
+				@apply text-primary-pure;
+			}
+		}
+
+		&:hover {
+			.custom-checkbox {
+				@apply border-primary-pure  outline-offset-[0px] outline-neutral-30 outline-2 outline;
+			}
+		}
+	}
+}

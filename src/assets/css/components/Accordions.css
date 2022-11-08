@@ -1,0 +1,73 @@
+@layer components {
+	.accordions-container {
+		@apply w-max border border-transparent border-y-neutral-20;
+
+		&.active{
+			
+
+			.accordion-title{
+				@apply border-transparent;
+				svg{
+					@apply  -rotate-90;
+				}
+			}
+
+			.accordion-content{
+				&.cadastrar-receitas{
+					animation: onOverflow 0.3s 0.3s ease forwards;
+				}
+
+				@keyframes onOverflow {
+					to{
+						overflow: initial;
+					}
+				}
+			}
+		}
+
+		.accordion-title {
+			@apply cursor-pointer hover:bg-neutral-10 font-medium   border border-transparent relative flex items-center;
+			/* text-neutral-80 */
+			div{
+				@apply flex items-center;
+			}
+			svg{
+				@apply w-10 h-10 ml-14 mr-8 left-0 rotate-90 transition-[transform];
+			}
+
+			&.bg-inverse{
+				
+					@apply bg-neutral-20 hover:bg-neutral-30;
+				
+			}
+
+			
+		}
+
+		.accordion-content {
+			@apply h-0 overflow-hidden  px-32 text-neutral-70 flex flex-col justify-center;
+
+
+			&.bg-inverse{
+					@apply bg-neutral-20; 
+			}
+		}
+
+
+		&.md {
+			.accordion-title{
+				@apply h-48;
+			}
+		}
+
+		&.lg{
+			.accordion-title{
+				@apply h-56;
+			}
+		}
+
+
+		
+
+	}
+}

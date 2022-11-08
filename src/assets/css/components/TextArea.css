@@ -1,0 +1,129 @@
+@layer components {
+	.textarea-container {
+		@apply w-full;
+		.textarea {
+			@apply border-b  p-14 text-sm  placeholder-neutral-70 rounded-t resize-none outline-none min-h-[7.5rem] w-full duration-200 transition-[border] font-medium;
+				/* border-neutral-25 */
+			/* bg-neutral-15  */
+			/* text-neutral-80 */
+			&.active {
+				@apply border-b-neutral-70;
+			}
+
+			&:focus-within {
+				@apply !border-b-primary-pure;
+			}
+		}
+
+		&.bg-inverse {
+			.textarea {
+				@apply bg-white;
+			}
+		}
+
+		&.icon-right {
+			@apply w-full h-max relative;
+
+			svg {
+				@apply right-12 absolute top-0 bottom-0 my-16 w-20 h-20;
+			}
+
+			.textarea {
+				&:not(:placeholder-shown) {
+					~ svg {
+						@apply hidden;
+					}
+				}
+			}
+		}
+
+		&.icon-left {
+			@apply w-full h-max relative;
+
+			svg {
+				@apply left-12 absolute top-0 bottom-0 w-20 h-20 my-16;
+			}
+
+			.textarea {
+				@apply pl-40;
+				&:not(:placeholder-shown) {
+					~ svg {
+						@apply hidden;
+					}
+				}
+
+				&.active {
+					@apply pl-14;
+				}
+
+				/* &: */
+			}
+		}
+	}
+}
+
+/* 
+
+@layer components {
+	.textarea {
+		@apply bg-white border-[.0625rem] border-neutral-30 pt-16 px-16 gap-8 rounded-t-md resize-none outline-none min-h-[7.5rem] placeholder-neutral-70 text-neutral-80 font-medium;
+
+		&::placeholder {
+			@apply text-neutral-70  font-medium  text-base;
+		}
+
+		&:hover {
+			@apply border-neutral-50;
+		}
+
+		&:focus-within {
+			@apply !border-primary-pure ;
+		}
+		
+		&.active {
+			@apply border-neutral-60;
+		}
+		&.inverse {
+			@apply bg-neutral-10 border-t-0 border-x-0	;
+
+		}
+	}
+
+	.textarea-icon {
+		@apply w-max h-max relative;
+
+		svg {
+			@apply right-12 absolute top-0 bottom-0 my-20 w-20 h-20;
+		}
+		.textarea { 
+			&:not(:placeholder-shown) {
+				~ svg {
+					@apply hidden;
+				}
+			}
+		}
+
+		&.icon-left {
+			.textarea {
+				@apply pl-32;
+			}
+			svg {
+				@apply left-12  absolute top-0 bottom-0 my-20  w-20 h-20;
+			}
+		}
+	}
+}
+
+*/
+
+/* 
+
+div class="textarea-icon">
+	<textarea name="" id="" cols="30" rows="10" class="textarea" placeholder="Textarea com icone"
+		js-ativo></textarea>
+	<svg class="text-neutral-70">
+		<use xlink:href="#icon_close"></use>
+	</svg>
+</div>
+
+*/

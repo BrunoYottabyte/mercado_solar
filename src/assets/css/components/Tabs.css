@@ -1,0 +1,88 @@
+@layer components {
+    .react-tabs{
+        @apply text-neutral-70 p-16 ;
+
+        .react-tabs__tab{
+            @apply inline-flex items-center outline-none gap-[6px] p-8 my-8 select-none cursor-pointer border border-transparent font-medium;
+
+            + .react-tabs__tab {
+                @apply ml-12
+            }
+
+            &:hover {
+                @apply border-b-neutral-30;
+            }
+
+            &.react-tabs__tab--selected {
+                @apply border-b-primary-pure text-primary-pure;
+            }
+
+            svg {
+                @apply w-16 h-16 text-current;
+            }
+        }
+    }
+    /* DA PAGINA ANALISE DE DESEMPENHO OPERACIONAL */
+		.tabs-container{
+			.react-tabs{
+				.react-tabs__tab-list{
+					@apply border border-transparent border-b-neutral-20 mb-20;
+					.react-tabs__tab{
+						@apply p-8 m-0 transition-all duration-300;
+						&.react-tabs__tab--selected{
+							@apply bg-neutral-100-50;
+						}
+						& + .react-tabs__tab{
+							@apply ml-10;
+						}
+					}	
+				}
+				.react-tabs__tab-panel{
+					@apply rounded-md shadow-xs;
+				}
+			}
+		}
+
+    /* PAGINA CADASTRO FUNCIONÁRIO */
+    .tabs-container.cadastro-funcionario, .tabs-container.custom-background  {
+       
+        .react-tabs{
+            @apply  p-0 rounded-md;
+           
+            
+            ul li {
+                @apply first:rounded-tl-lg h-56
+            }
+
+            .react-tabs__tab-panel{
+                @apply shadow-none;
+            }
+
+            
+        }
+
+        &.radius-default .react-tabs ul li{
+            @apply first:!rounded-tl ;
+        }
+
+        &.height-sm .react-tabs ul li {
+            @apply !h-40;
+        }
+
+        &.configuracao-receitas {
+            .react-tabs{
+                .react-tabs__tab-list{
+                    
+                    .react-tabs__tab{
+                      
+                        &.react-tabs__tab--selected{
+                            @apply  font-semibold;
+														/* bg-primary-10-o */
+                        }
+
+                    }	
+                }
+            }
+        }
+    }
+}

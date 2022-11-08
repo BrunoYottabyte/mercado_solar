@@ -1,0 +1,11 @@
+@layer components {
+	.toastify {
+		@apply bg-primary-pure text-base font-medium shadow-lg;
+
+		&.error {
+			/* @apply !bg-alert-red-10 !text-alert-red-100; */
+			background: initial;;
+		
+		}
+	}
+}

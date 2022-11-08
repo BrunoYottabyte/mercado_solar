@@ -1,0 +1,85 @@
+@layer components {
+
+	.displayTitle{
+		@apply text-neutral-100 !font-barlow-condesed text-[4rem] leading-[5rem] font-normal;
+	}
+
+	/* TITLES */
+	.title1 {
+		@apply text-neutral-100 !font-barlow-condesed text-[3rem] leading-[3.75rem] font-normal;
+	}
+
+	.title2 {
+		@apply text-neutral-100 !font-barlow-condesed font-normal text-[2rem] leading-[2.75rem];
+	}
+
+	.title3 {
+		@apply text-neutral-100 !font-barlow-condesed font-normal text-2xl leading-[2rem]
+	}
+
+	/* HEADLINE */
+	.headline1 {
+		@apply text-neutral-100 font-public-sans font-medium text-lg leading-[1.625rem];
+	}
+
+	.headline2 {
+		@apply text-neutral-100 font-public-sans font-medium text-base leading-[1.5rem];
+	}
+
+	.headline3 {
+		@apply text-neutral-100 font-public-sans font-medium text-sm leading-[1.375rem]
+	}
+
+	.headline4 {
+		@apply text-neutral-100 font-public-sans font-medium text-xs leading-[1.1875rem]
+	}
+
+	.headline5 {
+		@apply text-neutral-100 font-public-sans font-medium text-[.625rem] leading-[1.125rem]
+	}
+
+	/* Paragraph */
+
+	.paragraph1{
+		@apply text-neutral-100 font-public-sans font-normal text-base leading-[1.5rem]
+	}
+
+	.paragraph2{
+		@apply text-neutral-100 font-public-sans font-normal text-sm leading-[1.5rem]
+	}
+
+	.paragraph3 {
+		@apply text-neutral-100 font-public-sans font-normal text-xs leading-[1.25rem];
+	}
+
+	.paragraph4 {
+		@apply text-neutral-100 font-public-sans font-normal text-[.625rem] leading-[1.25rem];
+	}
+	
+	/* CAPS */
+
+	.caps1-semibold {
+		@apply text-neutral-100 font-public-sans font-medium text-base leading-[1.25rem];
+	}
+
+	.caps1-regular {
+		@apply text-neutral-100 font-public-sans font-normal text-sm leading-[1.25rem];
+	}
+
+	.caps2-semibold{
+		@apply text-neutral-100 font-public-sans font-semibold text-xs leading-[1rem];
+	}
+
+	.caps2-regular{
+		@apply text-neutral-100 font-public-sans font-normal text-xs leading-[1rem]
+	}
+
+	.caps3-semibold{
+		@apply text-neutral-100 font-public-sans font-semibold text-[.625rem] leading-[1rem]
+	}
+
+	.caps3-regular{
+		@apply text-neutral-100 font-public-sans font-normal text-[.625rem] leading-[1rem]
+	}
+
+}

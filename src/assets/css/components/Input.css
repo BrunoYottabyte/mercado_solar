@@ -1,0 +1,51 @@
+@layer components {
+	.input-container {
+		@apply h-max relative;
+
+		&:focus-within {
+			.input {
+				@apply !border-b-primary-pure;
+			}
+		}
+
+		.input {
+			@apply bg-neutral-10 font-public-sans border border-neutral-100-10 py-16 px-24 font-normal text-base placeholder-neutral-100-50 rounded-t resize-none outline-none w-full rounded-b-none  relative duration-200 transition-[border];
+			&::placeholder {
+				@apply font-normal font-public-sans tracking-tight;
+			}
+
+			&:hover{
+				@apply border-neutral-100;
+			}
+			&.active, &:focus {
+				@apply border-primary-pure;
+			}
+		}
+
+		&.icon-left {
+			.input {
+				@apply pl-40;
+			}
+
+			svg {
+				@apply left-12 absolute top-0 bottom-0 my-auto w-20 h-20;
+			}
+		}
+
+		&.icon-right {
+			.input {
+				@apply pr-40;
+			}
+
+			svg {
+				@apply right-12 absolute top-0 bottom-0 my-auto w-20 h-20;
+			}
+		}
+
+		&.bg-inverse {
+			.input {
+				@apply bg-white;
+			}
+		}
+	}
+}

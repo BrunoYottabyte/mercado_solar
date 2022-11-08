@@ -1,0 +1,63 @@
+@layer components {
+    .radio-container {
+        @apply flex gap-[6px] items-center cursor-pointer;
+
+        >span{
+            @apply text-base font-medium;
+						/*  text-neutral-80 */
+        }
+        input[type="radio"]{
+            @apply hidden;
+
+            &:checked {
+                ~ .custom-radio { 
+                    @apply border-primary-pure;
+
+                    > span {
+                        @apply bg-primary-pure scale-100;
+                    }
+
+                  
+                }
+                ~ .custom-radio ~  span{
+                    @apply text-primary-pure;
+                }
+               
+            }
+
+
+
+        }
+
+        &:hover .custom-radio {
+            @apply border-primary-pure outline-offset-[0px] outline-neutral-30 outline-2 outline;
+        }
+
+        .custom-radio {
+            @apply border border-neutral-100-50 w-[24px] h-[24px] rounded-[50%] grid place-items-center place-content-center shrink-0;
+
+           span{
+                @apply block left-0 top-0 w-[16px] h-[16px] bg-transparent rounded-[50%] scale-0 transition-[transform_background];
+            }
+        }
+
+        &.md {
+          .custom-radio {
+            @apply w-[20px] h-[20px];
+            span{
+                 @apply w-[12px] h-[12px]
+             }
+          }
+        }
+
+        &.sm {
+            .custom-radio {
+                @apply w-[16px] h-[16px];
+                span{
+                    @apply w-[8px] h-[8px]
+                }
+            }
+        }
+         
+    }
+}

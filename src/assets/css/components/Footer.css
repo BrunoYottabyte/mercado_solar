@@ -1,0 +1,11 @@
+@layer components {
+	.footer-container{
+		@apply flex w-full justify-center items-center h-32 bg-white mt-auto text-primary-pure text-xs gap-8 font-medium; 
+		img{
+			@apply h-24 w-64;
+		}
+	}
+	.tab{
+		/* @apply !bg-alert-red-100; */
+	}
+}

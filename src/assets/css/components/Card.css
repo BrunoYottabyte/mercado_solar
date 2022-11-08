@@ -1,0 +1,7 @@
+@layer components {
+	.card {
+		@apply min-h-[40px] border-[1px] border-neutral-20 rounded-md shadow-xs bg-white;
+	}
+
+	
+}

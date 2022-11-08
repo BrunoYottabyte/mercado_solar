@@ -1,0 +1,47 @@
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "./assets/css/components/@mixins.css";
+
+/* COMPONENTS */
+@import "./assets/css/components/Sidemenu.css";
+@import "./assets/css/components/Body.css";
+@import "./assets/css/components/TextArea.css";
+@import "./assets/css/components/Input.css";
+@import "./assets/css/components/Disabled.css";
+@import "./assets/css/components/Card.css";
+@import "./assets/css/components/Label.css";
+@import "./assets/css/components/Tooltip.css";
+@import "./assets/css/components/Button.css";
+@import "./assets/css/components/Tabs.css";
+@import "./assets/css/components/Toogle.css";
+@import "./assets/css/components/RadioButton.css";
+@import "./assets/css/components/CheckBox.css";
+@import "./assets/css/components/Dropdowns.css";
+@import "./assets/css/components/Accordions.css";
+@import "./assets/css/components/Select.css";
+@import "./assets/css/components/Modal.css";
+@import "./assets/css/components/Breadcrumb.css";
+@import "./assets/css/components/Upload.css";
+@import "./assets/css/components/Badge.css";
+@import "./assets/css/components/Avatar.css";
+@import "./assets/css/components/Table.css";
+@import "./assets/css/components/Headings.css";
+@import "./assets/css/components/Header-top.css";
+@import "./assets/css/components/Container.css";
+@import "./assets/css/components/Progress.css";
+@import "./assets/css/components/DatePicker.css";
+@import "./assets/css/components/Toastify.css";
+@import "./assets/css/components/Skeleton.css";
+@import "./assets/css/components/Footer.css";
+@import "./assets/css/components/Loader.css";
+@import "./assets/css/components/Sucess-svg.css";
+@import "./assets/css/components/ProductCard.css";
+@import "./assets/css/components/Pedido.css";
+@import "./assets/css/components/Svg.css";
+@import "./assets/css/componentS/Typograph.css";
+
+
+@import "tailwindcss/utilities";
+
+

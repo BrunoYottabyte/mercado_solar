@@ -1,0 +1,18 @@
+@layer components {
+    .badge-container{
+        @apply inline-flex items-center gap-8 h-max px-8 py-2 text-primary-pure font-medium tracking-tight rounded-[40px] text-sm ;
+				/*  bg-primary-10 */
+		
+        &.md {
+            @apply px-12 py-4 text-xs;
+		}
+
+        &.lg{
+            @apply p-8 text-base rounded-lg;
+        }
+
+		svg{
+			@apply w-24 h-24;
+		}
+    }
+}

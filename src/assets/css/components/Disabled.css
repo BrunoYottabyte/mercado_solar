@@ -1,0 +1,25 @@
+@layer components {
+	.disabled {
+		* {
+			@apply !pointer-events-none opacity-60 select-none;
+		}
+	}
+
+	.disabled-btn, .disabled-tabs {
+		@apply !pointer-events-none opacity-60 select-none !text-neutral-100-40 !bg-neutral-30 !border-transparent;
+	}
+
+
+
+	/* .select-single-container{	
+		.css-b62m3t-container{
+			*{
+				@apply outline-alert-red-100 !outline-none focus:outline-none focus:!border-none active:border-none active:outline-none group-active:outline-none;
+			}
+			.css-1s2u09g-control { 
+				@apply bg-transparent hover:bg-neutral-20 border-transparent border-b-neutral-50 focus-within:!border-none focus-within:!outline-none;
+			}
+		}
+
+	} */
+}

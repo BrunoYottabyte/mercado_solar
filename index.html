@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="/pwa-192x192.png">
+	<link rel="mask-icon" href="/favicon.svg" color="#FFFFFF">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Mercado Solar</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link  rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Public+Sans:wght@400;500;600&display=swap"/>
+
+
+</head>
+
+<body class="menu-closed dont-open-submenu">
+
+
+	<script src="https://cdn.jsdelivr.net/npm/@yaireo/console-colors"></script>
+
+	<script>
+		window.log = consoleColor()
+		const LOG_RED = (...params) => log.bgRed.black.log(...params)()
+		const LOG_BLUE = (...params) => log.bgBlue.log(...params)()
+		const LOG_YELLOW = (...params) => log.black.bgYellow.log(...params)()
+		const LOG_GRENN = (...params) => log.black.bgGreen.log(...params)()
+		const LOG_BIG = (...params) => log.big.bold.log(...params)()
+		const logi = () => (...params) => log.log(...params)()
+	</script>
+
+	<div id="root"></div>
+	<script type="module" src="/src/main.jsx"></script>
+</body>
+
+</html>

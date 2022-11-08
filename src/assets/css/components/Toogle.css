@@ -1,0 +1,50 @@
+@layer components {
+	.toogle-container {
+		@apply w-40 h-20 bg-neutral-30 rounded-xl cursor-pointer inline-flex items-center px-[3px]  transition-colors;
+		input {
+			@apply appearance-none;
+		}
+		span {
+			@apply rounded-full bg-white block  w-14 h-14 my-auto  transition-transform;
+			box-shadow: 0px 1px 8px rgba(33, 37, 41, 0.1),
+				0px 3px 3px rgba(33, 37, 41, 0.06), 0px 3px 4px rgba(33, 37, 41, 0.08);
+		}
+
+		&.active {
+			@apply bg-primary-pure;
+			span {
+				@apply translate-x-[1.1875rem];
+			}
+		}
+
+		&.h-48 {
+			@apply w-48 h-24;
+			span {
+				@apply w-18 h-18;
+			}
+			&.active {
+				span {
+					@apply translate-x-[1.4375rem];
+				}
+			}
+		}
+
+		&.h-56 {
+			@apply w-56 h-28 rounded-2xl;
+
+			span {
+				@apply w-22 h-22;
+			}
+			&.active {
+				span {
+					@apply translate-x-[1.625rem];
+				}
+			}
+		}
+		&.bg-inverse {
+			&.active {
+				/* @apply bg-primary-40; */
+			}
+		}
+	}
+}

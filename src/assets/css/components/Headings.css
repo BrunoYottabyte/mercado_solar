@@ -1,0 +1,15 @@
+@layer components {
+	.headings-container {
+		@apply flex items-center text-2xl font-medium gap-4;
+		svg {
+			@apply w-24 h-24;
+		}
+	}
+
+	.subtitle-container {
+		@apply flex items-center text-lg font-medium;
+		svg {
+			@apply w-24 h-24;
+		}
+	}
+}

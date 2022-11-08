@@ -1,0 +1,70 @@
+@layer components {
+	.tooltip {
+		@apply relative w-max;
+
+		.tooltip-wrapper {
+            @apply inline-flex gap-8 items-center; 
+			svg {
+				@apply h-14 w-14;
+			}
+			p {
+            @apply text-sm font-medium;
+						/* text-neutral-80  */
+			}
+		}
+
+		&.active {
+			.tooltip-element {
+				@apply bottom-[calc(100%+15px)]  opacity-100 pointer-events-auto;
+
+				&.bottom {
+					@apply top-[calc(100%+15px)];
+				}
+
+				&.right {
+					@apply left-[calc(100%+15px)];
+				}
+
+				&.left {
+					@apply right-[calc(100%+10px)];
+				}
+			}
+		}
+
+		.tooltip-element {
+			@apply absolute z-50 bottom-[90%] translate-x-[50%] right-[50%] border border-neutral-30 min-h-[20px] h-max break-words bg-white  shadow-regular rounded  opacity-0   w-max max-w-[13.75rem] p-16 text-sm transition-all pointer-events-none;
+			/* text-neutral-80 */
+			&.dark {
+				@apply border bg-neutral-100 text-neutral-20 shadow-regular;
+				/*  border-neutral-90 */
+			}
+
+			svg {
+				@apply absolute -bottom-[9.5px] z-50  mx-auto left-0 right-0 w-18 h-12;
+			}
+
+			&.bottom {
+				@apply top-[90%];
+				svg {
+					@apply absolute -top-[8.5px] z-50 mx-auto left-0 right-0 w-20;
+				}
+			}
+
+			&.left {
+				@apply top-0 right-[85%] translate-x-0;
+
+				svg {
+					@apply left-[calc(100%-6px)] translate-x-0 top-0 bottom-0 my-auto  h-14;
+				}
+			}
+
+			&.right {
+				@apply left-[85%] translate-x-0 translate-y-[-50%] top-[50%];
+				svg {
+					@apply left-[calc(0%-11px)] translate-x-0 top-0 bottom-0 my-auto mx-0 h-14;
+				}
+			}
+		}
+	}
+}
+

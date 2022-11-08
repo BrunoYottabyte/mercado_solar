@@ -1,0 +1,93 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Pão de aveia",
+            "url": "https://melepimenta.com/wp-content/uploads/2021/02/Pao-integral-centeio-aveia-Baixa-2.jpg.webp",
+            "price": 1500,
+            "discountPrice": 1000,
+            "quantity": 0,
+            "category": "Pão de centeio",
+            "description": "Pão de centeio é gostosão, eu compraria porque gosto pra cara de pão. Por hora é isso, cachorro!",
+            "stock": 5
+        },
+        {
+            "id": 2,
+            "name": "Broa",
+            "url": "https://www.sabornamesa.com.br/media/k2/items/cache/eb03856f51bf01b293f3bc77d566d6d4_XL.jpg",
+            "price": 500,
+            "discountPrice": 350,
+            "quantity": 0,
+            "category": "Broas",
+            "description": "HUMMMMMMMMMMMMMM Broa, agora vai, quero descrição. Lorem ipsum? Pra que rsrs Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum doloribus, cum a quidem accusamus laborum cumque dolore repellat.At voluptates aperiam minus earum nam voluptas quod reiciendis a aliquid id?",
+            "stock": 2
+    
+        },
+        {
+            "id": 3,
+            "name": "Pão de chia",
+            "url": "https://blog.mundoverde.com.br/wp-content/uploads/2016/07/PA%CC%83O-INTEGRAL-DE-CHIA-COM-GERGELIM.jpg",
+            "price": 800,
+            "discountPrice": false,
+            "quantity": 0,
+            "category": "Pão de centeio",
+            "description": "Pão de Chia mesmo , agora vai, quero descrição. Lorem ipsum? Pra que rsrsLorem ipsum dolor sit, amet consectetur adipisicing elit.  Harum doloribus, cum a quidem accusamus laborum cumque dolore repellat.At voluptates aperiam minus earum nam voluptas quod reiciendis a aliquid id?",
+            "stock": 6
+        },
+        {
+            "id": 4,
+            "name": "Pão marraqueta",
+            "url": "https://blog.mundoverde.com.br/wp-content/uploads/2016/07/PA%CC%83O-INTEGRAL-DE-CHIA-COM-GERGELIM.jpg",
+            "price": 800,
+            "discountPrice": false,
+            "quantity": 0,
+            "category": "Marraqueta",
+            "description": "MARRAQUETAAAAAAAAAAAA mesmo , agora vai, quero descrição. Lorem ipsum? Pra que rsrsLorem ipsum dolor sit, amet consectetur adipisicing elit.  Harum doloribus, cum a quidem accusamus laborum cumque dolore repellat.At voluptates aperiam minus earum nam voluptas quod reiciendis a aliquid id?",
+            "stock": 6
+        },
+        {
+            "id": 5,
+            "name": "Pão de queijo",
+            "url": "https://vovopalmirinha.com.br/wp-content/uploads/2019/06/pao-de-queijo.jpg",
+            "price": 800,
+            "discountPrice": false,
+            "quantity": 0,
+            "category": "Marraqueta",
+            "description": "MARRAQUETAAAAAAAAAAAA mesmo , agora vai, quero descrição. Lorem ipsum? Pra que rsrsLorem ipsum dolor sit, amet consectetur adipisicing elit.  Harum doloribus, cum a quidem accusamus laborum cumque dolore repellat.At voluptates aperiam minus earum nam voluptas quod reiciendis a aliquid id?",
+            "stock": 6
+        },
+        {
+            "id": 6,
+            "name": "Pão de fuba",
+            "url": "https://amp.receitadevovo.com.br/wp-content/uploads/2020/10/paozinho-de-fuba.jpg",
+            "price": 800,
+            "discountPrice": false,
+            "quantity": 0,
+            "category": "Marraqueta",
+            "description": "MARRAQUETAAAAAAAAAAAA mesmo , agora vai, quero descrição. Lorem ipsum? Pra que rsrsLorem ipsum dolor sit, amet consectetur adipisicing elit.  Harum doloribus, cum a quidem accusamus laborum cumque dolore repellat.At voluptates aperiam minus earum nam voluptas quod reiciendis a aliquid id?",
+            "stock": 6
+        },
+        {
+            "id": 7,
+            "name": "Broazinha",
+            "url": "data:image/jpeg;base64,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",
+            "price": 500,
+            "discountPrice": false,
+            "quantity": 0,
+            "category": "Broas",
+            "description": "HUMMMMMMMMMMMMMM Broa, agora vai, quero descrição. Lorem ipsum? Pra que rsrsLorem ipsum dolor sit, amet consectetur adipisicing elit. Harum doloribus, cum a quidem accusamus laborum cumque dolore repellat.At voluptates aperiam minus earum nam voluptas quod reiciendis a aliquid id?",
+            "stock": 4
+        },
+        {
+            "id": 8,
+            "name": "Pão de chiazinha",
+            "url": "https://blog.mundoverde.com.br/wp-content/uploads/2016/07/PA%CC%83O-INTEGRAL-DE-CHIA-COM-GERGELIM.jpg",
+            "price": 800,
+            "discountPrice": false,
+            "quantity": 0,
+            "category": "Pão de centeio",
+            "description": "HUMMMMMMMMMMMMMM Pão de chiaaaaaa, agora vai, quero descrição. Lorem ipsum? Pra que rsrsLorem ipsum dolor sit, amet consectetur adipisicing elit. Harum doloribus, cum a quidem accusamus laborum cumque dolore repellat. At voluptates aperiam minus earum nam voluptas quod reiciendis a aliquid id?",
+            "stock": 4
+        }
+    ]
+}
