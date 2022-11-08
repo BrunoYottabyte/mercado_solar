@@ -47,7 +47,7 @@ import ContaContabil from './pages/Financeiro/ContaContabil';
 import Home from './pages/Home';
 import TodosPedidos from './pages/VendasB2B/TodosPedidos';
 import Sobre from './pages/Sobre';
-import PreProposta from './pages/pre';
+import PreProposta from './pages/Pre';
 import PedidosOrcamentos from './pages/PedidosOrcamentos';
 import Financeiro from './pages/Financeiro';
 

@@ -17,9 +17,9 @@ export default defineConfig({
         // navigateFallback: 'index.html'
       },
       manifest: {
-        name: 'MR Sistemas',
-        short_name: 'MR',
-        description: 'Padaria',
+        name: 'Mercado Solar',
+        short_name: 'MS',
+        description: 'Mercado Solar',
         theme_color: '#ffffff',
         icons: [
           {
