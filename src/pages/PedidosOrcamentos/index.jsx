@@ -3,14 +3,11 @@ import { useState } from 'react';
 import Badge from '../../components/DesignSystem/Badge';
 import Button from '../../components/DesignSystem/Button';
 import { Card } from '../../components/DesignSystem/Card'
-import { Title } from '../../components/DesignSystem/Headings';
-import { InputDate } from '../../components/DesignSystem/InputDate';
 import { SelectComponent } from '../../components/DesignSystem/SelectComponent';
 import Table from '../../components/DesignSystem/Table';
 import { GlobalFilter } from '../../components/DesignSystem/Table/GlobalFilter';
-import SvgUse from '../../components/svg/svgUse';
-
-const PedidosOrcamentos = () => {
+import {PedidosOrcamentoProvider} from './context'
+const PedidosOrcamentosContent = () => {
 	const [date, setDate] = useState();
 
 	const HeaderRelatorio = ({filter, setFilter, pageSize, setPageSize }) => {
@@ -47,7 +44,7 @@ const PedidosOrcamentos = () => {
 						</div>
 				</div>
 		)
-}
+	}
 
 	const columns = [
 			{
@@ -166,6 +163,14 @@ const PedidosOrcamentos = () => {
 					</div>
 			</Card>
 	  </div>
+	)
+}
+
+const PedidosOrcamentos = () => {
+	return (
+		<PedidosOrcamentoProvider>
+			<PedidosOrcamentosContent />
+		</PedidosOrcamentoProvider>
 	)
 }
 

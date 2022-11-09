@@ -1,28 +1,28 @@
-import axios from 'axios';
-import { parseCookies } from 'nookies';
-import { loadProgressBar } from 'axios-progress-bar'
-import 'axios-progress-bar/dist/nprogress.css'
+import axios from "axios";
+import { parseCookies } from "nookies";
+import { loadProgressBar } from "axios-progress-bar";
+import "axios-progress-bar/dist/nprogress.css";
 
-const { 'mr.cookie': cookies } = parseCookies();
+const { "mr.cookie": cookies } = parseCookies();
 
 export const api = axios.create({
-	baseURL: 'https://mr-sistemas.herokuapp.com',
+	baseURL: "https://mercado-solar.herokuapp.com/api/",
 	headers: {
-		'Authorization': `${cookies ? `Token ${cookies}` : ""}`
-	}
-
-})
+		Authorization: `${cookies ? `Bearer ${cookies}` : ""}`,
+	},
+});
 
 // api.get("/api")
 // 	.then(console.log)
 
-loadProgressBar({
-	minimum: 0.75,
-	// easing: "ease",
-	// speed: 300,
-	// trickleRate: 0.02,
-	// trickleSpeed: 300,
-	showSpinner: false,
-},
+loadProgressBar(
+	{
+		minimum: 0.75,
+		// easing: "ease",
+		// speed: 300,
+		// trickleRate: 0.02,
+		// trickleSpeed: 300,
+		showSpinner: false,
+	},
 	api
 );

@@ -43,15 +43,15 @@ export function AuthProvider({children}){
     }, []) 
     
     const signIn = async(username, password) => {
-        const {data} = await api.post('/api-token-auth/', {username, password});
-        setUser(data.token);
+        const {data} = await api.post('/token/', {email: username, password});
+        setUser(data.access);
 
-        setCookie(undefined, 'mr.cookie', data.token, {
+        setCookie(undefined, 'mr.cookie', data.access, {
             maxAge: 60 * 60 * 24 * 30, // 30 days
             path: '/'
         })
 
-        api.defaults.headers.common['Authorization'] = `Token ${data.token}`
+        api.defaults.headers.common['Authorization'] = `Bearer ${data.access}`
       
         setIsAuthenticated(true);
         navigate('/')

@@ -4,7 +4,6 @@ import {menuItems} from '../../components/Sidebar/items'
 import Svg from '../../components/svg/svg'
 import { Outlet } from 'react-router-dom';
 import Header from '../../components/Header';
-import Footer from '../../components/DesignSystem/Footer'
 
 const AppLayout = () => {
   return (
