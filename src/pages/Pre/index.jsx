@@ -10,6 +10,7 @@ import RadioButton from "../../components/DesignSystem/RadioButton";
 import Svg from "../../components/svg/svg";
 import SvgUse from "../../components/svg/svgUse";
 import { useGlobalContext } from "../../context/GlobalContext";
+import Charts from 'react-apexcharts';
 
 const PreProposta = () => {
 	const [loading, setLoading] = useState(false);
@@ -31,6 +32,188 @@ const PreProposta = () => {
 	const openThanksModal = () => {
 		setmodalOpen({ open: true, id: "modalThanks" });
 	}
+
+	const series = [{
+		name: 'Cash Flow',
+		data: [-200,-180,-160,-140,-130,-80,-60,-40,-20,-10,0.5,30,40,70,90,120,140,160,180,200,220,225
+		]
+	}]
+	const options = {
+		chart: {
+			type: 'bar',
+			height: 350,
+			width: '100%',
+			toolbar: {
+				show: false
+			},
+			zoom: {
+					enabled: true
+			},
+			download: false
+		},
+		grid: {
+			show: true,
+			borderColor: '#E9ECEF',
+			strokeDashArray: 0,
+			position: 'back',
+			xaxis: {
+					lines: {
+							show: true
+					}
+			},
+			yaxis: {
+					lines: {
+							show: true
+					}
+			},
+	},
+
+		plotOptions: {
+			bar: {
+				columnWidth: '85%',
+				borderRadius: 4,
+			}
+		},
+		colors: ['#FEB019'],
+		dataLabels: {
+			enabled: false,
+		},
+		yaxis: {
+			labels: {
+				formatter: function (y) {
+					return y.toFixed(0);
+				},
+			}
+			
+		}, 
+		xaxis: {
+			type: 'text',
+			categories: [
+				'text','text','text','text','text','text','text','text','text','text','text','text',
+				'text','text','text','text','text','text','text','text','text','text','text','text',
+			],
+			labels: {
+				rotate: -90,
+			}
+		},
+		responsive: [
+			{
+		
+				breakpoint: 1000,
+				options: {
+					chart: {
+						type: 'bar',
+						height: 400,
+						width: 285,
+						offsetX: -28
+					},
+					plotOptions: {
+						bar: {
+							horizontal: false
+						}
+					},
+					
+					legend: {
+						position: "bottom"
+					},
+					xaxis: {
+						labels: {
+							show: false
+						}
+					}
+				}
+			}
+		]
+	}
+
+	const options2 = {
+		chart: {
+			type: 'bar',
+			height: 350,
+			toolbar: {
+				show: false
+			},
+			zoom: {
+					enabled: true
+			},
+			download: false
+		},
+		grid: {
+			show: true,
+			borderColor: '#E9ECEF',
+			strokeDashArray: 0,
+			position: 'back',
+			xaxis: {
+					lines: {
+							show: true
+					}
+			},
+			yaxis: {
+					lines: {
+							show: true
+					}
+			},
+	},
+
+		plotOptions: {
+			bar: {
+				columnWidth: '85%',
+				borderRadius: 6,
+			}
+		},
+		colors: ['#61686D'],
+		dataLabels: {
+			enabled: false,
+		},
+		xaxis: {
+			type: 'text',
+			categories: [
+				'text','text','text','text','text','text','text','text','text','text','text','text',
+				'text','text','text','text','text','text','text','text','text','text','text','text',
+			],
+			labels: {
+				rotate: -90
+			}
+		},
+		yaxis: {
+			labels: {
+				formatter: function (y) {
+					return y.toFixed(0);
+				},
+			}
+			
+		}, 
+		responsive: [
+			{
+		
+				breakpoint: 1000,
+				options: {
+					chart: {
+						type: 'bar',
+						height: 400,
+						width: 285,
+						offsetX: -28
+					},
+					plotOptions: {
+						bar: {
+							horizontal: false
+						}
+					},
+					
+					legend: {
+						position: "bottom"
+					},
+					xaxis: {
+						labels: {
+							show: false
+						}
+					}
+				}
+			}
+		]
+	}
+
+
 
 	return (
 		<>
@@ -120,12 +303,67 @@ const PreProposta = () => {
 			</Modal>
 
 			<div className="container">
-			<Card classe="my-64 px-24 py-32">
-				<Button className="btn h-48 " onClick={openModal}>
-					Não tenho interesse
-				</Button>
+			<Card classe="my-64 px-24 py-32 flex flex-col gap-16">
+				<h1 className="title2">SOL3245 - Avenida Principal 123</h1>
+				
+				<div className="flex gap-8 md2:flex-col">
+						<Button svgClass="!w-20 !h-20" iconID="#icon_file_charts" className="btn md2:w-full secondary whitespace-nowrap !border !border-primary-pure hover:bg-white">
+							Pré-Proposta
+						</Button>
 
-				<Button className="btn h-48" onClick={openThanksModal}>Tenho interesse</Button>
+						<Button svgClass="!w-20 !h-20" iconID="#icon_task_list" className="md2:w-full btn terciario whitespace-nowrap">
+							Dados do Orçamento
+						</Button>
+				</div>
+
+				<section className="w-full border border-neutral-100-10 rounded-md flex md2:flex-col">
+					<div className=" p-16 flex flex-col gap-8">
+							{
+								[0,1,2,3,4,5].map((item, i) => {
+									return(
+										<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10" key={i}>
+											<p className="paragraph2">Estimativa de Geração</p>
+											<h3 className="title3">R$ 157.805,00</h3>
+										</div>
+									)
+								})
+							}
+					</div>
+
+					<div className="relative md2:hidden">
+						<span className="block absolute h-full w-1 bg-neutral-100-10"></span>
+					</div>
+
+					<div className="p-24 flex w-full gap-24 md2:flex-col">
+							<section className="flex-1">
+								<h3 className="title3 md2:text-center">Previsão Playback</h3>
+								<Charts options={options} series={series} type="bar" height={330} />
+							</section>
+							<section className="flex-1">
+								<h3 className="title3 md2:text-center">Previsão de Geração</h3>
+								<Charts options={options2} series={series} type="bar" height={330} />
+							</section>
+					</div>
+
+				</section>
+				 
+				<div className="w-full flex items-center justify-between gap-14 md2:flex-col md2:gap-16">
+					<div className="md2:w-full">
+						<Button svgClass="!w-20 !h-20" iconID="#icon_download" className="btn h-48 secondary mr-14 md2:!w-full md2:mb-8" onClick={openModal}>
+							Baixar
+						</Button> 
+
+						<Button svgClass="!w-20 !h-20" iconID="#icon_send_email" className="btn h-48 quaternario md2:w-full" onClick={openThanksModal}>Enviar para e-mail</Button>
+					</div>
+
+					<div className="md2:w-full">
+						<Button  className="btn h-48 mr-14 md2:w-full md2:mb-8"  svgClass="!w-24 !h-20" iconID="#icon_close_ms"  onClick={openModal}>
+							Não tenho interesse
+						</Button>
+
+						<Button className="btn h-48 md2:w-full" svgClass="!w-20 !h-20" iconID="#icon_check_ms" onClick={openThanksModal}>Tenho interesse</Button>
+					</div>
+				</div>
 			</Card>
 		</div>
 		</>

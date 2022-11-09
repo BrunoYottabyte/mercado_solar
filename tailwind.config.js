@@ -117,8 +117,8 @@ module.exports = {
 			},
 			backgroundImage: {
 				'background-card': 'linear-gradient(111.19deg, #1A2E77 0%, #454570 71.89%, #6D5A6A 99.28%)',
-				// 'linear-login': 'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 54.44%)',
-				'linear-lista-login': 'linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(248, 185, 68, 0.7)'
+				'linear-lista-login': 'linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(248, 185, 68, 0.7)',
+				'gradient-radial': 'radial-gradient(100% 2000.39% at 83.89% 0%, rgba(217, 217, 217, 0.08) 0%, rgba(217, 217, 217, 0) 15%)',
 			},
 			blur: {
 				xs: '2px',

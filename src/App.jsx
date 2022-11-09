@@ -51,6 +51,8 @@ import PreProposta from './pages/Pre';
 import PedidosOrcamentos from './pages/PedidosOrcamentos';
 import Financeiro from './pages/Financeiro';
 import CriarConta from './pages/CriarConta';
+import DadosOrcamento from './pages/DadosOrcamento';
+import VerProjeto from './pages/VerProjeto';
 
 
 
@@ -77,6 +79,8 @@ document.body.addEventListener("DOMContentLoaded", () => document.body.classList
 				<Route index element={<PedidosOrcamentos/>} />
 				<Route path='/financeiro' element={<Financeiro/>} />
 				<Route path='/pre-proposta' element={<PreProposta />} />
+				<Route path='/dados-de-orcamento' element={<DadosOrcamento />} />
+				<Route path='/ver-projeto' element={<VerProjeto />} />
 				{/* <Route path='/started' element={<Home />} />
 				<Route path='/trabalheConosco' element={<Home />} />
 				<Route path='/historia' element={<Home />} /> */}

@@ -14,7 +14,7 @@
             }
 
             &.react-tabs__tab--selected {
-                @apply border-b-primary-pure text-primary-pure;
+                @apply border-2 border-b-primary-pure text-primary-pure;
             }
 
             svg {
@@ -28,9 +28,12 @@
 				.react-tabs__tab-list{
 					@apply border border-transparent border-b-neutral-20 mb-20;
 					.react-tabs__tab{
-						@apply p-8 m-0 transition-all duration-300;
+						@apply p-8 m-0 transition-all duration-100;
 						&.react-tabs__tab--selected{
-							@apply bg-neutral-100-50;
+							svg{
+								--cor-1: #F69F00;
+							}
+							@apply bg-primary-pure-10 hover:bg-white ;
 						}
 						& + .react-tabs__tab{
 							@apply ml-10;
@@ -43,11 +46,11 @@
 			}
 		}
 
-    /* PAGINA CADASTRO FUNCIONÁRIO */
-    .tabs-container.cadastro-funcionario, .tabs-container.custom-background  {
+
+    .tabs-container{
        
         .react-tabs{
-            @apply  p-0 rounded-md;
+            @apply  p-0 rounded-md !bg-white;
            
             
             ul li {
@@ -76,7 +79,7 @@
                     .react-tabs__tab{
                       
                         &.react-tabs__tab--selected{
-                            @apply  font-semibold;
+                            @apply  font-semibold !bg-white;
 														/* bg-primary-10-o */
                         }
 

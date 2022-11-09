@@ -2236,6 +2236,300 @@ let Svg = () => <>
       ></path>
     </symbol>
 
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_file_charts"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M18.003 10V7.826a2 2 0 00-.587-1.415l-2.829-2.83a2 2 0 00-1.415-.585H5.998a2 2 0 00-2.001 2v14.006a2 2 0 002 2.001H10"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M18.002 7.999h-4.001a1 1 0 01-1-1V2.996"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13 17.252H16.001V21.003999999999998H13z"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16.002 13.001H19.003V21.003999999999998H16.002z"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M19.003 15.252H22.004V21.004H19.003z"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_task_list"
+      fill="none"
+      viewBox="0 0 20 21"
+    >
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4.998 2.997l1.3-1.626c.191-.237.478-.375.782-.375h3.84c.305 0 .592.138.782.375l1.3 1.626v1a1 1 0 01-1 1H5.998a1 1 0 01-1-1v-1 0z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.003 11V4.998a2 2 0 00-2-2h-2.001M4.998 2.997h-2a2 2 0 00-2.001 2v13.006a2 2 0 002 2.001H9"
+      ></path>
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.768 17.694a1.262 1.262 0 010-1.38C12.617 15.03 13.95 14 15.283 14c1.333 0 2.665 1.029 3.514 2.311.275.417.275.966 0 1.381-.85 1.282-2.182 2.311-3.514 2.311-1.334.001-2.666-1.027-3.515-2.31z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.382 16.904a.141.141 0 010 .2.141.141 0 01-.201 0 .141.141 0 010-.2.141.141 0 01.2 0M4.998 10h8.004M4.998 15.002H7"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_download"
+      fill="none"
+      viewBox="0 0 22 22"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.964 10.259L11 13.223 8.035 10.26M11 4.33v8.893M17.67 14.705a2.965 2.965 0 01-2.965 2.964h-7.41a2.965 2.965 0 01-2.964-2.964"
+      ></path>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_send_email"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.75 7.5H2.5M3.75 12.5H2.5M3.333 10H1.667M4.697 4.697a7.5 7.5 0 110 10.606"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7.917 8.75V7.085a.833.833 0 011.28-.703l4.584 2.916a.833.833 0 010 1.406l-4.584 2.915a.833.833 0 01-1.28-.704V11.25"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7.917 11.25L6.667 10l1.25-1.25"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_check_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16.667 5.417L7.5 14.583l-4.167-4.166"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_close_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6.667 6.667l6.666 6.666M13.333 6.667l-6.666 6.666"
+      ></path>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_chart_ms"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <rect
+        width="18"
+        height="18"
+        x="21"
+        y="21"
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        rx="5"
+        transform="rotate(180 21 21)"
+      ></rect>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8 16v-3M12 16V8M16 16v-5"
+      ></path>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_clock_ms"
+      fill="none"
+      viewBox="0 0 26 25"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21.936 13.608a8.999 8.999 0 11-10.37-10.37M21.5 8.973a8.92 8.92 0 01.437 1.634M20.005 6.37a8.95 8.95 0 00-1.2-1.2M16.202 3.676a8.901 8.901 0 00-1.635-.438"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.002 12.566H12.61V7.173"
+      ></path>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_file_cursor_ms"
+      fill="none"
+      viewBox="0 0 24 25"
+    >
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20.388 17.569l-1.734.728a.988.988 0 00-.528.528l-.731 1.737a1 1 0 01-1.881-.105l-1.472-4.999a1 1 0 011.242-1.241l4.998 1.47a1 1 0 01.106 1.882z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20 8.675h-3.5a2 2 0 01-2-2v-3.5"
+      ></path>
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20 12.175v-3.49a3 3 0 00-.879-2.122l-2.509-2.51a3 3 0 00-2.121-.878H7a3 3 0 00-3 3v12a3 3 0 003 3h5"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_gallery_photos"
+      fill="none"
+      viewBox="0 0 24 25"
+    >
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12.47 11.98l.001-.001a.192.192 0 100 0M3 13.475c.322-.05.647-.076.972-.078v0a6.805 6.805 0 016.806 6.806c-.003.325-.03.65-.078.972"
+      ></path>
+      <rect
+        width="14"
+        height="14"
+        x="3"
+        y="7.175"
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        rx="3"
+      ></rect>
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 7.175v-1a3 3 0 013-3h9a3 3 0 013 3v9a3 3 0 01-3 3h-1"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_dollar_ms2"
+      fill="none"
+      viewBox="0 0 26 25"
+    >
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.001 9.174v-1M13.001 15.176v1M11.265 14.462c.257.44.726.713 1.236.718h1.097a1.405 1.405 0 00.34-2.768l-1.875-.471a1.405 1.405 0 01.341-2.768h1.097c.508.003.978.275 1.234.714"
+      ></path>
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13 3.171a9.004 9.004 0 110 18.008A9.004 9.004 0 0113 3.17"
+      ></path>
+      <path
+        stroke="var(--cor-1, #4B5259)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13 3.171a9.004 9.004 0 110 18.008A9.004 9.004 0 0113 3.17"
+      ></path>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_edit_ms"
+      fill="none"
+      viewBox="0 0 16 17"
+    >
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M3.529 10.588l6.884-6.884c.26-.26.682-.26.942 0l1.117 1.117c.26.26.26.682 0 .942l-6.884 6.883a.663.663 0 01-.471.195H3.333v-1.783c0-.176.07-.346.196-.47z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#140D00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9.166 4.948l2.06 2.06"
+      ></path>
+    </symbol>
+
 	</svg>
 </>;
 export default Svg
