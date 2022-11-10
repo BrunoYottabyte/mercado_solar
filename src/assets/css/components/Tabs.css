@@ -26,7 +26,7 @@
 		.tabs-container{
 			.react-tabs{
 				.react-tabs__tab-list{
-					@apply border border-transparent border-b-neutral-20 mb-20;
+					@apply border border-transparent border-b-neutral-20;
 					.react-tabs__tab{
 						@apply p-8 m-0 transition-all duration-100;
 						&.react-tabs__tab--selected{

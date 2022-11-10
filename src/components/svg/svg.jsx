@@ -2370,7 +2370,7 @@ let Svg = () => <>
       viewBox="0 0 20 20"
     >
       <path
-        stroke="#140D00"
+        stroke="var(--cor-1,#140D00)"
         strokeLinecap="round"
         strokeLinejoin="round"
         d="M6.667 6.667l6.666 6.666M13.333 6.667l-6.666 6.666"
@@ -2529,6 +2529,107 @@ let Svg = () => <>
         d="M9.166 4.948l2.06 2.06"
       ></path>
     </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_upload_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12.5 12.917h-5"
+      ></path>
+      <circle
+        cx="10"
+        cy="10"
+        r="7.5"
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></circle>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M10 10.417V6.25M8.334 7.917l1.667-1.667 1.666 1.667"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_help_ms"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9.684 9.685a2.181 2.181 0 012.215-1.687A2.137 2.137 0 0114.149 10C14.15 11.504 12 12 12 13.001M12.125 15.752a.125.125 0 11-.25 0 .125.125 0 01.25 0"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M4.627 17.16a9.018 9.018 0 112.21 2.212l-2.842.631.632-2.843z"
+        clipRule="evenodd"
+      ></path>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_add_ms"
+      fill="none"
+      viewBox="0 0 17 17"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.5 12.841V3.508m4.667 4.667H3.834"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_sun_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fill="#F69F00"
+        d="M9.336.98a.654.654 0 011.132 0l1.047 1.814a.654.654 0 01-.566.98H8.855a.654.654 0 01-.566-.98L9.336.98zM15.813 3.315c.486-.13.93.314.8.8l-.542 2.023a.654.654 0 01-1.093.293L13.497 4.95a.654.654 0 01.293-1.093l2.023-.542zM18.889 9.466a.654.654 0 010 1.132l-1.814 1.047a.654.654 0 01-.98-.566V8.985c0-.503.544-.818.98-.566l1.814 1.047zM16.613 15.88a.654.654 0 01-.8.8l-2.023-.542a.654.654 0 01-.293-1.094l1.48-1.48a.654.654 0 011.094.292l.542 2.023zM10.468 19.02a.654.654 0 01-1.132 0l-1.048-1.814a.654.654 0 01.566-.98h2.095c.503 0 .817.544.566.98l-1.047 1.814zM3.984 16.68a.654.654 0 01-.8-.8l.542-2.024a.654.654 0 011.093-.293L6.3 15.044a.654.654 0 01-.293 1.094l-2.023.542zM.98 10.599a.654.654 0 010-1.132L2.794 8.42a.654.654 0 01.98.566v2.094a.654.654 0 01-.98.566L.98 10.599zM3.184 4.115a.654.654 0 01.8-.8l2.023.542c.486.13.649.737.293 1.093L4.82 6.43a.654.654 0 01-1.094-.292l-.542-2.023z"
+      ></path>
+      <circle cx="10" cy="10" r="5.229" fill="#F69F00"></circle>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_sun_vazio_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fill="#09121C"
+        fillOpacity="0.1"
+        d="M9.336.98a.654.654 0 011.132 0l1.047 1.814a.654.654 0 01-.566.98H8.855a.654.654 0 01-.566-.98L9.336.98zM15.813 3.315c.486-.13.93.314.8.8l-.542 2.023a.654.654 0 01-1.093.293L13.497 4.95a.654.654 0 01.293-1.093l2.023-.542zM18.889 9.466a.654.654 0 010 1.132l-1.814 1.047a.654.654 0 01-.98-.566V8.985c0-.503.544-.818.98-.566l1.814 1.047zM16.613 15.88a.654.654 0 01-.8.8l-2.023-.542a.654.654 0 01-.293-1.094l1.48-1.48a.654.654 0 011.094.292l.542 2.023zM10.468 19.02a.654.654 0 01-1.132 0l-1.048-1.814a.654.654 0 01.566-.98h2.095c.503 0 .817.544.566.98l-1.047 1.814zM3.984 16.68a.654.654 0 01-.8-.8l.542-2.024a.654.654 0 011.093-.293L6.3 15.044a.654.654 0 01-.293 1.094l-2.023.542zM.98 10.599a.654.654 0 010-1.132L2.794 8.42a.654.654 0 01.98.566v2.094a.654.654 0 01-.98.566L.98 10.599zM3.184 4.115a.654.654 0 01.8-.8l2.023.542c.486.13.649.737.293 1.093L4.82 6.43a.654.654 0 01-1.094-.292l-.542-2.023z"
+      ></path>
+      <circle
+        cx="10"
+        cy="10"
+        r="5.229"
+        fill="#09121C"
+        fillOpacity="0.1"
+      ></circle>
+    </symbol>
+
+		<symbol id="icon_close_ms" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 10">
+				<path stroke="var(--cor-1,#fff)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 1L1 9m0-8l8 8"></path>
+			</symbol>
 
 	</svg>
 </>;
