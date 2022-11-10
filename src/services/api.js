@@ -6,7 +6,7 @@ import "axios-progress-bar/dist/nprogress.css";
 const { "mr.cookie": cookies } = parseCookies();
 
 export const api = axios.create({
-	baseURL: "https://mercado-solar.herokuapp.com/api/",
+	baseURL: "http://localhost:8000/api/",
 	headers: {
 		Authorization: `${cookies ? `Bearer ${cookies}` : ""}`,
 	},
