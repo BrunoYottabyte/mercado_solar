@@ -24,34 +24,8 @@ export const CartProvider = ({ children }) => {
 	const [menulistAndCategories, setMenulistAndCategories] = useState(async () => {
 		
 
-		const { data } = await api.get('https://mr-sistemas.herokuapp.com/api/producao/cardapios_direcionados/cardapio_valido')
-
 		// BUSCANDO E FORMATANDO PRODUTOS
-		const products = data.cardapios_direcionados.map(item => {
-			let idCardapio = item.id;
-			const products = item.itemcardapio_set
-				.filter(item => item.disponibilidade === true)
-				.reduce((ac, item) => {
-
-					const productFormatted = {
-						idCardapio,
-						id: item.produto.id,
-						name: item.produto.nome,
-						url: item.produto.midia,
-						price: item.valor.split('.')[0],
-						discountPrice: null,
-						quantity: 0,
-						category: item.produto.get_categoria_produto.nome,
-						idCategory: item.produto.get_categoria_produto.id,
-						description: item.produto.descricao || `${item.produto.nome} Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati eos rem nulla tenetur! In itaque odit veritatis, labore sint optio, voluptate rerum quas voluptatem, harum expedita aliquam delectus ipsa inventore!`,
-						stock: null
-					}
-					ac.push(productFormatted);
-					return ac;
-				}, []);
-
-			return products
-		})
+		const products = []
 
 		//BUSCANDO E FILTRANDO AS CATEGORIAS
 		const arrCategories = data.cardapios_direcionados.map(item => {
