@@ -2631,6 +2631,374 @@ let Svg = () => <>
 				<path stroke="var(--cor-1,#fff)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 1L1 9m0-8l8 8"></path>
 			</symbol>
 
+
+			<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_raio_ms"
+      fill="none"
+      viewBox="0 0 66 71"
+    >
+      <g filter="url(#filter0_d_274_18282)">
+        <path
+          fill="url(#paint0_radial_274_18282)"
+          d="M39.823 35.575l-6.01 8.683c-.552.795-1.799.406-1.799-.562v-5.723H26.99a.987.987 0 01-.81-1.549l6.01-8.683c.551-.795 1.798-.406 1.798.562v5.723h5.025a.987.987 0 01.811 1.55z"
+        ></path>
+        <path
+          fill="url(#paint1_radial_274_18282)"
+          d="M32.19 27.741c.55-.795 1.797-.406 1.797.562L34 25l-1.81 2.741z"
+        ></path>
+        <path
+          stroke="url(#paint2_radial_274_18282)"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M39.823 35.575l-6.01 8.683m6.01-8.683a.987.987 0 00-.81-1.549m.81 1.55L41 34l-1.988.026m-5.2 10.232c-.55.795-1.798.406-1.798-.562m1.798.562L32 46.5l.014-2.804m0 0v-5.723H26.99m0 0a.987.987 0 01-.81-1.549m.81 1.55H25l1.178-1.55m0 0l6.011-8.683m0 0c.551-.795 1.798-.406 1.798.562m-1.798-.562L34 25l-.013 3.303m0 0v5.723h5.025"
+        ></path>
+      </g>
+      <defs>
+        <filter
+          id="filter0_d_274_18282"
+          width="65"
+          height="70.5"
+          x="0.5"
+          y="0.5"
+          colorInterpolationFilters="sRGB"
+          filterUnits="userSpaceOnUse"
+        >
+          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+          <feColorMatrix
+            in="SourceAlpha"
+            result="hardAlpha"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          ></feColorMatrix>
+          <feOffset></feOffset>
+          <feGaussianBlur stdDeviation="12"></feGaussianBlur>
+          <feComposite in2="hardAlpha" operator="out"></feComposite>
+          <feColorMatrix values="0 0 0 0 0.964706 0 0 0 0 0.623529 0 0 0 0 0 0 0 0 1 0"></feColorMatrix>
+          <feBlend
+            in2="BackgroundImageFix"
+            result="effect1_dropShadow_274_18282"
+          ></feBlend>
+          <feBlend
+            in="SourceGraphic"
+            in2="effect1_dropShadow_274_18282"
+            result="shape"
+          ></feBlend>
+        </filter>
+        <radialGradient
+          id="paint0_radial_274_18282"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientTransform="matrix(11.00002 13 -8.66664 7.33332 25 27)"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FFEED0"></stop>
+          <stop offset="1" stopColor="#F69F00"></stop>
+        </radialGradient>
+        <radialGradient
+          id="paint1_radial_274_18282"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientTransform="matrix(11.00002 13 -8.66664 7.33332 25 27)"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FFEED0"></stop>
+          <stop offset="1" stopColor="#F69F00"></stop>
+        </radialGradient>
+        <radialGradient
+          id="paint2_radial_274_18282"
+          cx="0"
+          cy="0"
+          r="1"
+          gradientTransform="matrix(11.00002 13 -8.66664 7.33332 25 27)"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#FFEED0"></stop>
+          <stop offset="1" stopColor="#F69F00"></stop>
+        </radialGradient>
+      </defs>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_raio_circle_ms"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <rect width="32" height="32" fill="#140D00" rx="16"></rect>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M22.285 15.609l-5.537 7.998c-.508.732-1.656.374-1.656-.518v-5.271h-4.629a.909.909 0 01-.747-1.427l5.537-7.998c.508-.732 1.656-.374 1.656.518v5.271h4.629a.91.91 0 01.747 1.427z"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_arrow_to_bottom_ms"
+      fill="none"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12 19V5M17.001 13.999L12 19l-5.001-5.001"
+      ></path>
+    </symbol>
+
+		{/* HOME BENEFICIOS */}
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_paper_ms"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16 8.5h3.333a4.167 4.167 0 014.167 4.167v5.774a4.167 4.167 0 01-1.22 2.946l-.893.893a4.167 4.167 0 01-2.946 1.22h-5.774A4.167 4.167 0 018.5 19.333V16"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M23.5 18.5H21a2.5 2.5 0 00-2.5 2.5v2.5M16 12.667h3.333M12.667 16h6.667M12.667 19.333h1.667M11 8.5v4.167M8.917 10.583L11 12.667M11 12.667l2.083-2.084"
+      ></path>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_ambiente_ms"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.929 18.5H11c.92 0 1.666-.746 1.666-1.667v-1.666c0-.92.746-1.667 1.667-1.667H16c.921 0 1.667-.746 1.667-1.667V8.687M20.375 22.25c2.177 0 2.711-2.709 3.958-3.429a4.843 4.843 0 00-3.958-1.987M20.375 22.25a2.708 2.708 0 010-5.417M20.575 19.347a5.5 5.5 0 00-3.742 2.486M23.308 14.333a7.497 7.497 0 10-8.974 8.975"
+      ></path>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_settings_ms2"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.25 17.417l-5.666 5.666c-.75.75-1.917.75-2.667 0a1.862 1.862 0 010-2.666l5.667-5.667c-.667-1.667-.25-3.583 1.083-4.917 1.417-1.416 3.5-1.666 5.167-1 .083 0 .083.084 0 .167l-3 3L20 14.167l3.084-3h.166c.834 1.666.417 3.75-1 5.166-1.416 1.334-3.333 1.667-5 1.084z"
+        clipRule="evenodd"
+      ></path>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_house_certificate_ms"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M18.501 23.503h2.263c.92 0 1.667-.746 1.667-1.667V9.33a.834.834 0 00-.834-.834H20.05a.834.834 0 00-.834.834v1.922"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.497 14.928l6.418-5.5a1.667 1.667 0 012.17 0l6.418 5.5M13.963 19.52l-1.622 1.622-.973-.973"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.727 20.847l.553.724.12.902c.067.5.46.893.96.96l.903.12.724.554c.4.306.956.306 1.357 0l.724-.553h0l.901-.12c.5-.067.894-.46.96-.96l.121-.904.554-.723c.306-.4.306-.956 0-1.357l-.554-.724-.12-.901c-.066-.5-.459-.894-.96-.96l-.903-.122-.723-.553a1.117 1.117 0 00-1.357 0l-.724.553h0l-.902.12c-.5.067-.893.46-.96.96l-.12.904-.554.724c-.306.4-.306.955 0 1.356z"
+        clipRule="evenodd"
+      ></path>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
+		{/*  */}
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_ambiente2_sm"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.684 12.973a3.027 3.027 0 000 6.054c2.466 0 3.072-3.028 4.485-3.835a5.512 5.512 0 00-4.485-2.219v0z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M16.049 15.67a6.029 6.029 0 00-4.102 2.726"
+      ></path>
+      <circle
+        cx="16"
+        cy="16"
+        r="7.503"
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></circle>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_cicle_life_sm"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M10.167 13.5v-3.333c0-.92.746-1.667 1.667-1.667h10c.92 0 1.666.746 1.666 1.667V21c0 .92-.746 1.667-1.666 1.667H18.5"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20.167 13.5v-1.667H18.5M17.666 14.333l-2.083-1.666M15.583 12.667l-1.25 1.25M17.668 14.333l2.499-2.5M18.5 16.833h1.667M18.5 19.333h1.667"
+      ></path>
+      <circle
+        cx="12.25"
+        cy="19.75"
+        r="3.75"
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></circle>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.999 18.344v1.688h1.407"
+      ></path>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_torre_sm"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20.167 24.333l-7.677-4.149 6.493-3.35M23.5 13.5h-1.667M8.5 13.5h1.667"
+      ></path>
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.833 24.333l2.5-15.833h3.333l2.5 15.833M23.5 24.333h-15M18.982 16.833l-5.495-2.97M23.5 11.417h-15"
+      ></path>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_energia_solar_sm"
+      fill="none"
+      viewBox="0 0 32 32"
+    >
+      <path
+        stroke="#F69F00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.03 10.462l-1.57-1.165a7.155 7.155 0 019.495 4.945M11.69 19.616l-.225 1.942A7.153 7.153 0 0111 10.863M21.288 17.933l1.794-.778a7.153 7.153 0 01-9.03 5.75M14.667 15.833l1 1 1.667-1.666"
+      ></path>
+      <rect
+        width="31"
+        height="31"
+        x="0.5"
+        y="0.5"
+        stroke="#F69F00"
+        strokeOpacity="0.5"
+        rx="15.5"
+      ></rect>
+    </symbol>
+
 	</svg>
 </>;
 export default Svg

@@ -21,6 +21,7 @@ import { SelectComponent } from '../../components/DesignSystem/SelectComponent'
 
 import logo from '../../assets/images/icon_logo_site.png'
 import NavbarSite from '../../assets/componentsSite/navbar'
+import Svg from '../../components/svg/svg'
 
 const Home = () => {
 
@@ -372,10 +373,103 @@ const Home = () => {
 		return (
 			<main className='w-screen h-full'>
 				<NavbarSite />
+				<Svg />
 
-				<section>
+				{/* HEADER */}
+				<section className="select-none grid place-items-center relative bg-[url('../src/assets/images/home/background.png')] bg-bottom w-full h-[calc(100vh-5rem)]">
+					<span className="absolute bg-overlay-home block w-screen h-full left-0 top-0 z-[99999]"></span>
+					<span className="absolute bg-[url('../src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-50 top-0"></span>
+					<span className="absolute  block w-screen h-[300px] left-0 z-1 bg-gradient-to-t from-neutral-100/0 to-neutral-100  -top-0"></span>
+			
+			    <div className='relative z-[99999999999999] flex flex-col items-center justify-center'>
+						<div className='flex items-center justify-center'>
+							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
+							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
+							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
+						</div>
+						<h1 className='displayTitle text-white text-center'>Energia solar, simples <br></br> como deve ser.</h1>
+						<p className='paragraph1 w-[24.1875rem] text-white mt-10 mb-48'>
+							Ambiente onde grandes consumidores de energia tem a liberdade para escolher de quem comprar a energia
+						</p>
+						<Button classe="h-56" iconID="#icon_raio_circle_ms" svgClass="!w-32 !h-32">
+							<p className='paragraph1'>Peça seu orçamento</p>
+						</Button>
+					</div>
+
+					<p className='absolute z-[9999999999] bottom-64 hover:cursor-pointer'>
+						<SvgUse id="#icon_arrow_to_bottom_ms" classe="!w-28 !h-28 hover:translate-y-4 hover:cursor-pointer" />
+					</p>
+				</section>
+
+				<section className="select-none grid place-items-center relative w-full min-h-screen bg-white">
+				
+			
+			    <div className='relative z-[99999999999999] flex flex-col items-center justify-center'>
+						<div className='flex items-center justify-center'>
+							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
+							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
+							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
+						</div>
+						<h1 className='title1'>Beneficios de contratar</h1>
+						<p className='paragraph1'>Conheça abaixo os benefícios de obter energia renovável</p>
+
+						<div className='max-w-[1200px] mt-64 flex gap-32'>
+							<div className='flex flex-col gap-40'>
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_paper_ms" classe="!w-40 !h-40" />
+									<p className='paragraph1'>Redução na conta de luz</p>
+								</div>
+
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_ambiente_ms" classe="!w-40 !h-40" />
+									<p className='paragraph1'>Necessidade mínima de manutenção</p>
+								</div>
+
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_settings_ms2" classe="w-40 h-40" />
+									<p className='paragraph1'>Ocupa pouco espaço e valoriza o imóvel</p>
+								</div>
+
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_house_certificate_ms" classe="w-40 h-40" />
+									<p className='paragraph1'>Redução na conta de luz</p>
+								</div>
+							</div>
+							<img src="../src/assets/images/home/beneficios.png" alt="imagem beneficios de contratar" className='' />
+							<div className='flex flex-col gap-40'>
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_ambiente2_sm" classe="w-40 h-40" />
+									<p className='paragraph1'>Redução na conta de luz</p>
+								</div>
+
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_cicle_life_sm" classe="w-40 h-40" />
+									<p className='paragraph1'>Necessidade mínima de manutenção</p>
+								</div>
+
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_torre_sm" classe="w-40 h-40" />
+									<p className='paragraph1'>Ocupa pouco espaço e valoriza o imóvel</p>
+								</div>
+
+								<div className='flex gap-12 items-center'>
+									<SvgUse id="#icon_energia_solar_sm" classe="w-40 h-40" />
+									<p className='paragraph1'>Redução na conta de luz</p>
+								</div>
+							</div>
+						</div>
+
+						<div className='mt-40 text-center'>
+							<p className='paragraph1 mb-16'>Entenda como podemos te ajudar</p>
+							<Button classe="h-56" iconID="#icon_raio_circle_ms" svgClass="!w-32 !h-32">
+							<p className='paragraph1 text-base'>Peça seu orçamento</p>
+						</Button>
+							
+						</div>
+					</div>
 
 				</section>
+			
 			</main>
 		)
 }

@@ -3,7 +3,7 @@ import logo from '../images/icon_logo_site.png'
 
 const NavbarSite = ({classContainer}) => {
 	return (
-		<div className={`w-full bg-white h-[5rem] grid place-items-center ${classContainer}`}>
+		<div className={`w-full relative z-[9999999] bg-white h-[5rem] grid place-items-center ${classContainer}`}>
 					<header className='max-w-[1200px] w-[1200px] flex justify-between'>
 						<img src={logo} className="w-[80px]" />
 						<nav className='flex items-center'>
