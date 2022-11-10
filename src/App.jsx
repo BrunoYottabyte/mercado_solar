@@ -69,7 +69,7 @@ document.body.addEventListener("DOMContentLoaded", () => document.body.classList
 		<Routes>
 			<Route path='/home' element={<Home />} />
 			<Route path='/sobre-nos' element={<Sobre />} />
-			<Route path='/criar-conta' element={<CriarConta />} />
+			<Route path='/criar-conta' element={<CriarConta />}/>
 
 			<Route path='/' element={
 				<PrivateRoute>

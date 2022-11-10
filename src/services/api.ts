@@ -1,16 +1,28 @@
 import axios from "axios";
-import { parseCookies } from "nookies";
+import { parseCookies, destroyCookie } from "nookies";
 import { loadProgressBar } from "axios-progress-bar";
 import "axios-progress-bar/dist/nprogress.css";
 
 const { "mr.cookie": cookies } = parseCookies();
 
-export const api = axios.create({
-	baseURL: "http://mercado-solar.herokuapp.com/api/",
+const api = axios.create({
+	baseURL: "https://mercado-solar.herokuapp.com/api/",
 	headers: {
 		Authorization: `${cookies ? `Bearer ${cookies}` : ""}`,
 	},
 });
+
+api.interceptors.response.use(
+	(response) => response,
+	(error) => {
+		
+		if (error.response.status === 401) {
+			destroyCookie(undefined, "mr.cookie");
+			// window.location.href = "/login";
+		}
+		return error;
+	}
+);
 
 // api.get("/api")
 // 	.then(console.log)
@@ -26,3 +38,5 @@ loadProgressBar(
 	},
 	api
 );
+
+export { api };
