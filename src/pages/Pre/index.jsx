@@ -11,8 +11,12 @@ import Svg from "../../components/svg/svg";
 import SvgUse from "../../components/svg/svgUse";
 import { useGlobalContext } from "../../context/GlobalContext";
 import Charts from 'react-apexcharts';
+import { PrePropostaProvider, usePreProposta } from "./context";
+import {options, options2} from './data'
 
-const PreProposta = () => {
+const PrePropostaContent = () => {
+	const {handleNavigate, budgetRequest, address, playback} = usePreProposta()
+
 	const [loading, setLoading] = useState(false);
 	const { setmodalOpen, modalOpen } = useGlobalContext();
 	useEffect(() => {
@@ -38,182 +42,6 @@ const PreProposta = () => {
 		data: [-200,-180,-160,-140,-130,-80,-60,-40,-20,-10,0.5,30,40,70,90,120,140,160,180,200,220,225
 		]
 	}]
-	const options = {
-		chart: {
-			type: 'bar',
-			height: 350,
-			width: '100%',
-			toolbar: {
-				show: false
-			},
-			zoom: {
-					enabled: true
-			},
-			download: false
-		},
-		grid: {
-			show: true,
-			borderColor: '#E9ECEF',
-			strokeDashArray: 0,
-			position: 'back',
-			xaxis: {
-					lines: {
-							show: true
-					}
-			},
-			yaxis: {
-					lines: {
-							show: true
-					}
-			},
-	},
-
-		plotOptions: {
-			bar: {
-				columnWidth: '85%',
-				borderRadius: 4,
-			}
-		},
-		colors: ['#FEB019'],
-		dataLabels: {
-			enabled: false,
-		},
-		yaxis: {
-			labels: {
-				formatter: function (y) {
-					return y.toFixed(0);
-				},
-			}
-			
-		}, 
-		xaxis: {
-			type: 'text',
-			categories: [
-				'text','text','text','text','text','text','text','text','text','text','text','text',
-				'text','text','text','text','text','text','text','text','text','text','text','text',
-			],
-			labels: {
-				rotate: -90,
-			}
-		},
-		responsive: [
-			{
-		
-				breakpoint: 1000,
-				options: {
-					chart: {
-						type: 'bar',
-						height: 400,
-						width: 285,
-						offsetX: -28
-					},
-					plotOptions: {
-						bar: {
-							horizontal: false
-						}
-					},
-					
-					legend: {
-						position: "bottom"
-					},
-					xaxis: {
-						labels: {
-							show: false
-						}
-					}
-				}
-			}
-		]
-	}
-
-	const options2 = {
-		chart: {
-			type: 'bar',
-			height: 350,
-			toolbar: {
-				show: false
-			},
-			zoom: {
-					enabled: true
-			},
-			download: false
-		},
-		grid: {
-			show: true,
-			borderColor: '#E9ECEF',
-			strokeDashArray: 0,
-			position: 'back',
-			xaxis: {
-					lines: {
-							show: true
-					}
-			},
-			yaxis: {
-					lines: {
-							show: true
-					}
-			},
-	},
-
-		plotOptions: {
-			bar: {
-				columnWidth: '85%',
-				borderRadius: 6,
-			}
-		},
-		colors: ['#61686D'],
-		dataLabels: {
-			enabled: false,
-		},
-		xaxis: {
-			type: 'text',
-			categories: [
-				'text','text','text','text','text','text','text','text','text','text','text','text',
-				'text','text','text','text','text','text','text','text','text','text','text','text',
-			],
-			labels: {
-				rotate: -90
-			}
-		},
-		yaxis: {
-			labels: {
-				formatter: function (y) {
-					return y.toFixed(0);
-				},
-			}
-			
-		}, 
-		responsive: [
-			{
-		
-				breakpoint: 1000,
-				options: {
-					chart: {
-						type: 'bar',
-						height: 400,
-						width: 285,
-						offsetX: -28
-					},
-					plotOptions: {
-						bar: {
-							horizontal: false
-						}
-					},
-					
-					legend: {
-						position: "bottom"
-					},
-					xaxis: {
-						labels: {
-							show: false
-						}
-					}
-				}
-			}
-		]
-	}
-
-
 
 	return (
 		<>
@@ -304,14 +132,19 @@ const PreProposta = () => {
 
 			<div className="container">
 			<Card classe="my-64 px-24 py-32 flex flex-col gap-16">
-				<h1 className="title2">SOL3245 - Avenida Principal 123</h1>
+				<h1 className="title2">SOL. Nº {budgetRequest?.id} - {address}</h1>
 				
 				<div className="flex gap-8 md2:flex-col">
 						<Button svgClass="!w-20 !h-20" iconID="#icon_file_charts" className="btn md2:w-full secondary whitespace-nowrap !border !border-primary-pure hover:bg-white">
 							Pré-Proposta
 						</Button>
 
-						<Button svgClass="!w-20 !h-20" iconID="#icon_task_list" className="md2:w-full btn terciario whitespace-nowrap">
+						<Button
+							onClick={()=> handleNavigate('/dados-de-orcamento', { state: { budgetRequestId: budgetRequest.id } })} 
+							svgClass="!w-20 !h-20"
+							iconID="#icon_task_list"
+							className="md2:w-full btn terciario whitespace-nowrap"
+						>
 							Dados do Orçamento
 						</Button>
 				</div>
@@ -337,7 +170,7 @@ const PreProposta = () => {
 					<div className="p-24 flex w-full gap-24 md2:flex-col">
 							<section className="flex-1">
 								<h3 className="title3 md2:text-center">Previsão Playback</h3>
-								<Charts options={options} series={series} type="bar" height={330} />
+								<Charts options={options} series={[playback]} type="bar" height={330} />
 							</section>
 							<section className="flex-1">
 								<h3 className="title3 md2:text-center">Previsão de Geração</h3>
@@ -370,5 +203,14 @@ const PreProposta = () => {
 		
 	);
 };
+
+
+const PreProposta = () => {
+	return (
+		<PrePropostaProvider>
+			<PrePropostaContent />
+		</PrePropostaProvider>
+	)
+}
 
 export default PreProposta;

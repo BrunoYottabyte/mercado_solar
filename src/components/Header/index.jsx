@@ -7,6 +7,7 @@ import DropdownItem from "../DesignSystem/Dropdowns/DropdownItem";
 import SvgUse from "../svg/svgUse";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { GLOBAL } from "../../utils/GLOBAL";
+import { useAuthContext } from "../../context/useAuthContext";
 
 const handleScrollAtivo = () => {
 	if (window.pageYOffset >= 20) document.body.classList.add("scroll-ativo");
@@ -20,6 +21,7 @@ const Header = ({classeContainer, children}) => {
 	const {debounce} = GLOBAL
 	const { bread } = useGlobalContext();
 	useCallback(() => window.addEventListener("scroll", handleScrollAtivo), []);
+	const { signOut } = useAuthContext();
 
 	const handleOpenSidemenu = () => {
 		document.querySelector('.sidebar-container').classList.add('active');
@@ -54,8 +56,8 @@ const Header = ({classeContainer, children}) => {
 							<div className="item-dropdown">
 								<p>Texto de Exemplo</p>
 							</div>
-							<div className="item-dropdown">
-								<p>Texto de Exemplo</p>
+							<div className="item-dropdown" onClick={() => signOut()}>
+								<p>Sair</p>
 							</div>
 					</DropdownContainer>
 

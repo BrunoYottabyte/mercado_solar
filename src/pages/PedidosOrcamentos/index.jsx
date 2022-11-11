@@ -8,7 +8,6 @@ import Table from '../../components/DesignSystem/Table';
 import { GlobalFilter } from '../../components/DesignSystem/Table/GlobalFilter';
 import {PedidosOrcamentoProvider, usePedidosOrcamento} from './context'
 const PedidosOrcamentosContent = () => {
-	const [date, setDate] = useState();
 	const {columns, data, setSearch, params} = usePedidosOrcamento()
 	const HeaderRelatorio = ({filter, pageSize, setPageSize }) => {
 		return (
