@@ -8,8 +8,12 @@ import { ModalContent } from '../../components/DesignSystem/Modal/ModalContent';
 import { ModalHeader } from '../../components/DesignSystem/Modal/ModalHeader';
 import Svg from '../../components/svg/svg';
 import { useGlobalContext } from '../../context/GlobalContext';
+import { addressByPostalCode } from '../../utils/addressByPostalCode';
+import MonthValues from './components/MonthValues';
+import { DadosOrcamentoProvider, useDadosOrcamento  } from './context';
 
-const DadosOrcamento  = () => {
+const DadosOrcamentoContent  = () => {
+	const {handleNavigate, budgetRequest, address} = useDadosOrcamento()
 	const [loading, setLoading] = useState(false);
 	const { setmodalOpen, modalOpen } = useGlobalContext();
 	useEffect(() => {
@@ -43,31 +47,45 @@ const DadosOrcamento  = () => {
 
 			<div className="container">
 			<Card classe="my-64 px-24 py-32 flex flex-col gap-16">
-				<h1 className="title2">SOL3245 - Avenida Principal 123</h1>
+				<h1 className="title2">SOL. Nº {budgetRequest?.id} - {address}</h1>
 				
 				<div className="flex gap-8 md2:flex-col">
-						<Button svgClass="!w-20 !h-20" iconID="#icon_file_charts" className="btn md2:w-full secondary whitespace-nowrap !border !border-primary-pure hover:bg-white">
+						<Button
+							onClick={() => handleNavigate("/pre-proposta/", {state: {budgetRequestId: budgetRequest.id}})}
+							svgClass="!w-20 !h-20"
+							iconID="#icon_task_list"
+							className="md2:w-full btn terciario whitespace-nowrap"
+						>
 							Pré-Proposta
 						</Button>
-
-						<Button svgClass="!w-20 !h-20" iconID="#icon_task_list" className="md2:w-full btn terciario whitespace-nowrap">
-							Dados de  Orçamento
+						<Button svgClass="!w-20 !h-20" iconID="#icon_file_charts" className="btn md2:w-full secondary whitespace-nowrap !border !border-primary-pure hover:bg-white">
+							Dados de Orçamento
 						</Button>
 				</div>
 
 				<section className="w-full border border-neutral-100-10 rounded-md flex md2:flex-col">
 					<div className="p-24 flex flex-col gap-8 flex-1">
 							<h2 className='title2 mb-24'>Dados pessoais</h2>
-							{
-								[0,1,2,3,4].map((item, i) => {
-									return(
-										<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" key={i}>
-											<p className="paragraph2 text-neutral-70">Nome</p>
-											<h3 className="title3">Bruno Siqueira</h3>
-										</div>
-									)
-								})
-							}
+									<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" >
+										<p className="paragraph2 text-neutral-70">Nome</p>
+										<h3 className="title3">{budgetRequest?.client_name}</h3>
+									</div>
+									<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" >
+										<p className="paragraph2 text-neutral-70">Email</p>
+										<h3 className="title3">{budgetRequest?.client_email}</h3>
+									</div>
+									<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" >
+										<p className="paragraph2 text-neutral-70">Celular</p>
+										<h3 className="title3">{budgetRequest?.client_phone}</h3>
+									</div>
+									<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" >
+										<p className="paragraph2 text-neutral-70">Cep</p>
+										<h3 className="title3">{budgetRequest?.client_postal_code}</h3>
+									</div>
+									<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" >
+										<p className="paragraph2 text-neutral-70">Tipo</p>
+										<h3 className="title3">{budgetRequest?.client_type === "pf" ? 'Pessoa Física' : 'Empresa'}</h3>
+									</div>
 					</div>
 
 					<div className="relative md2:hidden">
@@ -77,16 +95,7 @@ const DadosOrcamento  = () => {
 					<div className="p-24 flex flex-col gap-8 flex-1">
 							<h2 className='title2 mb-24'>Consumo médio de energia em <span className='text-primary-pure'>kHw</span></h2>
 							<div className="grid grid-cols-4 gap-8">
-								{
-									[0,1,2,3,4,5,6,7,8,9,10,11].map((item, i) => {
-										return(
-											<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" key={i}>
-												<p className="paragraph2 text-neutral-70">Nome</p>
-												<h3 className="title3">15.678</h3>
-											</div>
-										)
-									})
-								}
+								<MonthValues {...budgetRequest?.month_consumption}/>
 							</div>
 					</div>
 
@@ -96,16 +105,12 @@ const DadosOrcamento  = () => {
 
 					<div className="p-24 flex flex-col gap-8 flex-1">
 						<h2 className='title2 mb-24'>Consumo médio de energia em <span className='text-primary-pure'>R$</span></h2>
-							{
-								[0,1,2].map((item, i) => {
-									return(
-										<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10" key={i}>
-											<p className="paragraph2 text-neutral-70">Consumo médio</p>
-											<h3 className="title3">R$ 157.805,00</h3>
-										</div>
-									)
-								})
-							}
+							
+							<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10">
+								<p className="paragraph2 text-neutral-70">Consumo médio</p>
+								<h3 className="title3">R$ {budgetRequest?.average_consumption}</h3>
+							</div>
+									
 					</div>
 
 				</section>
@@ -130,6 +135,14 @@ const DadosOrcamento  = () => {
 			</Card>
 		</div>
 		</>
+	)
+}
+
+const DadosOrcamento = () => {
+	return (
+		<DadosOrcamentoProvider>
+			<DadosOrcamentoContent />
+		</DadosOrcamentoProvider>
 	)
 }
 

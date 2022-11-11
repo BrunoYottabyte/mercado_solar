@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect } from 'react'
 import { api } from '../../services/api'
 import Badge from '../../components/DesignSystem/Badge';
 import Button from '../../components/DesignSystem/Button';
+import { useNavigate } from "react-router-dom";
 
 import {
   IPedidosOrcamentoProviderProps,
@@ -16,6 +17,7 @@ const PedidosOrcamentoContext = createContext({} as IPedidosOrcamentoContextData
 export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> = ({
   children
 }) => {
+  const navigate = useNavigate();
   const [pedidosOrcamento, setPedidosOrcamento] = React.useState<ITableData[]>([])
   const [contRows, setContRows] = React.useState<number>(0)
   const [params, setParams] = React.useState<IParams>({
@@ -78,10 +80,21 @@ export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> 
     {
       Header: "Ações",
       accessor: "acoes",     
-      Cell: (v) => <div className='flex px-10 gap-[6px]'>
-        <Button  iconID="#icon-checklist-analise-desempenho" svgClass="!w-20 !h-20 absolute left-0 right-0 mx-auto" classe="w-32 h-32 relative flex items-center" />
-        <Button  style={{'--cor-1': '#000'}} iconID="#search_icon" svgClass="!w-20 !h-20 absolute left-0 right-0 mx-auto" classe="w-32 h-32 relative flex items-center" />
-      </div>                               
+      Cell: (v) => {
+        const budgetRequestId = v.row.original.id;
+        return (
+          <div className='flex px-10 gap-[6px]'>
+            
+            <Button
+              onClick={() => navigate(`/pre-proposta/`, { state: { budgetRequestId } })}
+              iconID="#icon-checklist-analise-desempenho"
+              svgClass="!w-20 !h-20 absolute left-0 right-0 mx-auto"
+              classe="w-32 h-32 relative flex items-center"
+            />
+            
+            <Button  style={{'--cor-1': '#000'}} iconID="#search_icon" svgClass="!w-20 !h-20 absolute left-0 right-0 mx-auto" classe="w-32 h-32 relative flex items-center" />
+          </div>
+      )}                               
     },
   ];
 
