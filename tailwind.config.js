@@ -119,7 +119,9 @@ module.exports = {
 				'background-card': 'linear-gradient(111.19deg, #1A2E77 0%, #454570 71.89%, #6D5A6A 99.28%)',
 				'linear-lista-login': 'linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(248, 185, 68, 0.7)',
 				'overlay-home': 'linear-gradient(180deg, rgba(20, 13, 0, 0.8) 34.41%, rgba(20, 13, 0, 0) 100%)',
+				'gradient-home': 'radial-gradient(26.98% 57.08% at 0% 0%, rgba(246, 159, 0, 0.1) 20%, rgba(246, 159, 0, 0) 100%)',
 				'gradient-radial': 'radial-gradient(100% 2000.39% at 83.89% 0%, rgba(217, 217, 217, 0.08) 0%, rgba(217, 217, 217, 0) 15%)',
+				'gradient-home-footer': 'radial-gradient(100% 100% at 50% 0%, rgba(246, 159, 0, 0.1) 0%, rgba(246, 159, 0, 0) 100%)'
 			},
 			blur: {
 				xs: '2px',
