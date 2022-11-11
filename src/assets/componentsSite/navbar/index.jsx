@@ -1,7 +1,9 @@
 import React from 'react'
-import logo from '../images/icon_logo_site.png'
+import logo from '../../images/icon_logo_site.png'
+import { NavbarProvider, useNavbar } from './context'
 
-const NavbarSite = ({classContainer}) => {
+const Navbar = ({classContainer}) => {
+	const {handleNavigate} = useNavbar()
 	return (
 		<div className={`w-full relative z-[9999999] bg-white h-[5rem] grid place-items-center ${classContainer}`}>
 					<header className='max-w-[1100px] w-[1100px] flex justify-between'>
@@ -13,7 +15,7 @@ const NavbarSite = ({classContainer}) => {
 									Sobre nós
 									<span className='absolute top-0 -right-20 w-1 h-24 block bg-neutral-100-10'></span>
 								</li>
-								<li className='paragraph2'>Entrar</li>
+								<li className='paragraph2 cursor-pointer' onClick={() => handleNavigate('/login')}>Entrar</li>
 								
 							</ul>
 							<button className='btn ml-[36px]'>
@@ -24,6 +26,15 @@ const NavbarSite = ({classContainer}) => {
 				</div>
 
 	)
+}
+
+
+const NavbarSite = ({classContainer}) => {
+		return (
+			<NavbarProvider>
+				<Navbar classContainer={classContainer}/>
+			</NavbarProvider>
+		)
 }
 
 export default NavbarSite
