@@ -2,14 +2,16 @@ import React, {createContext, useContext, useState, useEffect} from 'react';
 import { api } from '../services/api';
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode'
 
 const AuthContext = createContext();
 
 export function AuthProvider({children}){
     const [user, setUser] = useState('');
+    const [userId, setUserId] = useState('');
 
+    const {'mr.cookie': token} = parseCookies();
     const [isAutheticated, setIsAuthenticated] = useState(() => {
-		const {'mr.cookie': token} = parseCookies();
 		if(token) return true;
         return false;
 	});
@@ -40,6 +42,11 @@ export function AuthProvider({children}){
                     break;
             }
         }
+        const {'mr.cookie': token} = parseCookies();
+        if(token){
+            const { user_id } = jwtDecode(token);
+            setUserId(user_id);
+        }
     }, []) 
     
     const signIn = async(username, password) => {
@@ -57,11 +64,10 @@ export function AuthProvider({children}){
         navigate('/')
 
         authChannel.postMessage('signIn');
-
     }
 
     return(
-       <AuthContext.Provider value={{user, signIn, signOut, isAutheticated}}>
+       <AuthContext.Provider value={{user, userId, signIn, signOut, isAutheticated}}>
             {children}
        </AuthContext.Provider> 
     )

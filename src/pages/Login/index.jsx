@@ -24,7 +24,6 @@ const Login = () => {
 		if (!validarPorLength(password, 6)) {
 			showToastify("senha invalida");
 			return
-
 		}
 
 		try {

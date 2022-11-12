@@ -1,6 +1,10 @@
 import { ReactNode } from "react";
 import { UseFormReturn } from "react-hook-form";
 
+interface IObservationProps {
+  observation: string;
+}
+
 interface IGeneralObservation {
   id: number
   budget_request: number
@@ -9,12 +13,13 @@ interface IGeneralObservation {
   contact_phone: string
   latitude: number
   longitude: number
-  observations: string[]
+  observations: IObservationProps[]
   solar_orientation: string
 }
 
 interface IFormProps {
-  budget_request: number
+  id?: number
+  budget_request: string
   contact_email: string
   contact_name: string
   contact_phone: string
@@ -29,11 +34,20 @@ interface IGeneralObservationProviderProps {
 
 interface IGeneralObservationContextData {
   form: UseFormReturn<IFormProps, object>
+  observations: IObservationProps[]
+  setCurrentObservation: (observation: string) => void
+  currentObservation: string
+  addObservation: () => void
+  isLoading: boolean
+  handleSubmit: (data: IFormProps) => Promise<void>
+  generalObservation: IGeneralObservation
+  isRepresentative: boolean
 }
 
 export type {
   IGeneralObservationProviderProps,
   IGeneralObservationContextData,
   IGeneralObservation,
-  IFormProps
+  IFormProps,
+  IObservationProps
 };

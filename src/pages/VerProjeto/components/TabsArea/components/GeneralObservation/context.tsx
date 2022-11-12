@@ -5,28 +5,92 @@ import {useForm} from 'react-hook-form'
 import {
   IGeneralObservationProviderProps,
   IGeneralObservationContextData,
+  IGeneralObservation,
   IFormProps,
+  IObservationProps,
 } from './types'
+import { api } from '../../../../../../services/api'
+import { useAuthContext } from '../../../../../../context/useAuthContext'
 
 const GeneralObservationContext = createContext({} as IGeneralObservationContextData)
 
 export const GeneralObservationProvider: React.FC<IGeneralObservationProviderProps> = ({
   children
 }) => {
-  const [observations, setObservations] = useState<string[]>([])
-  const form = useForm<IFormProps>()
-
-  const {budgetRequest} = useVerProjeto()
+  const {userId} = useAuthContext()
   
+  const {budgetRequest} = useVerProjeto()
+
+  const [observations, setObservations] = useState<IObservationProps[]>([])
+  const [generalObservation, setGeneralObservation] = useState<IGeneralObservation>({} as IGeneralObservation)
+  const [currentObservation, setCurrentObservation] = useState<string>('')
+  const form = useForm<IFormProps>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+
+  const handleSubmit = async (data: IFormProps) => {
+    setIsLoading(true)
+    
+    if (data.id) {
+      api.put(`/general_observation/${data.id}/`, data).then(response => {
+        setGeneralObservation(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    else {
+      api.post('/general_observation/', data).then(response => {
+        setGeneralObservation(response.data)
+      }).catch(error => {
+        console.log(error)
+      })
+    }
+    setIsLoading(false)
+  }
+  
+  const addObservation = () => {
+    if(!currentObservation.trim()){
+      return
+    }
+    setObservations([...observations, {observation: currentObservation}])
+    setCurrentObservation('')
+  }
+
   useEffect(()=>{
-    console.log(budgetRequest);
-    console.log(budgetRequest);
-    console.log(budgetRequest);
-  },[])
+    if(!budgetRequest){
+      return
+    }
+    const {general_observation} = budgetRequest
+    form.setValue('budget_request', budgetRequest?.id ?? '')
+    setGeneralObservation(general_observation ?? null)
+    setObservations(general_observation?.observations ?? [])
+  },[budgetRequest])
+
+  useEffect(()=>{
+    if(generalObservation){
+      form.setValue('solar_orientation', generalObservation?.solar_orientation)
+      form.setValue('latitude', generalObservation?.latitude)
+      form.setValue('longitude', generalObservation?.longitude)
+      form.setValue('budget_request', budgetRequest?.id ?? '')
+      form.setValue('contact_email', generalObservation?.contact_email)
+      form.setValue('contact_name', generalObservation?.contact_name)
+      form.setValue('contact_phone', generalObservation?.contact_phone)
+      form.setValue('id', generalObservation?.id)
+    }
+  },[generalObservation])
+
   return (
     <GeneralObservationContext.Provider
       value={{
-        form
+        form,
+        observations,
+        setCurrentObservation: (observation: string) => setCurrentObservation(observation),
+        currentObservation,
+        addObservation,
+        isLoading,
+        handleSubmit,
+        generalObservation,
+        isRepresentative: userId === budgetRequest?.representative
       }}
     >
       {children}
