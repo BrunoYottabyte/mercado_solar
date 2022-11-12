@@ -2076,14 +2076,14 @@ let Svg = () => <>
       viewBox="0 0 20 20"
     >
       <path
-        stroke="#09121C"
+        stroke="var(--cor-1,#09121C)"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
         d="M11.768 8.233c.976.976.976 2.56 0 3.538a2.503 2.503 0 01-3.537 0 2.5 2.5 0 113.537-3.537"
       ></path>
       <path
-        stroke="#09121C"
+        stroke="var(--cor-1,#09121C)"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth="1.5"
@@ -3613,6 +3613,79 @@ let Svg = () => <>
         </linearGradient>
       </defs>
     </svg>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_subtract_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#09121C"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M15.834 10H4.167"
+        opacity="0.4"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_add_details_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="var(--cor-1,#09121C)"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M10 15.833V4.167M15.834 10H4.167"
+        opacity="0.4"
+      ></path>
+    </symbol>
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_trash_ms"
+      fill="none"
+      viewBox="0 0 26 26"
+    >
+      <path
+        fill="#09121C"
+        fillOpacity="0.4"
+        d="M7.498 10a.5.5 0 00-1 0h1zm12.005 0a.5.5 0 00-1 0h1zM15.5 11a.5.5 0 10-1 0h1zm-1 7.002a.5.5 0 101 0h-1zM11.499 11a.5.5 0 00-1 0h1zm-1 7.002a.5.5 0 101 0h-1zM5.497 6.498a.5.5 0 100 1v-1zm15.006 1a.5.5 0 100-1v1zM8.524 6.84a.5.5 0 10.949.316l-.949-.316zm1.019-1.475l.474.158-.474-.158zm1.899-1.368v.5-.5zm3.117 0v.5-.5zm1.9 1.368l.475-.157-.474.157zm.068 1.79a.5.5 0 00.95-.315l-.95.315zM6.497 10v10.004h1V10h-1zm0 10.004A2.5 2.5 0 009 22.504v-1a1.5 1.5 0 01-1.501-1.5h-1zM9 22.504h8.003v-1H8.999v1zm8.003 0a2.5 2.5 0 002.5-2.5h-1a1.5 1.5 0 01-1.5 1.5v1zm2.5-2.5V9.998h-1v10.004h1zm-5.001-9.005v7.003h1V11h-1zm-4.002 0v7.003h1V11h-1zM5.497 7.498h15.006v-1H5.497v1zm3.976-.342l.544-1.633-.949-.316-.544 1.633.949.316zm.544-1.633a1.501 1.501 0 011.424-1.026v-1a2.5 2.5 0 00-2.373 1.71l.95.316zm1.425-1.026h3.117v-1h-3.117v1zm3.117 0a1.5 1.5 0 011.426 1.026l.949-.316a2.5 2.5 0 00-2.376-1.71l.002 1zm1.426 1.026l.542 1.632.95-.315-.543-1.632-.949.315z"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_arrow_left_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.667 6.667L8.334 10l3.333 3.333"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_arrow_right_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.334 13.333L11.667 10 8.334 6.667"
+      ></path>
+    </symbol>
 
 	</svg>
 </>;

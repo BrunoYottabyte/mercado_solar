@@ -1,7 +1,7 @@
 @layer components {
 
 	.modal{
-		@apply transition-[opacity_transform_visibility] bg-white fixed opacity-0 pointer-events-none will-change-transform !z-[999999999999999999999999999999] max-h-[80vh] overflow-auto rounded-md  translate-y-32 top-0 bottom-0 left-0 right-0 m-auto h-max;
+		@apply transition-[opacity_transform_visibility]  bg-white fixed opacity-0 pointer-events-none will-change-transform !z-[999999999999999999999999999999] max-h-[80vh] overflow-auto rounded-md  translate-y-32 top-0 bottom-0 left-0 right-0 m-auto h-max;
 		&::-webkit-scrollbar{
 			@apply w-4 bg-neutral-30
 		}
@@ -9,10 +9,24 @@
 			/* @apply bg-primary-40 */
 		}
 
-		&.active{
-			@apply translate-y-0 opacity-100 pointer-events-auto;
+		&.right{
+			@apply !right-0 !left-auto !mx-0 !max-h-full duration-700 !h-full !translate-y-0 translate-x-[100%];
+			+ .modal-fundo{
+				@apply !duration-1000
+			}
 
+			&::-webkit-scrollbar{
+				@apply w-8 !bg-neutral-60
+			}
+			&::-webkit-scrollbar-thumb{
+				@apply bg-primary-pure;
+			}
 		}
+
+		&.active{
+			@apply translate-y-0 opacity-100 pointer-events-auto !translate-x-0;
+		}
+
 	}
 	.modal-fundo{
 		@apply fixed z-[999999999] bg-[rgba(0,_0,_0,_0.35)] top-0 left-0 pointer-events-none opacity-0 transition-opacity w-full h-full;
