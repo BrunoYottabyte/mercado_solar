@@ -7,14 +7,18 @@ export const Modal = ({ children, aberto = false, className }) => {
 	return (
 		<>
 			<div
-				className={`modal ${className} ${global.modalOpen.open ? "active" : ""}`}
+				className={`modal ${className} ${global.modalOpen?.position ? "right" : ""} ${global.modalOpen.open ? "active" : ""}`}
 				data-id={global.modalOpen.id ? global.modalOpen.id : null}
 			>
 				{children}
 			</div>
 			<div
 				className={`modal-fundo ${global.modalOpen.open ? "active" : ""}`}
-				onClick={() => global.setmodalOpen({ open: false, id: false })}
+				onClick={() => {
+					console.log(global.modalOpen)
+					global.modalOpen?.position ? global.setmodalOpen({ open: false, id: false, position: 'right' }) : global.setmodalOpen({ open: false, id: false })
+				}}
+
 			></div>
 		</>
 	);

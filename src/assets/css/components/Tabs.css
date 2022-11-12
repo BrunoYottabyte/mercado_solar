@@ -1,12 +1,12 @@
 @layer components {
     .react-tabs{
-        @apply text-neutral-70 p-16 ;
+        @apply text-neutral-70 ;
 
         .react-tabs__tab{
             @apply inline-flex items-center outline-none gap-[6px] p-8 my-8 select-none cursor-pointer border border-transparent font-medium;
 
             + .react-tabs__tab {
-                @apply ml-12
+                @apply ml-12 sm:ml-0
             }
 
             &:hover {
