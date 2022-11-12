@@ -17,7 +17,7 @@ const GeneralObservationContext = createContext({} as IGeneralObservationContext
 export const GeneralObservationProvider: React.FC<IGeneralObservationProviderProps> = ({
   children
 }) => {
-  const {userId} = useAuthContext()
+  const {userId, userType} = useAuthContext()
   
   const {budgetRequest} = useVerProjeto()
 

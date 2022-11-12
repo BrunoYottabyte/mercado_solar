@@ -9,6 +9,7 @@ const AuthContext = createContext();
 export function AuthProvider({children}){
     const [user, setUser] = useState('');
     const [userId, setUserId] = useState('');
+    const [userType, setUserType] = useState('');
 
     const {'mr.cookie': token} = parseCookies();
     const [isAutheticated, setIsAuthenticated] = useState(() => {
@@ -22,9 +23,10 @@ export function AuthProvider({children}){
 
 
     const signOut = () => {
-        destroyCookie(undefined, 'mr.cookie');
+        destroyCookie(undefined, 'mr.cookie', {path: '/'});
         setIsAuthenticated(false);
-        authChannel.postMessage('signOut');
+        api.defaults.headers.common['Authorization'] = undefined;
+        // authChannel.postMessage('signOut');
         navigate('/');
     }
 
@@ -44,8 +46,9 @@ export function AuthProvider({children}){
         }
         const {'mr.cookie': token} = parseCookies();
         if(token){
-            const { user_id } = jwtDecode(token);
+            const { user_id, type } = jwtDecode(token);
             setUserId(user_id);
+            setUserType(type);
         }
     }, []) 
     
@@ -63,11 +66,11 @@ export function AuthProvider({children}){
         setIsAuthenticated(true);
         navigate('/')
 
-        authChannel.postMessage('signIn');
+        // authChannel.postMessage('signIn');
     }
 
     return(
-       <AuthContext.Provider value={{user, userId, signIn, signOut, isAutheticated}}>
+       <AuthContext.Provider value={{user, userId, userType, signIn, signOut, isAutheticated}}>
             {children}
        </AuthContext.Provider> 
     )
