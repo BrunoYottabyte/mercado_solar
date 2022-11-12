@@ -4,6 +4,7 @@ import { useVerProjeto } from "../../../../context"
 import { GeneralObservationProvider, useGeneralObservation } from "./context"
 
 const GeneralObservationContent = () => {
+  const {isRepresentative} = useVerProjeto()
   const {
     form,
     observations,
@@ -12,7 +13,6 @@ const GeneralObservationContent = () => {
     currentObservation,
     handleSubmit,
     generalObservation,
-    isRepresentative
   } = useGeneralObservation()
   return (
     <section className="p-24">
@@ -56,7 +56,13 @@ const GeneralObservationContent = () => {
           <div className="p-24 headline1 rounded-md border border-neutral-100-10">
             Observações
             {observations.map((observation, i) => (
-              <p className="paragraph2" key={`${observation}-${i}`}>{observation.observation}</p>
+              <>
+              <div className="flex items-center justify-between my-2">
+                <p className="paragraph2" key={`${observation}-${i}`}>{observation.observation}</p>
+                {/* <Button margin="0">X</Button> */}
+              </div>
+              {i !== (observations.length-1) && <hr style={{opacity: 0.1}}/>}
+              </>
             ))}
             <div className={`input-container flex gap-10`}>
               <input
@@ -64,7 +70,7 @@ const GeneralObservationContent = () => {
                 placeholder={
                   generalObservation ?
                   "Adicionar observação":
-                  "Adicione antes as demais informações"
+                  "Adicione as demais informações"
                 }
                 value={currentObservation}
                 disabled={!generalObservation || !isRepresentative}

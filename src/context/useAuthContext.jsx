@@ -28,6 +28,8 @@ export function AuthProvider({children}){
         api.defaults.headers.common['Authorization'] = undefined;
         // authChannel.postMessage('signOut');
         navigate('/');
+        setUserId('');
+        setUserType('');
     }
 
     useEffect(() => {
@@ -61,6 +63,13 @@ export function AuthProvider({children}){
             path: '/'
         })
 
+        if(data.access){
+            const { user_id, type } = jwtDecode(data.access);
+            setUserId(user_id);
+            setUserType(type);
+        }
+        
+        
         api.defaults.headers.common['Authorization'] = `Bearer ${data.access}`
       
         setIsAuthenticated(true);
