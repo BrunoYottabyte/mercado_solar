@@ -128,13 +128,12 @@ const options = {
         return y.toFixed(0);
       },
     }
-    
   }, 
   xaxis: {
     type: 'text',
-    categories: [...Array(21).keys()].map(i => i.toString()),
+    categories: [...Array(21).keys()].map(i => i.toString() + ' ano(s)'),
     labels: {
-      rotate: -90,
+      rotate: -80,
     }
   },
   responsive: [

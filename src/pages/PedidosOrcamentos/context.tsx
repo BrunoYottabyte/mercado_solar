@@ -3,6 +3,7 @@ import { api } from '../../services/api'
 import Badge from '../../components/DesignSystem/Badge';
 import Button from '../../components/DesignSystem/Button';
 import { useNavigate } from "react-router-dom";
+import { format, formatDistance, formatRelative, subDays } from 'date-fns'
 
 import {
   IPedidosOrcamentoProviderProps,
@@ -44,7 +45,6 @@ export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> 
     {
         Header: "UF",
         accessor: "federative_unit",
-        // Cell: (v) => moment(v.value).format('DD/MM/YYYY HH:mm')
     },
     {
         Header: "Cidade",
@@ -58,6 +58,7 @@ export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> 
     {
         Header: "Status",
         accessor: "status",
+        Cell: (v) => <Badge iconID={''} title={v.value} classeTitle={`font-medium ${v.value === 'Aprovada' ? 'text-alert-success' : v.value === 'Em Progresso' ? 'text-alert-warning-100': 'text-alert-error'} `} classe={v.value == 'Aprovada' ? '!text-[#ccc] bg-alert-success-10' : v.value === 'Em Progresso' ? 'bg-alert-warning-10' : 'bg-alert-error-10'} />
 
     },
     {
@@ -71,11 +72,12 @@ export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> 
     {
       Header: () => <p>Data de entrada</p>,
       accessor: "created_at",
-      Cell: (v) => <p className='text-center '>{v.value}</p>
+      Cell: (v) => <p className='text-center '>{format(new Date(v.value), "dd/MM/yyyy")}</p>
     },
     {
       Header: "Ult.Atualização",
       accessor: "updated_at",
+      Cell: (v) => <p className='text-center '>{format(new Date(v.value), "dd/MM/yyyy")}</p>
     },
     {
       Header: "Ações",
@@ -92,7 +94,14 @@ export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> 
               classe="w-32 h-32 relative flex items-center"
             />
             
-            <Button  style={{'--cor-1': '#000'}} iconID="#search_icon" svgClass="!w-20 !h-20 absolute left-0 right-0 mx-auto" classe="w-32 h-32 relative flex items-center" />
+            <Button
+              data-popover-target="popover-default"
+              onClick={() => navigate(`/ver-projeto/`, { state: { budgetRequestId } })}
+              style={{'--cor-1': '#000'}}
+              iconID="#search_icon"
+              svgClass="!w-20 !h-20 absolute left-0 right-0 mx-auto"
+              classe="w-32 h-32 relative flex items-center"
+            />
           </div>
       )}                               
     },
@@ -102,7 +111,16 @@ export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> 
 
   useEffect(() => {
     api.get('/budget_request/', {params}).then(response => {
-      setPedidosOrcamento(response.data.results)
+      const pedidosResponseParser = response.data.results.map((pedido: ITableData): ITableData => {
+        return {
+          ...pedido,
+          created_at: pedido.created_at.split('T')[0],
+          updated_at: pedido.updated_at.split('T')[0],
+          budget_request_status: pedido.budget_request_status === 'approved' ? 'Aprovada' : pedido.budget_request_status === 'pending' ? 'Aguardando' : 'Reprovada',
+          status: pedido.status === 'approved' ? 'Aprovada' : pedido.status === 'pending' ? 'Em Progresso' : 'Reprovada',
+        }
+      }) 
+      setPedidosOrcamento(pedidosResponseParser)
       setCount(response.data.count ?? 0)
 
     }).catch(() => null)

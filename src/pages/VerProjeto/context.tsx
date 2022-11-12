@@ -2,20 +2,18 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate, Location } from 'react-router-dom'
 import { api } from '../../services/api'
 import { addressByPostalCode } from '../../utils/addressByPostalCode'
-import { MultiplicadorGeracao, MultiplicadorOrcamento } from '../../utils/constants'
+import { MultiplicadorKWP } from '../../utils/constants'
 
-import {options, options2} from './data'
 import {
-  IPrePropostaProviderProps,
-  IPrePropostaContextData,
+  IVerProjetoProviderProps,
+  IVerProjetoContextData,
   IStateProps,
   IBudgetRequest,
-  IChartProps
 } from './types'
 
-const PrePropostaContext = createContext({} as IPrePropostaContextData)
+const VerProjetoContext = createContext({} as IVerProjetoContextData)
 
-export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
+export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
   children
 }) => {
   const location = useLocation();
@@ -23,21 +21,11 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
 
   const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>()
   const [address, setAddress] = useState<string>('')
-  const [playBack, setPlayBack] = useState<IChartProps>({
-    name: "Previsão Playback",
-    data: [],
-  })
 
   const state = location.state as IStateProps;
 
   const handleNavigate = (path: string, params?: object) => {
     navigate(path, params ?? {})
-  }
-
-  const handleAcceptPreBudget = async () => {
-    api.post('/budget_request/', {budget_request_status: 'accept'}).then(response => {
-
-    })
   }
   
   useEffect(() => {    
@@ -59,7 +47,7 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
           
           const budgetRequestResponseParser = {
             ...budgetRequestResponse,
-            average_consumption: average_consumption * 1.1
+            average_consumption: average_consumption * MultiplicadorKWP
           }
           setBudgetRequest(budgetRequestResponseParser)
 
@@ -69,7 +57,7 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
         }
 
         if (budgetRequestResponse.average_consumption){
-          const month_avg = Number(budgetRequestResponse.average_consumption) / 1.1
+          const month_avg = Number(budgetRequestResponse.average_consumption) / MultiplicadorKWP
            const month_consumption = {
             january_consumption_avg: month_avg,
             february_consumption_avg: month_avg,
@@ -102,42 +90,24 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
     })
   }, [])
 
-  useEffect(() => {
-    if (!budgetRequest?.month_consumption || !budgetRequest?.average_consumption) {
-      return
-    }
-    const average_consumption = Object.values(
-      budgetRequest.month_consumption
-    ).reduce((a, b) => Number(a) + Number(b), 0) /12
-    const budget = Number(budgetRequest?.average_consumption) * MultiplicadorOrcamento
-    const generation = average_consumption * MultiplicadorGeracao
-    
-    const economy = [...Array(21).keys()].map(i => (i*12*generation) - budget)
-    setPlayBack({
-      name: "Previsão Playback",
-      data: economy
-    })
-  }, [budgetRequest])
   return (
-    <PrePropostaContext.Provider
+    <VerProjetoContext.Provider
       value={{
         budgetRequest,
         handleNavigate,
-        address: address,
-        playback: playBack,
-        generation: playBack
+        address
       }}
     >
       {children}
-    </PrePropostaContext.Provider>
+    </VerProjetoContext.Provider>
   )
 }
 
-export const usePreProposta = (): IPrePropostaContextData => {
-  const context = useContext(PrePropostaContext)
+export const useVerProjeto = (): IVerProjetoContextData => {
+  const context = useContext(VerProjetoContext)
 
   if (!context)
-    throw new Error('usePreProposta must be used within a PrePropostaProvider')
+    throw new Error('useVerProjeto must be used within a VerProjetoProvider')
 
   return context
 }
