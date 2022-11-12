@@ -3659,6 +3659,34 @@ let Svg = () => <>
       ></path>
     </symbol>
 
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_arrow_left_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M11.667 6.667L8.334 10l3.333 3.333"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_arrow_right_ms"
+      fill="none"
+      viewBox="0 0 20 20"
+    >
+      <path
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8.334 13.333L11.667 10 8.334 6.667"
+      ></path>
+    </symbol>
+
 	</svg>
 </>;
 export default Svg
