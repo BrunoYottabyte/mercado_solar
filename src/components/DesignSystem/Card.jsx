@@ -8,7 +8,7 @@ import { api } from "../../services/api";
 
 moment.locale('pt-br')
 
-const Card = ({ children, classe, ...props }) => {
+const Card = ({ children, classe, ref, ...props }) => {
 
 	return (
 		<div className={`card ${classe ? classe : ""}  md2:mx-auto`} {...props} >

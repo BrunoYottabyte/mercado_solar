@@ -1,10 +1,11 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, Location } from 'react-router-dom'
 import { api } from '../../services/api'
 import { addressByPostalCode } from '../../utils/addressByPostalCode'
 import { MultiplicadorGeracao, MultiplicadorOrcamento } from '../../utils/constants'
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
-import {options, options2} from './data'
 import {
   IPrePropostaProviderProps,
   IPrePropostaContextData,
@@ -21,6 +22,9 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
   const location = useLocation();
   const navigate = useNavigate();
 
+  const downloadRef = useRef<HTMLElement>();
+
+  const [downloadIsLoading, setDownloadIsLoading] = useState(false);
   const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>()
   const [address, setAddress] = useState<string>('')
   const [playBack, setPlayBack] = useState<IChartProps>({
@@ -33,6 +37,27 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
   const handleNavigate = (path: string, params?: object) => {
     navigate(path, params ?? {})
   }
+
+
+  const handleDownloadPdf = async () => {
+    setDownloadIsLoading(true)
+    
+    const element = downloadRef.current;
+    if(element){
+      const canvas = await html2canvas(element);
+      const data = canvas.toDataURL('image/png');
+
+      const pdf = new jsPDF();
+      const imgProperties = pdf.getImageProperties(data);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight =
+        (imgProperties.height * pdfWidth) / imgProperties.width;
+
+      pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('print.pdf');
+    }
+    setDownloadIsLoading(false)
+  };
 
   const handleAcceptPreBudget = async () => {
     api.post('/budget_request/', {budget_request_status: 'accept'}).then(response => {
@@ -125,7 +150,10 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
         handleNavigate,
         address: address,
         playback: playBack,
-        generation: playBack
+        generation: playBack,
+        downloadRef,
+        handleDownloadPdf,
+        downloadIsLoading
       }}
     >
       {children}

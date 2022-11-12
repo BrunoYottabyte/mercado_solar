@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { MutableRefObject, ReactNode } from "react";
 
 interface IMonthConsumption {
   january_consumption_avg: number,
@@ -52,6 +52,9 @@ interface IPrePropostaContextData {
   address: string
   generation: IChartProps
   playback: IChartProps
+  downloadRef: MutableRefObject<HTMLElement | undefined>
+  handleDownloadPdf: () => void
+  downloadIsLoading: boolean
 }
 
 export type { IPrePropostaProviderProps, IPrePropostaContextData, IStateProps, IBudgetRequest, IChartProps };

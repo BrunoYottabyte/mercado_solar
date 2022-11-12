@@ -23,7 +23,8 @@ const ButtonsStepsContent = () => {
         className="btn h-56 md2:w-full"
         svgClass="!w-20 !h-20"
         iconID="#icon_check_ms"
-        onClick={() => openModal('feedbackTechnical')}
+        onClick={() => setmodalOpen({ open: true, id: 'feedbackTechnical' })}
+        
       >
         Aprovar
       </Button>

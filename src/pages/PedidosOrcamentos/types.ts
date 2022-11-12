@@ -1,4 +1,4 @@
-import { ReactNode } from "react"
+import { MutableRefObject, ReactNode } from "react"
 
 interface ITableData {
   id: string

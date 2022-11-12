@@ -15,7 +15,15 @@ import { PrePropostaProvider, usePreProposta } from "./context";
 import {options, options2} from './data'
 
 const PrePropostaContent = () => {
-	const {handleNavigate, budgetRequest, address, playback} = usePreProposta()
+	const {
+		handleNavigate,
+		budgetRequest,
+		address,
+		playback,
+		downloadRef,
+		handleDownloadPdf,
+		downloadIsLoading
+	} = usePreProposta()
 
 	const [loading, setLoading] = useState(false);
 	const { setmodalOpen, modalOpen } = useGlobalContext();
@@ -130,7 +138,7 @@ const PrePropostaContent = () => {
 				</ModalContent>
 			</Modal>
 
-			<div className="container">
+			<div className="container" ref={downloadRef}>
 			<Card classe="my-64 px-24 py-32 flex flex-col gap-16">
 				<h1 className="title2">SOL. Nº {budgetRequest?.id} - {address}</h1>
 				
@@ -196,11 +204,23 @@ const PrePropostaContent = () => {
 				 
 				<div className="w-full flex items-center justify-between gap-14 md2:flex-col md2:gap-16">
 					<div className="md2:w-full">
-						<Button svgClass="!w-20 !h-20" iconID="#icon_download" className="btn h-48 secondary mr-14 md2:!w-full md2:mb-8" onClick={openModal}>
+						<Button
+							svgClass="!w-20 !h-20"
+							iconID="#icon_download"
+							className="btn h-48 secondary mr-14 md2:!w-full md2:mb-8"
+							onClick={() => handleDownloadPdf()}
+							disabled={downloadIsLoading}
+						>
 							Baixar
 						</Button> 
-
-						<Button svgClass="!w-20 !h-20" iconID="#icon_send_email" className="btn h-48 quaternario md2:w-full" onClick={openThanksModal}>Enviar para e-mail</Button>
+						
+						<Button
+							svgClass="!w-20 !h-20"
+							iconID="#icon_send_email"
+							className="btn h-48 quaternario md2:w-full"
+						>
+							Enviar para e-mail
+						</Button>
 					</div>
 
 					<div className="md2:w-full">
