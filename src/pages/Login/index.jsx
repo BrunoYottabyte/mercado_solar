@@ -24,7 +24,6 @@ const Login = () => {
 		if (!validarPorLength(password, 6)) {
 			showToastify("senha invalida");
 			return
-
 		}
 
 		try {
@@ -79,15 +78,15 @@ const Login = () => {
 							<rect x="0.5" y="0.5" width="416" height="974" fill="url(#paint0_linear_298_16336)" stroke="url(#paint1_linear_298_16336)"/>
 							<defs>
 							<linearGradient id="paint0_linear_298_16336" x1="208.5" y1="0" x2="208.5" y2="975" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#F8B944" stop-opacity="0.1"/>
-							<stop offset="0.25" stop-color="#F8B944" stop-opacity="0.0542867"/>
-							<stop offset="0.520833" stop-color="#F8B944" stop-opacity="0.0272419"/>
-							<stop offset="0.755208" stop-color="#F8B944" stop-opacity="0.0115005"/>
-							<stop offset="1" stop-color="#F8B944" stop-opacity="0"/>
+							<stop stopColor="#F8B944" stopOpacity="0.1"/>
+							<stop offset="0.25" stopColor="#F8B944" stopOpacity="0.0542867"/>
+							<stop offset="0.520833" stopColor="#F8B944" stopOpacity="0.0272419"/>
+							<stop offset="0.755208" stopColor="#F8B944" stopOpacity="0.0115005"/>
+							<stop offset="1" stopColor="#F8B944" stopOpacity="0"/>
 							</linearGradient>
 							<linearGradient id="paint1_linear_298_16336" x1="208.5" y1="0" x2="208.5" y2="975" gradientUnits="userSpaceOnUse">
-							<stop stop-color="#F8B944" stop-opacity="0.1"/>
-							<stop offset="1" stop-color="#F8B944" stop-opacity="0.05"/>
+							<stop stopColor="#F8B944" stopOpacity="0.1"/>
+							<stop offset="1" stopColor="#F8B944" stopOpacity="0.05"/>
 							</linearGradient>
 							</defs>
 						</svg>		

@@ -15,6 +15,10 @@ interface IMonthConsumption {
   december_consumption_avg: number
 }
 
+interface IObservationProps {
+  observation: string;
+}
+
 interface IGeneralObservation {
   id: number
   budget_request: number
@@ -23,7 +27,7 @@ interface IGeneralObservation {
   contact_phone: string
   latitude: number
   longitude: number
-  observations: string[]
+  observations: IObservationProps[]
   solar_orientation: string
 }
 

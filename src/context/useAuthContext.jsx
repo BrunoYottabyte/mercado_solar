@@ -2,14 +2,17 @@ import React, {createContext, useContext, useState, useEffect} from 'react';
 import { api } from '../services/api';
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import { useNavigate } from 'react-router-dom';
+import jwtDecode from 'jwt-decode'
 
 const AuthContext = createContext();
 
 export function AuthProvider({children}){
     const [user, setUser] = useState('');
+    const [userId, setUserId] = useState('');
+    const [userType, setUserType] = useState('');
 
+    const {'mr.cookie': token} = parseCookies();
     const [isAutheticated, setIsAuthenticated] = useState(() => {
-		const {'mr.cookie': token} = parseCookies();
 		if(token) return true;
         return false;
 	});
@@ -20,9 +23,10 @@ export function AuthProvider({children}){
 
 
     const signOut = () => {
-        destroyCookie(undefined, 'mr.cookie');
+        destroyCookie(undefined, 'mr.cookie', {path: '/'});
         setIsAuthenticated(false);
-        authChannel.postMessage('signOut');
+        api.defaults.headers.common['Authorization'] = undefined;
+        // authChannel.postMessage('signOut');
         navigate('/');
     }
 
@@ -40,6 +44,12 @@ export function AuthProvider({children}){
                     break;
             }
         }
+        const {'mr.cookie': token} = parseCookies();
+        if(token){
+            const { user_id, type } = jwtDecode(token);
+            setUserId(user_id);
+            setUserType(type);
+        }
     }, []) 
     
     const signIn = async(username, password) => {
@@ -56,12 +66,11 @@ export function AuthProvider({children}){
         setIsAuthenticated(true);
         navigate('/')
 
-        authChannel.postMessage('signIn');
-
+        // authChannel.postMessage('signIn');
     }
 
     return(
-       <AuthContext.Provider value={{user, signIn, signOut, isAutheticated}}>
+       <AuthContext.Provider value={{user, userId, userType, signIn, signOut, isAutheticated}}>
             {children}
        </AuthContext.Provider> 
     )
