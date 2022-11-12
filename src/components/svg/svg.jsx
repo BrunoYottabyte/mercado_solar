@@ -3687,6 +3687,39 @@ let Svg = () => <>
       ></path>
     </symbol>
 
+
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_bell_notifications_ms"
+      width="22"
+      height="24"
+      fill="none"
+      viewBox="0 0 22 24"
+    >
+      <path
+        stroke="#09121C"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M5.495 13.917V10.25c0-3.038 2.464-5.5 5.505-5.5a5.503 5.503 0 015.506 5.5v3.667c0 .903.41 1.759 1.115 2.325l.283.228c.841.674.363 2.03-.715 2.03H4.811c-1.078 0-1.556-1.356-.715-2.03l.283-.228a2.981 2.981 0 001.116-2.325z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#09121C"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M9.625 21.25h2.75"
+      ></path>
+      <circle
+        cx="16"
+        cy="6"
+        r="5"
+        fill="#E92C2C"
+        stroke="#fff"
+        strokeWidth="2"
+      ></circle>
+    </symbol>
+
 	</svg>
 </>;
 export default Svg

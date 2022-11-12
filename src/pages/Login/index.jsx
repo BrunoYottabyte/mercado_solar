@@ -29,8 +29,10 @@ const Login = () => {
 		try {
 			btnSubmit.classList.add("is-loading");
 			const response = await signIn(email, password);
+			console.log(response);
 		} catch (e) {
-			e?.response?.status === 400 && showToastify("Dados invalidos");
+			console.log(e);
+			e?.response?.status === 401 && showToastify("Usuário e/ou senha inválidos.");
 		} finally {
 			btnSubmit.classList.remove("is-loading");
 		}
@@ -58,6 +60,14 @@ const Login = () => {
 
 	const btn_ref = useRef(null);
 
+
+	const showPassword = () => {
+		if(document.querySelector('.input_password').type == 'text'){
+			document.querySelector('.input_password').type = 'password'
+		}else{
+			document.querySelector('.input_password').type = 'text'
+		}
+	}
 	return (
 		<>
 			<Svg />
@@ -115,13 +125,13 @@ const Login = () => {
 									type="password"
 									name="password"
 									id="password"
-									classe="!h-48 !rounded-md"
+									classe="!h-48 !rounded-md input_password"
 									containerClass="icon-right"
 									placeholder="Digite sua senha"
 									onChange={e => setPassword(e.target.value)}
 									required
-									svgID="#icon-eye-ms"
 								/>
+								<SvgUse onClick={showPassword} id="#icon-eye-ms" classe="hover:cursor-pointer absolute w-20 h-20 bottom-12 right-16" />
 							</label>
 							<div className="mt-24">
 								<CheckBox checked={true} containerClass="md">

@@ -1,7 +1,7 @@
 
 module.exports = {
 
-	content: ["./index.html", "./src/**/*.{html,ts,jsx}", "./src/*.{ts,tsx}", "./index.html"],
+	content: ["./index.html", "./src/**/*.{html,ts,jsx,tsx}", "./src/*.{ts,tsx}", "./index.html"],
 	safelist: [],
 
 	theme: {

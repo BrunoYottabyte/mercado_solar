@@ -14,9 +14,6 @@ const api = axios.create({
 });
 
 
-// api.get("/api")
-// 	.then(console.log)
-
 loadProgressBar(
 	{
 		minimum: 0.75,
