@@ -16,6 +16,7 @@ interface IMonthConsumption {
 }
 
 interface IObservationProps {
+  id: number;
   observation: string;
 }
 
@@ -31,8 +32,48 @@ interface IGeneralObservation {
   solar_orientation: string
 }
 
+interface ICategory {
+  id: number
+  name: string
+  description: string
+}
+
+interface IBrand {
+  id: number
+  name: string
+  description: string
+  photo: string
+}
+
+interface IImages {
+  id: number
+  image: string
+  default: boolean
+}
+interface IProduct {
+  id: number
+  name: string
+  description: string
+  aditional_information: string
+  technical_details: string
+  price: number
+  created_at: Date
+  brand: IBrand
+  category: ICategory
+  images: IImages[]
+}
+
+interface IBudget {
+  id: number
+  total: number
+  status: 'approved' | 'pending' | 'disapproved'
+  budget_request: number
+  products: IProduct[]
+}
+
 interface IBudgetRequest {
   id: string
+  user: string
   client_name: string
   client_email: string
   client_phone: string
@@ -42,6 +83,7 @@ interface IBudgetRequest {
   month_consumption: IMonthConsumption | null
   general_observation: IGeneralObservation
   federative_unit: string
+  budgets: IBudget[]
   city: string
   budget_request_status: string
   status: string
@@ -67,6 +109,17 @@ interface IVerProjetoContextData {
   budgetRequest: IBudgetRequest | undefined;
   handleNavigate: (path: string, params?: object) => void;
   address: string
+  isRepresentative: boolean
+  isInegrator: boolean
+  isOwner: boolean
 }
 
-export type { IVerProjetoProviderProps, IVerProjetoContextData, IStateProps, IBudgetRequest, IChartProps };
+export type { 
+  IVerProjetoProviderProps,
+  IVerProjetoContextData,
+  IStateProps,
+  IBudgetRequest,
+  IChartProps,
+  IProduct,
+  IBudget
+};

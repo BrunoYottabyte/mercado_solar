@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { UseFormReturn } from "react-hook-form";
 
 interface IObservationProps {
+  id: number;
   observation: string;
 }
 
@@ -41,7 +42,6 @@ interface IGeneralObservationContextData {
   isLoading: boolean
   handleSubmit: (data: IFormProps) => Promise<void>
   generalObservation: IGeneralObservation
-  isRepresentative: boolean
 }
 
 export type {

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate, Location } from 'react-router-dom'
+import { useAuthContext } from '../../context/useAuthContext'
 import { api } from '../../services/api'
 import { addressByPostalCode } from '../../utils/addressByPostalCode'
 import { MultiplicadorKWP } from '../../utils/constants'
@@ -16,6 +17,7 @@ const VerProjetoContext = createContext({} as IVerProjetoContextData)
 export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
   children
 }) => {
+  const {userId} = useAuthContext()
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -86,14 +88,17 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
       console.log('erro');
       navigate('/')
     })
-  }, [])
+  }, [])    
 
   return (
     <VerProjetoContext.Provider
       value={{
         budgetRequest,
         handleNavigate,
-        address
+        address,
+        isRepresentative: userId === budgetRequest?.representative,
+        isInegrator: userId === budgetRequest?.integrator,
+        isOwner: userId === budgetRequest?.user
       }}
     >
       {children}

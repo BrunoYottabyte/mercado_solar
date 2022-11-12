@@ -13,6 +13,7 @@ import Header from "./components/Header";
 import ConsumptionGraph from "./components/ConsumptionGraph";
 import TimeLine from './components/TimeLine'
 import TabsArea from './components/TabsArea'
+import ButtonsSteps from "./components/ButtonsSteps";
 
 const VerProjetoContent = () => {
 	const {budgetRequest, address} = useVerProjeto()
@@ -24,10 +25,6 @@ const VerProjetoContent = () => {
 			clearTimeout(window.timeoutProjeto);
 		}
 	}, [modalOpen]);
-
-	const openModal = (id) => {
-		setmodalOpen({ open: true, id });
-	};
 
 	return (
 		<>
@@ -101,7 +98,7 @@ const VerProjetoContent = () => {
 					type="button"
 					style={{'--cor-1': '#F69F00'}}
 					className="absolute right-24 top-24 border border-neutral-60/30 hover:border-primary-pure  rounded-full"
-					onClick={() => setmodalOpen({ open: false, id: false })}
+					onClick={() => setmodalOpen({ open: false, id: 'feedbackTechnical' })}
 				>
 					<SvgUse id="#icon_close_ms" classe="!w-28 !h-28" />
 				</button>
@@ -194,25 +191,7 @@ const VerProjetoContent = () => {
 				</ModalContent> 
 			</Modal>
 			<div className="container my-64  flex flex-col gap-16">
-				<div className="w-full flex md:flex-col justify-end items-center">
-					<Button
-						className="btn h-56  mr-14 md2:w-full md:mr-0 md:mb-8"
-						svgClass="!w-24 !h-20"
-						iconID="#icon_close_ms"
-					>
-						Recusar
-					</Button>
-
-					<Button
-						className="btn h-56 md2:w-full"
-						svgClass="!w-20 !h-20"
-						iconID="#icon_check_ms"
-						onClick={() => openModal('feedbackTechnical')}
-					>
-						Aprovar
-					</Button>
-				</div>
-
+				<ButtonsSteps />
 				{budgetRequest && <Header
 					id={budgetRequest.id}
 					client_name={budgetRequest.client_name}

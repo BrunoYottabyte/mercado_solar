@@ -17,7 +17,7 @@ const GeneralObservationContext = createContext({} as IGeneralObservationContext
 export const GeneralObservationProvider: React.FC<IGeneralObservationProviderProps> = ({
   children
 }) => {
-  const {userId, userType} = useAuthContext()
+  const {userId} = useAuthContext()
   
   const {budgetRequest} = useVerProjeto()
 
@@ -39,20 +39,30 @@ export const GeneralObservationProvider: React.FC<IGeneralObservationProviderPro
       })
     }
     else {
-      api.post('/general_observation/', data).then(response => {
+      setIsLoading(true)
+      await api.post('/general_observation/', data).then(response => {
         setGeneralObservation(response.data)
       }).catch(error => {
         console.log(error)
       })
+      setIsLoading(false)
     }
     setIsLoading(false)
   }
   
   const addObservation = () => {
-    if(!currentObservation.trim()){
+    if(!currentObservation.trim() || !generalObservation.id){
       return
     }
-    setObservations([...observations, {observation: currentObservation}])
+    const newObservation = {
+      general_observation: generalObservation.id,
+      observation: currentObservation,
+    }
+    api.post('/observation/', newObservation).then(response => {
+      const observationResponse: IObservationProps = response.data
+      setObservations([...observations, observationResponse])
+
+    })
     setCurrentObservation('')
   }
 
@@ -90,7 +100,6 @@ export const GeneralObservationProvider: React.FC<IGeneralObservationProviderPro
         isLoading,
         handleSubmit,
         generalObservation,
-        isRepresentative: userId === budgetRequest?.representative
       }}
     >
       {children}

@@ -21,7 +21,7 @@ const Login = () => {
 
 	const handleLogin = async () => {
 		const btnSubmit = document.querySelector(".btn-submit");
-		if (!validarPorLength(password, 6)) {
+		if (!validarPorLength(password, 5)) {
 			showToastify("senha invalida");
 			return
 		}
