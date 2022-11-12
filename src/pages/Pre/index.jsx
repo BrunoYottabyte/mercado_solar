@@ -151,16 +151,30 @@ const PrePropostaContent = () => {
 
 				<section className="w-full border border-neutral-100-10 rounded-md flex md2:flex-col">
 					<div className=" p-16 flex flex-col gap-8">
-							{
-								[0,1,2,3,4,5].map((item, i) => {
-									return(
-										<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10" key={i}>
-											<p className="paragraph2">Estimativa de Geração</p>
-											<h3 className="title3">R$ 157.805,00</h3>
-										</div>
-									)
-								})
-							}
+						<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10">
+							<p className="paragraph2">Estimativa de Geração</p>
+							<h3 className="title3">R$ 157.805,00</h3>
+						</div>
+						<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10">
+							<p className="paragraph2">Estimativa de Investimento</p>
+							<h3 className="title3">R$ 157.805,00</h3>
+						</div>
+						<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10">
+							<p className="paragraph2">Estimativa de Economia</p>
+							<h3 className="title3">R$ 157.805,00</h3>
+						</div>
+						<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10">
+							<p className="paragraph2">Playback</p>
+							<h3 className="title3">R$ 157.805,00</h3>
+						</div>
+						<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10">
+							<p className="paragraph2">Estimativa de Financiamento</p>
+							<h3 className="title3">R$ 157.805,00</h3>
+						</div>
+						<div className="w-[200px] md2:!w-full rounded-md p-8 border border-neutral-100-10">
+							<p className="paragraph2">Potência dos Módulos</p>
+							<h3 className="title3">R$ 157.805,00</h3>
+						</div>
 					</div>
 
 					<div className="relative md2:hidden">

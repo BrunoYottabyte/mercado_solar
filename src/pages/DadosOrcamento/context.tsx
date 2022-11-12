@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate, Location } from 'react-router-dom'
 import { api } from '../../services/api'
 import { addressByPostalCode } from '../../utils/addressByPostalCode'
+import { MultiplicadorKWP } from '../../utils/constants'
 
 import {
   IDadosOrcamentoProviderProps,
@@ -47,7 +48,7 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
           
           const budgetRequestResponseParser = {
             ...budgetRequestResponse,
-            average_consumption: average_consumption * 1.1
+            average_consumption: average_consumption * MultiplicadorKWP
           }
           setBudgetRequest(budgetRequestResponseParser)
           addressByPostalCode(budgetRequestResponseParser?.client_postal_code).then(res => {
@@ -56,7 +57,7 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
         }
 
         if (budgetRequestResponse.average_consumption){
-          const month_avg = Number(budgetRequestResponse.average_consumption) / 1.1
+          const month_avg = Number(budgetRequestResponse.average_consumption) / MultiplicadorKWP
            const month_consumption = {
             january_consumption_avg: month_avg,
             february_consumption_avg: month_avg,
