@@ -25,14 +25,14 @@ const TimeLine = () => {
 
       <div className="md:overflow-x-auto">
       <div className="timeline-horizontal-container md:!w-max md:!justify-between relative overflow-x-auto">
-        <div className="absolute top-0 md:top-4 w-full h-[6px] overflow-hidden rounded-md border border-neutral-100-10">
+        <div className="absolute top-4 md:top-4 w-full h-[6px] overflow-hidden rounded-md border border-neutral-100-10">
           <span className="block absolute top-0 left-0 w-full h-full bg-primary-pure"></span>
         </div>
         {/*  */}
         <div className="grid place-items-center">
           <span
             onMouseEnter={(e) => console.log(e)}
-            className="point block absolute -top-[5px] md:!top-0  md:!top-0 border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+            className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
           ></span>
           <p className="headline3">Orçamento</p>
           <p className="text-alert-success paragraph3">18/10/2022</p>
@@ -40,7 +40,7 @@ const TimeLine = () => {
         <div className="grid place-items-center">
           <span
             onMouseEnter={(e) => console.log(e)}
-            className="point block absolute -top-[5px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+            className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
           ></span>
           <p className="headline3">Criação</p>
           <p className="text-alert-success paragraph3">18/10/2022</p>
@@ -49,7 +49,7 @@ const TimeLine = () => {
         <div className="grid place-items-center">
           <span
             onMouseEnter={(e) => console.log(e)}
-            className="point block absolute -top-[5px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+            className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
           ></span>
           <p className="headline3">Primeiro Contato</p>
           <p className="text-alert-success paragraph3">
@@ -62,7 +62,7 @@ const TimeLine = () => {
         <div className="grid place-items-center">
           <span
             onMouseEnter={(e) => console.log(e)}
-            className="point block absolute -top-[5px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+            className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
           ></span>
           <p className="headline3">Visita Técnica</p>
           <p className="text-alert-success paragraph3">
@@ -75,7 +75,7 @@ const TimeLine = () => {
         <div className="grid place-items-center">
           <span
             onMouseEnter={(e) => console.log(e)}
-            className="point block absolute -top-[5px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+            className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
           ></span>
           <p className="headline3">Orçamento Disponibilizado</p>
           <p className="text-neutral-70 paragraph3">20/10/2022</p>
@@ -84,7 +84,7 @@ const TimeLine = () => {
         <div className="grid place-items-center">
           <span
             onMouseEnter={(e) => console.log(e)}
-            className="point block absolute -top-[5px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+            className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
           ></span>
           <p className="headline3">Orçamento Aprovado</p>
           <p className="text-neutral-70 paragraph3">22/10/2022</p>

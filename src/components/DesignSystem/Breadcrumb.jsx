@@ -16,6 +16,7 @@ const routes = [
 	{ path: "/gestao-producao/estoque", breadcrumb: "Estoque"},
 	{ path: "/gestao-producao/entradas-estoque", breadcrumb: "Entradas de Estoque"},
 	{ path: "gestao-producao/previsao-controle-estoque", breadcrumb: "Previsao e controle de estoque"},
+	{ path: "/ver-projeto/", breadcrumb: "Perfil da Oportunidade"},
 
 ];
 

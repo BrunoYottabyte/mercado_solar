@@ -79,24 +79,24 @@ const Home = () => {
 						Conheça abaixo os benefícios de obter energia renovável
 					</p>
 
-					<div className="max-w-[1100px] mt-64 flex gap-32">
-						<div className="flex flex-col gap-40 w-[17.5rem]">
-							<div className="flex gap-12 items-center">
+					<div className="max-w-[1100px] mt-64 flex gap-32 md:flex-col">
+						<div className="flex flex-col gap-40 w-[17.5rem] items-center md:w-full">
+							<div className="flex gap-12 items-center md:flex-col !w-full">
 								<SvgUse id="#icon_paper_ms" classe="!w-40 !h-40 shrink-0" />
 								<p className="paragraph1">Redução na conta de luz</p>
 							</div>
 
-							<div className="flex gap-12 items-center">
+							<div className="flex gap-12 items-center md:flex-col">
 								<SvgUse id="#icon_ambiente_ms" classe="!w-40 !h-40 shrink-0" />
 								<p className="paragraph1">Ajuda o meio ambiente</p>
 							</div>
 
-							<div className="flex gap-12 items-center">
+							<div className="flex gap-12 items-center md:flex-col">
 								<SvgUse id="#icon_settings_ms2" classe="w-40 h-40 shrink-0" />
 								<p className="paragraph1">Necessidade mínima de manutenção</p>
 							</div>
 
-							<div className="flex gap-12 items-center">
+							<div className="flex gap-12 items-center md:flex-col">
 								<SvgUse
 									id="#icon_house_certificate_ms"
 									classe="w-40 h-40 shrink-0"
@@ -111,27 +111,27 @@ const Home = () => {
 							alt="imagem beneficios de contratar"
 							className=""
 						/>
-						<div className="flex flex-col gap-40 max-w-[17.5rem]">
-							<div className="flex gap-12 items-center">
+						<div className="flex flex-col gap-40 max-w-[17.5rem] md:w-full px-16 text-center md:max-w-full">
+							<div className="flex gap-12 items-center md:flex-col ">
 								<SvgUse id="#icon_ambiente2_sm" classe="w-40 h-40  shrink-0" />
 								<p className="paragraph1">
 									A energia solar não polui, é renovável, limpa e sustentável
 								</p>
 							</div>
 
-							<div className="flex gap-12 items-center">
+							<div className="flex gap-12 items-center md:flex-col ">
 								<SvgUse id="#icon_cicle_life_sm" classe="w-40 h-40  shrink-0" />
 								<p className="paragraph1">
 									Vida útil de mais de 25 anos, pagando-se em até 7 anos
 								</p>
 							</div>
 
-							<div className="flex gap-12 items-center">
+							<div className="flex gap-12 items-center md:flex-col ">
 								<SvgUse id="#icon_torre_sm" classe="w-40 h-40  shrink-0" />
 								<p className="paragraph1">Energia alternativa ao petróleo</p>
 							</div>
 
-							<div className="flex gap-12 items-center">
+							<div className="flex gap-12 items-center md:flex-col ">
 								<SvgUse
 									id="#icon_energia_solar_sm"
 									classe="w-40 h-40  shrink-0"

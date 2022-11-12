@@ -39,14 +39,16 @@ const Header = ({classeContainer, children}) => {
 				<Breadcrumb data={bread} />
 				<span className="flex-1"></span>
 				<Dropdowns>
+				<div className="w-40 h-40 border border-neutral-30 rounded-md mr-16 grid place-items-center">
+					<SvgUse id="#icon_bell_notifications_ms" classe="w-24 h-24"/>
+				</div>
+					<DropdownContainer classe="rounded-lg">
+							Notificações
+					</DropdownContainer>
+				</Dropdowns>
+				<Dropdowns>
 					<DropdownItem classe="none">
-						<div className="btn-avatar-rounded md:p-0 md:h-auto">
-							<Avatar classe="md " />
-							<div className="flex items-center gap-4 md:hidden">
-								<span className="font-medium text-sm ">Bruno Siqueira</span>
-								<SvgUse id="#icon_arrow_left" classe="w-10 h-10" />
-							</div>
-						</div>
+							<Avatar classe="md" imageURL="../src/assets/images/paines-solares/thumb.png" />
 					</DropdownItem>
 
 					<DropdownContainer classe="rounded-lg">

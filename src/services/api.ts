@@ -13,17 +13,17 @@ const api = axios.create({
 	},
 });
 
-api.interceptors.response.use(
-	(response) => response,
-	(error) => {
+// api.interceptors.response.use(
+// 	(response) => response,
+// 	(error) => {
 		
-		if (error.response.status === 401) {
-			destroyCookie(undefined, "mr.cookie");
-			// window.location.href = "/login";
-		}
-		return error;
-	}
-);
+// 		if (error?.response?.status === 401) {
+// 			destroyCookie(undefined, "mr.cookie");
+// 			// window.location.href = "/login";
+// 		}
+// 		return error;
+// 	}
+// );
 
 // api.get("/api")
 // 	.then(console.log)

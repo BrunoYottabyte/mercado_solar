@@ -16,7 +16,7 @@ const GeneralObservationContent = () => {
             />
           </div>
         </div>
-        <div className="p-24 headline1 flex items-start rounded-md border border-neutral-100-10">
+        <div className="p-24 headline1 flex gap-16 items-start rounded-md border border-neutral-100-10">
           <div className="flex-1">
             Latitude
             <div className={`input-container`}>
@@ -38,7 +38,7 @@ const GeneralObservationContent = () => {
         </div>
         <div className="p-24 headline1 rounded-md border border-neutral-100-10">
           Observações
-          <p className="paragraph2">O Sol se põe ao Leste</p>
+          <p className="paragraph2 mb-10">O Sol se põe ao Leste</p>
           
           <div className={`input-container flex gap-10`}>
             <input

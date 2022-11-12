@@ -79,13 +79,11 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
           setBudgetRequest(budgetRequestResponseParser)
           addressByPostalCode(budgetRequestResponseParser?.client_postal_code).then(res => {
             setAddress(res);
-            
           })
         }
       }
     ).catch(() => {
       console.log('erro');
-      
       navigate('/')
     })
   }, [])
