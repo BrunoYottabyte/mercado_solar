@@ -24,6 +24,7 @@
     "filepond-plugin-image-preview": "^4.6.11",
     "gsap": "^3.10.4",
     "json-server": "^0.17.0",
+    "jwt-decode": "^3.1.2",
     "lottie-web": "^5.9.6",
     "moment": "^2.29.4",
     "nookies": "^2.5.2",
