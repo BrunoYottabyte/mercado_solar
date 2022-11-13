@@ -1,30 +1,23 @@
-import React from "react";
-import { useState } from "react";
-import Button from "../../components/DesignSystem/Button";
-import { Card } from "../../components/DesignSystem/Card";
-import { Title } from "../../components/DesignSystem/Headings";
-import { InputDate } from "../../components/DesignSystem/InputDate";
-import SvgUse from "../../components/svg/svgUse";
-import CardProducao from "./CardProducao";
+import React from 'react';
+import Button from '../../components/DesignSystem/Button';
+import SvgUse from '../../components/svg/svgUse';
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Keyboard, Mousewheel } from "swiper/core";
+import SwiperCore, {Keyboard, Mousewheel} from 'swiper/core';
 SwiperCore.use([Keyboard, Mousewheel]);
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import { Pagination } from "swiper";
-import Timeline from "./Timeline";
-import Table from "../../components/DesignSystem/Table";
-import { SelectComponent } from "../../components/DesignSystem/SelectComponent";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import {SelectComponent} from '../../components/DesignSystem/SelectComponent';
 
-import logo from "../../assets/images/icon_logo_site.png";
-import NavbarSite from "../../assets/componentsSite/navbar";
-import Svg from "../../components/svg/svg";
-import { Input } from "../../components/DesignSystem/Input";
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import NavbarSite from '../../assets/componentsSite/navbar';
+import Svg from '../../components/svg/svg';
+import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
+import MonthsForm from './components/MonthsForm';
+import {HomeProvider, useHome} from './context';
+import BudgetForm from './components/BudgetForm';
+import Input from './components/Input';
 
-const Home = () => {
+const HomeContent = () => {
+	const {handleSubmit, budgetRequestForm, formsAreValids} = useHome();
 	return (
 		<main className="w-screen h-full">
 			<NavbarSite />
@@ -52,8 +45,7 @@ const Home = () => {
 					<Button
 						classe="h-56"
 						iconID="#icon_raio_circle_ms"
-						svgClass="!w-32 !h-32"
-					>
+						svgClass="!w-32 !h-32">
 						<p className="paragraph1">Peça seu orçamento</p>
 					</Button>
 				</div>
@@ -138,7 +130,7 @@ const Home = () => {
 								/>
 								<p className="paragraph1">
 									A energia solar fotovoltaica é o sistema de autogeração mais
-									barato{" "}
+									barato{' '}
 								</p>
 							</div>
 						</div>
@@ -149,8 +141,7 @@ const Home = () => {
 						<Button
 							classe="h-56"
 							iconID="#icon_raio_circle_ms"
-							svgClass="!w-32 !h-32 "
-						>
+							svgClass="!w-32 !h-32 ">
 							<p className="paragraph1 text-base">Peça seu orçamento</p>
 						</Button>
 					</div>
@@ -187,7 +178,6 @@ const Home = () => {
 								src="../src/assets/images/home/cliente_final.png"
 								className="w-64 h-64 rounded-full"
 							/>
-							
 
 							<div className="text-center">
 								<p className="headline1 text-white ">Cliente final</p>
@@ -229,7 +219,7 @@ const Home = () => {
 								classe="absolute bottom-[30px] left-[170px] w-[200px]"
 							/>
 							<img
-									src="../src/assets/images/home/integradora.png"
+								src="../src/assets/images/home/integradora.png"
 								className="w-64 h-64 rounded-full"
 							/>
 
@@ -264,7 +254,7 @@ const Home = () => {
 								classe="absolute bottom-[70px] left-[165px] w-[170px]"
 							/>
 							<img
-							src="../src/assets/images/home/integradora.png"
+								src="../src/assets/images/home/integradora.png"
 								className="w-64 h-64 rounded-full"
 							/>
 
@@ -280,7 +270,7 @@ const Home = () => {
 
 						<div className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-35px] right-[240px]">
 							<img
-										src="../src/assets/images/home/representante.png"
+								src="../src/assets/images/home/representante.png"
 								className="w-64 h-64 rounded-full"
 							/>
 
@@ -357,41 +347,7 @@ const Home = () => {
 						<div className="w-[37rem] p-24 pb-10 border border-neutral-100 rounded-md !bg-white relative z-[99]">
 							<p className="headline1 mb-16">Dados pessoais</p>
 							<div className="flex flex-col gap-16">
-								<label className="paragraph2">
-									Nome
-									<Input classe="!bg-white" placeholder="Digite seu nome" />
-								</label>
-
-								<div className="flex w-full gap-16">
-									<label className="paragraph2">
-										E-mail
-										<Input classe="!bg-white" placeholder="Digite seu e-mail" />
-									</label>
-
-									<label className="paragraph2">
-										Celular
-										<Input classe="!bg-white" placeholder="(00) 00000-0000" />
-									</label>
-								</div>
-
-								<div className="flex w-full gap-16">
-									<label className="paragraph2">
-										CEP
-										<Input classe="!bg-white" placeholder="Digite seu CEP" />
-									</label>
-
-									<label className="paragraph2 ">
-										Tipo
-										<SelectComponent
-											classeSelect="hover:!border hover:border-neutral-30 hover:rounded-md"
-											classe="lg hover:!border-neutral-30 min-w-[16rem] md2:min-w-[0] md2:w-full"
-											data={[
-												{ value: "apartamento", label: "Apartamento" },
-												{ value: "casa", label: "Casa" },
-											]}
-										/>
-									</label>
-								</div>
+								<BudgetForm />
 
 								<Tabs>
 									<div className="tabs-home">
@@ -403,152 +359,64 @@ const Home = () => {
 									</div>
 
 									<TabPanel>
-										<section className="py-16 grid grid-cols-4 gap-16">
-											<label className="paragraph2">
-												Janeiro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Fevereiro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Março
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Abril
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											{/*  */}
-
-											<label className="paragraph2">
-												Maio
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Junho
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Agosto
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Setembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-											{/*  */}
-
-											<label className="paragraph2">
-												Setembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Outubro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Novembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Dezembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-										</section>
-										<div className=" flex justify-end mt-16">
+										<MonthsForm />
+										<div
+											className={`flex justify-${
+												!formsAreValids ? 'between' : 'end'
+											} items-center mt-16`}>
+											{!formsAreValids && (
+												<div className="max-w-xs">
+													<p className="m-10 text-alert-error">
+														Informe todos os campos para prosseguir
+													</p>
+													<p className="m-10 text-alert-error">
+														Informe o consumo mensal ou a média em kWh
+													</p>
+												</div>
+											)}
 											<Button
 												classe="h-48"
 												iconID="#icon_raio_circle_ms"
 												svgClass="!w-32 !h-32"
-											>
+												disabled={!formsAreValids}
+												onClick={handleSubmit}>
 												<p className="paragraph1">Solicitar Orçamento</p>
 											</Button>
 										</div>
 									</TabPanel>
 
 									<TabPanel>
-										<section className="py-16 grid grid-cols-4 gap-16">
-											<label className="paragraph2">
-												Janeiro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Fevereiro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Março
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Abril
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											{/*  */}
-
-											<label className="paragraph2">
-												Maio
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Junho
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Agosto
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Setembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-											{/*  */}
-
-											<label className="paragraph2">
-												Setembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Outubro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Novembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
-
-											<label className="paragraph2">
-												Dezembro
-												<Input classe="!bg-white h-48 !rounded-md" />
-											</label>
+										<section>
+											<div className="py-16 grid gap-16">
+												<Input
+													control={budgetRequestForm.control}
+													type="number"
+													name="average_consumption"
+													label="Consumo médio em KHw"
+													className="input !bg-white h-48 !rounded-md"
+												/>
+											</div>
 										</section>
-										<div className=" flex justify-end mt-16">
+										<div
+											className={`flex justify-${
+												!formsAreValids ? 'between' : 'end'
+											} items-center mt-16`}>
+											{!formsAreValids && (
+												<div className="max-w-xs">
+													<p className="m-10 text-alert-error">
+														Informe todos os campos para prosseguir
+													</p>
+													<p className="m-10 text-alert-error">
+														Informe o consumo mensal ou a média em kWh
+													</p>
+												</div>
+											)}
 											<Button
 												classe="h-48"
 												iconID="#icon_raio_circle_ms"
 												svgClass="!w-32 !h-32"
-											>
+												disabled={!formsAreValids}
+												onClick={handleSubmit}>
 												<p className="paragraph1">Solicitar Orçamento</p>
 											</Button>
 										</div>
@@ -576,14 +444,13 @@ const Home = () => {
 							tortor rhoncus neque quam. Aliquam facilisi convallis tortor in
 							viverra nec justo, turpis quam. Arcu, interdum aliquam semper
 							mollis proin consectetur purus. Tincidunt amet, rhoncus turpis in
-							venenatis, viverra amet.{" "}
+							venenatis, viverra amet.{' '}
 						</p>
 
 						<Button
 							classe="h-48 mt-24"
 							iconID="#icon_raio_circle_ms"
-							svgClass="!w-32 !h-32"
-						>
+							svgClass="!w-32 !h-32">
 							<p className="paragraph1">Peça seu orçamento</p>
 						</Button>
 					</div>
@@ -593,22 +460,19 @@ const Home = () => {
 							xmlns="http://www.w3.org/2000/svg"
 							className="absolute"
 							fill="none"
-							viewBox="0 0 449 519"
-						>
+							viewBox="0 0 449 519">
 							<circle
 								cx="222"
 								cy="104"
 								r="104"
 								fill="url(#paint0_linear_274_15993)"
-								fillOpacity="0.3"
-							></circle>
+								fillOpacity="0.3"></circle>
 							<circle
 								cx="224.5"
 								cy="294.5"
 								r="224.5"
 								fill="url(#paint1_linear_274_15993)"
-								fillOpacity="0.3"
-							></circle>
+								fillOpacity="0.3"></circle>
 							<defs>
 								<linearGradient
 									id="paint0_linear_274_15993"
@@ -616,8 +480,7 @@ const Home = () => {
 									x2="211.114"
 									y1="208"
 									y2="25.71"
-									gradientUnits="userSpaceOnUse"
-								>
+									gradientUnits="userSpaceOnUse">
 									<stop stopColor="#F69F00"></stop>
 									<stop offset="1" stopColor="#F69F00" stopOpacity="0"></stop>
 								</linearGradient>
@@ -627,8 +490,7 @@ const Home = () => {
 									x2="201"
 									y1="519"
 									y2="125.5"
-									gradientUnits="userSpaceOnUse"
-								>
+									gradientUnits="userSpaceOnUse">
 									<stop stopColor="#F69F00"></stop>
 									<stop offset="1" stopColor="#F69F00" stopOpacity="0"></stop>
 								</linearGradient>
@@ -636,15 +498,28 @@ const Home = () => {
 						</svg>
 
 						<div className="flex gap-32 items-end relative">
-								<SvgUse id="#icon_line_effect_ms" classe="w-[210px] bottom-[50px] h-auto absolute " />
-								<SvgUse id="#icon_line2_effect_ms" classe="w-[210px] bottom-[-13px] rotate-[4deg]  left-[338px] z-[999999999999999999999] h-auto absolute " />
-								<SvgUse id="#icon_circle_outside_img" classe="bottom-[125px] w-[120px]  left-[530px] z-[999999999999999999999] h-auto absolute " />
-								<img src="../src/assets/images/home/woman.png" alt="imagem de uma mulher sorrindo" />
-								<img className="relative z-[99]" src="../src/assets/images/home/womans.png" alt="imagem de uma mulher sorrindo" />
-						</div>	
-
-
-
+							<SvgUse
+								id="#icon_line_effect_ms"
+								classe="w-[210px] bottom-[50px] h-auto absolute "
+							/>
+							<SvgUse
+								id="#icon_line2_effect_ms"
+								classe="w-[210px] bottom-[-13px] rotate-[4deg]  left-[338px] z-[999999999999999999999] h-auto absolute "
+							/>
+							<SvgUse
+								id="#icon_circle_outside_img"
+								classe="bottom-[125px] w-[120px]  left-[530px] z-[999999999999999999999] h-auto absolute "
+							/>
+							<img
+								src="../src/assets/images/home/woman.png"
+								alt="imagem de uma mulher sorrindo"
+							/>
+							<img
+								className="relative z-[99]"
+								src="../src/assets/images/home/womans.png"
+								alt="imagem de uma mulher sorrindo"
+							/>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -654,63 +529,89 @@ const Home = () => {
 			<section className="select-none py-64 flex justify-center relative w-full  bg-gradient-home-footer">
 				<span className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-pure/5 via-primary-pure/70 to-primary-pure-10"></span>
 				<div className="max-w-[1200px] w-[1100px] relative">
-
 					<div className="flex w-full pb-64 justify-between items-center gap-64">
 						<div className="grid grid-cols-4">
-									<img src="../src/assets/images/home/logomercado.png" />
+							<img src="../src/assets/images/home/logomercado.png" />
 
-									<div>
-										<p className="headline3 mb-24">Mapa do site</p>
-										<ul className="flex flex-col gap-16">
-											<li className="paragraph2">Benefícios de contratar</li>
-											<li className="paragraph2">Sobre nós</li>
-										</ul>
-									</div>
+							<div>
+								<p className="headline3 mb-24">Mapa do site</p>
+								<ul className="flex flex-col gap-16">
+									<li className="paragraph2">Benefícios de contratar</li>
+									<li className="paragraph2">Sobre nós</li>
+								</ul>
+							</div>
 
-									<div>
-										<p className="headline3 mb-24">Redes sociais</p>
-										<ul className="flex flex-col gap-16">
-											<li className="paragraph2">Instagram</li>
-											<li className="paragraph2">Facebook</li>
-											<li className="paragraph2">Linkedin</li>
-										</ul>
-									</div>
+							<div>
+								<p className="headline3 mb-24">Redes sociais</p>
+								<ul className="flex flex-col gap-16">
+									<li className="paragraph2">Instagram</li>
+									<li className="paragraph2">Facebook</li>
+									<li className="paragraph2">Linkedin</li>
+								</ul>
+							</div>
 
-									<div className="w-[17.5rem]">
-										<p className="headline3 mb-24 border-primary-pure">Contato</p>
-										<ul className="flex flex-col gap-16">
-											<li className="paragraph2 flex items-center gap-8"> <SvgUse id="#icon_phone_ms" classe="w-24 h-24 shrink-0" /> (99) 98945 4575</li>
-											<li className="paragraph2 flex items-center gap-8"><SvgUse id="#icon_maps_ms" classe="w-24 h-24  shrink-0" />Ed. Itaim Center - Rua Dr. Eduardo de<br></br> Souza Aranha, nº 153 9º andar</li>
-											<li className="paragraph2 flex items-center gap-8"><SvgUse id="#icon_mail_ms" classe="w-24 h-24  shrink-0" />mercadosolar@contato.com.br</li>
-										</ul>
-									</div>
+							<div className="w-[17.5rem]">
+								<p className="headline3 mb-24 border-primary-pure">Contato</p>
+								<ul className="flex flex-col gap-16">
+									<li className="paragraph2 flex items-center gap-8">
+										{' '}
+										<SvgUse
+											id="#icon_phone_ms"
+											classe="w-24 h-24 shrink-0"
+										/>{' '}
+										(99) 98945 4575
+									</li>
+									<li className="paragraph2 flex items-center gap-8">
+										<SvgUse id="#icon_maps_ms" classe="w-24 h-24  shrink-0" />
+										Ed. Itaim Center - Rua Dr. Eduardo de<br></br> Souza Aranha,
+										nº 153 9º andar
+									</li>
+									<li className="paragraph2 flex items-center gap-8">
+										<SvgUse id="#icon_mail_ms" classe="w-24 h-24  shrink-0" />
+										mercadosolar@contato.com.br
+									</li>
+								</ul>
+							</div>
 						</div>
 
 						<div className="flex flex-col items-end">
-							<Button iconID="#icon_user_ms" 	svgClass="!w-24 !h-24" classe="secondary h-48 hover:bg-white !w-[13.5rem] border !border-primary-pure justify-center">Entrar</Button>
+							<Button
+								iconID="#icon_user_ms"
+								svgClass="!w-24 !h-24"
+								classe="secondary h-48 hover:bg-white !w-[13.5rem] border !border-primary-pure justify-center">
+								Entrar
+							</Button>
 							<Button
 								classe="h-48 mt-12 !w-[13.5rem] whitespace-nowrap"
 								iconID="#icon_raio_circle_ms"
-								svgClass="!w-32 !h-32"
-							>
+								svgClass="!w-32 !h-32">
 								<p className="paragraph1">Peça seu orçamento</p>
 							</Button>
 						</div>
 					</div>
 				</div>
 
-				
 				<div className="absolute left-0 w-full bottom-0 h-48 bg-primary-pure flex items-center justify-center">
-					<div className="max-w-[1200px] w-[1100px] relative flex justify-between items-center">	
-						<p className="paragraph2 text-white">© 2022 Mercado solar  - Todos direitos reservados</p>	
+					<div className="max-w-[1200px] w-[1100px] relative flex justify-between items-center">
+						<p className="paragraph2 text-white">
+							© 2022 Mercado solar - Todos direitos reservados
+						</p>
 
 						<div className="flex justify-end">
 							<SvgUse id="#icon_logo_ndt" classe="!h-48 !w-48 right-0" />
 						</div>
-					</div>		
+					</div>
 				</div>
-			</section> 
+			</section>
 		</main>
+	);
+};
+
+const Home = () => {
+	return (
+		<HomeProvider>
+			<HomeContent />
+		</HomeProvider>
 	);
 };
 

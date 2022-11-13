@@ -1,6 +1,6 @@
 @layer components {
 	.container {
-		@apply mx-auto max-w-[1448px]  px-64 w-full md2:!px-16;
+		@apply mx-auto max-w-[1920px]  px-64 w-full md2:!px-16;
 
 		&.mobile{
 			@apply mt-[3.375rem] !p-24 flex flex-col gap-24 ;

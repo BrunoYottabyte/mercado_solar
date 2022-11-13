@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useRef } from 'react'
 import { api } from '../../services/api'
 import Badge from '../../components/DesignSystem/Badge';
 import Button from '../../components/DesignSystem/Button';
@@ -19,6 +19,7 @@ export const PedidosOrcamentoProvider: React.FC<IPedidosOrcamentoProviderProps> 
   children
 }) => {
   const navigate = useNavigate();
+
   const [pedidosOrcamento, setPedidosOrcamento] = React.useState<ITableData[]>([])
   const [contRows, setContRows] = React.useState<number>(0)
   const [params, setParams] = React.useState<IParams>({

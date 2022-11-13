@@ -1,8 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react'
 import { useLocation, useNavigate, Location } from 'react-router-dom'
 import { api } from '../../services/api'
 import { addressByPostalCode } from '../../utils/addressByPostalCode'
 import { MultiplicadorKWP } from '../../utils/constants'
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
 
 import {
   IDadosOrcamentoProviderProps,
@@ -23,11 +25,34 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
   const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>()
   const [address, setAddress] = useState<string>('')
 
+  const [downloadIsLoading, setDownloadIsLoading] = useState(false);
+  const downloadRef = useRef<HTMLElement>();
   const state = location.state as IStateProps;
 
   const handleNavigate = (path: string, params?: object) => {
     navigate(path, params ?? {})
   }
+
+  const handleDownloadPdf = async () => {
+    setDownloadIsLoading(true)
+    
+    const element = downloadRef.current;
+    if(element){
+      const canvas = await html2canvas(element);
+      const data = canvas.toDataURL('image/png');
+
+      const pdf = new jsPDF();
+      const imgProperties = pdf.getImageProperties(data);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight =
+        (imgProperties.height * pdfWidth) / imgProperties.width;
+
+      pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('print.pdf');
+    }
+    setDownloadIsLoading(false)
+  };
+
   
   useEffect(() => {    
     if(!state?.budgetRequestId){
@@ -93,7 +118,10 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
       value={{
         budgetRequest,
         handleNavigate,
-        address: address
+        address: address,
+        downloadRef,
+        handleDownloadPdf,
+        downloadIsLoading
       }}
     >
       {children}

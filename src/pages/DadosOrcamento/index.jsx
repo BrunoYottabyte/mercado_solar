@@ -13,8 +13,15 @@ import MonthValues from './components/MonthValues';
 import { DadosOrcamentoProvider, useDadosOrcamento  } from './context';
 
 const DadosOrcamentoContent  = () => {
-	const {handleNavigate, budgetRequest, address} = useDadosOrcamento()
-	const [loading, setLoading] = useState(false);
+	const {
+		handleNavigate,
+		budgetRequest,
+		address,
+		downloadRef,
+		handleDownloadPdf,
+		downloadIsLoading,
+	} = useDadosOrcamento()
+
 	const { setmodalOpen, modalOpen } = useGlobalContext();
 	useEffect(() => {
 		if (modalOpen.open == false || modalOpen.open == null) {
@@ -45,7 +52,7 @@ const DadosOrcamentoContent  = () => {
 				</ModalContent>
 		</Modal> 
 
-			<div className="container">
+			<div className="container" ref={downloadRef}>
 			<Card classe="my-64 px-24 py-32 flex flex-col gap-16">
 				<h1 className="title2">SOL. Nº {budgetRequest?.id} - {address}</h1>
 				
@@ -117,7 +124,13 @@ const DadosOrcamentoContent  = () => {
 				 
 				<div className="w-full flex items-center justify-between gap-14 md2:flex-col md2:gap-16">
 					<div className="md2:w-full">
-						<Button svgClass="!w-20 !h-20" iconID="#icon_download" className="btn h-48 secondary mr-14 md2:!w-full md2:mb-8" onClick={openModal}>
+						<Button
+							svgClass="!w-20 !h-20"
+							iconID="#icon_download"
+							className="btn h-48 secondary mr-14 md2:!w-full md2:mb-8"
+							onClick={handleDownloadPdf}
+							disabled={downloadIsLoading}
+						>
 							Baixar
 						</Button> 
 
