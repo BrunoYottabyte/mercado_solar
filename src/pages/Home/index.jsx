@@ -118,8 +118,8 @@ const HomeContent = () => {
 				</section>
 
 				{/* Beneficios */}
-				<div id="beneficios"></div>
-				<section id="beneficios" className="mt-40 select-none py-40 grid place-items-center relative w-full min-h-screen bg-white">
+				<div id="beneficios" className='bg-white h-40 w-full'></div>
+				<section id="beneficios" className=" select-none py-40 grid place-items-center relative w-full min-h-screen bg-white">
 					<div className="relative z-[999] flex flex-col items-center justify-center">
 						<div className="flex items-center justify-center">
 							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
@@ -355,9 +355,9 @@ const HomeContent = () => {
 				</section>
 
 				{/* Solicite seu orçamento */}
-				<div id="orcamento"></div>
+				<div id="orcamento" className='bg-white h-40 w-full'></div>
 				<section data-aos="fade-up" data-aos-delay="350"
- className="mt-40 select-none py-16 flex justify-center relative w-full min-h-screen bg-white">
+ className="select-none py-16 flex justify-center relative w-full min-h-screen bg-white">
 					<div className="max-w-[1200px] w-[1100px] md:w-[90vw] mt-64 flex items-start justify-between md2:justify-center md2:flex-col md2:gap-40">
 						<div className="flex flex-col w-[24.4375rem] gap-48 md2:w-full md2:justify-center">
 							<div className="flex flex-col gap-6 md2:items-center md:flex-col md2:text-center md2:justify-center">
