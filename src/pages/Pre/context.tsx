@@ -15,22 +15,28 @@ import {
 } from '../../utils/constants';
 import html2canvas from 'html2canvas';
 import {jsPDF} from 'jspdf';
-
+import {useAuthContext} from '../../context/useAuthContext';
 import {
   IPrePropostaProviderProps,
   IPrePropostaContextData,
   IStateProps,
   IBudgetRequest,
   IChartProps,
+  ICancelReason,
 } from './types';
+import {useGlobalContext} from '../../context/GlobalContext';
+import {GLOBAL} from '../../utils/GLOBAL';
 
 const PrePropostaContext = createContext({} as IPrePropostaContextData);
 
 export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
   children,
 }) => {
+  const {userId} = useAuthContext();
   const location = useLocation();
   const navigate = useNavigate();
+  const {setmodalOpen} = useGlobalContext();
+  const {showToastify} = GLOBAL;
 
   const downloadRef = useRef<HTMLElement>();
 
@@ -41,6 +47,8 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
     name: 'Previsão Playback',
     data: [],
   });
+
+  const [reasonCancel, setReasonCancel] = useState<ICancelReason>();
 
   const state = location.state as IStateProps;
 
@@ -68,9 +76,51 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
   };
 
   const handleAcceptPreBudget = async () => {
+    if (!budgetRequest) return;
     api
-      .post('/budget_request/', {budget_request_status: 'accept'})
-      .then(response => {});
+      .patch(`/budget_request/${budgetRequest.id}/`, {
+        budget_request_status: 'approved',
+      })
+      .then(response => {
+        setBudgetRequest({...budgetRequest, budget_request_status: 'approved'});
+        setmodalOpen({open: true, id: 'modalThanks'});
+      })
+      .catch(error => {
+        showToastify('Erro ao aprovar a solicitação de orçamento');
+        console.log(error);
+      });
+  };
+
+  const handleRejectPreBudget = async () => {
+    if (!budgetRequest) return;
+    api
+      .patch(`/budget_request/${budgetRequest.id}/`, {
+        budget_request_status: 'rejected',
+      })
+      .then(response => {
+        setBudgetRequest({...budgetRequest, budget_request_status: 'rejected'});
+        setmodalOpen({open: true, id: 'feedback'});
+      })
+      .catch(error => {
+        showToastify('Erro ao rejeitar a solicitação de orçamento');
+        console.log(error);
+      });
+  };
+
+  const handleFeedback = async () => {
+    if (!budgetRequest || !reasonCancel) return;
+    api
+      .patch(`/budget_request/${budgetRequest.id}/`, {
+        reason_cancellation: reasonCancel,
+      })
+      .then(response => {
+        setmodalOpen({open: false, id: 'feedback'});
+        showToastify('Feedback enviado com sucesso');
+      })
+      .catch(error => {
+        showToastify('Erro ao enviar o feedback');
+        console.log(error);
+      });
   };
 
   useEffect(() => {
@@ -177,6 +227,13 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
         downloadRef,
         handleDownloadPdf,
         downloadIsLoading,
+        isRepresentative: userId === budgetRequest?.representative,
+        isInegrator: userId === budgetRequest?.integrator,
+        isOwner: userId === budgetRequest?.user,
+        handleAcceptPreBudget,
+        handleRejectPreBudget,
+        setReasonCancel,
+        handleFeedback,
       }}>
       {children}
     </PrePropostaContext.Provider>

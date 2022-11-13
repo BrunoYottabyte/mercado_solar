@@ -1,66 +1,73 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { useLocation, useNavigate, Location } from 'react-router-dom'
-import { useAuthContext } from '../../context/useAuthContext'
-import { api } from '../../services/api'
-import { addressByPostalCode } from '../../utils/addressByPostalCode'
-import { MultiplicadorKWP } from '../../utils/constants'
+import React, {createContext, useContext, useEffect, useState} from 'react';
+import {useLocation, useNavigate, Location} from 'react-router-dom';
+import {useAuthContext} from '../../context/useAuthContext';
+import {api} from '../../services/api';
+import {addressByPostalCode} from '../../utils/addressByPostalCode';
+import {MultiplicadorKWP} from '../../utils/constants';
 
 import {
   IVerProjetoProviderProps,
   IVerProjetoContextData,
   IStateProps,
   IBudgetRequest,
-} from './types'
+} from './types';
 
-const VerProjetoContext = createContext({} as IVerProjetoContextData)
+const VerProjetoContext = createContext({} as IVerProjetoContextData);
 
 export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
-  children
+  children,
 }) => {
-  const {userId} = useAuthContext()
+  const {userId} = useAuthContext();
   const location = useLocation();
   const navigate = useNavigate();
 
-  const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>()
-  const [address, setAddress] = useState<string>('')
+  const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>();
+  const [address, setAddress] = useState<string>('');
 
   const state = location.state as IStateProps;
 
   const handleNavigate = (path: string, params?: object) => {
-    navigate(path, params ?? {})
-  }
-  
-  useEffect(() => {    
-    if(!state?.budgetRequestId){
-      navigate('/')
+    navigate(path, params ?? {});
+  };
+
+  useEffect(() => {
+    if (!state?.budgetRequestId) {
+      navigate('/');
     }
 
-    api.get(`/budget_request/${state?.budgetRequestId}/`).then(
-      response => {
+    api
+      .get(`/budget_request/${state?.budgetRequestId}/`)
+      .then(response => {
         if (response.status !== 200 || !response.data) {
-          navigate('/')
+          navigate('/');
         }
-        const budgetRequestResponse: IBudgetRequest = response.data
+        const budgetRequestResponse: IBudgetRequest = response.data;
 
-        if (budgetRequestResponse.month_consumption){
-          const average_consumption = Object.values(
-            budgetRequestResponse.month_consumption
-          ).reduce((a, b) => Number(a) + Number(b), 0) /12
-          
+        if (budgetRequestResponse.month_consumption) {
+          const average_consumption =
+            Object.values(budgetRequestResponse.month_consumption).reduce(
+              (a, b) => Number(a) + Number(b),
+              0,
+            ) / 12;
+
           const budgetRequestResponseParser = {
             ...budgetRequestResponse,
-            average_consumption: average_consumption * MultiplicadorKWP
-          }
-          setBudgetRequest(budgetRequestResponseParser)
+            average_consumption: average_consumption * MultiplicadorKWP,
+          };
+          setBudgetRequest(budgetRequestResponseParser);
 
-          addressByPostalCode(budgetRequestResponseParser?.client_postal_code).then(res => {
+          addressByPostalCode(
+            budgetRequestResponseParser?.client_postal_code,
+          ).then(res => {
             setAddress(res);
-          })
+          });
         }
 
-        if (budgetRequestResponse.average_consumption){
-          const month_avg = Number(budgetRequestResponse.average_consumption) / MultiplicadorKWP
-           const month_consumption = {
+        if (budgetRequestResponse.average_consumption) {
+          const month_avg =
+            Number(budgetRequestResponse.average_consumption) /
+            MultiplicadorKWP;
+          const month_consumption = {
             january_consumption_avg: month_avg,
             february_consumption_avg: month_avg,
             march_consumption_avg: month_avg,
@@ -73,22 +80,24 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
             october_consumption_avg: month_avg,
             november_consumption_avg: month_avg,
             december_consumption_avg: month_avg,
-           }
-           const budgetRequestResponseParser = {
+          };
+          const budgetRequestResponseParser = {
             ...budgetRequestResponse,
-            month_consumption: month_consumption
-          }
-          setBudgetRequest(budgetRequestResponseParser)
-          addressByPostalCode(budgetRequestResponseParser?.client_postal_code).then(res => {
+            month_consumption: month_consumption,
+          };
+          setBudgetRequest(budgetRequestResponseParser);
+          addressByPostalCode(
+            budgetRequestResponseParser?.client_postal_code,
+          ).then(res => {
             setAddress(res);
-          })
+          });
         }
-      }
-    ).catch(() => {
-      console.log('erro');
-      navigate('/')
-    })
-  }, [])    
+      })
+      .catch(() => {
+        console.log('erro');
+        navigate('/');
+      });
+  }, []);
 
   return (
     <VerProjetoContext.Provider
@@ -98,19 +107,18 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
         address,
         isRepresentative: userId === budgetRequest?.representative,
         isInegrator: userId === budgetRequest?.integrator,
-        isOwner: userId === budgetRequest?.user
-      }}
-    >
+        isOwner: userId === budgetRequest?.user,
+      }}>
       {children}
     </VerProjetoContext.Provider>
-  )
-}
+  );
+};
 
 export const useVerProjeto = (): IVerProjetoContextData => {
-  const context = useContext(VerProjetoContext)
+  const context = useContext(VerProjetoContext);
 
   if (!context)
-    throw new Error('useVerProjeto must be used within a VerProjetoProvider')
+    throw new Error('useVerProjeto must be used within a VerProjetoProvider');
 
-  return context
-}
+  return context;
+};
