@@ -1,5 +1,5 @@
-let Svg = () => <>
-	<svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }} version="1.1">
+const Svg = () => <>
+	<svg style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }} version="1.1">
 		<defs >
 			{ }
 			<symbol id="icon_arrow_left" viewBox="0 0 6 11" fill="none">
@@ -174,7 +174,6 @@ let Svg = () => <>
 				></path>
 			</symbol>
 
-
 			<symbol
 				xmlns="http://www.w3.org/2000/svg"
 				id="icon_cardapio_direcionado"
@@ -213,7 +212,6 @@ let Svg = () => <>
 				<path fill="none" d="M0 0h24v24H0z"></path>
 			</symbol>
 
-
 			<symbol xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' id="icon_design">
 				<g fill='none'>
 					<path d='M0 0h24v24H0V0z'></path>
@@ -241,9 +239,6 @@ let Svg = () => <>
 				</g>
 			</symbol>
 
-
-
-
 			<symbol xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20" id="icon_arrow_left">
 				<path
 					stroke="#003863"
@@ -253,7 +248,6 @@ let Svg = () => <>
 					d="M3.342 9.983h12.491M8.344 4.99L3.335 10l5.01 5.01"
 				></path>
 			</symbol>
-
 
 			<symbol
 				xmlns="http://www.w3.org/2000/svg"
@@ -286,8 +280,6 @@ let Svg = () => <>
 				></path>
 			</symbol>
 
-
-
 			{/* HEADER MOBILE */}
 			<symbol
 				id="arrow_left_mobile_header"
@@ -305,8 +297,7 @@ let Svg = () => <>
 			</symbol>
 			{/* END HEADER MOBILE */}
 
-
-			{/* 
+			{/*
 			Search INPUT MOBILE
 		*/}
 			<symbol
@@ -1160,7 +1151,6 @@ let Svg = () => <>
 				></path>
 			</symbol>
 
-
 			<symbol
 				xmlns="http://www.w3.org/2000/svg"
 				id="icon-cerva-mobile"
@@ -1524,7 +1514,6 @@ let Svg = () => <>
 				></path>
 			</symbol>
 
-
 			<symbol
 				xmlns="http://www.w3.org/2000/svg"
 				id="icon-etiqueta"
@@ -1578,7 +1567,6 @@ let Svg = () => <>
 				</defs>
 			</symbol>
 
-
 			<symbol
 				xmlns="http://www.w3.org/2000/svg"
 				id="icon-title-card"
@@ -1618,7 +1606,6 @@ let Svg = () => <>
 					d="M20.008 3.997h-9.004"
 				></path>
 			</symbol>
-
 
 			<symbol
 				xmlns="http://www.w3.org/2000/svg"
@@ -2033,7 +2020,7 @@ let Svg = () => <>
     >
       <mask
         id="mask0_298_16338"
-        style={{ maskType: "alpha" }}
+        style={{ maskType: 'alpha' }}
         width="960"
         height="975"
         x="0"
@@ -2185,7 +2172,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
 			id="icon_happy"
@@ -2322,7 +2308,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
       id="icon_send_email"
@@ -2377,7 +2362,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
 			id="icon_chart_ms"
@@ -2403,7 +2387,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
       id="icon_clock_ms"
@@ -2423,7 +2406,6 @@ let Svg = () => <>
         d="M17.002 12.566H12.61V7.173"
       ></path>
     </symbol>
-
 
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
@@ -2508,7 +2490,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
 			id="icon_edit_ms"
@@ -2579,7 +2560,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
       id="icon_add_ms"
@@ -2630,7 +2610,6 @@ let Svg = () => <>
 		<symbol id="icon_close_ms" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 10">
 				<path stroke="var(--cor-1,#fff)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 1L1 9m0-8l8 8"></path>
 			</symbol>
-
 
 			<symbol
       xmlns="http://www.w3.org/2000/svg"
@@ -2975,7 +2954,6 @@ let Svg = () => <>
       ></rect>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
       id="icon_energia_solar_sm"
@@ -3100,7 +3078,6 @@ let Svg = () => <>
         d="M22.859 31.838h-9.363a4.168 4.168 0 01-4.168-4.169V14.332M19.524 28.503l3.335 3.335M19.524 35.173l3.335-3.335"
       ></path>
     </symbol>
-		
 
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
@@ -3129,7 +3106,6 @@ let Svg = () => <>
         clipRule="evenodd"
       ></path>
     </symbol>
-
 
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
@@ -3172,6 +3148,7 @@ let Svg = () => <>
       xmlns="http://www.w3.org/2000/svg"
       id="icon_line_effect_ms"
       fill="none"
+
       viewBox="0 0 207 58"
     >
       <path
@@ -3194,7 +3171,6 @@ let Svg = () => <>
       </defs>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
 			id="icon_line2_effect_ms"
@@ -3203,7 +3179,7 @@ let Svg = () => <>
     >
       <mask
         id="mask0_860_10695"
-        style={{ maskType: "alpha" }}
+        style={{ maskType: 'alpha' }}
         width="256"
         height="136"
         x="0"
@@ -3236,8 +3212,6 @@ let Svg = () => <>
         </linearGradient>
       </defs>
     </symbol>
-
-
 
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
@@ -3346,7 +3320,6 @@ let Svg = () => <>
       </defs>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
       id="icon_phone_ms"
@@ -3448,7 +3421,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
      id="icon_logo_ndt"
@@ -3475,7 +3447,6 @@ let Svg = () => <>
         </clipPath>
       </defs>
     </symbol>
-
 
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
@@ -3614,7 +3585,6 @@ let Svg = () => <>
       </defs>
     </svg>
 
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
       id="icon_subtract_ms"
@@ -3644,7 +3614,6 @@ let Svg = () => <>
         opacity="0.4"
       ></path>
     </symbol>
-
 
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
@@ -3687,8 +3656,6 @@ let Svg = () => <>
       ></path>
     </symbol>
 
-
-
 		<symbol
       xmlns="http://www.w3.org/2000/svg"
 			id="icon_bell_notifications_ms"
@@ -3720,6 +3687,35 @@ let Svg = () => <>
       ></circle>
     </symbol>
 
+		 <symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_hamburguer_ms"
+      viewBox="0 0 256 256"
+    >
+      <path fill="none" d="M0 0H256V256H0z"></path>
+      <path
+        stroke="#000"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M40 128L216 128"
+      ></path>
+      <path
+        stroke="#000"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M40 64L216 64"
+      ></path>
+      <path
+        stroke="#000"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M40 192L216 192"
+      ></path>
+    </symbol>
+
 	</svg>
-</>;
+</>
 export default Svg
