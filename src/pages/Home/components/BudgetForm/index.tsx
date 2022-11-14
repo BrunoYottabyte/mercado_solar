@@ -11,7 +11,7 @@ const BudgetForm = () => {
   } = useHome();
 
   const client_imovel_options = [
-    {value: 'apartament', label: 'Apartamento'},
+    {value: 'apartment', label: 'Apartamento'},
     {value: 'house', label: 'Casa'},
   ];
 
@@ -19,6 +19,7 @@ const BudgetForm = () => {
     {value: 'pf', label: 'Pessoa Física'},
     {value: 'pj', label: 'Pessoa Jurídica'},
   ];
+
   return (
     <form onSubmit={e => e.preventDefault()}>
       <Input
