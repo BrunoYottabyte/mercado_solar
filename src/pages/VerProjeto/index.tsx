@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import Button from '../../components/DesignSystem/Button';
 import SvgUse from '../../components/svg/svgUse';
 import {Modal} from '../../components/DesignSystem/Modal/Modal';
-import {ModalContent} from '../../components/DesignSystem/Modal/ModalContent';
 import {ModalHeader} from '../../components/DesignSystem/Modal';
 import {VerProjetoProvider, useVerProjeto} from './context';
 
@@ -14,23 +13,31 @@ import ConsumptionGraph from './components/ConsumptionGraph';
 import TimeLine from './components/TimeLine';
 import TabsArea from './components/TabsArea';
 import ButtonsSteps from './components/ButtonsSteps';
+import { ModalContent } from '../../components/DesignSystem/Modal/ModalContent';
 
 const VerProjetoContent = () => {
 	const {budgetRequest, address} = useVerProjeto();
 	const [loading, setLoading] = useState(false);
 	const {setmodalOpen, modalOpen} = useGlobalContext();
 
-	useEffect(() => {
-		if (modalOpen.open == false || modalOpen.open == null) {
-			clearTimeout(window.timeoutProjeto);
-		}
-	}, [modalOpen]);
 
-	return (
+const VerProjetoContent = () => {
+  const { budgetRequest, address } = useVerProjeto()
+  const [loading, setLoading] = useState(false)
+  const { setmodalOpen, modalOpen } = useGlobalContext()
+
+  useEffect(() => {
+    if (modalOpen.open == false || modalOpen.open == null) {
+			// @ts-ignore
+      clearTimeout(window.timeoutProjeto)
+    }
+  }, [modalOpen])
+
+  return (
 		<>
-			<Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
+			<Modal className={'w-[37rem]  md2:max-w-[400px] md2:w-[95vw]'}>
 				<ModalContent id="approved">
-					<ModalHeader close={false} classeHeader="bg-white title3">
+					<ModalHeader text={''} close={false} classeHeader="bg-white title3">
 						<div className="title3 flex  w-full justify-between items-center">
 							Orçamento aprovado
 							<SvgUse id="#icon_help_ms" classe="!w-24 !h-24" />
@@ -239,11 +246,11 @@ const VerProjetoContent = () => {
 				<TabsArea />
 			</div>
 		</>
-	);
-};
+  )
+}
 
 const VerProjeto = () => {
-	return (
+  return (
 		<VerProjetoProvider>
 			<VerProjetoContent />
 		</VerProjetoProvider>

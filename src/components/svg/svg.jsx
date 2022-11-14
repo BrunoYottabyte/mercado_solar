@@ -3716,6 +3716,91 @@ const Svg = () => <>
       ></path>
     </symbol>
 
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_suitcase_ms"
+      fill="none"
+      viewBox="0 0 26 26"
+    >
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20.003 22.004H5.997a2 2 0 01-2-2v-9.005a2 2 0 012-2h14.006a2 2 0 012.001 2v9.004a2 2 0 01-2 2.001z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M17.002 22.004V6.998A2 2 0 0015 4.997h-4.002a2 2 0 00-2 2v15.007"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_location_ms"
+      fill="none"
+      viewBox="0 0 25 24"
+    >
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M13.852 7.408a1.676 1.676 0 11-2.37 2.37 1.676 1.676 0 012.37-2.37"
+      ></path>
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M18.152 8.38v0a5.02 5.02 0 01-1.806 3.856l-1.8 1.499A5.018 5.018 0 0013 16.004l-.332.996-.332-.996a5.024 5.024 0 00-1.548-2.269l-1.8-1.499A5.017 5.017 0 017.183 8.38v.028C7.182 4.986 10.016 3 12.667 3c2.65 0 5.485 1.986 5.485 5.408"
+      ></path>
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7.667 14.598c-2.41.627-4 1.69-4 2.902 0 1.933 4.029 3.5 9 3.5 4.97 0 9-1.567 9-3.5 0-1.212-1.591-2.276-4-2.902"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_settings_ms3"
+      fill="none"
+      viewBox="0 0 25 24"
+    >
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M12.168 15l5 5a2.122 2.122 0 003 0v0a2.122 2.122 0 000-3l-5-5"
+      ></path>
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M21.25 5.847a.19.19 0 01.05.085c.47 1.567.106 3.33-1.132 4.568-1.25 1.25-3.038 1.609-4.617 1.117l-8.347 8.347c-.813.813-2.139.874-2.98.09A2.122 2.122 0 014.168 17l8.383-8.383C12.06 7.037 12.417 5.25 13.668 4c1.238-1.238 3.001-1.602 4.568-1.132a.2.2 0 01.085.05l.162.163a.2.2 0 010 .283L15.848 6l2.32 2.32 2.636-2.636a.2.2 0 01.283 0l.162.163v0zM3.266 4.293l.674 2.023A1 1 0 004.89 7h2.278V4.721a1 1 0 00-.684-.949l-2.023-.674a.5.5 0 00-.512.121l-.562.562a.5.5 0 00-.12.512v0z"
+        clipRule="evenodd"
+      ></path>
+      <path
+        stroke="#D78B00"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M7.173 7l3.5 3.5"
+      ></path>
+    </symbol>
+
+		<symbol
+      xmlns="http://www.w3.org/2000/svg"
+			id="icon_three_points"
+      fill="none"
+      viewBox="0 0 28 4"
+    >
+      <path fill="#D78B00" d="M0 0H4V4H0z"></path>
+      <path fill="#D78B00" d="M12 0H16V4H12z"></path>
+      <path fill="#D78B00" d="M24 0H28V4H24z"></path>
+    </symbol>
+
 	</svg>
 </>
 export default Svg

@@ -48,10 +48,10 @@ const PrePropostaContent = () => {
 		},
 	];
 
-	return (
+  return (
 		<>
 			<Svg />
-			<Modal className={`w-[600px]  md2:max-w-[400px] md2:w-[95vw]`}>
+			<Modal className={'w-[600px] md2:max-w-[400px] md2:w-[95vw]'}>
 				<ModalContent id="feedback">
 					<ModalHeader
 						classeHeader="bg-white title3"
@@ -101,7 +101,7 @@ const PrePropostaContent = () => {
 				</ModalContent>
 			</Modal>
 
-			<Modal className={`w-[390px]  md2:max-w-[400px] md2:w-[95vw]`}>
+			<Modal className={'w-[390px]  md2:max-w-[400px] md2:w-[95vw]'}>
 				<ModalContent id="modalSend">
 					<main className=" p-32 flex flex-col items-center gap-24">
 						<div className="rounded-full flex justify-center items-center relative transition-all">
@@ -171,9 +171,9 @@ const PrePropostaContent = () => {
 
 						<Button
 							onClick={() =>
-								handleNavigate('/dados-de-orcamento', {
-									state: {budgetRequestId: budgetRequest.id},
-								})
+							  handleNavigate('/dados-de-orcamento', {
+							    state: { budgetRequestId: budgetRequest.id }
+							  })
 							}
 							svgClass="!w-20 !h-20"
 							iconID="#icon_task_list"
@@ -309,15 +309,15 @@ const PrePropostaContent = () => {
 				</Card>
 			</div>
 		</>
-	);
-};
+  )
+}
 
 const PreProposta = () => {
-	return (
+  return (
 		<PrePropostaProvider>
 			<PrePropostaContent />
 		</PrePropostaProvider>
-	);
-};
+  )
+}
 
-export default PreProposta;
+export default PreProposta

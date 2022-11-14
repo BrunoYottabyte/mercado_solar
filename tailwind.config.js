@@ -121,7 +121,9 @@ module.exports = {
 				'overlay-home': 'linear-gradient(180deg, rgba(20, 13, 0, 0.8) 34.41%, rgba(20, 13, 0, 0) 100%)',
 				'gradient-home': 'radial-gradient(26.98% 57.08% at 0% 0%, rgba(246, 159, 0, 0.1) 20%, rgba(246, 159, 0, 0) 100%)',
 				'gradient-radial': 'radial-gradient(100% 2000.39% at 83.89% 0%, rgba(217, 217, 217, 0.08) 0%, rgba(217, 217, 217, 0) 15%)',
-				'gradient-home-footer': 'radial-gradient(100% 100% at 50% 0%, rgba(246, 159, 0, 0.1) 0%, rgba(246, 159, 0, 0) 100%)'
+				'gradient-home-footer': 'radial-gradient(100% 100% at 50% 0%, rgba(246, 159, 0, 0.1) 0%, rgba(246, 159, 0, 0) 100%)',
+				'background-sobre-nos': 'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 54.44%)',
+				'gradient-sobre-nos': 'linear-gradient(180deg, rgba(246, 159, 0, 0.1) 0%, rgba(246, 159, 0, 0.0542867) 25%, rgba(246, 159, 0, 0.0272419) 52.08%, rgba(246, 159, 0, 0.0115005) 75.52%, rgba(246, 159, 0, 0) 100%)'
 			},
 			blur: {
 				xs: '2px',
