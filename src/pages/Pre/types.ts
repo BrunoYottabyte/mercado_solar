@@ -30,6 +30,7 @@ interface IBudgetRequest {
   status: string;
   representative: string;
   integrator: string;
+  user: string;
   created_at: string;
   updated_at: string;
 }
@@ -41,6 +42,12 @@ interface IStateProps {
 interface IPrePropostaProviderProps {
   children: ReactNode;
 }
+
+type ICancelReason =
+  | 'very_expensive'
+  | 'dont_understand'
+  | 'human_service'
+  | 'future';
 
 interface IChartProps {
   name: string;
@@ -56,6 +63,13 @@ interface IPrePropostaContextData {
   downloadRef: MutableRefObject<HTMLElement | undefined>;
   handleDownloadPdf: () => void;
   downloadIsLoading: boolean;
+  isRepresentative: boolean;
+  isInegrator: boolean;
+  isOwner: boolean;
+  handleAcceptPreBudget: () => void;
+  handleRejectPreBudget: () => void;
+  setReasonCancel: (reason: ICancelReason) => void;
+  handleFeedback: () => void;
 }
 
 export type {
@@ -64,4 +78,5 @@ export type {
   IStateProps,
   IBudgetRequest,
   IChartProps,
+  ICancelReason,
 };

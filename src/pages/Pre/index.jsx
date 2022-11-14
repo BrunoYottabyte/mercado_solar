@@ -1,58 +1,52 @@
-import React, { useState, useEffect } from 'react'
-
-import Button from '../../components/DesignSystem/Button'
-import { Card } from '../../components/DesignSystem/Card'
-import { ModalHeader } from '../../components/DesignSystem/Modal'
-import { Modal } from '../../components/DesignSystem/Modal/Modal'
-import { ModalContent } from '../../components/DesignSystem/Modal/ModalContent'
-import RadioButton from '../../components/DesignSystem/RadioButton'
-import Svg from '../../components/svg/svg'
-import SvgUse from '../../components/svg/svgUse'
-import { useGlobalContext } from '../../context/GlobalContext'
-import Charts from 'react-apexcharts'
-import { PrePropostaProvider, usePreProposta } from './context'
-import { options, options2 } from './data'
+import React from 'react';
+import {useEffect} from 'react';
+import Button from '../../components/DesignSystem/Button';
+import {Card} from '../../components/DesignSystem/Card';
+import {ModalHeader} from '../../components/DesignSystem/Modal';
+import {Modal} from '../../components/DesignSystem/Modal/Modal';
+import {ModalContent} from '../../components/DesignSystem/Modal/ModalContent';
+import RadioButton from '../../components/DesignSystem/RadioButton';
+import Svg from '../../components/svg/svg';
+import SvgUse from '../../components/svg/svgUse';
+import {useGlobalContext} from '../../context/GlobalContext';
+import Charts from 'react-apexcharts';
+import {PrePropostaProvider, usePreProposta} from './context';
+import {options, options2} from './data';
+import Badge from '../../components/DesignSystem/Badge';
 
 const PrePropostaContent = () => {
-  const {
-    handleNavigate,
-    budgetRequest,
-    address,
-    playback,
-    downloadRef,
-    handleDownloadPdf,
-    downloadIsLoading
-  } = usePreProposta()
+	const {
+		handleNavigate,
+		budgetRequest,
+		address,
+		playback,
+		downloadRef,
+		handleDownloadPdf,
+		downloadIsLoading,
+		isOwner,
+		isRepresentative,
+		handleAcceptPreBudget,
+		handleRejectPreBudget,
+		setReasonCancel,
+		handleFeedback,
+	} = usePreProposta();
 
-  const [loading, setLoading] = useState(false)
-  const { setmodalOpen, modalOpen } = useGlobalContext()
-  useEffect(() => {
-    if (modalOpen.open == false || modalOpen.open == null) {
-      clearTimeout(window.timeOutMateriaPrima)
-    }
-  }, [modalOpen])
+	const {setmodalOpen, modalOpen} = useGlobalContext();
+	useEffect(() => {
+		if (modalOpen.open == false || modalOpen.open == null) {
+			clearTimeout(window.timeOutMateriaPrima);
+		}
+	}, [modalOpen]);
 
-  const openModal = () => {
-    setmodalOpen({ open: true, id: 'feedback' })
-  }
-
-  const openCheckModal = () => {
-    setmodalOpen({ open: true, id: 'modalSend' })
-  }
-
-  const openThanksModal = () => {
-    setmodalOpen({ open: true, id: 'modalThanks' })
-  }
-
-  const series = [
-    {
-      name: 'Cash Flow',
-      data: [
-        -200, -180, -160, -140, -130, -80, -60, -40, -20, -10, 0.5, 30, 40, 70,
-        90, 120, 140, 160, 180, 200, 220, 225
-      ]
-    }
-  ]
+	const series = [
+		{
+			name: 'Cash Flow',
+			data: [
+				-200, -180, -160, -140, -130, -80, -60, -40, -20, -10, 0.5, 30, 40, 70,
+				90, 120, 140, 160, 180, 200, 220, 225,
+			],
+		},
+	];
 
   return (
 		<>
@@ -67,21 +61,25 @@ const PrePropostaContent = () => {
 					<main className=" p-24 flex flex-col gap-16 relative">
 						<RadioButton
 							containerClass="md"
+							onClick={() => setReasonCancel('very_expensive')}
 							texto="O valor da pré-proposta é muito alto"
 							name="feedback"
 						/>
 						<RadioButton
 							containerClass="md"
+							onClick={() => setReasonCancel('dont_understand')}
 							texto="Não entendi como funciona"
 							name="feedback"
 						/>
 						<RadioButton
 							containerClass="md"
+							onClick={() => setReasonCancel('human_service')}
 							texto="Gostaria de um atendimento humano"
 							name="feedback"
 						/>
 						<RadioButton
 							containerClass="md"
+							onClick={() => setReasonCancel('future')}
 							texto="Volto a falar com vocês futuramente"
 							name="feedback"
 						/>
@@ -92,13 +90,9 @@ const PrePropostaContent = () => {
 
 						<div className="w-full flex justify-end">
 							<Button
-								className={`btn mt-8 ${loading ? 'is-loading' : ''}`}
+								className={`btn mt-8`}
 								onClick={() => {
-								  setLoading(true)
-								  setTimeout(() => {
-								    openCheckModal()
-								    setLoading(false)
-								  }, 500)
+									handleFeedback();
 								}}>
 								Enviar feedback
 							</Button>
@@ -145,12 +139,16 @@ const PrePropostaContent = () => {
 						<div className="grid place-items-center text-center">
 							<h1 className="title2 mb-12">Obrigado!</h1>
 							<p className="headline2">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Maecenas amet a blandit..
+								Agora você já pode acompanhar o andamento da sua proposta.
 							</p>
 						</div>
 
-						<Button className="btn h-56 w-full justify-center paragraph1 ">
+						<Button
+							className="btn h-56 w-full justify-center paragraph1 "
+							onClick={() => {
+								setmodalOpen({open: false, id: 'modalThanks'});
+								handleNavigate('/');
+							}}>
 							Entendi
 						</Button>
 					</main>
@@ -256,24 +254,57 @@ const PrePropostaContent = () => {
 								Enviar para e-mail
 							</Button>
 						</div>
+						{budgetRequest && (
+							<>
+								{(isOwner || isRepresentative) &&
+									budgetRequest.budget_request_status === 'pending' && (
+										<div className="md2:w-full">
+											<Button
+												className="btn h-48 mr-14 md2:w-full md2:mb-8"
+												svgClass="!w-24 !h-20"
+												iconID="#icon_close_ms"
+												onClick={() => handleRejectPreBudget()}>
+												Não tenho interesse
+											</Button>
 
-						<div className="md2:w-full">
-							<Button
-								className="btn h-48 mr-14 md2:w-full md2:mb-8"
-								svgClass="!w-24 !h-20"
-								iconID="#icon_close_ms"
-								onClick={openModal}>
-								Não tenho interesse
-							</Button>
-
-							<Button
-								className="btn h-48 md2:w-full"
-								svgClass="!w-20 !h-20"
-								iconID="#icon_check_ms"
-								onClick={openThanksModal}>
-								Tenho interesse
-							</Button>
-						</div>
+											<Button
+												className="btn h-48 md2:w-full"
+												svgClass="!w-20 !h-20"
+												iconID="#icon_check_ms"
+												onClick={() => handleAcceptPreBudget()}>
+												Tenho interesse
+											</Button>
+										</div>
+									)}
+								{(budgetRequest.budget_request_status !== 'pending' ||
+									!(isOwner || isRepresentative)) && (
+									<Badge
+										iconID={''}
+										title={
+											budgetRequest.budget_request_status === 'pending'
+												? 'Aguardando resposta'
+												: budgetRequest.budget_request_status === 'approved'
+												? 'Aprovado'
+												: 'Reprovado'
+										}
+										classeTitle={`font-medium ${
+											budgetRequest.budget_request_status === 'approved'
+												? 'text-alert-success'
+												: budgetRequest.budget_request_status === 'pending'
+												? 'text-alert-warning-100'
+												: 'text-alert-error'
+										} `}
+										classe={
+											budgetRequest.budget_request_status == 'Aprovada'
+												? '!text-[#ccc] bg-alert-success-10'
+												: budgetRequest.budget_request_status === 'Em Progresso'
+												? 'bg-alert-warning-10'
+												: 'bg-alert-error-10'
+										}
+									/>
+								)}
+							</>
+						)}
 					</div>
 				</Card>
 			</div>
