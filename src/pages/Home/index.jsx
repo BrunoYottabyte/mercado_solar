@@ -1,81 +1,107 @@
-import React, { useEffect } from 'react'
-import Button from '../../components/DesignSystem/Button'
-import SvgUse from '../../components/svg/svgUse'
+import React, {useEffect} from 'react';
+import Button from '../../components/DesignSystem/Button';
+import SvgUse from '../../components/svg/svgUse';
 
-import SwiperCore, { Keyboard, Mousewheel } from 'swiper/core'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import { SelectComponent } from '../../components/DesignSystem/SelectComponent'
+import SwiperCore, {Keyboard, Mousewheel} from 'swiper/core';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
-import NavbarSite from '../../assets/componentsSite/navbar'
-import Svg from '../../components/svg/svg'
-import { Tab, TabList, TabPanel, Tabs } from 'react-tabs'
-import MonthsForm from './components/MonthsForm'
-import { HomeProvider, useHome } from './context'
-import BudgetForm from './components/BudgetForm'
-import Input from './components/Input'
-import { Modal } from '../../components/DesignSystem/Modal/Modal'
-import { ModalHeader } from '../../components/DesignSystem/Modal'
-import { ModalContent } from '../../components/DesignSystem/Modal/ModalContent'
-import { useGlobalContext } from '../../context/GlobalContext'
+import NavbarSite from '../../assets/componentsSite/navbar';
+import Svg from '../../components/svg/svg';
+import {Tab, TabList, TabPanel, Tabs} from 'react-tabs';
+import MonthsForm from './components/MonthsForm';
+import {HomeProvider, useHome} from './context';
+import BudgetForm from './components/BudgetForm';
+import Input from './components/Input';
+import {Modal} from '../../components/DesignSystem/Modal/Modal';
+import {ModalHeader} from '../../components/DesignSystem/Modal';
+import {ModalContent} from '../../components/DesignSystem/Modal/ModalContent';
+import {useGlobalContext} from '../../context/GlobalContext';
 
-import { useNavigate } from 'react-router-dom'
-SwiperCore.use([Keyboard, Mousewheel])
+import {useNavigate} from 'react-router-dom';
+import Signup from './components/SignUp';
+SwiperCore.use([Keyboard, Mousewheel]);
 
 const HomeContent = () => {
-  const { handleSubmit, budgetRequestForm, formsAreValids } = useHome()
-  const navigate = useNavigate()
-  const { setmodalOpen, modalOpen } = useGlobalContext()
+	const {handleSubmit, averageConsumptionForm, formsAreValids, isLoading} =
+		useHome();
+	const navigate = useNavigate();
+	const {setmodalOpen, modalOpen} = useGlobalContext();
 
-  useEffect(() => {
-    if (modalOpen.open == false || modalOpen.open == null) {
-      clearTimeout(window.timeouthome)
-    }
-  }, [modalOpen])
+	useEffect(() => {
+		if (modalOpen.open == false || modalOpen.open == null) {
+			clearTimeout(window.timeouthome);
+		}
+	}, [modalOpen]);
 
-  const openModal = (id) => {
-    setmodalOpen({ open: true, id, position: 'right' })
-  }
+	const openModal = id => {
+		setmodalOpen({open: true, id, position: 'right'});
+	};
 
-  return (
+	return (
 		<>
-			<Modal className={'w-[37rem] z-[999999999999999999999999999999999999999999]  md2:max-w-[400px] md2:w-[95vw]'}>
+			<Signup />
+			<Modal
+				className={
+					'w-[37rem] z-[999999999999999999999999999999999999999999]  md2:max-w-[400px] md2:w-[95vw]'
+				}>
 				<ModalContent id="sidemenu">
-					<ModalHeader close={false} classeHeader="!bg-primary-pure !h-[5rem] relative z-[999999] title3 sticky top-0 pb-24 border border-transparent border-b-neutral-30">
+					<ModalHeader
+						close={false}
+						classeHeader="!bg-primary-pure !h-[5rem] relative z-[999999] title3 sticky top-0 pb-24 border border-transparent border-b-neutral-30">
 						<div className="title3 flex w-full flex-end items-center">
-								<button
-									type="button"
-									style={{ '--cor-1': '#F69F00' }}
-									className="absolute z-50 !bg-white/70 right-24 top-24 !border !border-neutral-60/20 hover:border-primary-pure  rounded-full"
-									onClick={() => setmodalOpen({ open: false, id: false, position: 'right' })}
-								>
-									<SvgUse id="#icon_close_ms" classe="!w-28 !h-28" />
-								</button>
+							<button
+								type="button"
+								style={{'--cor-1': '#F69F00'}}
+								className="absolute z-50 !bg-white/70 right-24 top-24 !border !border-neutral-60/20 hover:border-primary-pure  rounded-full"
+								onClick={() =>
+									setmodalOpen({open: false, id: false, position: 'right'})
+								}>
+								<SvgUse id="#icon_close_ms" classe="!w-28 !h-28" />
+							</button>
 						</div>
 					</ModalHeader>
 
-					<section className='p-24'>
-						<ul className='flex flex-col gap-24 text-xl'>
-							<li><a href="#beneficios" onClick={() => {
-							  setmodalOpen({ open: false, id: false, position: 'right' })
-							}}>Benefícios de contratar</a></li>
-							<li onClick={() => {
-							  setmodalOpen({ open: false, id: false, position: 'right' })
-							  navigate('/sobre-nos')
-							}}><a>Sobre nós </a></li>
-							<li onClick={() => {
-								 setmodalOpen({ open: false, id: false, position: 'right' })
-								 navigate('/login')
-							}}>Entrar</li>
-							<li><a onClick={() => {
-							  setmodalOpen({ open: false, id: false, position: 'right' })
-							}} href="#orcamento" className='btn w-full h-48 secondary justify-center text-white'>
-								Peça seu orçamento
-							</a></li>
+					<section className="p-24">
+						<ul className="flex flex-col gap-24 text-xl">
+							<li>
+								<a
+									href="#beneficios"
+									onClick={() => {
+										setmodalOpen({open: false, id: false, position: 'right'});
+									}}>
+									Benefícios de contratar
+								</a>
+							</li>
+							<li
+								onClick={() => {
+									setmodalOpen({open: false, id: false, position: 'right'});
+									navigate('/sobre-nos');
+								}}>
+								<a>Sobre nós </a>
+							</li>
+							<li
+								onClick={() => {
+									setmodalOpen({open: false, id: false, position: 'right'});
+									navigate('/login');
+								}}>
+								Entrar
+							</li>
+							<li>
+								<a
+									onClick={() => {
+										setmodalOpen({open: false, id: false, position: 'right'});
+									}}
+									href="#orcamento"
+									className="btn w-full h-48 secondary justify-center text-white">
+									Peça seu orçamento
+								</a>
+							</li>
 						</ul>
 					</section>
 				</ModalContent>
 			</Modal>
+
 			<main className="homepage w-screen h-full">
 				<NavbarSite openModal={openModal} />
 				<Svg />
@@ -86,7 +112,9 @@ const HomeContent = () => {
 					<span className="absolute bg-[url('../src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-50 top-0"></span>
 					<span className="absolute  block w-screen h-[300px] left-0 z-1 bg-gradient-to-t from-neutral-100/0 to-neutral-100  -top-0"></span>
 
-					<div data-aos="zoom-in-up" className="relative z-[999999] flex flex-col items-center justify-center">
+					<div
+						data-aos="zoom-in-up"
+						className="relative z-[999999] flex flex-col items-center justify-center">
 						<div className="flex items-center justify-center">
 							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
 							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
@@ -118,8 +146,10 @@ const HomeContent = () => {
 				</section>
 
 				{/* Beneficios */}
-				<div id="beneficios" className='bg-white h-40 w-full'></div>
-				<section id="beneficios" className=" select-none py-40 grid place-items-center relative w-full min-h-screen bg-white">
+				<div id="beneficios" className="bg-white h-40 w-full"></div>
+				<section
+					id="beneficios"
+					className=" select-none py-40 grid place-items-center relative w-full min-h-screen bg-white">
 					<div className="relative z-[999] flex flex-col items-center justify-center">
 						<div className="flex items-center justify-center">
 							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
@@ -133,22 +163,36 @@ const HomeContent = () => {
 
 						<div className="max-w-[1100px] px-24 mt-64 md2:flex-col md2:w-full flex gap-32 md:flex-col">
 							<div className="flex flex-col gap-40 w-[17.5rem] md2:w-full items-center md:w-full">
-								<div className="flex gap-12 items-center md:flex-col md:text-center" data-aos="fade-right" >
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center"
+									data-aos="fade-right">
 									<SvgUse id="#icon_paper_ms" classe="!w-40 !h-40 shrink-0" />
 									<p className="paragraph1">Redução na conta de luz</p>
 								</div>
 
-								<div className="flex gap-12 items-center md:flex-col md:text-center" data-aos="fade-right" data-aos-delay="100">
-									<SvgUse id="#icon_ambiente_ms" classe="!w-40 !h-40 shrink-0" />
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center"
+									data-aos="fade-right"
+									data-aos-delay="100">
+									<SvgUse
+										id="#icon_ambiente_ms"
+										classe="!w-40 !h-40 shrink-0"
+									/>
 									<p className="paragraph1">Ajuda o meio ambiente</p>
 								</div>
 
-								<div className="flex gap-12 items-center md:flex-col md:text-center" data-aos="fade-right" data-aos-delay="200">
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center"
+									data-aos="fade-right"
+									data-aos-delay="200">
 									<SvgUse id="#icon_settings_ms2" classe="w-40 h-40 shrink-0" />
 									<p className="paragraph1">Necessidade mínima de manutenção</p>
 								</div>
 
-								<div className="flex gap-12 items-center md:flex-col md:text-center" data-aos="fade-right" data-aos-delay="300">
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center"
+									data-aos="fade-right"
+									data-aos-delay="300">
 									<SvgUse
 										id="#icon_house_certificate_ms"
 										classe="w-40 h-40 shrink-0"
@@ -166,26 +210,43 @@ const HomeContent = () => {
 								className=""
 							/>
 							<div className="flex flex-col gap-40 w-[17.5rem] md2:w-full items-center md:w-full">
-								<div className="flex gap-12 items-center md:flex-col md:text-center" data-aos="fade-left">
-									<SvgUse id="#icon_ambiente2_sm" classe="w-40 h-40  shrink-0" />
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center"
+									data-aos="fade-left">
+									<SvgUse
+										id="#icon_ambiente2_sm"
+										classe="w-40 h-40  shrink-0"
+									/>
 									<p className="paragraph1">
 										A energia solar não polui, é renovável, limpa e sustentável
 									</p>
 								</div>
 
-								<div className="flex gap-12 items-center md:flex-col md:text-center" data-aos="fade-left" data-aos-delay="150">
-									<SvgUse id="#icon_cicle_life_sm" classe="w-40 h-40  shrink-0" />
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center"
+									data-aos="fade-left"
+									data-aos-delay="150">
+									<SvgUse
+										id="#icon_cicle_life_sm"
+										classe="w-40 h-40  shrink-0"
+									/>
 									<p className="paragraph1">
 										Vida útil de mais de 25 anos, pagando-se em até 7 anos
 									</p>
 								</div>
 
-								<div className="flex gap-12 items-center md:flex-col md:text-center" data-aos="fade-left" data-aos-delay="300">
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center"
+									data-aos="fade-left"
+									data-aos-delay="300">
 									<SvgUse id="#icon_torre_sm" classe="w-40 h-40  shrink-0" />
 									<p className="paragraph1">Energia alternativa ao petróleo</p>
 								</div>
 
-								<div className="flex gap-12 items-center md:flex-col md:text-center " data-aos="fade-left" data-aos-delay="450">
+								<div
+									className="flex gap-12 items-center md:flex-col md:text-center "
+									data-aos="fade-left"
+									data-aos-delay="450">
 									<SvgUse
 										id="#icon_energia_solar_sm"
 										classe="w-40 h-40  shrink-0"
@@ -198,8 +259,10 @@ const HomeContent = () => {
 							</div>
 						</div>
 
-						<div className="mt-40 text-center" data-aos="fade-up"
-     data-aos-duration="500">
+						<div
+							className="mt-40 text-center"
+							data-aos="fade-up"
+							data-aos-duration="500">
 							<p className="paragraph1 mb-16">Entenda como podemos te ajudar</p>
 							<Button
 								classe="h-56"
@@ -212,7 +275,9 @@ const HomeContent = () => {
 				</section>
 
 				{/* Como Funciona */}
-				<section id="como-funciona" className="select-none py-40 pb-[80px] grid place-items-center relative w-full min-h-screen md:!min-h-max md:py-40 bg-primary-darkness">
+				<section
+					id="como-funciona"
+					className="select-none py-40 pb-[80px] grid place-items-center relative w-full min-h-screen md:!min-h-max md:py-40 bg-primary-darkness">
 					<div className="max-w-[1200px] md2:w-[90vw] md2:px-40 mt-64 flex flex-col gap-32">
 						<div className="flex md2:flex-col md:gap-40 items-center md2:w-full md2:mt-0  justify-between mb-[5.625rem]">
 							<div>
@@ -231,12 +296,20 @@ const HomeContent = () => {
 								funciona nosso processo
 							</p>
 						</div>
-						<div className='hidden md2:block '>
-							<img src="../src/assets/images/home/default_upload.png" className="w-full" alt="Imagem de como funciona o processo" />
+						<div className="hidden md2:block ">
+							<img
+								src="../src/assets/images/home/default_upload.png"
+								className="w-full"
+								alt="Imagem de como funciona o processo"
+							/>
 						</div>
 						<div className="md2:hidden circle-home w-[900px] h-[450px] rounded-full relative">
-							<div data-aos="fade-up"
-     data-aos-duration="400" data-aos-delay="100" data-aos-anchor="#como-funciona" className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] top-[125px] -left-[100px]">
+							<div
+								data-aos="fade-up"
+								data-aos-duration="400"
+								data-aos-delay="100"
+								data-aos-anchor="#como-funciona"
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] top-[125px] -left-[100px]">
 								<SvgUse
 									id="#arrow_line_ms"
 									classe="absolute bottom-[200px] left-[130px] w-[220px] animate-[writeOne_1s_forwards]"
@@ -260,7 +333,12 @@ const HomeContent = () => {
 								/>
 							</div>
 
-							<div data-aos="fade-up" data-aos-duration="500" data-aos-delay="600" data-aos-anchor="#como-funciona" className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] -top-[45px] left-[180px]">
+							<div
+								data-aos="fade-up"
+								data-aos-duration="500"
+								data-aos-delay="600"
+								data-aos-anchor="#como-funciona"
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] -top-[45px] left-[180px]">
 								<SvgUse
 									id="#arrow_line_ms2"
 									classe="absolute bottom-[75px]  left-[160px] w-[200px]"
@@ -280,7 +358,12 @@ const HomeContent = () => {
 								</div>
 							</div>
 
-							<div data-aos="fade-up" data-aos-duration="500" data-aos-delay="1100" data-aos-anchor="#como-funciona" className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] -top-[40px] left-[470px]">
+							<div
+								data-aos="fade-up"
+								data-aos-duration="500"
+								data-aos-delay="1100"
+								data-aos-anchor="#como-funciona"
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] -top-[40px] left-[470px]">
 								<SvgUse
 									id="#arrow_line_ms3"
 									classe="absolute bottom-[30px] left-[170px] w-[200px]"
@@ -300,7 +383,12 @@ const HomeContent = () => {
 								</div>
 							</div>
 
-							<div data-aos="fade-left" data-aos-duration="500" data-aos-delay="1600" data-aos-anchor="#como-funciona" className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[150px] -right-[70px]">
+							<div
+								data-aos="fade-left"
+								data-aos-duration="500"
+								data-aos-delay="1600"
+								data-aos-anchor="#como-funciona"
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[150px] -right-[70px]">
 								<img
 									src="../src/assets/images/home/representante.png"
 									className="w-64 h-64 rounded-full"
@@ -315,7 +403,11 @@ const HomeContent = () => {
 								</div>
 							</div>
 
-							<div data-aos="fade-up" data-aos-duration="500" data-aos-delay="600" className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-25px] left-[165px]">
+							<div
+								data-aos="fade-up"
+								data-aos-duration="500"
+								data-aos-delay="600"
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-25px] left-[165px]">
 								<SvgUse
 									id="#arrow_line_ms5"
 									classe="absolute bottom-[70px] left-[165px] w-[170px]"
@@ -335,7 +427,11 @@ const HomeContent = () => {
 								</div>
 							</div>
 
-							<div data-aos="fade-up" data-aos-duration="500" data-aos-delay="800" className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-35px] right-[240px]">
+							<div
+								data-aos="fade-up"
+								data-aos-duration="500"
+								data-aos-delay="800"
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-35px] right-[240px]">
 								<img
 									src="../src/assets/images/home/representante.png"
 									className="w-64 h-64 rounded-full"
@@ -355,9 +451,11 @@ const HomeContent = () => {
 				</section>
 
 				{/* Solicite seu orçamento */}
-				<div id="orcamento" className='bg-white h-40 w-full'></div>
-				<section data-aos="fade-up" data-aos-delay="350"
- className="select-none py-16 flex justify-center relative w-full min-h-screen bg-white">
+				<div id="orcamento" className="bg-white h-40 w-full"></div>
+				<section
+					data-aos="fade-up"
+					data-aos-delay="350"
+					className="select-none py-16 flex justify-center relative w-full min-h-screen bg-white">
 					<div className="max-w-[1200px] w-[1100px] md:w-[90vw] mt-64 flex items-start justify-between md2:justify-center md2:flex-col md2:gap-40">
 						<div className="flex flex-col w-[24.4375rem] gap-48 md2:w-full md2:justify-center">
 							<div className="flex flex-col gap-6 md2:items-center md:flex-col md2:text-center md2:justify-center">
@@ -376,12 +474,18 @@ const HomeContent = () => {
 								</div>
 
 								<div className="flex gap-12 items-center  md2:flex-col md2:text-center md2:justify-center">
-									<SvgUse id="#icon_ambiente2_sm" classe="!w-40 !h-40 shrink-0" />
+									<SvgUse
+										id="#icon_ambiente2_sm"
+										classe="!w-40 !h-40 shrink-0"
+									/>
 									<p className="paragraph1">Ajude o meio ambiente</p>
 								</div>
 
 								<div className="flex gap-12 items-center  md2:flex-col md2:text-center md2:justify-center">
-									<SvgUse id="#icon_settings_ms2" classe="!w-40 !h-40 shrink-0" />
+									<SvgUse
+										id="#icon_settings_ms2"
+										classe="!w-40 !h-40 shrink-0"
+									/>
 									<p className="paragraph1">Manutenções mínimas </p>
 								</div>
 
@@ -401,7 +505,8 @@ const HomeContent = () => {
 										classe="!w-40 !h-40 shrink-0"
 									/>
 									<p className="paragraph1">
-										Tenha a vida útil de mais de 25 anos, pagando-se em até 7 anos
+										Tenha a vida útil de mais de 25 anos, pagando-se em até 7
+										anos
 									</p>
 								</div>
 							</div>
@@ -414,7 +519,7 @@ const HomeContent = () => {
 								<span className="absolute block bg-gradient-to-bl from-white to-white/80 w-[200px] h-[300px] left-0 z-10 opacity-40 !bottom-[0px]"></span>
 							</span>
 							<div className="w-[37rem] md2:w-[90vw] p-24 pb-10 border border-neutral-100 rounded-md !bg-white relative z-[99]">
-								<p className="headline1 mb-16" >Dados pessoais</p>
+								<p className="headline1 mb-16">Dados pessoais</p>
 								<div className="flex flex-col gap-16">
 									<BudgetForm />
 
@@ -433,7 +538,7 @@ const HomeContent = () => {
 												className={`flex justify-${
 													!formsAreValids ? 'between' : 'end'
 												} items-center mt-16`}>
-												{!formsAreValids && (
+												{!formsAreValids && !isLoading && (
 													<div className="max-w-xs">
 														<p className="m-10 text-alert-error">
 															Informe todos os campos para prosseguir
@@ -458,7 +563,7 @@ const HomeContent = () => {
 											<section>
 												<div className="py-16 grid gap-16">
 													<Input
-														control={budgetRequestForm.control}
+														control={averageConsumptionForm.control}
 														type="number"
 														name="average_consumption"
 														label="Consumo médio em KHw"
@@ -470,7 +575,7 @@ const HomeContent = () => {
 												className={`flex justify-${
 													!formsAreValids ? 'between' : 'end'
 												} items-center mt-16`}>
-												{!formsAreValids && (
+												{!formsAreValids && !isLoading && (
 													<div className="max-w-xs">
 														<p className="m-10 text-alert-error">
 															Informe todos os campos para prosseguir
@@ -500,7 +605,10 @@ const HomeContent = () => {
 				{/* Energia renovavel */}
 				<section className="bg-gradient-home select-none py-64 md2:py-40 flex justify-center relative w-full bg-white">
 					<div className="max-w-[1200px] w-[1100px] mt-64 flex md2:flex-col md2:gap-40 md2:w-[90vw] justify-between gap-32">
-						<div className="w-[24rem]" data-aos="fade-right" data-aos-duration="800">
+						<div
+							className="w-[24rem]"
+							data-aos="fade-right"
+							data-aos-duration="800">
 							<p className="caps2-semibold text-primary-pure mb-8">
 								SOBRE O MERCADO SOLAR
 							</p>
@@ -512,8 +620,8 @@ const HomeContent = () => {
 								eu suscipit lacus auctor mi diam turpis vitae orci. Faucibus a
 								tortor rhoncus neque quam. Aliquam facilisi convallis tortor in
 								viverra nec justo, turpis quam. Arcu, interdum aliquam semper
-								mollis proin consectetur purus. Tincidunt amet, rhoncus turpis in
-								venenatis, viverra amet.{' '}
+								mollis proin consectetur purus. Tincidunt amet, rhoncus turpis
+								in venenatis, viverra amet.{' '}
 							</p>
 
 							<Button
@@ -568,7 +676,6 @@ const HomeContent = () => {
 
 							<div className="flex gap-32 items-end relative">
 								<SvgUse
-
 									id="#icon_line_effect_ms"
 									classe="w-[210px] bottom-[50px] h-auto absolute md:hidden "
 								/>
@@ -585,7 +692,7 @@ const HomeContent = () => {
 									data-aos-duration="300"
 									src="../src/assets/images/home/woman.png"
 									alt="imagem de uma mulher sorrindo"
-									className='md2:!w-[60%]'
+									className="md2:!w-[60%]"
 								/>
 								<img
 									data-aos="fade-down"
@@ -602,18 +709,21 @@ const HomeContent = () => {
 				{/* FOOTER */}
 				<section className="select-none py-64 flex justify-center relative w-full  bg-gradient-home-footer">
 					<span className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-pure/5 via-primary-pure/70 to-primary-pure-10"></span>
-					<div className="max-w-[1200px] w-[1100px] md2:w-[90vw] relative" >
+					<div className="max-w-[1200px] w-[1100px] md2:w-[90vw] relative">
 						<div className="flex md:flex-col w-full pb-64 justify-between items-center gap-64">
 							<div className="grid grid-cols-4 md:grid-cols-2 md2:grid-cols-3 md:flex md:flex-col md:w-full">
-								<img src="../src/assets/images/home/logomercado.png" className='md2:hidden' />
+								<img
+									src="../src/assets/images/home/logomercado.png"
+									className="md2:hidden"
+								/>
 
 								<div data-aos="fade-up" data-aos-delay="150">
 									<p className="headline3 mb-24 md:mb-0">Mapa do site</p>
 									<ul className="flex flex-col gap-16">
 										<li className="paragraph2">Benefícios de contratar</li>
-										<li className="paragraph2" onClick={() => {
-
-										}}>Sobre nós</li>
+										<li className="paragraph2" onClick={() => {}}>
+											Sobre nós
+										</li>
 									</ul>
 								</div>
 
@@ -626,7 +736,10 @@ const HomeContent = () => {
 									</ul>
 								</div>
 
-								<div className="w-[17.5rem] md:w-auto" data-aos="fade-up" data-aos-delay="450">
+								<div
+									className="w-[17.5rem] md:w-auto"
+									data-aos="fade-up"
+									data-aos-delay="450">
 									<p className="headline3 mb-24 border-primary-pure">Contato</p>
 									<ul className="flex flex-col gap-16">
 										<li className="paragraph2 flex items-center gap-8">
@@ -639,8 +752,8 @@ const HomeContent = () => {
 										</li>
 										<li className="paragraph2 flex items-center gap-8">
 											<SvgUse id="#icon_maps_ms" classe="w-24 h-24  shrink-0" />
-											Ed. Itaim Center - Rua Dr. Eduardo de<br></br> Souza Aranha,
-											nº 153 9º andar
+											Ed. Itaim Center - Rua Dr. Eduardo de<br></br> Souza
+											Aranha, nº 153 9º andar
 										</li>
 										<li className="paragraph2 flex items-center gap-8">
 											<SvgUse id="#icon_mail_ms" classe="w-24 h-24  shrink-0" />
@@ -650,7 +763,10 @@ const HomeContent = () => {
 								</div>
 							</div>
 
-							<div data-aos="fade-up" data-aos-delay="600" className="flex flex-col md2:flex-row md2:gap-24 md2:w-[90vw] items-end md2:justify-start">
+							<div
+								data-aos="fade-up"
+								data-aos-delay="600"
+								className="flex flex-col md2:flex-row md2:gap-24 md2:w-[90vw] items-end md2:justify-start">
 								<Button
 									iconID="#icon_user_ms"
 									svgClass="!w-24 !h-24"
@@ -681,15 +797,15 @@ const HomeContent = () => {
 				</section>
 			</main>
 		</>
-  )
-}
+	);
+};
 
 const Home = () => {
-  return (
+	return (
 		<HomeProvider>
 			<HomeContent />
 		</HomeProvider>
-  )
-}
+	);
+};
 
-export default Home
+export default Home;

@@ -80,6 +80,7 @@ export const PrePropostaProvider: React.FC<IPrePropostaProviderProps> = ({
     api
       .patch(`/budget_request/${budgetRequest.id}/`, {
         budget_request_status: 'approved',
+        current_step: 'creation',
       })
       .then(response => {
         setBudgetRequest({...budgetRequest, budget_request_status: 'approved'});

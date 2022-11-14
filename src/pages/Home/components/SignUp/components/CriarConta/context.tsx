@@ -1,7 +1,9 @@
 import React, {createContext, useContext} from 'react';
 import {useForm} from 'react-hook-form';
-import {api} from '../../services/api';
-import {GLOBAL} from '../../utils/GLOBAL';
+import {useAuthContext} from '../../../../../../context/useAuthContext';
+import {api} from '../../../../../../services/api';
+import {GLOBAL} from '../../../../../../utils/GLOBAL';
+import {useHome} from '../../../../context';
 
 import {
   ICreateAccountProviderProps,
@@ -13,11 +15,12 @@ const CreateAccountContext = createContext({} as ICreateAccountContextData);
 
 export const CreateAccountProvider: React.FC<ICreateAccountProviderProps> = ({
   children,
-  email,
 }) => {
   const {showToastify} = GLOBAL;
+  const {signUp} = useAuthContext();
   const [isLoading, setIsLoading] = React.useState(false);
   const passwordForm = useForm<IPasswordForm>();
+  const {email, createBudgetRequest} = useHome();
 
   const createUser = async ({confirmPassword, password}: IPasswordForm) => {
     if (password !== confirmPassword) {
@@ -25,17 +28,18 @@ export const CreateAccountProvider: React.FC<ICreateAccountProviderProps> = ({
       return;
     }
     setIsLoading(true);
-    const {data: user} = await api.post('/user/', {
-      email,
-      password,
-    });
+    const userId = await signUp(email, password);
+    if (userId) {
+      createBudgetRequest(userId);
+    } else {
+      showToastify('Erro ao criar usuário');
+    }
     setIsLoading(false);
   };
 
   return (
     <CreateAccountContext.Provider
       value={{
-        email,
         passwordForm,
         createUser,
         isLoading,
