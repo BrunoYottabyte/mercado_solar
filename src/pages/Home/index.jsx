@@ -21,6 +21,7 @@ import {useGlobalContext} from '../../context/GlobalContext';
 
 import {useNavigate} from 'react-router-dom';
 import FooterSite from './components/Footer';
+import Signup from './components/SignUp';
 SwiperCore.use([Keyboard, Mousewheel]);
 
 const HomeContent = () => {
