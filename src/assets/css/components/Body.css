@@ -62,6 +62,18 @@
 			}
 		}
 
+
+		@keyframes arrow-interactive {
+			0%{
+				transform: translateY(0px);
+				opacity: 1;
+			}
+			100%{
+				transform: translateY(15px);
+				opacity: 0;
+			}
+		}
+
 		@keyframes write {
 			0% {
 				width: 0;

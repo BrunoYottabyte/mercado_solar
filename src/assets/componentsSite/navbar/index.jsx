@@ -4,7 +4,7 @@ import SvgUse from '../../../components/svg/svgUse'
 import logo from '../../images/icon_logo_site.png'
 import { NavbarProvider, useNavbar } from './context'
 
-const Navbar = ({ classContainer, openModal }) => {
+const Navbar = ({ classContainer, openModal, sobre }) => {
   const { handleNavigate } = useNavbar()
   const navigate = useNavigate()
   return (
@@ -17,17 +17,29 @@ const Navbar = ({ classContainer, openModal }) => {
 						<SvgUse onClick={() => openModal('sidemenu')} id="#icon_hamburguer_ms" classe="hidden md2:block h-32 w-32" />
 						<nav className='flex items-center md2:hidden'>
 							<ul className='flex gap-40'>
-								<li className='paragraph2 cursor-pointer'><a href="#beneficios">Benefícios de contratar</a></li>
-								<li className='paragraph2 relative cursor-pointer' onClick={() => {
-								  navigate('/sobre-nos')
-								}}>
-									Sobre nós
-									<span className='absolute top-0 -right-20 w-1 h-24 block bg-neutral-100-10'></span>
-								</li>
+								{!sobre && <li className='paragraph2 cursor-pointer'><a href="#beneficios">Benefícios de contratar</a></li>}
+								{
+									!sobre && 	<li className='paragraph2 relative cursor-pointer' onClick={() => {
+										navigate('/sobre-nos')
+									}}>
+										Sobre nós
+										<span className='absolute top-0 -right-20 w-1 h-24 block bg-neutral-100-10'></span>
+									</li>		
+								}
+								{
+									sobre && <li className='paragraph2 relative cursor-pointer' onClick={() => {
+										navigate('/home')
+									}}>
+										Home
+										<span className='absolute top-0 -right-20 w-1 h-24 block bg-neutral-100-10'></span>
+									</li>
+								}
 								<li className='paragraph2 cursor-pointer' onClick={() => handleNavigate('/login')}>Entrar</li>
 
 							</ul>
-							<a href="#orcamento" className='btn ml-[36px]'>
+							<a href="#orcamento" onClick={() => {
+								navigate('/home#orcamento')
+							}} className='btn ml-[36px]'>
 								Peça seu orçamento
 							</a>
 						</nav>
@@ -37,10 +49,10 @@ const Navbar = ({ classContainer, openModal }) => {
   )
 }
 
-const NavbarSite = ({ classContainer, openModal }) => {
+const NavbarSite = ({ classContainer, openModal, sobre }) => {
   return (
 			<NavbarProvider>
-				<Navbar openModal={openModal} classContainer={classContainer}/>
+				<Navbar openModal={openModal} sobre={sobre} classContainer={classContainer}/>
 			</NavbarProvider>
   )
 }
