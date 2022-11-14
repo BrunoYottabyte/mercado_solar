@@ -4,6 +4,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
+  useState,
 } from 'react';
 import {api} from '../../services/api';
 import Badge from '../../components/DesignSystem/Badge';
@@ -18,6 +19,7 @@ import {
   ITableProps,
   IParams,
 } from './types';
+import {useAuthContext} from '../../context/useAuthContext';
 
 const PedidosOrcamentoContext = createContext(
   {} as IPedidosOrcamentoContextData,
@@ -27,6 +29,8 @@ export const PedidosOrcamentoProvider: React.FC<
   IPedidosOrcamentoProviderProps
 > = ({children}) => {
   const navigate = useNavigate();
+  const [title, setTitle] = useState('Pedidos de orçamento');
+  const {userType} = useAuthContext();
 
   const [pedidosOrcamento, setPedidosOrcamento] = React.useState<ITableData[]>(
     [],
@@ -214,6 +218,20 @@ export const PedidosOrcamentoProvider: React.FC<
       .catch(() => null);
   }, [params]);
 
+  useEffect(() => {
+    if (!userType) return;
+
+    if (userType === 'representative' || userType === 'integrator') {
+      setTitle('Minhas Oportunidades');
+    }
+    if (userType === 'user') {
+      setTitle('Meus Pedidos de Orçamento');
+    }
+    if (userType === 'admin') {
+      setTitle('Todas as solicitações de orçamento');
+    }
+  }, [userType]);
+
   return (
     <PedidosOrcamentoContext.Provider
       value={{
@@ -222,6 +240,7 @@ export const PedidosOrcamentoProvider: React.FC<
         setSearch,
         params,
         contRows,
+        title,
       }}>
       {children}
     </PedidosOrcamentoContext.Provider>

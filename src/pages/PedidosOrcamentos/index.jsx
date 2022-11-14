@@ -6,7 +6,7 @@ import {GlobalFilter} from '../../components/DesignSystem/Table/GlobalFilter';
 import {PedidosOrcamentoProvider, usePedidosOrcamento} from './context';
 
 const PedidosOrcamentosContent = () => {
-	const {columns, data, setSearch, params} = usePedidosOrcamento();
+	const {columns, data, setSearch, params, title} = usePedidosOrcamento();
 	const HeaderRelatorio = ({filter, pageSize, setPageSize}) => {
 		return (
 			<div className="mb-24 flex md2:flex-col md2:gap-16 md2:w-full justify-between items-center md2:items-end">
@@ -50,7 +50,7 @@ const PedidosOrcamentosContent = () => {
 		<div className="container">
 			<Card classe="my-64 px-24 py-32">
 				<header className="flex justify-between md2:flex-col md2:gap-16">
-					<h1 className="!title3">Meus Pedidos de Orçamentos</h1>
+					<h1 className="!title3">{title}</h1>
 				</header>
 
 				<div className="mt-32">

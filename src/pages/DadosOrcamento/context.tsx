@@ -73,6 +73,7 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
     api
       .patch(`/budget_request/${budgetRequest.id}/`, {
         budget_request_status: 'approved',
+        current_step: 'creation',
       })
       .then(response => {
         setBudgetRequest({...budgetRequest, budget_request_status: 'approved'});
@@ -200,7 +201,7 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
         handleAcceptPreBudget,
         handleRejectPreBudget,
         setReasonCancel,
-        handleFeedback
+        handleFeedback,
       }}>
       {children}
     </DadosOrcamentoContext.Provider>

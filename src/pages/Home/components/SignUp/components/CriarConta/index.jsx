@@ -1,22 +1,19 @@
 import React from 'react';
-import Badge from '../../components/DesignSystem/Badge';
-import Button from '../../components/DesignSystem/Button';
-import {Card} from '../../components/DesignSystem/Card';
-import Svg from '../../components/svg/svg';
-import NavbarSite from '../../assets/componentsSite/navbar';
+import Badge from '../../../../../../components/DesignSystem/Badge';
+import Button from '../../../../../../components/DesignSystem/Button';
+import {Card} from '../../../../../../components/DesignSystem/Card';
+import {useHome} from '../../../../context';
 
 import {CreateAccountProvider, useCreateAccount} from './context';
 
 const CriarContaContent = () => {
-	const {email, passwordForm, createUser, isLoading} = useCreateAccount();
+	const {email} = useHome();
+	const {passwordForm, createUser, isLoading} = useCreateAccount();
 
 	const passwordRef = passwordForm.register('password', {min: 8});
 	const confirmPasswordRef = passwordForm.register('confirmPassword', {min: 8});
 	return (
-		<main className="w-screen h-screen grid place-items-center">
-			<Svg />
-			<NavbarSite classContainer="fixed top-0 left-0" />
-
+		<>
 			<Card classe="p-24 max-w-[592px] w-[37rem] border border-neutral-100 md2:max-w-[90vw]">
 				<h1 className="title2 mb-40 md2:text-2xl">
 					Sua pré proposta está sendo gerada. Crie uma senha para <br></br>{' '}
@@ -76,7 +73,7 @@ const CriarContaContent = () => {
 					</div>
 				</form>
 			</Card>
-		</main>
+		</>
 	);
 };
 

@@ -71,16 +71,43 @@ interface IProduct {
 }
 
 interface IBudget {
-  id: number;
+  id: string;
   total: number;
   status: 'approved' | 'pending' | 'disapproved';
   budget_request: number;
   items: IItem[];
 }
 
+interface IImage {
+  id: number;
+  image: string;
+  type:
+    | 'installation_location'
+    | 'roof'
+    | 'inverter_location'
+    | 'meter_standard';
+}
+
+interface IGalery {
+  installation_location: IImage[];
+  roof: IImage[];
+  inverter_location: IImage[];
+  meter_standard: IImage[];
+}
+
+type CurrentStepType =
+  | 'budget'
+  | 'creation'
+  | 'first_contact'
+  | 'technical_visit'
+  | 'budget_available'
+  | 'budget_accepted'
+  | 'payment_made';
+
 interface IBudgetRequest {
   id: string;
   user: string;
+  images: IImage[];
   client_name: string;
   client_email: string;
   client_phone: string;
@@ -95,6 +122,7 @@ interface IBudgetRequest {
   budget_request_status: string;
   status: string;
   representative: string;
+  current_step: CurrentStepType;
   integrator: string;
   created_at: string;
   updated_at: string;
@@ -130,4 +158,5 @@ export type {
   IProduct,
   IBudget,
   IItem,
+  CurrentStepType,
 };

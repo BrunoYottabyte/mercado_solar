@@ -26,15 +26,27 @@ interface IBudgetRequestForm {
   client_phone: string;
   client_postal_code: string;
   client_type: string;
-  client_imovel_type: string;
+  client_imovel: string;
   average_consumption?: number;
+  city?: string;
+  federative_unit?: string;
+  need_representative: boolean;
+}
+
+interface IAverageConsumptionForm {
+  average_consumption: number;
 }
 
 interface IHomeContextData {
   monthForm: UseFormReturn<IMonthForms, object>;
   budgetRequestForm: UseFormReturn<IBudgetRequestForm, object>;
+  averageConsumptionForm: UseFormReturn<IAverageConsumptionForm, any>;
   formsAreValids: boolean;
   handleSubmit: () => void;
+  isLoading: boolean;
+  email: string;
+  createBudgetRequest: (user: string) => void;
+  handleCheckCep: (cep: string) => void;
 }
 
 export type {
@@ -42,4 +54,5 @@ export type {
   IHomeContextData,
   IMonthForms,
   IBudgetRequestForm,
+  IAverageConsumptionForm,
 };
