@@ -12,6 +12,15 @@ interface IImageProps {
   default: boolean;
 }
 
+interface IBrand {
+  id: number;
+  name: string;
+}
+
+interface ICategory {
+  id: number;
+  name: string;
+}
 interface IBrandProps {
   id: number;
   name: string;
@@ -35,6 +44,18 @@ interface IProductsProviderProps {
 }
 interface IProductsContextData {
   products: IProductProps[];
+  brands: IBrand[];
+  categories: ICategory[];
+  filterByCategory: (category: string) => void;
+  filterByBrand: (brand: string) => void;
+  productsCount: number;
+  clearFilters: () => void;
 }
 
-export type {IProductsProviderProps, IProductsContextData, IProductProps};
+export type {
+  IProductsProviderProps,
+  IProductsContextData,
+  IProductProps,
+  IBrand,
+  ICategory,
+};

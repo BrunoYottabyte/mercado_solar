@@ -12,7 +12,15 @@ import Item from './components/item';
 
 const PainesSolaresContent = () => {
 	const {setmodalOpen, modalOpen} = useGlobalContext();
-	const {products} = useProducts();
+	const {
+		products,
+		brands,
+		categories,
+		productsCount,
+		filterByBrand,
+		filterByCategory,
+		clearFilters,
+	} = useProducts();
 
 	useEffect(() => {
 		if (modalOpen.open == false || modalOpen.open == null) {
@@ -52,27 +60,36 @@ const PainesSolaresContent = () => {
 							<div>
 								<h3 className="headline1">Paines solares</h3>
 								<span className="paragraph2 text-neutral-60">
-									1.000 produtos
+									{productsCount} produto(s)
 								</span>
 							</div>
 
 							<div>
 								<h3 className="headline2 mb-10">Marcas</h3>
 								<ul>
-									<li className="paragraph2 text-neutral-60">Marca one</li>
-									<li className="paragraph2 text-neutral-60">Marca two</li>
-									<li className="paragraph2 text-neutral-60">Marca three</li>
+									{brands.map(brand => (
+										<li
+											key={`brandiId-${brand.id}`}
+											onClick={() => filterByBrand(brand.id)}>
+											<span className="paragraph2 text-neutral-60 cursor-pointer">
+												{brand.name}
+											</span>
+										</li>
+									))}
 								</ul>
 							</div>
 
 							<div>
 								<h3 className="headline2 mb-10">Categoria</h3>
 								<ul>
-									<li className="paragraph2 text-neutral-60">Categoria one</li>
-									<li className="paragraph2 text-neutral-60">Categoria two</li>
-									<li className="paragraph2 text-neutral-60">
-										Categoria three
-									</li>
+									{categories.map(category => (
+										<li
+											key={`categories-${category.id}`}
+											onClick={() => filterByCategory(category.id)}
+											className={`paragraph2 text-neutral-60 cursor-pointer`}>
+											{category.name}
+										</li>
+									))}
 								</ul>
 							</div>
 
@@ -83,6 +100,13 @@ const PainesSolaresContent = () => {
 									<li className="paragraph2 text-neutral-60">R$100 a R$ 300</li>
 									<li className="paragraph2 text-neutral-60">Mais de R$ 300</li>
 								</ul>
+							</div>
+							<div>
+								<h3
+									className="headline2 mb-10 cursor-pointer"
+									onClick={() => clearFilters()}>
+									Limpar Filtros
+								</h3>
 							</div>
 						</div>
 					</section>
@@ -116,24 +140,37 @@ const PainesSolaresContent = () => {
 					<div className="md2:hidden flex flex-col gap-32 sticky top-0  self-start items-start overflow-hidden">
 						<div>
 							<h3 className="headline1">Paines solares</h3>
-							<span className="paragraph2 text-neutral-60">1.000 produtos</span>
+							<span className="paragraph2 text-neutral-60">
+								{productsCount} produto(s)
+							</span>
 						</div>
 
 						<div>
 							<h3 className="headline2 mb-10">Marcas</h3>
 							<ul>
-								<li className="paragraph2 text-neutral-60">Marca one</li>
-								<li className="paragraph2 text-neutral-60">Marca two</li>
-								<li className="paragraph2 text-neutral-60">Marca three</li>
+								{brands.map(brand => (
+									<li
+										key={`${brand.id}-brnadId`}
+										onClick={() => filterByBrand(brand.id)}>
+										<span className="paragraph2 text-neutral-60 cursor-pointer">
+											{brand.name}
+										</span>
+									</li>
+								))}
 							</ul>
 						</div>
 
 						<div>
 							<h3 className="headline2 mb-10">Categoria</h3>
 							<ul>
-								<li className="paragraph2 text-neutral-60">Categoria one</li>
-								<li className="paragraph2 text-neutral-60">Categoria two</li>
-								<li className="paragraph2 text-neutral-60">Categoria three</li>
+								{categories.map(category => (
+									<li
+										key={`${category.id}-categories`}
+										onClick={() => filterByCategory(category.id)}
+										className="paragraph2 text-neutral-60 cursor-pointer">
+										{category.name}
+									</li>
+								))}
 							</ul>
 						</div>
 
@@ -144,6 +181,13 @@ const PainesSolaresContent = () => {
 								<li className="paragraph2 text-neutral-60">R$100 a R$ 300</li>
 								<li className="paragraph2 text-neutral-60">Mais de R$ 300</li>
 							</ul>
+						</div>
+						<div>
+							<h3
+								className="headline2 mb-10 cursor-pointer"
+								onClick={() => clearFilters()}>
+								Limpar Filtros
+							</h3>
 						</div>
 					</div>
 					<div className="grid grid-cols-4 md2:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-32 w-full">
