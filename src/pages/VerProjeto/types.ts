@@ -78,9 +78,22 @@ interface IBudget {
   items: IItem[];
 }
 
+interface IImage {
+  id: number;
+  image: string;
+}
+
+interface IGalery {
+  installation_location: IImage[];
+  roof: IImage[];
+  inverter_location: IImage[];
+  meter_standard: IImage[];
+}
+
 interface IBudgetRequest {
   id: string;
   user: string;
+  galery: IGalery;
   client_name: string;
   client_email: string;
   client_phone: string;

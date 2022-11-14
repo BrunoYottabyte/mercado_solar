@@ -16,6 +16,13 @@ const BudgetContent = () => {
 
   return (
     <section className="p-24 flex flex-col gap-24">
+      {!budgets.length && (
+        <div>
+          <h2 className="text-center text-24 font-bold">
+            Nenhum orçamento enviado
+          </h2>
+        </div>
+      )}
       {budgets.map(budget => (
         <div
           className="p-16 bg-neutral-10 rounded-md border border-neutral-100-10"
