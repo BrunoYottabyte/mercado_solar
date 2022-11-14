@@ -7,7 +7,7 @@ const MonthsForm = () => {
   } = useHome();
 
   return (
-    <section className="py-16 grid grid-cols-4 gap-16">
+    <section className="py-16 grid grid-cols-4 gap-16 md2:grid-cols-3 md:grid-cols-2">
       <Input
         control={control}
         type="number"
