@@ -9,10 +9,11 @@ const TimeLine = () => {
     nivel++;
     let offsetLeft = document?.querySelector(
       `.point[nivel="${nivel}"]`,
+      // @ts-ignore
     )?.offsetLeft;
-    document?.querySelector('.progress_bar')?.style.width = `${
-      offsetLeft + 2
-    }px`;
+    // document?.querySelector('.progress_bar')?.style.width = `${
+    //   offsetLeft + 2
+    // }px`;
   };
 
   return (
