@@ -1,64 +1,63 @@
-import React from 'react';
-import {useState} from 'react';
-import {useEffect} from 'react';
-import Button from '../../components/DesignSystem/Button';
-import {Card} from '../../components/DesignSystem/Card';
-import {ModalHeader} from '../../components/DesignSystem/Modal';
-import {Modal} from '../../components/DesignSystem/Modal/Modal';
-import {ModalContent} from '../../components/DesignSystem/Modal/ModalContent';
-import RadioButton from '../../components/DesignSystem/RadioButton';
-import Svg from '../../components/svg/svg';
-import SvgUse from '../../components/svg/svgUse';
-import {useGlobalContext} from '../../context/GlobalContext';
-import Charts from 'react-apexcharts';
-import {PrePropostaProvider, usePreProposta} from './context';
-import {options, options2} from './data';
+import React, { useState, useEffect } from 'react'
+
+import Button from '../../components/DesignSystem/Button'
+import { Card } from '../../components/DesignSystem/Card'
+import { ModalHeader } from '../../components/DesignSystem/Modal'
+import { Modal } from '../../components/DesignSystem/Modal/Modal'
+import { ModalContent } from '../../components/DesignSystem/Modal/ModalContent'
+import RadioButton from '../../components/DesignSystem/RadioButton'
+import Svg from '../../components/svg/svg'
+import SvgUse from '../../components/svg/svgUse'
+import { useGlobalContext } from '../../context/GlobalContext'
+import Charts from 'react-apexcharts'
+import { PrePropostaProvider, usePreProposta } from './context'
+import { options, options2 } from './data'
 
 const PrePropostaContent = () => {
-	const {
-		handleNavigate,
-		budgetRequest,
-		address,
-		playback,
-		downloadRef,
-		handleDownloadPdf,
-		downloadIsLoading,
-	} = usePreProposta();
+  const {
+    handleNavigate,
+    budgetRequest,
+    address,
+    playback,
+    downloadRef,
+    handleDownloadPdf,
+    downloadIsLoading
+  } = usePreProposta()
 
-	const [loading, setLoading] = useState(false);
-	const {setmodalOpen, modalOpen} = useGlobalContext();
-	useEffect(() => {
-		if (modalOpen.open == false || modalOpen.open == null) {
-			clearTimeout(window.timeOutMateriaPrima);
-		}
-	}, [modalOpen]);
+  const [loading, setLoading] = useState(false)
+  const { setmodalOpen, modalOpen } = useGlobalContext()
+  useEffect(() => {
+    if (modalOpen.open == false || modalOpen.open == null) {
+      clearTimeout(window.timeOutMateriaPrima)
+    }
+  }, [modalOpen])
 
-	const openModal = () => {
-		setmodalOpen({open: true, id: 'feedback'});
-	};
+  const openModal = () => {
+    setmodalOpen({ open: true, id: 'feedback' })
+  }
 
-	const openCheckModal = () => {
-		setmodalOpen({open: true, id: 'modalSend'});
-	};
+  const openCheckModal = () => {
+    setmodalOpen({ open: true, id: 'modalSend' })
+  }
 
-	const openThanksModal = () => {
-		setmodalOpen({open: true, id: 'modalThanks'});
-	};
+  const openThanksModal = () => {
+    setmodalOpen({ open: true, id: 'modalThanks' })
+  }
 
-	const series = [
-		{
-			name: 'Cash Flow',
-			data: [
-				-200, -180, -160, -140, -130, -80, -60, -40, -20, -10, 0.5, 30, 40, 70,
-				90, 120, 140, 160, 180, 200, 220, 225,
-			],
-		},
-	];
+  const series = [
+    {
+      name: 'Cash Flow',
+      data: [
+        -200, -180, -160, -140, -130, -80, -60, -40, -20, -10, 0.5, 30, 40, 70,
+        90, 120, 140, 160, 180, 200, 220, 225
+      ]
+    }
+  ]
 
-	return (
+  return (
 		<>
 			<Svg />
-			<Modal className={`w-[600px]  md2:max-w-[400px] md2:w-[95vw]`}>
+			<Modal className={'w-[600px] md2:max-w-[400px] md2:w-[95vw]'}>
 				<ModalContent id="feedback">
 					<ModalHeader
 						classeHeader="bg-white title3"
@@ -95,11 +94,11 @@ const PrePropostaContent = () => {
 							<Button
 								className={`btn mt-8 ${loading ? 'is-loading' : ''}`}
 								onClick={() => {
-									setLoading(true);
-									setTimeout(() => {
-										openCheckModal();
-										setLoading(false);
-									}, 500);
+								  setLoading(true)
+								  setTimeout(() => {
+								    openCheckModal()
+								    setLoading(false)
+								  }, 500)
 								}}>
 								Enviar feedback
 							</Button>
@@ -108,7 +107,7 @@ const PrePropostaContent = () => {
 				</ModalContent>
 			</Modal>
 
-			<Modal className={`w-[390px]  md2:max-w-[400px] md2:w-[95vw]`}>
+			<Modal className={'w-[390px]  md2:max-w-[400px] md2:w-[95vw]'}>
 				<ModalContent id="modalSend">
 					<main className=" p-32 flex flex-col items-center gap-24">
 						<div className="rounded-full flex justify-center items-center relative transition-all">
@@ -174,9 +173,9 @@ const PrePropostaContent = () => {
 
 						<Button
 							onClick={() =>
-								handleNavigate('/dados-de-orcamento', {
-									state: {budgetRequestId: budgetRequest.id},
-								})
+							  handleNavigate('/dados-de-orcamento', {
+							    state: { budgetRequestId: budgetRequest.id }
+							  })
 							}
 							svgClass="!w-20 !h-20"
 							iconID="#icon_task_list"
@@ -279,15 +278,15 @@ const PrePropostaContent = () => {
 				</Card>
 			</div>
 		</>
-	);
-};
+  )
+}
 
 const PreProposta = () => {
-	return (
+  return (
 		<PrePropostaProvider>
 			<PrePropostaContent />
 		</PrePropostaProvider>
-	);
-};
+  )
+}
 
-export default PreProposta;
+export default PreProposta

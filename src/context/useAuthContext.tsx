@@ -49,6 +49,7 @@ export function AuthProvider({children}){
         const {'mr.cookie': token} = parseCookies();
         if(token){
             const { user_id, type } = jwtDecode(token);
+            console.log(user_id, type)
             setUserId(user_id);
             setUserType(type);
         }

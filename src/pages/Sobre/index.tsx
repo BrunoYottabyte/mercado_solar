@@ -47,10 +47,23 @@ const Sobre = () => {
 					</section>
 				</ModalContent>
 			</Modal>
-		<main className='w-screen h-full'>
+			<main className='w-screen h-full'>
 				<NavbarSite openModal={openModal} />
 				<Svg />
-		</main>
+
+				<section className="mt-[5rem] flex gap-14 items-center">
+
+					<div className="container-sun flex gap-8 items-center">
+						{
+							[0, 1, 2, 3, 4].map((item, i) => (
+								i != 4 ? <SvgUse id="#icon_sun_ms" classe="!w-24 !h-24" key={`${i}-svg`} /> : <SvgUse id="#icon_sun_vazio_ms" classe="!w-24 !h-24" key={`${i}-svg`}/>
+							))
+						}
+					</div>
+
+					<p className="paragraph1 text-neutral-70">Megliosole Energia Renovavel Ltda</p>
+				</section>
+			</main>
 		</>
   )
 }
