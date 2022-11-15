@@ -4,7 +4,7 @@ import { useVerProjeto } from "../../../../context"
 import { GeneralObservationProvider, useGeneralObservation } from "./context"
 
 const GeneralObservationContent = () => {
-  const {isRepresentative} = useVerProjeto()
+  const { isRepresentative } = useVerProjeto()
   const {
     form,
     observations,
@@ -14,43 +14,45 @@ const GeneralObservationContent = () => {
     handleSubmit,
     generalObservation,
   } = useGeneralObservation()
+  const message = 'Esse dado vai ser preenchido pelo seu representante ou integrador.';
   return (
     <section className="p-24">
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <article className="grid grid-cols-3 gap-16 md:!grid-cols-1">
           <div className="p-24 headline1 rounded-md border border-neutral-100-10">
             Orientação solar
-            <div className={`input-container`}>
+            {isRepresentative ? <div className={`input-container`}>
               <input
                 disabled={!isRepresentative}
                 {...form.register("solar_orientation")}
                 className="input h-40 !bg-white !pl-10 !rounded-md"
                 placeholder="Orientação solar"
               />
-            </div>
+            </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
           </div>
-          <div className="p-24 headline1 flex items-start rounded-md border border-neutral-100-10 gap-10">
+          <div className={`p-24 headline1 flex items-start rounded-md border border-neutral-100-10 gap-10`}>
             <div className="flex-1">
               Latitude
-              <div className={`input-container`}>
+              {isRepresentative ?  <div className={`input-container ${!isRepresentative ? 'disabled': ''}`}>
                 <input
-                  disabled={!isRepresentative}
                   {...form.register("latitude")}
                   className="input h-40 !bg-white !pl-10 !rounded-md"
-                  placeholder="Latitude"
+                  placeholder={`${!isRepresentative ? message : 'Latitude'}`}
                 />
-              </div>
+              </div> : <p className="paragraph3 text-neutral-70">{message}</p>
+              }
             </div>
             <div className="flex-1">
               Longitude
-              <div className={`input-container`}>
+              {isRepresentative ? <div className={`input-container`}>
                 <input
                   disabled={!isRepresentative}
                   {...form.register("longitude")}
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Longitude"
                 />
-              </div>
+              </div> : <p className="paragraph3 text-neutral-70">{message}</p>
+              }
             </div>
           </div>
           <div className="p-24 headline1 rounded-md border border-neutral-100-10">
@@ -64,7 +66,7 @@ const GeneralObservationContent = () => {
               {i !== (observations.length-1) && <hr style={{opacity: 0.1}}/>}
               </>
             ))}
-            <div className={`input-container flex gap-10`}>
+           {isRepresentative ?  <div className={`input-container flex gap-10`}>
               <input
                 className="input h-40 !bg-white !pl-10 !rounded-md"
                 placeholder={
@@ -80,7 +82,7 @@ const GeneralObservationContent = () => {
                 (<Button classe="btn" disabled={!isRepresentative} onClick={addObservation}>Adicionar</Button>):
                 (<></>)
               }
-            </div>
+            </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
           </div>
         </article>
 
@@ -89,38 +91,38 @@ const GeneralObservationContent = () => {
           <div className="flex md:!items-start md:flex-col gap-24 items-center mb-24">
             <label>
               Nome
-              <div className={`input-container`}>
+              { isRepresentative ? <div className={`input-container`}>
                 <input
                   disabled={!isRepresentative}
                   {...form.register("contact_name")}
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Digite seu nome"
                 />
-              </div>
+              </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
             </label>
 
             <label>
               Email
-              <div className={`input-container`}>
+              { isRepresentative ? <div className={`input-container`}>
                 <input
                   disabled={!isRepresentative}
                   {...form.register("contact_email")}
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Digite seu e-mail"
                 />
-              </div>
+              </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
             </label>
 
             <label>
               Celular
-              <div className={`input-container`}>
+              { isRepresentative ? <div className={`input-container`}>
                 <input
                   disabled={!isRepresentative}
                   {...form.register("contact_phone")}
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Digite seu Celular"
                 />
-              </div>
+              </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
             </label>
           </div>
 

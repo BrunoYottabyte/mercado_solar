@@ -23,7 +23,7 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
 
   const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>();
   const [address, setAddress] = useState<string>('');
-
+  const [currentStep, setCurrentStep] = useState<string>('');
   const state = location.state as IStateProps;
 
   const handleNavigate = (path: string, params?: object) => {
@@ -55,7 +55,7 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
             average_consumption: average_consumption * MultiplicadorKWP,
           };
           setBudgetRequest(budgetRequestResponseParser);
-
+          setCurrentStep(budgetRequestResponseParser.current_step)
           addressByPostalCode(
             budgetRequestResponseParser?.client_postal_code,
           ).then(res => {
@@ -102,6 +102,8 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
   return (
     <VerProjetoContext.Provider
       value={{
+        currentStep,
+        setCurrentStep,
         budgetRequest,
         handleNavigate,
         address,
@@ -114,7 +116,9 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
   );
 };
 
-export const useVerProjeto = (): IVerProjetoContextData => {
+export const 
+
+useVerProjeto = (): IVerProjetoContextData => {
   const context = useContext(VerProjetoContext);
 
   if (!context)

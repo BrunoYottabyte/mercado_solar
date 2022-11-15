@@ -23,6 +23,12 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
     'payment_made',
   ];
 
+  const { setCurrentStep: setStepSelected } = useVerProjeto()
+
+  useEffect(() => {
+    setStepSelected(currentStep);
+  }, [currentStep])
+
   const technicalVisitMade = () => {
     if (!budgetRequest) return;
     setIsLoading(true);
@@ -69,6 +75,8 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
     if (!budgetRequest) return;
     setCurrentStep(budgetRequest?.current_step);
   }, [budgetRequest]);
+
+  
 
   return (
     <ButtonsStepsContext.Provider

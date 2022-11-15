@@ -147,6 +147,8 @@ interface IVerProjetoContextData {
   isRepresentative: boolean;
   isInegrator: boolean;
   isOwner: boolean;
+  currentStep: string;
+  setCurrentStep: (step: string) => void;
 }
 
 export type {

@@ -59,6 +59,9 @@ const MenuList = ({ item, nivel, closeSidemenu }) => {
 					navigate(`${item.link}`)
 					setTimeout(closeSidemenu,200);
 				}
+				if(item.external){
+					document.open(`${item.external}`,'_self', 'noopener=true')
+				}
 			}} className="name-section" level={nivel}>
 				{item.title}
 			</a>

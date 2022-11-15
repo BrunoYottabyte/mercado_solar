@@ -1,5 +1,6 @@
 import React from 'react';
 import SvgUse from '../../../components/svg/svgUse';
+import { GLOBAL } from '../../../utils/GLOBAL';
 import {useProductDetail} from '../context';
 import {IProductProps} from '../types';
 
@@ -12,8 +13,8 @@ const ItemsCart = (product: IProductProps) => {
           src={product.images[0].image}
           className="w-[7.5rem] h-[7.5rem] border border-neutral-100/10 rounded-md"
         />
-        <div className="flex flex-col justify-between">
-          <div className="flex justify-between items-start">
+        <div className="flex flex-col justify-between w-full">
+          <div className="flex justify-between items-center">
             <p className="paragraph1">{product.name}</p>
             <SvgUse
               id="#icon_trash_ms"
@@ -21,9 +22,9 @@ const ItemsCart = (product: IProductProps) => {
               classe="w-32 h-32 hover:cursor-pointer  shrink-0"
             />
           </div>
-          <div className="flex justify-between items-center pr-24">
+          <div className="flex justify-between items-center">
             <span className="text-neutral-70 headline3">
-              R$ {product.price}
+              {GLOBAL.currencyBR(product.price)}
             </span>
             <p className="paragraph3 text-neutral-60">
               QTD: {product.quantity}

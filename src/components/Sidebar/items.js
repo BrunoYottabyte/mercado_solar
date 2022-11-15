@@ -131,3 +131,76 @@ export const menuItems = [
 	// 	]
 	// }, 
 ]
+
+export const ownerMenu = [
+	{
+		title: 'Orçamentos e Projetos',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/',
+	},
+]
+
+export const adminMenu = [
+	{
+		title: 'Todas as Oportunidades',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/',
+	},
+	{
+		title: 'Financeiro',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/paines-solares',
+	},
+	{
+		title: 'Admin',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		external: 'https://mercado-solar.herokuapp.com/admin',
+	},
+]
+
+export const inegratorMenu = [
+	{
+		title: 'Minhas Oportunidades',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/',
+	},
+	{
+		title: 'Produtos',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/paines-solares',
+	},
+	{
+		title: 'Financeiro',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/livro-caixa',
+	},
+]
+
+export const representativeMenu = [
+	{
+		title: 'Minhas oportunidades',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/',
+	},
+	{
+		title: 'Produtos',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/paines-solares',
+	},
+	{
+		title: 'Financeiro',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/livro-caixa',
+	},
+]
+

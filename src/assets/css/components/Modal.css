@@ -1,12 +1,12 @@
 @layer components {
 
 	.modal{
-		@apply transition-[opacity_transform_visibility]  bg-white fixed opacity-0 pointer-events-none will-change-transform !z-[999999999999999999999999999999] max-h-[80vh] overflow-auto rounded-md  translate-y-32 top-0 bottom-0 left-0 right-0 m-auto h-max;
+		@apply transition-[opacity_transform_visibility] overflow-x-hidden  bg-white fixed opacity-0 pointer-events-none will-change-transform !z-[999999999999999999999999999999] max-h-[80vh] overflow-auto rounded-md  translate-y-32 top-0 bottom-0 left-0 right-0 m-auto h-max;
 		&::-webkit-scrollbar{
 			@apply w-4 bg-neutral-30
 		}
 		&::-webkit-scrollbar-thumb{
-			/* @apply bg-primary-40 */
+			@apply bg-primary-pure;
 		}
 
 		&.right{

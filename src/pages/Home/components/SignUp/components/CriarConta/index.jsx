@@ -14,7 +14,7 @@ const CriarContaContent = () => {
 	const confirmPasswordRef = passwordForm.register('confirmPassword', {min: 8});
 	return (
 		<>
-			<Card classe="p-24 max-w-[592px] w-[37rem] border border-neutral-100 md2:max-w-[90vw]">
+			<Card classe="p-24 max-w-[592px] w-[37rem]  md2:max-w-[90vw]">
 				<h1 className="title2 mb-40 md2:text-2xl">
 					Sua pré proposta está sendo gerada. Crie uma senha para <br></br>{' '}
 					visualizar seus orçamentos

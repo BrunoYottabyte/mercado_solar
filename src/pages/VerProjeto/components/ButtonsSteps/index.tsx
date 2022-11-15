@@ -14,6 +14,7 @@ const ButtonsStepsContent = () => {
     technicalVisitMade,
     paymentMade,
   } = useButtonsSteps();
+  
 
   if (currentStep === 'creation' && userType === 'representative') {
     return (

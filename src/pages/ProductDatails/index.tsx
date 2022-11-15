@@ -36,7 +36,7 @@ const ProductDetailsContent = () => {
       <div className="container py-48">
         <section className="flex items-start gap-32 md:flex-col">
           <div className="flex items-start gap-16 overflow-hidden h-full md2:max-h-[25rem] sm:max-h-[40rem] sm:flex-col md:!w-full">
-            <div className="flex flex-col justify-between h-[35rem] overflow-y-auto gap-16 sm:flex-row sm:h-max md:max-w-[25rem]">
+            <div className="flex flex-col h-[35rem] overflow-y-auto gap-16 sm:flex-row sm:h-max md:max-w-[25rem]">
               {product?.images.map((image, i) => (
                 <img
                   key={`${image.id}-product-image`}
@@ -47,7 +47,7 @@ const ProductDetailsContent = () => {
             </div>
             <img
               src={product?.images[0].image}
-              className="flex-1 object-contain md2:w-[25rem] md2:h-[25rem] w-[35rem] h-[35rem] rounded-md"
+              className="flex-1 object-cover md2:w-[25rem] md2:h-[25rem] w-[35rem] h-[35rem] rounded-md"
             />
           </div>
 

@@ -6,6 +6,7 @@ import {Modal} from '../../../components/DesignSystem/Modal/Modal';
 import {ModalContent} from '../../../components/DesignSystem/Modal/ModalContent';
 import SvgUse from '../../../components/svg/svgUse';
 import {useGlobalContext} from '../../../context/GlobalContext';
+import { GLOBAL } from '../../../utils/GLOBAL';
 import {useProductDetail} from '../context';
 import ItemsCart from './itemsCart';
 
@@ -71,22 +72,21 @@ const ModalCart = () => {
             <ItemsCart {...product} key={i} />
           ))}
         </section>
-        <div className="flex flex-col ">
-          <div className="flex justify-between items-center px-10">
+        <div className="flex flex-col mt-16">
+          <div className="flex justify-between items-center px-24">
             <span className="bold">Subtotal</span>
             <span className="">
-              R${' '}
-              {cart.reduce(
+              {GLOBAL.currencyBR(cart.reduce(
                 (acc, product) =>
                   acc + Number(product.price) * product.quantity,
                 0,
-              )}
+              ).toFixed(2))}
             </span>
           </div>
-          <div className="flex flex-col ">
+          <div className="flex flex-col w-full py-10 px-24">
             <Button
               style={{'--cor-1': '#000'}}
-              classe="btn w-full justify-center mx-10"
+              classe="btn w-full h-48  justify-center"
               disabled={!budgetRequestSelected || !cart.length}
               onClick={() => handleCreateBudget()}>
               Disponibilizar orçamento

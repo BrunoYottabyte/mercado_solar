@@ -4,9 +4,13 @@ import MenuList from "./MenuList.jsx";
 import logoIMG from "../../assets/images/icon_logo_site.png";
 import SvgUse from "../svg/svgUse.jsx";
 import Svg from "../svg/svg";
+import { useAuthContext } from "../../context/useAuthContext";
 
 const SidebarIndex = ({ menu, title }) => {
 	const { debounce } = GLOBAL;
+	const { userType } = useAuthContext();
+
+	console.log(userType);
 
 	const clickInside = (e) => {
 		const firstMenu = document.querySelector('.sidebar-container[level="1"]');
