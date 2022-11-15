@@ -1,95 +1,89 @@
-import React from "react";
-import { GLOBAL } from "../../utils/GLOBAL";
-import MenuList from "./MenuList.jsx";
-import logoIMG from "../../assets/images/icon_logo_site.png";
-import SvgUse from "../svg/svgUse.jsx";
-import Svg from "../svg/svg";
-import { useAuthContext } from "../../context/useAuthContext";
+import React from 'react';
+import {GLOBAL} from '../../utils/GLOBAL';
+import MenuList from './MenuList.jsx';
+import logoIMG from '../../assets/images/icon_logo_site.png';
+import SvgUse from '../svg/svgUse.jsx';
+import Svg from '../svg/svg';
 
-const SidebarIndex = ({ menu, title }) => {
-	const { debounce } = GLOBAL;
-	const { userType } = useAuthContext();
+const SidebarIndex = ({menu, title}) => {
+	const {debounce} = GLOBAL;
 
-	console.log(userType);
-
-	const clickInside = (e) => {
+	const clickInside = e => {
 		const firstMenu = document.querySelector('.sidebar-container[level="1"]');
 		let lisLevel1 = [
-			...firstMenu.closest("aside").querySelectorAll("li[level='1']"),
+			...firstMenu.closest('aside').querySelectorAll("li[level='1']"),
 		];
 
 		if (!firstMenu.contains(e.target)) {
-			firstMenu.classList.remove("active");
-			firstMenu.classList.remove("open-menu-fixed");
+			firstMenu.classList.remove('active');
+			firstMenu.classList.remove('open-menu-fixed');
 
 			//fechando os submenus
-			lisLevel1.map((li) => li.classList.remove("active"));
+			lisLevel1.map(li => li.classList.remove('active'));
 			// Pondo logo mobile ao fechar modal
-			firstMenu.querySelector(".logo-close").classList.remove("active");
-			firstMenu.querySelector(".logo-open").classList.remove("active");
+			firstMenu.querySelector('.logo-close').classList.remove('active');
+			firstMenu.querySelector('.logo-open').classList.remove('active');
 		} else {
-			firstMenu.classList.add("open-menu-fixed");
+			firstMenu.classList.add('open-menu-fixed');
 		}
 	};
 
-
-
-	const handleMouseEnter = (e) => {
+	const handleMouseEnter = e => {
 		const firstMenu = document.querySelector('.sidebar-container[level="1"]');
 		if (!menu[0].nivel === 1) return;
 		// Pondo logo desktop ao abrir modal
-		firstMenu.querySelector(".logo-close").classList.add("active");
-		firstMenu.querySelector(".logo-open").classList.add("active");
+		firstMenu.querySelector('.logo-close').classList.add('active');
+		firstMenu.querySelector('.logo-open').classList.add('active');
 
-		firstMenu.classList.add("active");
-		document.addEventListener("click", clickInside);
+		firstMenu.classList.add('active');
+		document.addEventListener('click', clickInside);
 	};
 
 	const handleMouseLeave = () => {
 		const firstMenu = document.querySelector('.sidebar-container[level="1"]');
 		const existActive = firstMenu.querySelectorAll(
-			"ul li[level='1'].active"
+			"ul li[level='1'].active",
 		).length;
 
-		if (!existActive && !firstMenu.classList.contains("open-menu-fixed")) {
+		if (!existActive && !firstMenu.classList.contains('open-menu-fixed')) {
 			// Pondo logo mobile ao fechar modal
-			firstMenu.querySelector(".logo-close").classList.remove("active");
-			firstMenu.querySelector(".logo-open").classList.remove("active");
+			firstMenu.querySelector('.logo-close').classList.remove('active');
+			firstMenu.querySelector('.logo-open').classList.remove('active');
 
-			document.removeEventListener("click", clickInside);
-			firstMenu.classList.remove("active");
+			document.removeEventListener('click', clickInside);
+			firstMenu.classList.remove('active');
 		}
 	};
 
 	const handleEnterOverflow = () => {
-		const firstMenu = document.querySelector(".sidebar-container");
-		if (!firstMenu.classList.contains("open-menu-fixed")) {
+		const firstMenu = document.querySelector('.sidebar-container');
+		if (!firstMenu.classList.contains('open-menu-fixed')) {
 			handleMouseLeave();
 		}
 	};
 
-	const back = (e) => {
-		const nivel = e.target.closest("aside").attributes.level.value;
+	const back = e => {
+		const nivel = e.target.closest('aside').attributes.level.value;
 		const previousLiSelected = document.querySelector(
-			`li.active[level="${nivel - 1}"]`
+			`li.active[level="${nivel - 1}"]`,
 		);
-		previousLiSelected.classList.remove("active");
+		previousLiSelected.classList.remove('active');
 	};
 
 	const closeSidemenu = () => {
 		document
-			.querySelector(".sidebar-container")
-			.classList.remove("active", "open-menu-fixed");
+			.querySelector('.sidebar-container')
+			.classList.remove('active', 'open-menu-fixed');
 
 		document
-			.querySelector(".sidebar-container li.active")
-			.classList.remove("active");
+			.querySelector('.sidebar-container li.active')
+			.classList.remove('active');
 
-		//Caso ele tenha ido até o segundo nivel do sidemenu 
+		//Caso ele tenha ido até o segundo nivel do sidemenu
 		const lis = [...document.querySelectorAll("li[level='2']")];
 		lis.map(li => {
-			li?.classList?.remove("active");
-		})
+			li?.classList?.remove('active');
+		});
 
 		handleMouseLeave();
 	};
@@ -100,15 +94,13 @@ const SidebarIndex = ({ menu, title }) => {
 			<aside
 				className="sidebar-container"
 				level={menu[0].nivel}
-				onMouseEnter={() => debounce(150, handleMouseEnter, "menuOpen")()}
-				onMouseLeave={() => debounce(150, handleMouseLeave, "menuOpen")()}
-			>
+				onMouseEnter={() => debounce(150, handleMouseEnter, 'menuOpen')()}
+				onMouseLeave={() => debounce(150, handleMouseLeave, 'menuOpen')()}>
 				<header
 					className={`relative header-menu${
-						menu[0].nivel == 1 ? " border-b-[#cccccc3d] !border-b-[1px]" : ""
+						menu[0].nivel == 1 ? ' border-b-[#cccccc3d] !border-b-[1px]' : ''
 					}`}
-					level={menu[0].nivel}
-				>
+					level={menu[0].nivel}>
 					{menu[0]?.nivel == 1 ? (
 						<div className="self-center">
 							<img src={logoIMG} className="logo-close" />
@@ -122,24 +114,27 @@ const SidebarIndex = ({ menu, title }) => {
 							)}
 							<span
 								className="hidden sm:!block"
-								onClick={(e) => debounce(100, back, "menuOpen")(e)}
-							>
+								onClick={e => debounce(100, back, 'menuOpen')(e)}>
 								Voltar
 							</span>
 							<h1 className="text-lg font-medium title">{title}</h1>
 
 							<span
-								onClick={(e) => debounce(100, closeSidemenu, "menuOpen")(e)}
-								className="hidden sm:!block"
-							>
+								onClick={e => debounce(100, closeSidemenu, 'menuOpen')(e)}
+								className="hidden sm:!block">
 								Close
 							</span>
 						</div>
 					)}
 				</header>
 				<ul>
-					{menu.map((item) => (
-						<MenuList key={item?.title} closeSidemenu={closeSidemenu} item={item} nivel={menu[0].nivel} />
+					{menu.map(item => (
+						<MenuList
+							key={item?.title}
+							closeSidemenu={closeSidemenu}
+							item={item}
+							nivel={menu[0].nivel}
+						/>
 					))}
 				</ul>
 			</aside>

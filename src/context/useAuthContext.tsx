@@ -9,7 +9,7 @@ const AuthContext = createContext();
 export function AuthProvider({children}) {
   const [user, setUser] = useState('');
   const [userId, setUserId] = useState('');
-  const [userType, setUserType] = useState('user');
+  const [userType, setUserType] = useState('');
 
   const {'mr.cookie': token} = parseCookies();
   const [isAutheticated, setIsAuthenticated] = useState(() => {
@@ -92,9 +92,9 @@ export function AuthProvider({children}) {
     ] = `Bearer ${data.token.access}`;
     setIsAuthenticated(true);
 
-    const {user_id, type} = jwtDecode(data.token.access);
+    const {user_id} = jwtDecode<{user_id: string}>(data.token.access);
     setUserId(user_id);
-    type && setUserType(type);
+    setUserType('user');
     return data.id;
   };
 

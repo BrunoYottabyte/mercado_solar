@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {useGlobalContext} from '../../context/GlobalContext';
+import {useAuthContext} from '../../context/useAuthContext';
 import {api} from '../../services/api';
 
 import {
@@ -19,7 +20,7 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
   const {id} = useParams();
   const navigate = useNavigate();
   const [budgetRequestSelected, setBudgetRequestSelected] = useState<string>();
-
+  const {userType} = useAuthContext();
   const [product, setProduct] = useState<IProductProps>();
   const [cart, setCart] = useState<IProductProps[]>([]);
   const [budgetRequests, setBudgetRequests] = useState<IselectProps[]>([]);
@@ -147,6 +148,15 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
     getCart();
     getBudgetRequests();
   }, []);
+
+  useEffect(() => {
+    if (!userType) {
+      return;
+    }
+    if (userType === 'user') {
+      navigate('/');
+    }
+  }, [userType]);
 
   return (
     <ProductDetailContext.Provider

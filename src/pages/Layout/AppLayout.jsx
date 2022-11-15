@@ -1,38 +1,45 @@
-import React from 'react'
-import Sidebar from '../../components/Sidebar/SidebarIndex'
-import {menuItems, ownerMenu, adminMenu, representativeMenu, inegratorMenu} from '../../components/Sidebar/items'
-import Svg from '../../components/svg/svg'
-import { Outlet } from 'react-router-dom';
+import React from 'react';
+import Sidebar from '../../components/Sidebar/SidebarIndex';
+import {
+	menuItems,
+	ownerMenu,
+	adminMenu,
+	representativeMenu,
+	inegratorMenu,
+} from '../../components/Sidebar/items';
+import Svg from '../../components/svg/svg';
+import {Outlet} from 'react-router-dom';
 import Header from '../../components/Header';
-import { useAuthContext } from '../../context/useAuthContext';
+import {useAuthContext} from '../../context/useAuthContext';
 
 const AppLayout = () => {
-	const { userType } = useAuthContext();
+	const {userType} = useAuthContext();
 	let menuList;
 
 	let typesUsers = {
-		'user': ownerMenu,
-		'admin': adminMenu,
-		'integrator': inegratorMenu,
-		'representative': representativeMenu
-	}
+		'': ownerMenu,
+		user: ownerMenu,
+		admin: adminMenu,
+		integrator: inegratorMenu,
+		representative: representativeMenu,
+	};
 
-	Object.keys(typesUsers).forEach(key => key == userType ? menuList = typesUsers[key]: '');
+	Object.keys(typesUsers).forEach(key =>
+		key == userType ? (menuList = typesUsers[key]) : '',
+	);
 
-	console.log(menuList);
+	return (
+		<div>
+			<Svg />
+			<Sidebar menu={menuList} />
 
-  return (
-    <div>
-        <Svg/>
-        <Sidebar menu={menuList} />
-    
-        <div className='app-content md2:mx-auto'>
-          <Header />
-          <Outlet />
-        </div>
-				{/* <Footer /> */}
-    </div>
-  )
-}
+			<div className="app-content md2:mx-auto">
+				<Header />
+				<Outlet />
+			</div>
+			{/* <Footer /> */}
+		</div>
+	);
+};
 
-export default AppLayout
+export default AppLayout;
