@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
-import {useLocation, useNavigate, Location} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {useAuthContext} from '../../context/useAuthContext';
 import {api} from '../../services/api';
 import {addressByPostalCode} from '../../utils/addressByPostalCode';
@@ -18,25 +18,24 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
   children,
 }) => {
   const {userId} = useAuthContext();
-  const location = useLocation();
   const navigate = useNavigate();
 
   const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>();
   const [address, setAddress] = useState<string>('');
   const [currentStep, setCurrentStep] = useState<string>('');
-  const state = location.state as IStateProps;
+  const {budgetRequestId} = useParams();
 
   const handleNavigate = (path: string, params?: object) => {
     navigate(path, params ?? {});
   };
 
   useEffect(() => {
-    if (!state?.budgetRequestId) {
+    if (!budgetRequestId) {
       navigate('/');
     }
 
     api
-      .get(`/budget_request/${state?.budgetRequestId}/`)
+      .get(`/budget_request/${budgetRequestId}/`)
       .then(response => {
         if (response.status !== 200 || !response.data) {
           navigate('/');
@@ -55,7 +54,7 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
             average_consumption: average_consumption * MultiplicadorKWP,
           };
           setBudgetRequest(budgetRequestResponseParser);
-          setCurrentStep(budgetRequestResponseParser.current_step)
+          setCurrentStep(budgetRequestResponseParser.current_step);
           addressByPostalCode(
             budgetRequestResponseParser?.client_postal_code,
           ).then(res => {
@@ -116,9 +115,7 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
   );
 };
 
-export const 
-
-useVerProjeto = (): IVerProjetoContextData => {
+export const useVerProjeto = (): IVerProjetoContextData => {
   const context = useContext(VerProjetoContext);
 
   if (!context)

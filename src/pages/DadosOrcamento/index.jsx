@@ -229,7 +229,9 @@ const DadosOrcamentoContent = () => {
 							<div className="w-full md2:max-w-full md2:!w-full rounded-md p-8 border border-neutral-100-10">
 								<p className="paragraph2 text-neutral-70">Consumo médio</p>
 								<h3 className="title3">
-									R$ {Number(budgetRequest?.average_consumption).toFixed(2)}
+									R${' '}
+									{budgetRequest?.average_consumption &&
+										Number(budgetRequest?.average_consumption).toFixed(2)}
 								</h3>
 							</div>
 						</div>

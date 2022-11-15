@@ -20,6 +20,10 @@ const PainesSolaresContent = () => {
 		filterByBrand,
 		filterByCategory,
 		clearFilters,
+		params,
+		filterByPriceGTE,
+		filterByPriceLTE,
+		orderByPrice,
 	} = useProducts();
 
 	useEffect(() => {
@@ -56,7 +60,7 @@ const PainesSolaresContent = () => {
 					</ModalHeader>
 
 					<section className="p-24 flex flex-col gap-48 ">
-						<div className="flex flex-col gap-32 sticky top-0  self-start items-start overflow-hidden">
+						<div className="flex flex-col gap-32 sticky top-0 self-start items-start overflow-hidden">
 							<div>
 								<h3 className="headline1">Paines solares</h3>
 								<span className="paragraph2 text-neutral-60">
@@ -71,7 +75,10 @@ const PainesSolaresContent = () => {
 										<li
 											key={`brandiId-${brand.id}`}
 											onClick={() => filterByBrand(brand.id)}>
-											<span className="paragraph2 text-neutral-60 cursor-pointer">
+											<span
+												className={`paragraph2 text-neutral-60 cursor-pointer ${
+													params.brand === brand.id ? 'font-bold' : ''
+												}`}>
 												{brand.name}
 											</span>
 										</li>
@@ -87,7 +94,12 @@ const PainesSolaresContent = () => {
 											key={`categories-${category.id}`}
 											onClick={() => filterByCategory(category.id)}
 											className={`paragraph2 text-neutral-60 cursor-pointer`}>
-											{category.name}
+											<span
+												className={`paragraph2 text-neutral-60 cursor-pointer ${
+													params.category === category.id ? 'font-bold' : ''
+												}`}>
+												{category.name}
+											</span>
 										</li>
 									))}
 								</ul>
@@ -96,9 +108,16 @@ const PainesSolaresContent = () => {
 							<div>
 								<h3 className="headline2 mb-10">Preço</h3>
 								<ul>
-									<li className="paragraph2 text-neutral-60">Até R$100</li>
-									<li className="paragraph2 text-neutral-60">R$100 a R$ 300</li>
-									<li className="paragraph2 text-neutral-60">Mais de R$ 300</li>
+									<li
+										className="paragraph2 text-neutral-60 cursor-pointer"
+										onClick={() => filterByPriceLTE(100)}>
+										Até R$100
+									</li>
+									<li
+										className="paragraph2 text-neutral-60 cursor-pointer"
+										onClick={() => filterByPriceGTE(300)}>
+										Mais de R$ 300
+									</li>
 								</ul>
 							</div>
 							<div>
@@ -127,10 +146,11 @@ const PainesSolaresContent = () => {
 							Ordenar por:
 						</p>
 						<SelectComponent
-							classe=" !w-[200px] md2:!w-full "
+							classe=" !w-[200px] md2:!w-full"
+							onChange={e => orderByPrice(e.value)}
 							data={[
-								{value: 'mais_vendidos', label: 'Mais vendidos'},
-								{value: 'mais_popular', label: 'Mais popular'},
+								{value: 'price', label: 'Mais Baratos'},
+								{value: '-price', label: 'Mais Caros'},
 							]}
 						/>
 					</div>
@@ -152,7 +172,10 @@ const PainesSolaresContent = () => {
 									<li
 										key={`${brand.id}-brnadId`}
 										onClick={() => filterByBrand(brand.id)}>
-										<span className="paragraph2 text-neutral-60 cursor-pointer">
+										<span
+											className={`paragraph2 text-neutral-60 cursor-pointer ${
+												params.brand === brand.id ? 'font-bold' : ''
+											}`}>
 											{brand.name}
 										</span>
 									</li>
@@ -168,7 +191,12 @@ const PainesSolaresContent = () => {
 										key={`${category.id}-categories`}
 										onClick={() => filterByCategory(category.id)}
 										className="paragraph2 text-neutral-60 cursor-pointer">
-										{category.name}
+										<span
+											className={`paragraph2 text-neutral-60 cursor-pointer ${
+												params.category === category.id ? 'font-bold ' : ''
+											}`}>
+											{category.name}
+										</span>
 									</li>
 								))}
 							</ul>
@@ -177,9 +205,16 @@ const PainesSolaresContent = () => {
 						<div>
 							<h3 className="headline2 mb-10">Preço</h3>
 							<ul>
-								<li className="paragraph2 text-neutral-60">Até R$100</li>
-								<li className="paragraph2 text-neutral-60">R$100 a R$ 300</li>
-								<li className="paragraph2 text-neutral-60">Mais de R$ 300</li>
+								<li
+									className="paragraph2 text-neutral-60 cursor-pointer"
+									onClick={() => filterByPriceLTE(100)}>
+									Até R$100
+								</li>
+								<li
+									className="paragraph2 text-neutral-60 cursor-pointer"
+									onClick={() => filterByPriceGTE(300)}>
+									Mais de R$ 300
+								</li>
 							</ul>
 						</div>
 						<div>

@@ -162,9 +162,7 @@ export const PedidosOrcamentoProvider: React.FC<
         return (
           <div className="flex px-10 gap-[6px]">
             <Button
-              onClick={() =>
-                navigate(`/pre-proposta/`, {state: {budgetRequestId}})
-              }
+              onClick={() => navigate(`/pre-proposta/${budgetRequestId}/`)}
               iconID="#icon-checklist-analise-desempenho"
               svgClass="!w-20 !h-20 absolute left-0 right-0 mx-auto"
               classe="w-32 h-32 relative flex items-center"
@@ -172,9 +170,7 @@ export const PedidosOrcamentoProvider: React.FC<
 
             <Button
               data-popover-target="popover-default"
-              onClick={() =>
-                navigate(`/ver-projeto/`, {state: {budgetRequestId}})
-              }
+              onClick={() => navigate(`/ver-projeto/${budgetRequestId}/`)}
               style={{'--cor-1': '#000'}}
               iconID="#search_icon"
               disabled={budgetRequestStatus !== 'Aprovada'}

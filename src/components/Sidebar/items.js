@@ -58,8 +58,7 @@ export const menuItems = [
 	// 					nivel: 3,
 	// 					link: '/gestao-producao/entradas-estoque'
 	// 				},
-				
-					
+
 	// 			]
 	// 		},
 	// 		{
@@ -91,7 +90,7 @@ export const menuItems = [
 	// 					link: '/gestao-producao/produto-comercializaveis',
 	// 					nivel: 3,
 	// 				},
-		
+
 	// 				{
 	// 					title: 'Sub Produtos (Em breve)',
 	// 					nivel: 3
@@ -127,10 +126,10 @@ export const menuItems = [
 	// 				}
 	// 			]
 	// 		},
-			
+
 	// 	]
-	// }, 
-]
+	// },
+];
 
 export const ownerMenu = [
 	{
@@ -139,7 +138,7 @@ export const ownerMenu = [
 		svg: '#icon_settings_ms',
 		link: '/',
 	},
-]
+];
 
 export const adminMenu = [
 	{
@@ -149,7 +148,7 @@ export const adminMenu = [
 		link: '/',
 	},
 	{
-		title: 'Financeiro',
+		title: 'E-commerce',
 		nivel: 1,
 		svg: '#icon_settings_ms',
 		link: '/paines-solares',
@@ -160,7 +159,7 @@ export const adminMenu = [
 		svg: '#icon_settings_ms',
 		external: 'https://mercado-solar.herokuapp.com/admin',
 	},
-]
+];
 
 export const inegratorMenu = [
 	{
@@ -170,7 +169,7 @@ export const inegratorMenu = [
 		link: '/',
 	},
 	{
-		title: 'Produtos',
+		title: 'E-commerce',
 		nivel: 1,
 		svg: '#icon_settings_ms',
 		link: '/paines-solares',
@@ -181,7 +180,7 @@ export const inegratorMenu = [
 		svg: '#icon_settings_ms',
 		link: '/livro-caixa',
 	},
-]
+];
 
 export const representativeMenu = [
 	{
@@ -191,7 +190,7 @@ export const representativeMenu = [
 		link: '/',
 	},
 	{
-		title: 'Produtos',
+		title: 'E-commerce',
 		nivel: 1,
 		svg: '#icon_settings_ms',
 		link: '/paines-solares',
@@ -202,5 +201,4 @@ export const representativeMenu = [
 		svg: '#icon_settings_ms',
 		link: '/livro-caixa',
 	},
-]
-
+];

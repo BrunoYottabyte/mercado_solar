@@ -1,4 +1,6 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {useAuthContext} from '../../context/useAuthContext';
 import {api} from '../../services/api';
 
 import {
@@ -19,25 +21,53 @@ export const ProductsProvider: React.FC<IProductsProviderProps> = ({
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [productsCount, setProductsCount] = useState(0);
 
+  const {userType} = useAuthContext();
+  const navigate = useNavigate();
   const [params, setParams] = useState({
     limit: 100,
     offset: 0,
     category: '',
     brand: '',
+    price__lte: '',
+    price__gte: '',
+    ordering: '',
   });
 
+  const orderByPrice = (order: string) => {
+    setParams({...params, ordering: order});
+  };
+
+  const filterByPriceLTE = (price: string) => {
+    setParams({...params, price__lte: price, price__gte: ''});
+  };
+
+  const filterByPriceGTE = (price: string) => {
+    setParams({...params, price__lte: '', price__gte: price});
+  };
+
   const filterByCategory = (category: string) => {
-    setParams({
-      ...params,
-      category,
-    });
+    if (category === params.category) {
+      setParams({...params, category: ''});
+    } else {
+      setParams({
+        ...params,
+        category,
+      });
+    }
   };
 
   const filterByBrand = (brand: string) => {
-    setParams({
-      ...params,
-      brand,
-    });
+    if (params.brand === brand) {
+      setParams({
+        ...params,
+        brand: '',
+      });
+    } else {
+      setParams({
+        ...params,
+        brand,
+      });
+    }
   };
 
   const clearFilters = () => {
@@ -45,6 +75,9 @@ export const ProductsProvider: React.FC<IProductsProviderProps> = ({
       ...params,
       category: '',
       brand: '',
+      price__lte: '',
+      price__gte: '',
+      ordering: '',
     });
   };
 
@@ -68,14 +101,26 @@ export const ProductsProvider: React.FC<IProductsProviderProps> = ({
   };
 
   useEffect(() => {
-    // getProducts();
     getBrands();
     getCategories();
   }, []);
 
   useEffect(() => {
+    if (!params) {
+      return;
+    }
     getProducts();
   }, [params]);
+
+  useEffect(() => {
+    if (!userType) {
+      return;
+    }
+    if (userType === 'user') {
+      navigate('/');
+    }
+  }, [userType]);
+
   return (
     <ProductsContext.Provider
       value={{
@@ -86,6 +131,10 @@ export const ProductsProvider: React.FC<IProductsProviderProps> = ({
         filterByBrand,
         productsCount,
         clearFilters,
+        params,
+        filterByPriceLTE,
+        filterByPriceGTE,
+        orderByPrice,
       }}>
       {children}
     </ProductsContext.Provider>

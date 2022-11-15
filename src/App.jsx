@@ -82,9 +82,15 @@ function App() {
 				}>
 				<Route path="/" element={<PedidosOrcamentos />} />
 				<Route path="/financeiro" element={<Financeiro />} />
-				<Route path="/pre-proposta" element={<PreProposta />} />
-				<Route path="/dados-de-orcamento" element={<DadosOrcamento />} />
-				<Route path="/ver-projeto" element={<VerProjeto />} />
+				<Route
+					path="/pre-proposta/:budgetRequestId"
+					element={<PreProposta />}
+				/>
+				<Route
+					path="/dados-de-orcamento/:budgetRequestId"
+					element={<DadosOrcamento />}
+				/>
+				<Route path="/ver-projeto/:budgetRequestId/" element={<VerProjeto />} />
 				<Route path="/paines-solares" element={<PainesSolares />} />
 				<Route path="/paines-solares/:id" element={<ProductDatails />} />
 				{/* <Route path='/started' element={<Home />} />

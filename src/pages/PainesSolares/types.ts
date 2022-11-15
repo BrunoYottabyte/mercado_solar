@@ -50,6 +50,19 @@ interface IProductsContextData {
   filterByBrand: (brand: string) => void;
   productsCount: number;
   clearFilters: () => void;
+  params: IParams;
+  filterByPriceLTE: (price: string) => void;
+  filterByPriceGTE: (price: string) => void;
+  orderByPrice: (order: string) => void;
+}
+
+interface IParams {
+  limit: number;
+  offset: number;
+  category: string;
+  brand: string;
+  price__lte: string;
+  price__gte: string;
 }
 
 export type {
@@ -58,4 +71,5 @@ export type {
   IProductProps,
   IBrand,
   ICategory,
+  IParams,
 };

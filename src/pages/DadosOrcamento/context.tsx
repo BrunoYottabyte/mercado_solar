@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {useLocation, useNavigate, Location} from 'react-router-dom';
+import {useLocation, useNavigate, Location, useParams} from 'react-router-dom';
 import {api} from '../../services/api';
 import {addressByPostalCode} from '../../utils/addressByPostalCode';
 import {MultiplicadorKWP} from '../../utils/constants';
@@ -31,7 +31,6 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
   children,
 }) => {
   const {userId} = useAuthContext();
-  const location = useLocation();
   const navigate = useNavigate();
   const {setmodalOpen} = useGlobalContext();
   const {showToastify} = GLOBAL;
@@ -43,7 +42,7 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
   const downloadRef = useRef<HTMLElement>();
   const [reasonCancel, setReasonCancel] = useState<ICancelReason>();
 
-  const state = location.state as IStateProps;
+  const {budgetRequestId} = useParams();
 
   const handleNavigate = (path: string, params?: object) => {
     navigate(path, params ?? {});
@@ -57,13 +56,15 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
       const canvas = await html2canvas(element);
       const data = canvas.toDataURL('image/png');
 
-      const pdf = new jsPDF();
+      const pdf = new jsPDF({
+        orientation: 'l',
+      });
       const imgProperties = pdf.getImageProperties(data);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
 
       pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save('print.pdf');
+      pdf.save('dados-orcamento.pdf');
     }
     setDownloadIsLoading(false);
   };
@@ -118,12 +119,12 @@ export const DadosOrcamentoProvider: React.FC<IDadosOrcamentoProviderProps> = ({
   };
 
   useEffect(() => {
-    if (!state?.budgetRequestId) {
+    if (!budgetRequestId) {
       navigate('/');
     }
 
     api
-      .get(`/budget_request/${state?.budgetRequestId}/`)
+      .get(`/budget_request/${budgetRequestId}/`)
       .then(response => {
         if (response.status !== 200 || !response.data) {
           navigate('/');
