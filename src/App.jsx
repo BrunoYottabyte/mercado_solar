@@ -43,14 +43,14 @@ import GeradorEtiquetas from './pages/Configuracao/GeradorEtiquetas';
 import GestaoAssinatura from './pages/Configuracao/GestaoAssinaturas';
 import AdicionarFormaPagamento from './pages/Configuracao/GestaoAssinaturas/AdicionarFormaPagamento';
 import LivroCaixa from './pages/Financeiro/LivroCaixa';
-import ResultadoFornecedor from './pages/Financeiro/ResultadoFornecedor';
-import ContaContabil from './pages/Financeiro/ContaContabil';
+// import ResultadoFornecedor from './pages/Financeiro/ResultadoFornecedor';
+// import ContaContabil from './pages/Financeiro/ContaContabil';
 import Home from './pages/Home';
 import TodosPedidos from './pages/VendasB2B/TodosPedidos';
 import Sobre from './pages/Sobre';
 import PreProposta from './pages/Pre';
 import PedidosOrcamentos from './pages/PedidosOrcamentos';
-import Financeiro from './pages/Financeiro';
+// import Financeiro from './pages/Financeiro';
 import CriarConta from './pages/CriarConta';
 import DadosOrcamento from './pages/DadosOrcamento';
 import VerProjeto from './pages/VerProjeto';
@@ -81,12 +81,12 @@ function App() {
 					</PrivateRoute>
 				}>
 				<Route path="/" element={<PedidosOrcamentos />} />
-				<Route path="/financeiro" element={<Financeiro />} />
 				<Route path="/pre-proposta" element={<PreProposta />} />
 				<Route path="/dados-de-orcamento" element={<DadosOrcamento />} />
 				<Route path="/ver-projeto" element={<VerProjeto />} />
 				<Route path="/paines-solares" element={<PainesSolares />} />
 				<Route path="/paines-solares/:id" element={<ProductDatails />} />
+				<Route path="/livro-caixa" element={<LivroCaixa />} />
 				{/* <Route path='/started' element={<Home />} />
 				<Route path='/trabalheConosco' element={<Home />} />
 				<Route path='/historia' element={<Home />} /> */}

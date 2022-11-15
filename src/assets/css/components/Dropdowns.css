@@ -38,7 +38,6 @@
 			}
 		}
 
-		&:hover,
 		&.active {
 			.header-default {
 				@apply !border-b-transparent;

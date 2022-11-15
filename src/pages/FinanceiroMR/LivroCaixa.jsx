@@ -14,7 +14,6 @@ import { useState } from 'react'
 import { InputDate } from '../../components/DesignSystem/InputDate'
 import { useEffect } from 'react'
 import { GlobalFilter } from '../../components/DesignSystem/Table/GlobalFilter'
-import { GLOBAL } from '../../utils/GLOBAL'
 
 const LivroCaixa = () => {
 
@@ -540,14 +539,6 @@ const LivroCaixa = () => {
         last.classList.remove('z-[999]')
     }
 
-		const closeFilter = () => {
-			document.querySelector('.dropdowns-container').classList.remove('active')
-		}
-
-		const openFilter = () => {
-			document.querySelector('.dropdowns-container').classList.add('active')
-		}
-
     // HEADER PERSONALIZADO
 	const HeaderLivroCaixa = ({ filter, setFilter, pageSize, setPageSize }) => {
 		return (
@@ -594,9 +585,7 @@ const LivroCaixa = () => {
                     <div className="flex items-center gap-16">
                         <Dropdowns>
                             <DropdownItem classe="h-40">
-                                <Button iconID="#icon_config_filter" classe="secondary" 
-																	onClick={openFilter}
-																>
+                                <Button iconID="#icon_config_filter" classe="secondary">
                                     Filtrar
                                 </Button>
                             </DropdownItem>
@@ -686,16 +675,11 @@ const LivroCaixa = () => {
                                         </div>
                                     </div>
 
-                                    {/* <p className='text-neutral-70 font-semibold text-center'>* Os filtros são referentes à data de pagamento*</p> */}
+                                    <p className='text-neutral-70 font-semibold text-center'>* Os filtros são referentes à data de pagamento*</p>
 
                                     <div className='mt-24 flex gap-16'>
                                         <Button
-                                            classe="btn-cancel secondary !h-48 flex-1 justify-center"
-																						onClick={() => {
-																						
-																							closeFilter()
-																			
-																						}}
+                                            classe="secondary !h-48 flex-1 justify-center"
                                         >
                                             Cancelar
                                         </Button>

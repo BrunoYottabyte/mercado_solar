@@ -11,7 +11,8 @@ const Dropdowns = ({children, classe}) => {
 
   useEffect(() => {
     const handleToggle = (e) => {
-      if(dropdownContainer.current && !dropdownContainer.current.contains(e.target)){
+			console.log(e.target.classList.contains('btn-cancel'))
+      if(dropdownContainer.current && (!dropdownContainer.current.contains(e.target) || e.target.classList.contains('btn-cancel') ) ){
         dropdownContainer.current.classList.remove('active');
       }else{
         dropdownContainer.current.classList.add('active');
@@ -22,7 +23,7 @@ const Dropdowns = ({children, classe}) => {
   })
 
   return (
-    <div className={`dropdowns-container ${classe}`} ref={dropdownContainer} onClick={() => handleClick()}>
+    <div className={`dropdowns-container ${classe}`} ref={dropdownContainer}>
         {children}
     </div>
   )
