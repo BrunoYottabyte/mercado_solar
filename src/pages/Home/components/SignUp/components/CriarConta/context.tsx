@@ -28,13 +28,17 @@ export const CreateAccountProvider: React.FC<ICreateAccountProviderProps> = ({
       return;
     }
     setIsLoading(true);
-    const userId = await signUp(email, password);
-    if (userId) {
+    try{
+      const userId = await signUp(email, password);
       createBudgetRequest(userId);
-    } else {
-      showToastify('Erro ao criar usuário');
+
+    }catch(e){
+      console.log('cadastro',e);
+      showToastify(e.response?.data?.email[0]);
+    }finally{
+      setIsLoading(false);
     }
-    setIsLoading(false);
+
   };
 
   return (

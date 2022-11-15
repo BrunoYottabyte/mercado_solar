@@ -56,14 +56,15 @@ export function AuthProvider({children}) {
   const signIn = async (username, password) => {
     const {data} = await api.post('/token/', {email: username, password});
     setUser(data.access);
-
+    console.log(data)
     setCookie(undefined, 'mr.cookie', data.access, {
       maxAge: 60 * 60 * 24 * 30, // 30 days
       path: '/',
     });
 
     if (data.access) {
-      const {user_id, type} = jwtDecode(data.access);
+      const {user_id, type} = await jwtDecode(data.access);
+      console.log(user_id)
       setUserId(user_id);
       type && setUserType(type);
     }

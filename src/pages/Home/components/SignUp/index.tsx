@@ -5,6 +5,7 @@ import {ModalHeader} from '../../../../components/DesignSystem/Modal';
 import {ModalContent} from '../../../../components/DesignSystem/Modal/ModalContent';
 import SvgUse from '../../../../components/svg/svgUse';
 import CriarConta from './components/CriarConta';
+import Tabs from './components/Tabs';
 
 const Signup = () => {
   return (
@@ -12,11 +13,11 @@ const Signup = () => {
       <ModalContent id="signup">
         <ModalHeader close={false} classeHeader="bg-white title3" text={''}>
           <div className="title3 flex  w-full justify-between items-center">
-            Registre-se para continuar
+            Autentique-se para continuar
             <SvgUse id="#icon_help_ms" classe="!w-24 !h-24" />
           </div>
         </ModalHeader>
-        <CriarConta />
+        <Tabs />
       </ModalContent>
     </Modal>
   );

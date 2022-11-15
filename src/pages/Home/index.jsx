@@ -116,6 +116,7 @@ const HomeContent = () => {
 
 					<div
 						data-aos="zoom-in-up"
+						data-aos-delay="500"
 						className="relative z-[999999] flex flex-col items-center justify-center">
 						<div className="flex items-center justify-center">
 							<SvgUse id="#icon_raio_ms" classe="!w-56 !h-56 !-mx-16" />
@@ -130,7 +131,7 @@ const HomeContent = () => {
 							escolher de quem comprar a energia
 						</p>
 						<Button
-							data-aos-delay="300"
+							data-aos-delay="750"
 							data-aos="fade-down"
 							classe="h-56"
 							iconID="#icon_raio_circle_ms"

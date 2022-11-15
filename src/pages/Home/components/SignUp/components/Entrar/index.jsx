@@ -4,15 +4,12 @@ import Button from '../../../../../../components/DesignSystem/Button';
 import {Card} from '../../../../../../components/DesignSystem/Card';
 import {useHome} from '../../../../context';
 
-import {CreateAccountProvider, useCreateAccount} from './context';
+import {AutheticationProvider, useAuthenticationAccount} from './context';
 
-const CriarContaContent = () => {
+const AutenticarUsuarioContent = () => {
 	const {email} = useHome();
-	const {passwordForm, createUser, isLoading} = useCreateAccount();
-
-	const passwordRef = passwordForm.register('password', {min: 8});
-	const confirmPasswordRef = passwordForm.register('confirmPassword', {min: 8});
-
+	const {loginForm, authenticateUser , isLoading} = useAuthenticationAccount();
+	const passwordRef = loginForm.register('password', {min: 8});
 	return (
 		<>
 			<Card classe="p-24 max-w-[592px] w-[37rem]  md2:max-w-[90vw]">
@@ -25,7 +22,7 @@ const CriarContaContent = () => {
 					title={email}
 					classe="py-8 pl-10 pr-24 mb-24 text-base bg-neutral-100-05 text-neutral-70 "
 				/>
-				<form onSubmit={passwordForm.handleSubmit(createUser)}>
+				<form onSubmit={loginForm.handleSubmit(authenticateUser)}>
 					<div className="flex flex-col gap-16 mb-24">
 						<label className="flex flex-col gap-4">
 							<p className="paragraph2">Senha</p>
@@ -36,23 +33,6 @@ const CriarContaContent = () => {
 									type="password"
 									placeholder="Digite a senha"
 									className="input !h-48 !rounded-md "
-									// onChange={(e) => setEmail(e.target.value)}
-									required
-								/>
-							</div>
-						</label>
-						<label className="flex flex-col gap-4">
-							<p className="paragraph2">Confirmar senha</p>
-							<div className={`input-container `}>
-								<input
-									// {...passwordForm.register('confirmPassword', { min: 8 })}
-									{...confirmPasswordRef}
-									onChange={e => confirmPasswordRef.onChange(e)}
-									name="confirmPassword"
-									type="password"
-									placeholder="Confirme a senha"
-									className="input !h-48 !rounded-md"
-									// onChange={(e) => setEmail(e.target.value)}
 									required
 								/>
 							</div>
@@ -78,11 +58,11 @@ const CriarContaContent = () => {
 	);
 };
 
-const CriarConta = () => {
+const AutenticarConta = () => {
 	return (
-		<CreateAccountProvider email="pedro6@gmail.com">
-			<CriarContaContent />
-		</CreateAccountProvider>
+		<AutheticationProvider email="pedro6@gmail.com">
+			<AutenticarUsuarioContent />
+		</AutheticationProvider>
 	);
 };
-export default CriarConta;
+export default AutenticarConta;
