@@ -154,6 +154,12 @@ export const adminMenu = [
 		link: '/paines-solares',
 	},
 	{
+		title: 'Financeiro',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/livro-caixa',
+	},
+	{
 		title: 'Admin',
 		nivel: 1,
 		svg: '#icon_settings_ms',

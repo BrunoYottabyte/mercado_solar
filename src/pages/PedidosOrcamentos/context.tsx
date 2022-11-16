@@ -10,7 +10,9 @@ import {api} from '../../services/api';
 import Badge from '../../components/DesignSystem/Badge';
 import Button from '../../components/DesignSystem/Button';
 import {useNavigate} from 'react-router-dom';
-import {format, formatDistance, formatRelative, subDays} from 'date-fns';
+import {format} from 'date-fns';
+import html2canvas from 'html2canvas';
+import {jsPDF} from 'jspdf';
 
 import {
   IPedidosOrcamentoProviderProps,
@@ -32,6 +34,7 @@ export const PedidosOrcamentoProvider: React.FC<
   const [title, setTitle] = useState('Pedidos de orçamento');
   const {userType} = useAuthContext();
 
+  const downloadRef = useRef<HTMLElement>();
   const [pedidosOrcamento, setPedidosOrcamento] = React.useState<ITableData[]>(
     [],
   );
@@ -46,6 +49,24 @@ export const PedidosOrcamentoProvider: React.FC<
 
   const setCount = (count: number) => {
     setContRows(count);
+  };
+
+  const handleDownloadPdf = async () => {
+    const element = downloadRef.current;
+    if (element) {
+      const canvas = await html2canvas(element);
+      const data = canvas.toDataURL('image/png');
+
+      const pdf = new jsPDF({
+        orientation: 'l',
+      });
+      const imgProperties = pdf.getImageProperties(data);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+
+      pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save('pre-proposta.pdf');
+    }
   };
 
   const columns: ITableProps[] = [
@@ -237,6 +258,8 @@ export const PedidosOrcamentoProvider: React.FC<
         params,
         contRows,
         title,
+        downloadRef,
+        handleDownloadPdf,
       }}>
       {children}
     </PedidosOrcamentoContext.Provider>

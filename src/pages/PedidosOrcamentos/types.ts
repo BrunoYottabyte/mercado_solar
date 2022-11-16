@@ -34,6 +34,8 @@ interface IPedidosOrcamentoContextData {
   setSearch: (value: string) => void;
   contRows: number;
   title: string;
+  downloadRef: React.MutableRefObject<HTMLElement | undefined>;
+  handleDownloadPdf: () => void;
 }
 
 export type {

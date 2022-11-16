@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../../components/DesignSystem/Button';
 import {Card} from '../../components/DesignSystem/Card';
 import {SelectComponent} from '../../components/DesignSystem/SelectComponent';
 import Table from '../../components/DesignSystem/Table';
@@ -6,7 +7,15 @@ import {GlobalFilter} from '../../components/DesignSystem/Table/GlobalFilter';
 import {PedidosOrcamentoProvider, usePedidosOrcamento} from './context';
 
 const PedidosOrcamentosContent = () => {
-	const {columns, data, setSearch, params, title} = usePedidosOrcamento();
+	const {
+		columns,
+		data,
+		setSearch,
+		params,
+		title,
+		downloadRef,
+		handleDownloadPdf,
+	} = usePedidosOrcamento();
 	const HeaderRelatorio = ({filter, pageSize, setPageSize}) => {
 		return (
 			<div className="mb-24 flex md2:flex-col md2:gap-16 md2:w-full justify-between items-center md2:items-end">
@@ -47,7 +56,7 @@ const PedidosOrcamentosContent = () => {
 	};
 
 	return (
-		<div className="container">
+		<div className="container" ref={downloadRef}>
 			<Card classe="my-64 px-24 py-32">
 				<header className="flex justify-between md2:flex-col md2:gap-16">
 					<h1 className="!title3">{title}</h1>
@@ -64,6 +73,12 @@ const PedidosOrcamentosContent = () => {
 						arrData={data}
 						arrColumns={columns}
 					/>
+					<Button
+						classe="secondary mr-auto h-48"
+						iconID={'#icon_excel_ms'}
+						onClick={handleDownloadPdf}>
+						Baixar tabela
+					</Button>
 				</div>
 			</Card>
 		</div>
