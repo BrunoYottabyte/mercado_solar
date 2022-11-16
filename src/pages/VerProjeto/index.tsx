@@ -15,6 +15,9 @@ import TabsArea from './components/TabsArea';
 import ButtonsSteps from './components/ButtonsSteps';
 import {ModalContent} from '../../components/DesignSystem/Modal/ModalContent';
 
+
+
+
 const VerProjetoContent = () => {
   const {budgetRequest, address} = useVerProjeto();
   const [loading, setLoading] = useState(false);
@@ -238,6 +241,9 @@ const VerProjetoContent = () => {
         <TimeLine />
 
         <TabsArea />
+
+
+       
       </div>
     </>
   );

@@ -7,12 +7,50 @@ import Button from '../../../../../../../../components/DesignSystem/Button';
 import {ISlideProps} from './types';
 import {useGalery} from '../../context';
 import {useVerProjeto} from '../../../../../../context';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-const Slide = ({images, title, type}: ISlideProps) => {
+import LightGallery from 'lightgallery/react';
+
+// import styles
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-zoom.css';
+import 'lightgallery/css/lg-thumbnail.css';
+
+// If you want you can use SCSS instead of css
+import 'lightgallery/scss/lightgallery.scss';
+import 'lightgallery/scss/lg-zoom.scss';
+
+// import plugins if you need
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import lgZoom from 'lightgallery/plugins/zoom';
+import {useGlobalContext} from '../../../../../../context/GlobalContext';
+import axios from 'axios';
+
+const Slide = ({images, title, type, openModal}: ISlideProps) => {
   const {saveImage, downloadImage} = useGalery();
   const {isRepresentative} = useVerProjeto();
+  
+  const downloadIMG = (url) => {
+      axios.get(url, {
+        responseType: 'blob'
+      }).then(response => {
+        console.log(response)
+        const href = URL.createObjectURL(response.data);
+
+        const link = document.createElement('a');
+        link.href = href;
+        link.setAttribute('download', 'file.png'); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+    
+        // clean up "a" element & remove ObjectURL
+        document.body.removeChild(link);
+        URL.revokeObjectURL(href);
+
+      })
+    
+  }
   return (
     <section className="p-24 flex flex-col gap-48 select-none">
       <div>
@@ -41,42 +79,61 @@ const Slide = ({images, title, type}: ISlideProps) => {
             slidesPerView={'auto'}
             touchStartPreventDefault={false}
             mousewheel>
-            {images.length > 0 ? images.map((image, i) => (
-              <SwiperSlide className="!w-max" key={`${i}-${image.type}`}>
-                <div className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
-                  <img
-                    src={image.image}
-                    className=" w-full  h-[220px] object-cover"
-                  />
-                  <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
-                    <Button
-                      onClick={() => downloadImage(image.image)}
-                      classe="btn secondary h-48 flex-1 justify-center">
-                      Download
-                    </Button>
-                    <Button classe="btn flex-1 h-48 justify-center">
-                      <a href={image.image} download target={'_blank'}>
-                        Visualizar
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </SwiperSlide>
-            )) :     
-                Array(6).fill().map((item, i) => (
-                  <SwiperSlide  className="!w-max" key={i}>
-                     <div className='relative grid place-items-center'>
-                      <p className='absolute z-[99] text-center text-primary-darkness/60'>Esse dado vai ser preenchido pelo seu representante ou integrador.</p>
-
-                      <SkeletonTheme baseColor="#b1722f5b" highlightColor="#88521787" duration={3.5}>
-                          <Skeleton  direction='ltr' className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center" 
-                          ></Skeleton>
-                      </SkeletonTheme>
+            {images.length > 0
+              ? images.map((image, i) => (
+                  <SwiperSlide
+                    className="!w-max"
+                    key={`${i}-${image.type}`}
+                    >
+                    <div className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
+                      <img
+                        src={image.image}
+                        className=" w-full  h-[220px] object-cover"
+                      />
+                      <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
+                        <Button
+                          onClick={() => downloadImage(image.image)}
+                          classe="btn secondary h-48 flex-1 justify-center">
+                          Download
+                        </Button>
+                        <Button classe="btn flex-1 h-48 justify-center">
+                          <a onClick={() =>
+                      document
+                        .querySelector(
+                          `.gallery-container a[href='${image.image}']`,
+                        )
+                        .click()
+                    }>
+                            Visualizar
+                          </a>
+                        </Button>
+                      </div>
                     </div>
-
                   </SwiperSlide>
                 ))
-            }
+              : !isRepresentative
+              ? Array(6)
+                  .fill()
+                  .map((item, i) => (
+                    <SwiperSlide className="!w-max" key={i}>
+                      <div className="relative grid place-items-center">
+                        <p className="absolute z-[99] text-center text-primary-darkness/60">
+                          Esse dado vai ser preenchido pelo seu representante ou
+                          integrador.
+                        </p>
+
+                        <SkeletonTheme
+                          baseColor="#b1722f5b"
+                          highlightColor="#88521787"
+                          duration={3.5}>
+                          <Skeleton
+                            direction="ltr"
+                            className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center"></Skeleton>
+                        </SkeletonTheme>
+                      </div>
+                    </SwiperSlide>
+                  ))
+              : null}
           </Swiper>
 
           <Swiper
@@ -86,46 +143,89 @@ const Slide = ({images, title, type}: ISlideProps) => {
             slidesPerView={'auto'}
             touchStartPreventDefault={false}
             mousewheel>
-            {images.length > 0 ? images.map((image, i) => (
-              <SwiperSlide
-                key={`${i}-${image.image}-mobile`}
-                className="!h-max">
-                <div className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
-                  <img
-                    src={image.image}
-                    className=" w-full  h-[220px] object-cover"
-                  />
-                  <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
-                    <Button
-                      onClick={() => downloadImage(image.image)}
-                      classe="btn secondary h-48 flex-1 justify-center">
-                      Download
-                    </Button>
-                    <Button classe="btn flex-1 h-48 justify-center">
-                      <a href={image.image} download target={'_blank'}>
-                        Visualizar
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </SwiperSlide>
-            )) :    
-                Array(6).fill().map((item, i) => (
-                  <SwiperSlide  className="!w-max" key={i}>
-                    <div className='relative grid place-items-center'>
-                      <p className='absolute z-[99] text-center text-primary-darkness/60'>Esse dado vai ser preenchido pelo seu representante ou integrador.</p>
-
-                      <SkeletonTheme baseColor="#b1722f5b" highlightColor="#88521787" duration={3.5}>
-                          <Skeleton  direction='ltr' className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center" 
-                          ></Skeleton>
-                      </SkeletonTheme>
+            {images.length > 0
+              ? images.map((image, i) => (
+                  <SwiperSlide
+                    key={`${i}-${image.image}-mobile`}
+                    className="!h-max"
+                    >
+                    <div className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
+                      <img
+                        src={image.image}
+                        className=" w-full  h-[220px] object-cover"
+                      />
+                      <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
+                        <Button
+                          onClick={() => downloadImage(image.image)}
+                          classe="btn secondary h-48 flex-1 justify-center">
+                          Download
+                        </Button>
+                        <Button classe="btn flex-1 h-48 justify-center">
+                          <a onClick={() =>
+                      document
+                        .querySelector(
+                          `.gallery-container a[href='${image.image}']`,
+                        )
+                        .click()
+                    }>
+                            Visualizar
+                          </a>
+                        </Button>
+                      </div>
                     </div>
-
                   </SwiperSlide>
                 ))
-            }
+              : !isRepresentative
+              ? Array(6)
+                  .fill()
+                  .map((item, i) => (
+                    <SwiperSlide className="!w-max" key={i}>
+                      <div className="relative grid place-items-center">
+                        <p className="absolute z-[99] text-center text-primary-darkness/60">
+                          Esse dado vai ser preenchido pelo seu representante ou
+                          integrador.
+                        </p>
+
+                        <SkeletonTheme
+                          baseColor="#b1722f5b"
+                          highlightColor="#88521787"
+                          duration={3.5}>
+                          <Skeleton
+                            direction="ltr"
+                            className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center"></Skeleton>
+                        </SkeletonTheme>
+                      </div>
+                    </SwiperSlide>
+                  ))
+              : null}
           </Swiper>
         </div>
+      </div>
+      <div className="invisible absolute gallery-container">
+        {images.length > 0 && <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+           { images.map((image, i) => (
+              <a
+                href={image.image}
+                className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
+                <img
+                  src={image.image}
+                  className=" w-full  h-[220px] object-cover"
+                />
+                <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
+                  <Button
+                    onClick={() => downloadImage(image.image)}
+                    classe="btn secondary h-48 flex-1 justify-center">
+                    Download
+                  </Button>
+                  <Button classe="btn flex-1 h-48 justify-center">
+                    <a href={image.image} download target={'_blank'}>
+                      Visualizar
+                    </a>
+                  </Button>
+                </div>
+              </a>
+            )) }
+        </LightGallery> }
       </div>
     </section>
   );

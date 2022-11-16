@@ -66,8 +66,10 @@ const FooterSite = () => {
 					<Button
 						classe="h-48 mt-12 !w-[13.5rem] whitespace-nowrap"
 						iconID="#icon_raio_circle_ms"
-						svgClass="!w-32 !h-32">
-						<p className="paragraph1" onClick={() => navigate('/home#orcamento', {preventScrollReset: true})} >Peça seu orçamento</p>
+						svgClass="!w-32 !h-32"
+						onClick={() => navigate('/home#orcamento', {preventScrollReset: true})} 	
+					>
+						<p className="paragraph1">Peça seu orçamento</p>
 					</Button>
 				</div>
 			</div>

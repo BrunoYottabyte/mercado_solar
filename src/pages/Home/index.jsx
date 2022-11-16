@@ -50,6 +50,7 @@ const HomeContent = () => {
 	}
 	useEffect(() => {
 		hashHandler();
+		window.addEventListener('hashchange', hashHandler, false);
 	}, [])
 
 	return (

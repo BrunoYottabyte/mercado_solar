@@ -171,8 +171,8 @@ const PrePropostaContent = () => {
 
 						<Button
 							onClick={() =>
-							  handleNavigate('/dados-de-orcamento', {
-							    state: { budgetRequestId: budgetRequest.id }
+							  handleNavigate(`/dados-de-orcamento/${budgetRequest?.id}`, {
+							    state: { budgetRequestId: budgetRequest?.id }
 							  })
 							}
 							svgClass="!w-20 !h-20"

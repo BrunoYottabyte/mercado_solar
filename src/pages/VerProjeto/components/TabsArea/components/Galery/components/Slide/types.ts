@@ -9,6 +9,7 @@ type ImageTypes =
 interface ISlideProps {
   images: IImage[];
   title: string;
+  openModal: (id: string) => void;
   type:
     | 'installation_location'
     | 'roof'

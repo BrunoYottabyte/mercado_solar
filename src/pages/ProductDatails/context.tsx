@@ -125,7 +125,6 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
 
   const getBudgetRequests = () => {
     api.get('/budget_request_filtered/').then(response => {
-      console.log(response.data);
 
       const budgetRequestsResponse: IBudgetProps[] = response.data.results;
       const budgetRequestsResponseFormatted = budgetRequestsResponse.map(
@@ -170,6 +169,7 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
         cart,
         getCart,
         budgetRequestOptions: budgetRequests,
+        getBudgetRequests,
         setBudgetRequestSelected,
         budgetRequestSelected,
         handleCreateBudget,

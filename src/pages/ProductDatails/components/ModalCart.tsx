@@ -28,13 +28,22 @@ const ModalCart = ({idDinamic}) => {
   const openCart = () => {
     openModal('cart');
   };
+
   const {
     cart,
     budgetRequestOptions,
+    getBudgetRequests,
     setBudgetRequestSelected,
     budgetRequestSelected,
     handleCreateBudget,
+    getCart
   } = useProductDetail();
+
+  useEffect(() => {
+    getCart();
+    getBudgetRequests();
+  }, []) 
+
   return (
     <Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
       <ModalContent id={idDinamic}>

@@ -156,7 +156,7 @@ const DadosOrcamentoContent = () => {
 					<div className="flex gap-8 md2:flex-col">
 						<Button
 							onClick={() =>
-								handleNavigate('/pre-proposta/', {
+								handleNavigate(`/pre-proposta/${budgetRequest?.id}`, {
 									state: {budgetRequestId: budgetRequest.id},
 								})
 							}
@@ -167,6 +167,11 @@ const DadosOrcamentoContent = () => {
 						</Button>
 						<Button
 							svgClass="!w-20 !h-20"
+							onClick={() =>
+								handleNavigate('/dados-orcamento', {
+									state: {budgetRequestId: budgetRequest.id},
+								})
+							}
 							iconID="#icon_file_charts"
 							className="btn md2:w-full secondary whitespace-nowrap !border !border-primary-pure hover:bg-white">
 							Dados de Orçamento
