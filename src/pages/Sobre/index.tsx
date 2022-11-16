@@ -19,6 +19,7 @@ import img2 from '../../assets/images/sobre-nos/img2.png'
 import img3 from '../../assets/images/sobre-nos/img3.png'
 import img4 from '../../assets/images/sobre-nos/img4.png'
 import img5 from '../../assets/images/sobre-nos/img5.png'
+import logoMeglio from "../../assets/images/home/logomeglio.png"
 
 const Sobre = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
@@ -34,7 +35,7 @@ const Sobre = () => {
   };
 
   const changeViewImg = (img) => {
-    document.querySelector('.mainImg').src = `../src/assets/images/sobre-nos/${img}.png`
+    document.querySelector('.mainImg').src = img
   }
   return (
     <>
@@ -106,7 +107,7 @@ const Sobre = () => {
               <p className="title3 md2:headline1">Megliosole Energia Renovavel Ltda</p>
             </div>
             <img
-              src="../src/assets/images/home/logomeglio.png"
+              src={logoMeglio}
               alt="logo meglio"
             />
           </div>
@@ -129,7 +130,7 @@ const Sobre = () => {
         </section>
 
         <section className=" w-full flex justify-center h-[36.25rem] bg-primary-darkness bg-background-sobre-nos relative">
-          <span className="absolute bg-[url('../src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-30 top-0"></span>
+          <span className="absolute bg-[url('/src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-30 top-0"></span>
           <span className="absolute  block w-screen h-[300px] left-0 z-[99] bg-gradient-to-t from-primary-darkness to-primary-darkness/10  -top-0"></span>
 
           <div className="md2:px-24 md2:w-[100vw] w-[1100px] z-[999] flex justify-center items-center relative bg-gradient-sobre-nos h-full">
@@ -206,7 +207,7 @@ const Sobre = () => {
                     <div className="overflow-hidden md2:min-h-[16rem] min-h-[21.25rem] w-[17.5rem] border border-neutral-30 rounded-md">
                       <div className='h-[12rem] md2:h-[10rem] bg-white flex items-center'>
 												<img
-													src="../src/assets/images/sobre-nos/megliobig.png"
+													src="/src/assets/images/sobre-nos/megliobig.png"
 													alt=""
 													className=' object-cover'
 												/>

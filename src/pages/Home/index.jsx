@@ -24,6 +24,15 @@ import FooterSite from './components/Footer';
 import Signup from './components/SignUp';
 SwiperCore.use([Keyboard, Mousewheel]);
 
+// images
+import beneficiosIMG from "../../assets/images/home/beneficios.png";
+import defaultUpload from "../../assets/images/home/default_upload.png"
+import clienteFinalIMG from "../../assets/images/home/cliente_final.png"
+import representanteIMG from "../../assets/images/home/representante.png"
+import integradoraIMG from "../../assets/images/home/integradora.png"
+import womanIMG from "../../assets/images/home/woman.png"
+import womansIMG from "../../assets/images/home/womans.png"
+
 const HomeContent = () => {
 	const {handleSubmit, averageConsumptionForm, formsAreValids, isLoading} =
 		useHome();
@@ -225,7 +234,7 @@ const HomeContent = () => {
 							<img
 								data-aos="fade-up"
 								data-aos-anchor-placement="center-bottom"
-								src="/src/assets/images/home/beneficios.png"
+								src={beneficiosIMG}
 								alt="imagem beneficios de contratar"
 								className=""
 							/>
@@ -320,7 +329,7 @@ const HomeContent = () => {
 						</div>
 						<div className="hidden md2:block ">
 							<img
-								src="/src/assets/images/home/default_upload.png"
+								src={defaultUpload}
 								className="w-full"
 								alt="Imagem de como funciona o processo"
 							/>
@@ -337,7 +346,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[200px] left-[130px] w-[220px] animate-[writeOne_1s_forwards]"
 								/>
 								<img
-									src="/src/assets/images/home/cliente_final.png"
+									src={clienteFinalIMG}
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -366,7 +375,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[75px]  left-[160px] w-[200px]"
 								/>
 								<img
-									src="/src/assets/images/home/representante.png"
+									src={representanteIMG}
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -391,7 +400,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[30px] left-[170px] w-[200px]"
 								/>
 								<img
-									src="/src/assets/images/home/integradora.png"
+									src={integradoraIMG}
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -412,7 +421,7 @@ const HomeContent = () => {
 								data-aos-anchor="#como-funciona"
 								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[150px] -right-[70px]">
 								<img
-									src="/src/assets/images/home/representante.png"
+									src={representanteIMG}
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -435,7 +444,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[70px] left-[165px] w-[170px]"
 								/>
 								<img
-									src="/src/assets/images/home/integradora.png"
+									src={integradoraIMG}
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -455,7 +464,7 @@ const HomeContent = () => {
 								data-aos-delay="800"
 								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-35px] right-[240px]">
 								<img
-									src="/src/assets/images/home/representante.png"
+									src={representanteIMG}
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -714,7 +723,7 @@ const HomeContent = () => {
 								<img
 									data-aos="fade-up"
 									data-aos-duration="300"
-									src="/src/assets/images/home/woman.png"
+									src={womanIMG}
 									alt="imagem de uma mulher sorrindo"
 									className="md2:!w-[60%]"
 								/>
@@ -722,7 +731,7 @@ const HomeContent = () => {
 									data-aos="fade-down"
 									data-aos-duration="300"
 									className="relative z-[99] md2:w-[80%]"
-									src="/src/assets/images/home/womans.png"
+									src={womansIMG}
 									alt="imagem de uma mulher sorrindo"
 								/>
 							</div>

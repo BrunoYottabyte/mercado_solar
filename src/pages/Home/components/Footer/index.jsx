@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../../../components/DesignSystem/Button'
 import SvgUse from '../../../../components/svg/svgUse'
+import logoMercado from '/src/assets/images/home/logomercado.png';
 
 const FooterSite = () => {
 	const navigate = useNavigate();
@@ -11,7 +12,7 @@ const FooterSite = () => {
 		<div className="max-w-[1200px] w-[1100px] md2:w-[90vw] relative" >
 			<div className="flex md:flex-col w-full pb-64 justify-between items-center gap-64">
 				<div className="grid grid-cols-4 md:grid-cols-2 md2:grid-cols-3 md:flex md:flex-col md:w-full">
-					<img src="../src/assets/images/home/logomercado.png" className='md2:hidden' />
+					<img src={logoMercado} className='md2:hidden' />
 
 					<div data-aos="fade-up" data-aos-delay="150">
 						<p className="headline3 mb-24 md:mb-0">Mapa do site</p>
