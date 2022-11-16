@@ -35,6 +35,7 @@ export const HomeProvider: React.FC<IHomeProviderProps> = ({children}) => {
   const budgetRequestForm = useForm<IBudgetRequestForm>({
     mode: 'all',
     resolver: yupResolver(budgetRequestSchema),
+    defaultValues: {need_representative: true},
   });
 
   const averageConsumptionForm = useForm<IAverageConsumptionForm>({

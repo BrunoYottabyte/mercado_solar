@@ -10,7 +10,6 @@ import {useGlobalContext} from '../../context/GlobalContext';
 import {ProductsProvider, useProducts} from './context';
 import Item from './components/item';
 import ModalCart from '../ProductDatails/components/ModalCart';
-import {useProductDetail} from '../ProductDatails/context';
 
 const PainesSolaresContent = () => {
 	const {setmodalOpen, modalOpen} = useGlobalContext();

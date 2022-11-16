@@ -6,13 +6,12 @@ import {Modal} from '../../../components/DesignSystem/Modal/Modal';
 import {ModalContent} from '../../../components/DesignSystem/Modal/ModalContent';
 import SvgUse from '../../../components/svg/svgUse';
 import {useGlobalContext} from '../../../context/GlobalContext';
-import { GLOBAL } from '../../../utils/GLOBAL';
+import {GLOBAL} from '../../../utils/GLOBAL';
 import {useProductDetail} from '../context';
 import ItemsCart from './itemsCart';
 
 const ModalCart = ({idDinamic}) => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
-  console.log(idDinamic)
   useEffect(() => {
     if (modalOpen.open == false || modalOpen.open == null) {
       // eslint-disable-next-line no-undef
@@ -36,13 +35,13 @@ const ModalCart = ({idDinamic}) => {
     setBudgetRequestSelected,
     budgetRequestSelected,
     handleCreateBudget,
-    getCart
+    getCart,
   } = useProductDetail();
 
   useEffect(() => {
     getCart();
     getBudgetRequests();
-  }, []) 
+  }, []);
 
   return (
     <Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
@@ -85,11 +84,15 @@ const ModalCart = ({idDinamic}) => {
           <div className="flex justify-between items-center px-24">
             <span className="bold">Subtotal</span>
             <span className="">
-              {GLOBAL.currencyBR(cart.reduce(
-                (acc, product) =>
-                  acc + Number(product.price) * product.quantity,
-                0,
-              ).toFixed(2))}
+              {GLOBAL.currencyBR(
+                cart
+                  .reduce(
+                    (acc, product) =>
+                      acc + Number(product.price) * product.quantity,
+                    0,
+                  )
+                  .toFixed(2),
+              )}
             </span>
           </div>
           <div className="flex flex-col w-full py-10 px-24">

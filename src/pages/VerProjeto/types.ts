@@ -126,6 +126,12 @@ interface IBudgetRequest {
   integrator: string;
   created_at: string;
   updated_at: string;
+  budget_created_at: string;
+  first_contact_at: string;
+  technical_visit_at: string;
+  budget_available_at: string;
+  budget_accepted_at: string;
+  payment_made_at: string;
 }
 
 interface IStateProps {

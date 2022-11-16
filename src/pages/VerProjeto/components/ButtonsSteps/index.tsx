@@ -1,12 +1,11 @@
 import React from 'react';
 import Button from '../../../../components/DesignSystem/Button';
 import {useGlobalContext} from '../../../../context/GlobalContext';
-import {useAuthContext} from '../../../../context/useAuthContext';
+import {useVerProjeto} from '../../context';
 import {ButtonsStepsProvider, useButtonsSteps} from './context';
 
 const ButtonsStepsContent = () => {
   const {setmodalOpen} = useGlobalContext();
-  const {userType} = useAuthContext();
   const {
     isLoading,
     currentStep,
@@ -14,17 +13,18 @@ const ButtonsStepsContent = () => {
     technicalVisitMade,
     paymentMade,
   } = useButtonsSteps();
-  
+
+  const {isRepresentative} = useVerProjeto();
+
   const scrollToProgressBar = () => {
-      window.scroll({
-          top: document.querySelector('.ancora-timeline')?.offsetTop - 30,
-          left:0,
-          behavior: 'smooth'
-      })
+    window.scroll({
+      top: document.querySelector('.ancora-timeline')?.offsetTop - 30,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
 
-  }
-
-  if (currentStep === 'creation' && userType === 'representative') {
+  if (currentStep === 'creation' && isRepresentative) {
     return (
       <div className="w-full flex md:flex-col justify-end items-center">
         <Button
@@ -33,7 +33,7 @@ const ButtonsStepsContent = () => {
           iconID="#icon_check_ms"
           disabled={isLoading}
           onClick={() => {
-            firstContactMade()
+            firstContactMade();
             scrollToProgressBar();
           }}>
           Primeiro Contato Realizado
@@ -42,7 +42,7 @@ const ButtonsStepsContent = () => {
     );
   }
 
-  if (currentStep === 'first_contact' && userType === 'representative') {
+  if (currentStep === 'first_contact' && isRepresentative) {
     return (
       <div className="w-full flex md:flex-col justify-end items-center">
         <Button
@@ -50,14 +50,17 @@ const ButtonsStepsContent = () => {
           svgClass="!w-20 !h-20"
           iconID="#icon_check_ms"
           disabled={isLoading}
-          onClick={() => {technicalVisitMade(); scrollToProgressBar();}}>
+          onClick={() => {
+            technicalVisitMade();
+            scrollToProgressBar();
+          }}>
           Visita Técnica Realizada
         </Button>
       </div>
     );
   }
 
-  if (currentStep === 'budget_accepted' && userType === 'representative') {
+  if (currentStep === 'budget_accepted' && isRepresentative) {
     return (
       <div className="w-full flex md:flex-col justify-end items-center">
         <Button
@@ -65,14 +68,17 @@ const ButtonsStepsContent = () => {
           svgClass="!w-20 !h-20"
           iconID="#icon_check_ms"
           disabled={isLoading}
-          onClick={() => {paymentMade(); scrollToProgressBar();}}>
+          onClick={() => {
+            paymentMade();
+            scrollToProgressBar();
+          }}>
           Pagamento Realizado
         </Button>
       </div>
     );
   }
 
-  if (currentStep === 'payment_made' && userType === 'representative') {
+  if (currentStep === 'payment_made' && isRepresentative) {
     return (
       <div className="w-full flex md:flex-col justify-end items-center">
         <Button
