@@ -28,6 +28,9 @@ const Sobre = () => {
     setmodalOpen({open: true, id, position: 'right'});
   };
 
+  const changeViewImg = (img) => {
+    document.querySelector('.mainImg').src = `../src/assets/images/sobre-nos/${img}.png`
+  }
   return (
     <>
       <Modal
@@ -127,7 +130,7 @@ const Sobre = () => {
           <div className="md2:px-24 md2:w-[100vw] w-[1100px] z-[999] flex justify-center items-center relative bg-gradient-sobre-nos h-full">
             <div className="flex flex-col gap-32 w-[50rem] overflow-x-auto">
               <img
-                className="max-h-[25rem]"
+                className="max-h-[25rem] mainImg"
                 src="../src/assets/images/sobre-nos/img1.png"
                 alt=""
               />
@@ -138,11 +141,11 @@ const Sobre = () => {
                   className="w-full md2:gap-24"
                   spaceBetween={32}
                   slidesPerView={'auto'}>
-                  {[0, 1, 2, 3].map((item, i) => {
+                  {['img2', 'img3', 'img4', 'img5'].map((item, i) => {
                     return (
-                      <SwiperSlide className="!w-max">
+                      <SwiperSlide className="!w-max cursor-pointer" onClick={() => changeViewImg(item)}>
                         <img
-                          src={`../src/assets/images/sobre-nos/img2.png`}
+                          src={`../src/assets/images/sobre-nos/${item}.png`}
                           alt=""
                         />
                       </SwiperSlide>

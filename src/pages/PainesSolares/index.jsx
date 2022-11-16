@@ -45,7 +45,7 @@ const PainesSolaresContent = () => {
 			<Button
 				style={{'--cor-1': '#F69F00'}}
 				iconID="#icon-eye-ms"
-				classe="fixed right-16 bottom-16 btn secondary  justify-center"
+				classe="fixed right-16 bottom-16 btn secondary z-[99] justify-center"
 				onClick={() => openModal('cartEcommerce')}>
 				Ver orçamento
 			</Button>
@@ -143,7 +143,7 @@ const PainesSolaresContent = () => {
 				</ModalContent>
 				<ModalCart idDinamic="cartEcommerce" />
 			</Modal>
-			<div className="container py-64">
+			<div className="container py-64 overflow-y-hidden">
 				<div className="flex items-center justify-between md2:flex-col md2:gap-16 md2:items-start">
 					<h3 className="title3 md2:flex md2:justify-between md2:items-center md2:w-full ">
 						Criar Orçamento
@@ -158,7 +158,7 @@ const PainesSolaresContent = () => {
 							Ordenar por:
 						</p>
 						<SelectComponent
-							classe=" !w-[200px] md2:!w-full"
+							classe=" !w-[200px] md2:!w-full z-[99]"
 							onChange={e => orderByPrice(e.value)}
 							data={[
 								{value: 'price', label: 'Mais Baratos'},

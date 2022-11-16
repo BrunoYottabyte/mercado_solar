@@ -30,7 +30,7 @@
 		}
 
 		.dropdown-body {
-			@apply flex-col border border-neutral-30 opacity-0 pointer-events-none transition-[opacity_transform]  -translate-y-10 p-8 min-w-[120px] absolute right-0 top-[--height] z-40 bg-white  max-w-[300px] w-max;
+			@apply flex-col border border-neutral-30 opacity-0 pointer-events-none transition-[opacity_transform]  -translate-y-10 p-8 min-w-[120px] absolute right-0 top-[--height] !z-[99999] bg-white  max-w-[300px] w-max;
 
 			.item-dropdown {
 				@apply px-12 py-8 flex-1 text-sm hover:bg-neutral-10 transition-colors ;

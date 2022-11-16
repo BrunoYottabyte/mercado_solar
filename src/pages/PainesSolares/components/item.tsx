@@ -2,21 +2,21 @@ import React from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Card} from '../../../components/DesignSystem/Card';
 import SvgUse from '../../../components/svg/svgUse';
+import { GLOBAL } from '../../../utils/GLOBAL';
 import {IProductProps} from '../types';
 
 const Item = (product: IProductProps) => {
   const navigate = useNavigate();
-  console.log(product)
   return (
     <Card
       onClick={() => navigate(`/paines-solares/${product.id}`)}
-      classe="!w-full max-w-[32.125rem]  max-h-[27.125rem] relative cursor-pointer">
-      <span className="w-48 h-24 rounded-md bg-neutral-30 py-2 absolute left-8 top-8 px-12 headline3">
+      classe="!w-full max-w-[32.125rem]  max-h-[27.125rem] overflow-hidden relative cursor-pointer">
+      <span className="w-max  rounded-md bg-neutral-30 absolute left-12 top-12 z-[97] px-12 headline3">
         {product.category.name}
       </span>
       <div className="flex justify-center relative">
         <img
-          className="max-h-[21.125rem] object-cover md2:max-h-[15rem] md:max-h-[15rem]"
+          className=" h-[17.5rem] object-cover md2:h-[15rem] md:h-[15rem]"
           src={product.images[0].image}
         />
         <div className="overflow-hidden absolute bottom-8 right-8 h-24 w-[2.75rem] border border-neutral-100/10 rounded-full">
@@ -38,11 +38,11 @@ const Item = (product: IProductProps) => {
       <div className="p-16">
         <p className="paragraph1 line-clamp-two">{product.name}</p>
         <span className="title3 mt-8">
-          R$ {product.price.replace('.', ',')}
+         {GLOBAL.currencyBR(product.price)}
         </span>
       </div>
       <div className="p-16 flex gap-8 items-center border border-transparent border-t-neutral-30">
-        <img src={product.brand.photo} />
+        <img src={product.brand.photo} className="w-32 h-32 rounded-full" />
         <p className="paragraph2">{product.brand.name}</p>
       </div>
     </Card>

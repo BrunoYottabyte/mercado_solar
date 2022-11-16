@@ -46,14 +46,14 @@ const Header = ({classeContainer, children}) => {
 							Notificações
 					</DropdownContainer>
 				</Dropdowns>
-				<Dropdowns>
-					<DropdownItem classe="none">
+				<Dropdowns classe="relative !z-[99999999999999999]">
+					<DropdownItem classe="none relative z-[99999]">
 							<Avatar classe="md" imageURL="../src/assets/images/paines-solares/thumb.png" />
 					</DropdownItem>
 
-					<DropdownContainer classe="rounded-lg">
+					<DropdownContainer classe="rounded-lg relative !z-[999999999999999999999]">
 							<div className="item-dropdown">
-								<p>Texto de Exemplo</p>
+								<p>Texto de Exemsplo</p>
 							</div>
 							<div className="item-dropdown">
 								<p>Texto de Exemplo</p>
