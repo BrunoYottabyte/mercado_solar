@@ -10,6 +10,7 @@ import RadioButton from '../../components/DesignSystem/RadioButton';
 import Svg from '../../components/svg/svg';
 import SvgUse from '../../components/svg/svgUse';
 import {useGlobalContext} from '../../context/GlobalContext';
+import currency from '../../utils/currency';
 import MonthValues from './components/MonthValues';
 import {DadosOrcamentoProvider, useDadosOrcamento} from './context';
 
@@ -236,7 +237,7 @@ const DadosOrcamentoContent = () => {
 								<h3 className="title3">
 									R${' '}
 									{budgetRequest?.average_consumption &&
-										Number(budgetRequest?.average_consumption).toFixed(2)}
+										currency(budgetRequest?.average_consumption)}
 								</h3>
 							</div>
 						</div>

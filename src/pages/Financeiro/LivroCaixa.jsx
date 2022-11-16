@@ -13,6 +13,7 @@ import {useState} from 'react';
 import {InputDate} from '../../components/DesignSystem/InputDate';
 import {GlobalFilter} from '../../components/DesignSystem/Table/GlobalFilter';
 import {api} from '../../services/api';
+import {format} from 'date-fns';
 
 const LivroCaixa = () => {
 	const [inputs, setInputs] = useState([]);
@@ -267,10 +268,20 @@ const LivroCaixa = () => {
 		{
 			Header: 'Data de vencimento',
 			accessor: 'expected_date',
+			Cell: v => (
+				<p className="text-center ">
+					{format(new Date(v.value), 'dd/MM/yyyy')}
+				</p>
+			),
 		},
 		{
 			Header: 'Data de pagamento',
 			accessor: 'payment_date',
+			Cell: v => (
+				<p className="text-center ">
+					{format(new Date(v.value), 'dd/MM/yyyy')}
+				</p>
+			),
 		},
 		{
 			Header: 'Origem',
@@ -283,6 +294,15 @@ const LivroCaixa = () => {
 		{
 			Header: 'Valor',
 			accessor: 'value',
+			Cell: v => (
+				<p className="text-center ">
+					R${' '}
+					{v.value.toLocaleString('pt-br', {
+						style: 'currency',
+						currency: 'BRL',
+					})}
+				</p>
+			),
 		},
 	];
 
