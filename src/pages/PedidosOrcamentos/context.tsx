@@ -77,6 +77,7 @@ export const PedidosOrcamentoProvider: React.FC<
     {
       Header: 'Pri.Nome',
       accessor: 'client_name',
+      Cell: v => <p className="text-center ">{v.value.split(' ')[0] ?? ''}</p>,
     },
     {
       Header: 'UF',
