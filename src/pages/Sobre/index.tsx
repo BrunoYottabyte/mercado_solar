@@ -14,7 +14,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import FooterSite from '../Home/components/Footer';
 import { useNavigate } from 'react-router-dom';
-
+import principal from '../../assets/images/sobre-nos/img1.png'
 const Sobre = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
   const navigate = useNavigate();
@@ -131,7 +131,7 @@ const Sobre = () => {
             <div className="flex flex-col gap-32 w-[50rem] overflow-x-auto">
               <img
                 className="max-h-[25rem] mainImg"
-                src="../src/assets/images/sobre-nos/img1.png"
+                src={principal}
                 alt=""
               />
 
