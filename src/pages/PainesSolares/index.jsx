@@ -10,7 +10,7 @@ import {useGlobalContext} from '../../context/GlobalContext';
 import {ProductsProvider, useProducts} from './context';
 import Item from './components/item';
 import ModalCart from '../ProductDatails/components/ModalCart';
-import { useProductDetail } from '../ProductDatails/context';
+import {useProductDetail} from '../ProductDatails/context';
 
 const PainesSolaresContent = () => {
 	const {setmodalOpen, modalOpen} = useGlobalContext();
@@ -26,9 +26,8 @@ const PainesSolaresContent = () => {
 		filterByPriceGTE,
 		filterByPriceLTE,
 		orderByPrice,
+		getCart,
 	} = useProducts();
-
-	const { getCart } = useProductDetail();
 
 	useEffect(() => {
 		if (modalOpen.open == false || modalOpen.open == null) {
@@ -43,15 +42,13 @@ const PainesSolaresContent = () => {
 
 	return (
 		<>
-
 			<Button
-                style={{'--cor-1': '#F69F00'}}
-                iconID="#icon-eye-ms"
-                classe="fixed right-16 bottom-16 btn secondary  justify-center"
-                onClick={() => openModal('cartEcommerce')}
-								>
-                Ver orçamento
-      </Button>
+				style={{'--cor-1': '#F69F00'}}
+				iconID="#icon-eye-ms"
+				classe="fixed right-16 bottom-16 btn secondary  justify-center"
+				onClick={() => openModal('cartEcommerce')}>
+				Ver orçamento
+			</Button>
 			<Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
 				<ModalContent id="filter">
 					<ModalHeader

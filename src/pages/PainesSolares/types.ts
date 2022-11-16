@@ -54,6 +54,7 @@ interface IProductsContextData {
   filterByPriceLTE: (price: string) => void;
   filterByPriceGTE: (price: string) => void;
   orderByPrice: (order: string) => void;
+  getCart: () => void;
 }
 
 interface IParams {

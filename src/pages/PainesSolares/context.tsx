@@ -17,6 +17,7 @@ export const ProductsProvider: React.FC<IProductsProviderProps> = ({
   children,
 }) => {
   const [products, setProducts] = useState<IProductProps[]>([]);
+  const [cart, setCart] = useState<IProductProps[]>([]);
   const [brands, setBrands] = useState<IBrand[]>([]);
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [productsCount, setProductsCount] = useState(0);
@@ -100,9 +101,18 @@ export const ProductsProvider: React.FC<IProductsProviderProps> = ({
     });
   };
 
+  const getCart = () => {
+    const cart = localStorage.getItem('@SolarPaines:cart');
+    if (cart) {
+      const cartParsed = JSON.parse(cart);
+      setCart(cartParsed);
+    }
+  };
+
   useEffect(() => {
     getBrands();
     getCategories();
+    getCart();
   }, []);
 
   useEffect(() => {
@@ -135,6 +145,7 @@ export const ProductsProvider: React.FC<IProductsProviderProps> = ({
         filterByPriceLTE,
         filterByPriceGTE,
         orderByPrice,
+        getCart,
       }}>
       {children}
     </ProductsContext.Provider>
