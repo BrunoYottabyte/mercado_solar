@@ -122,7 +122,7 @@ const HomeContent = () => {
 				<Svg />
 
 				{/* HEADER */}
-				<section className="select-none mt-[5rem] grid place-items-center relative bg-[url('../src/assets/images/home/background.png')] bg-bottom w-full h-[calc(100vh-5rem)]">
+				<section className="select-none mt-[5rem] grid place-items-center relative bg-[url('/src/assets/images/home/background.png')] bg-bottom w-full h-[calc(100vh-5rem)]">
 					<span className="absolute bg-overlay-home block w-screen h-full left-0 top-0 z-[99999]"></span>
 					<span className="absolute bg-[url('../src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-50 top-0"></span>
 					<span className="absolute  block w-screen h-[300px] left-0 z-1 bg-gradient-to-t from-neutral-100/0 to-neutral-100  -top-0"></span>

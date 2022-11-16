@@ -15,6 +15,11 @@ import 'swiper/css/pagination';
 import FooterSite from '../Home/components/Footer';
 import { useNavigate } from 'react-router-dom';
 import principal from '../../assets/images/sobre-nos/img1.png'
+import img2 from '../../assets/images/sobre-nos/img2.png'
+import img3 from '../../assets/images/sobre-nos/img3.png'
+import img4 from '../../assets/images/sobre-nos/img4.png'
+import img5 from '../../assets/images/sobre-nos/img5.png'
+
 const Sobre = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
   const navigate = useNavigate();
@@ -141,11 +146,11 @@ const Sobre = () => {
                   className="w-full md2:gap-24"
                   spaceBetween={32}
                   slidesPerView={'auto'}>
-                  {['img2', 'img3', 'img4', 'img5'].map((item, i) => {
+                  {[img2, img3, img4, img5].map((item, i) => {
                     return (
                       <SwiperSlide className="!w-max cursor-pointer" onClick={() => changeViewImg(item)}>
                         <img
-                          src={`../src/assets/images/sobre-nos/${item}.png`}
+                          src={item}
                           alt=""
                         />
                       </SwiperSlide>
