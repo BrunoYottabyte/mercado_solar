@@ -29,10 +29,9 @@ const ProductDetailsContent = () => {
   };
 
   const {product, addMore, removeOne, handleAddToCart} = useProductDetail();
-
   return (
     <>
-      <ModalCart />
+      <ModalCart idDinamic="cart" />
       <div className="container py-48">
         <section className="flex items-start gap-32 md:flex-col">
           <div className="flex items-start gap-16 overflow-hidden h-full md2:max-h-[25rem] sm:max-h-[40rem] sm:flex-col md:!w-full">

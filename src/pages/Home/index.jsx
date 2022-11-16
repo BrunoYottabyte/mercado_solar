@@ -40,6 +40,18 @@ const HomeContent = () => {
 		setmodalOpen({open: true, id, position: 'right'});
 	};
 
+	function hashHandler() {
+		const id = window.location.hash.slice(1) // remove leading '#'
+		console.log('id',id);
+		const el = document.getElementById(id)
+		if (el) {
+			el.scrollIntoView()
+		}
+	}
+	useEffect(() => {
+		hashHandler();
+	}, [])
+
 	return (
 		<>
 			<Signup />

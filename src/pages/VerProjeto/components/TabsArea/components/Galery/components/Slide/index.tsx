@@ -7,6 +7,8 @@ import Button from '../../../../../../../../components/DesignSystem/Button';
 import {ISlideProps} from './types';
 import {useGalery} from '../../context';
 import {useVerProjeto} from '../../../../../../context';
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Slide = ({images, title, type}: ISlideProps) => {
   const {saveImage, downloadImage} = useGalery();
@@ -39,7 +41,7 @@ const Slide = ({images, title, type}: ISlideProps) => {
             slidesPerView={'auto'}
             touchStartPreventDefault={false}
             mousewheel>
-            {images.map((image, i) => (
+            {images.length > 0 ? images.map((image, i) => (
               <SwiperSlide className="!w-max" key={`${i}-${image.type}`}>
                 <div className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
                   <img
@@ -60,7 +62,21 @@ const Slide = ({images, title, type}: ISlideProps) => {
                   </div>
                 </div>
               </SwiperSlide>
-            ))}
+            )) :     
+                Array(6).fill().map((item, i) => (
+                  <SwiperSlide  className="!w-max" key={i}>
+                     <div className='relative grid place-items-center'>
+                      <p className='absolute z-[99] text-center text-primary-darkness/60'>Esse dado vai ser preenchido pelo seu representante ou integrador.</p>
+
+                      <SkeletonTheme baseColor="#b1722f5b" highlightColor="#88521787" duration={3.5}>
+                          <Skeleton  direction='ltr' className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center" 
+                          ></Skeleton>
+                      </SkeletonTheme>
+                    </div>
+
+                  </SwiperSlide>
+                ))
+            }
           </Swiper>
 
           <Swiper
@@ -70,7 +86,7 @@ const Slide = ({images, title, type}: ISlideProps) => {
             slidesPerView={'auto'}
             touchStartPreventDefault={false}
             mousewheel>
-            {images.map((image, i) => (
+            {images.length > 0 ? images.map((image, i) => (
               <SwiperSlide
                 key={`${i}-${image.image}-mobile`}
                 className="!h-max">
@@ -93,7 +109,21 @@ const Slide = ({images, title, type}: ISlideProps) => {
                   </div>
                 </div>
               </SwiperSlide>
-            ))}
+            )) :    
+                Array(6).fill().map((item, i) => (
+                  <SwiperSlide  className="!w-max" key={i}>
+                    <div className='relative grid place-items-center'>
+                      <p className='absolute z-[99] text-center text-primary-darkness/60'>Esse dado vai ser preenchido pelo seu representante ou integrador.</p>
+
+                      <SkeletonTheme baseColor="#b1722f5b" highlightColor="#88521787" duration={3.5}>
+                          <Skeleton  direction='ltr' className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center" 
+                          ></Skeleton>
+                      </SkeletonTheme>
+                    </div>
+
+                  </SwiperSlide>
+                ))
+            }
           </Swiper>
         </div>
       </div>

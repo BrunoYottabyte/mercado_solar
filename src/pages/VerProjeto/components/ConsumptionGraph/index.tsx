@@ -33,6 +33,7 @@ const ConsumptionGraph = (props: IMonthConsumption) => {
       </div>
 
       <Charts options={options as  ApexCharts.ApexOptions} series={series} type="bar" height={300} />
+      <p className="w-full h-1 ancora-timeline"></p>
     </Card>
   )
 }

@@ -13,10 +13,11 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import FooterSite from '../Home/components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const Sobre = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (modalOpen.open == false || modalOpen.open == null) {
       clearTimeout(window.timeouthome);
@@ -50,20 +51,31 @@ const Sobre = () => {
             </div>
           </ModalHeader>
 
-          <section className="flex flex-col gap-24 p-24">
-            <ul>
-              <li>Benefícios de contratar</li>
-              <li>Sobre nós </li>
-              <li>Entrar</li>
-            </ul>
-          </section>
+          <section className="p-24">
+						<ul className="flex flex-col gap-24 text-xl">
+							<li onClick={() => {
+                navigate('/home');
+                setmodalOpen({open: false, id: false, position: 'right'});
+              }}>
+									Home
+							</li>
+							<li
+								onClick={() => {
+									setmodalOpen({open: false, id: false, position: 'right'});
+									navigate('/login');
+								}}>
+								Entrar
+							</li>
+						
+						</ul>
+					</section>
         </ModalContent>
       </Modal>
       <main className="w-screen h-full">
         <NavbarSite sobre={true} openModal={openModal} />
         <Svg />
 
-        <section className="mt-[5rem] max-w-[1100px] py-28 mx-auto">
+        <section className="md2:px-24 mt-[5rem] max-w-[1100px] py-28 mx-auto">
           <div className="flex items-center justify-between pb-40 border border-transparent border-b-neutral-30 mb-40">
             <div className="flex flex-col w-full gap-8 ">
               <div className="container-sun flex gap-8 items-center">
@@ -83,14 +95,14 @@ const Sobre = () => {
                   ),
                 )}
               </div>
-              <p className="title3">Megliosole Energia Renovavel Ltda</p>
+              <p className="title3 md2:headline1">Megliosole Energia Renovavel Ltda</p>
             </div>
             <img
               src="../src/assets/images/home/logomeglio.png"
               alt="logo meglio"
             />
           </div>
-          <div className="flex justify-between gap-[13rem] items-start mt-16">
+          <div className="flex justify-between md2:flex-col md2:gap-24 gap-[13rem] items-start mt-16">
             <h2 className="title2 whitespace-nowrap">Sobre empresa</h2>
 
             <p className="paragraph1 text-neutral-70">
@@ -108,11 +120,11 @@ const Sobre = () => {
           </div>
         </section>
 
-        <section className="w-full flex justify-center h-[36.25rem] bg-primary-darkness bg-background-sobre-nos relative">
+        <section className=" w-full flex justify-center h-[36.25rem] bg-primary-darkness bg-background-sobre-nos relative">
           <span className="absolute bg-[url('../src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-30 top-0"></span>
           <span className="absolute  block w-screen h-[300px] left-0 z-[99] bg-gradient-to-t from-primary-darkness to-primary-darkness/10  -top-0"></span>
 
-          <div className="w-[1100px] z-[999] flex justify-center items-center relative bg-gradient-sobre-nos h-full">
+          <div className="md2:px-24 md2:w-[100vw] w-[1100px] z-[999] flex justify-center items-center relative bg-gradient-sobre-nos h-full">
             <div className="flex flex-col gap-32 w-[50rem] overflow-x-auto">
               <img
                 className="max-h-[25rem]"
@@ -123,7 +135,7 @@ const Sobre = () => {
               <div className="flex gap-32">
                 <Swiper
                   direction="horizontal"
-                  className="w-full"
+                  className="w-full md2:gap-24"
                   spaceBetween={32}
                   slidesPerView={'auto'}>
                   {[0, 1, 2, 3].map((item, i) => {
@@ -142,8 +154,8 @@ const Sobre = () => {
           </div>
         </section>
 
-        <section className="w-[1100px] mx-auto ">
-          <div className="flex py-24  border border-transparent border-b-neutral-60/30">
+        <section className="md2:w-[100vw] w-[1100px] mx-auto ">
+          <div className="flex py-24 md2:flex-col border border-transparent border-b-neutral-60/30">
             <div className="flex-1 p-24">
               <h3 className="title3 flex items-center gap-8">
                 <SvgUse id="#icon_suitcase_ms" classe="w-24 h-24" />
@@ -171,7 +183,7 @@ const Sobre = () => {
               <p className="paragraph1 mt-16 text-neutral-70">MT</p>
             </div>
           </div>
-          <div className="flex my-48 items-center flex-col gap-8">
+          <div className="flex md2:my-24 my-48 items-center flex-col gap-8">
             <SvgUse id="#icon_three_points" classe="w-24 h-24" />
             <h2 className="title2 mb-48">Outros integradores</h2>
 
@@ -183,8 +195,8 @@ const Sobre = () => {
               {[0, 1, 2, 3,4,5].map((item, i) => {
                 return (
                   <SwiperSlide className="!w-max">
-                    <div className="overflow-hidden min-h-[21.25rem] w-[17.5rem] border border-neutral-30 rounded-md">
-                      <div className='h-[12rem] bg-white flex items-center'>
+                    <div className="overflow-hidden md2:min-h-[16rem] min-h-[21.25rem] w-[17.5rem] border border-neutral-30 rounded-md">
+                      <div className='h-[12rem] md2:h-[10rem] bg-white flex items-center'>
 												<img
 													src="../src/assets/images/sobre-nos/megliobig.png"
 													alt=""

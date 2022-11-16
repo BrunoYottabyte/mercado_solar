@@ -1,9 +1,9 @@
 import React from 'react';
-import {Routes, Route, Navigate, useLocation} from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import DesignSystem from './components/DesignSystem';
 import AppLayout from './pages/Layout/AppLayout';
 import Login from './pages/Login';
-import {useAuthContext} from './context/useAuthContext';
+import { useAuthContext } from './context/useAuthContext';
 import VendasB2B from './pages/VendasB2B';
 import ListagemCardapio from './pages/VendasB2B/Cardapio';
 import CardapioDirecionado from './pages/VendasB2B/Cardapio/CardapioDirecionado';
@@ -62,14 +62,15 @@ function App() {
 	document.body.addEventListener('DOMContentLoaded', () =>
 		document.body.classList.add('DOMContentLoaded'),
 	);
-	const {setNavigateFn, isAutheticated} = useAuthContext();
+	const { setNavigateFn, isAutheticated } = useAuthContext();
 
-	const PrivateRoute = ({children}) => {
+	const PrivateRoute = ({ children }) => {
 		return isAutheticated ? children : <Navigate to="/login" />;
 	};
+
 	return (
 		<Routes>
-			<Route index path="/home" element={<Home />} />
+			<Route path="/home" element={<Home />} />
 			<Route path="/sobre-nos" element={<Sobre />} />
 			<Route path="/criar-conta" element={<CriarConta />} />
 
@@ -80,94 +81,21 @@ function App() {
 						<AppLayout />
 					</PrivateRoute>
 				}>
-				<Route path="/" element={<PedidosOrcamentos />} />
-				<Route path="/pre-proposta" element={<PreProposta />} />
-				<Route path="/dados-de-orcamento" element={<DadosOrcamento />} />
-				<Route path="/ver-projeto" element={<VerProjeto />} />
-				<Route path="/paines-solares" element={<PainesSolares />} />
-				<Route path="/paines-solares/:id" element={<ProductDatails />} />
-				<Route path="/livro-caixa" element={<LivroCaixa />} />
-				{/* <Route path='/started' element={<Home />} />
-				<Route path='/trabalheConosco' element={<Home />} />
-				<Route path='/historia' element={<Home />} /> */}
-				<Route path="/design-system" element={<DesignSystem />} />
-				{/* VENDAS B2B */}
-				{/* <Route path="/vendas-b2b" element={<VendasB2B />} />
-				<Route path='/vendas-b2b/list' element={<ListagemCardapio />} />
-				<Route path='/vendas-b2b/list/cardapio-direcionado' element={<CardapioDirecionado />} />
-				<Route path='/vendas-b2b/list/cardapio-direcionado/:cardapio' element={<CardapioDirecionado />} />
-				<Route path="/vendas-b2b/contas-a-pagar" element={<ContasAPagar/>}/>
-				<Route path="/vendas-b2b/contas-a-receber" element={<ContasAReceber/>}/>
-				<Route path='/vendas-b2b/relatorio' element={<RelatorioGeral/>} />
-				<Route path='/vendas-b2b/resultado-por-cliente' element={<ResultadoPorCliente/>} />
-				<Route path='/vendas-b2b/todos-pedidos' element={<TodosPedidos />} /> */}
-				{/* OPERACIONAL */}
-				{/* <Route path="/operacional/rupturas" element={ <TelaRupturas />} />
-				<Route path="/controle-de-rotatividade" element={<ControleRotatividade />}/>
-				<Route path="/analise-de-desempenho" element={<AnaliseDesempenho />}/>
-				<Route path="/atividades" element={<Atividades />}/>
-				<Route path="/lista-escala" element={<ListaEscala />}/>
-				<Route path="/escala" element={<Escala />}/>
-				<Route path="/escala/:id" element={<Escala />}/> */}
-
-				{/* GESTÃO DE PRODUÇÃO */}
-				{/* <Route path="gestao-producao/estoque" element={<Estoque />}/>
-				<Route path="gestao-producao/entradas-estoque" element={<EntradasEstoque />}/>
-				<Route path="gestao-producao/previsao-controle-estoque" element={<PrevisaoControleEstoque />}/>
-				<Route path="gestao-producao/materia-prima" element={<MateriaPrima />}/>
-				<Route path="gestao-producao/embalagem" element={<Embalagem />}/>
-				<Route path="gestao-producao/produto-comercializaveis" element={<ProdutosComercializaveis />}/>
-				<Route path="gestao-producao/calendario" element={<Calendario />}/> */}
-
-				{/* GESTÃO DE PESSOAS */}
-				{/* <Route path="gestao-pessoas/colaboradores" element={<Colaboradores />}/>
-				<Route path="gestao-pessoas/colaboradores/cadastro-funcionario" element={<CadastroFuncionario />}/>
-				<Route path="gestao-pessoas/colaboradores/cadastro-funcionario/:id" element={<CadastroFuncionario />}/> */}
-
-				{/* Administrativo */}
-				{/* <Route path="administrativo/grupo-de-despesas" element={<TodasDespesas/>}/>
-				<Route path="administrativo/despesas-por-grupo" element={<DespesasGrupo/>}/> */}
-
-				{/* Configuração */}
-				{/* <Route path="configuracao/meu-perfil" element={<Perfil/>}/>
-				<Route path="configuracao/receitas" element={<Receitas/>}/>
-				<Route path="configuracao/receitas/:id" element={<DetalhesReceita />}/> //
-				<Route path="configuracao/receitas/cadastrar" element={<CadastrarReceita />}/>
-				<Route path="configuracao/receitas/alterar" element={<AlterarReceita />}/>
-				<Route path="configuracao/gerador-etiquetas" element={<GeradorEtiquetas />}/>
-				<Route path="configuracao/gestao-assinatura" element={<GestaoAssinatura />}/>
-				<Route path="configuracao/gestao-assinatura/adicionar-forma-pagamento" element={<AdicionarFormaPagamento />}/> */}
-
-				{/* FINANCEIRO */}
-				{/* <Route path="financeiro/livro-caixa" element={<LivroCaixa />}/>
-				<Route path="financeiro/resultado-por-fornecedor" element={<ResultadoFornecedor />}/>
-				<Route path="financeiro/resultado-por-conta-contabil" element={<ContaContabil />}/> */}
-			</Route>
-
-			{/* <Route path="/vendas-b2b/cliente/cardapio_valido" element={
-						<PrivateRoute>
-							<CardapioValido />
-						</PrivateRoute>
-					}
-				/> */}
-			{/* <Route path="/vendas-b2b/cliente/cardapio_valido/product/:id" element={
-						<PrivateRoute>
-							<DetailsProduct />
-						</PrivateRoute>
-					}
-				/> */}
-			{/* <Route path="/vendas-b2b/cliente/cardapio_valido/pedidos" element={
-						<PrivateRoute>
-							<Pedidos />
-						</PrivateRoute>
-					}
-				/> */}
-
-			{/* <Route path="/vendas-b2b/cliente/cardapio_valido/pedidos/historico" element={
-					<PrivateRoute>
-						<Historico  />
-					</PrivateRoute>
-				} /> */}
+					<Route index element={<PedidosOrcamentos />} />
+					<Route
+						path="/pre-proposta/:budgetRequestId"
+						element={<PreProposta />}
+					/>
+					<Route
+						path="/dados-de-orcamento/:budgetRequestId"
+						element={<DadosOrcamento />}
+					/>
+					<Route path="/ver-projeto/:budgetRequestId/" element={<VerProjeto />} />
+					<Route path="/paines-solares" element={<PainesSolares />} />
+					<Route path="/paines-solares/:id" element={<ProductDatails />} />
+					<Route path="/livro-caixa" element={<LivroCaixa />} />
+					<Route path="/design-system" element={<DesignSystem />} />
+				</Route>
 
 			<Route
 				path="/login"

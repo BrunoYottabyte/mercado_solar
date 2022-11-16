@@ -6,6 +6,7 @@ import {IProductProps} from '../types';
 
 const Item = (product: IProductProps) => {
   const navigate = useNavigate();
+  console.log(product)
   return (
     <Card
       onClick={() => navigate(`/paines-solares/${product.id}`)}

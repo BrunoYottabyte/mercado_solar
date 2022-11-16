@@ -37,7 +37,7 @@
 				/* text-neutral-80 */
 			}
 		}
-
+		
 		&.active {
 			.header-default {
 				@apply !border-b-transparent;

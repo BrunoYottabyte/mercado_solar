@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Card} from '../../../../components/DesignSystem/Card';
 import SvgUse from '../../../../components/svg/svgUse';
 import { useVerProjeto } from '../../context';
@@ -7,6 +7,7 @@ import { useButtonsSteps } from '../ButtonsSteps/context';
 const TimeLine = () => {
   
   const { currentStep } = useVerProjeto();
+  const [notFirstRequest, setNotFirstRequest] = useState(false);
     const updateProgressBar = () => {
         let offsetLeft = document?.querySelector(
           `.point[nivel="${currentStep}"]`
@@ -15,12 +16,14 @@ const TimeLine = () => {
     }
 
     useEffect(() => {
-      updateProgressBar();
+      setTimeout(() => {
+        updateProgressBar()
+      }, 700);
       window.addEventListener('resize', () => {
         updateProgressBar();
       })
     }, [currentStep])
-
+  
   const steps = [
     {
       step: 'budget',
@@ -49,7 +52,7 @@ const TimeLine = () => {
     },
     {
       step: 'budget_accepted',
-      title: 'budget_accepted',
+      title: 'Orçamento aceito',
       content: ''
     },
     {
@@ -59,8 +62,12 @@ const TimeLine = () => {
     },
   ];
 
+  setTimeout(() => {
+
+  },500)
+
   return (
-    <Card classe="p-24 md2:mx-0">
+    <Card classe="timeline-card p-24 md2:mx-0">
       <div className="flex justify-between items-center md:flex-col md:!items-start">
         <div className="flex items-center gap-8 mb-32 md:mb-16">
           <SvgUse id="#icon_clock_ms" classe="w-24 h-24" />

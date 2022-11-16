@@ -1,8 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from '../../../../components/DesignSystem/Button'
 import SvgUse from '../../../../components/svg/svgUse'
 
 const FooterSite = () => {
+	const navigate = useNavigate();
 	return (
 		<section className="select-none py-64 flex justify-center relative w-full  bg-gradient-home-footer">
 		<span className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-pure/5 via-primary-pure/70 to-primary-pure-10"></span>
@@ -65,7 +67,7 @@ const FooterSite = () => {
 						classe="h-48 mt-12 !w-[13.5rem] whitespace-nowrap"
 						iconID="#icon_raio_circle_ms"
 						svgClass="!w-32 !h-32">
-						<p className="paragraph1">Peça seu orçamento</p>
+						<p className="paragraph1" onClick={() => navigate('/home#orcamento', {preventScrollReset: true})} >Peça seu orçamento</p>
 					</Button>
 				</div>
 			</div>

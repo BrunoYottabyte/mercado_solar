@@ -15,6 +15,14 @@ const ButtonsStepsContent = () => {
     paymentMade,
   } = useButtonsSteps();
   
+  const scrollToProgressBar = () => {
+      window.scroll({
+          top: document.querySelector('.ancora-timeline')?.offsetTop - 30,
+          left:0,
+          behavior: 'smooth'
+      })
+
+  }
 
   if (currentStep === 'creation' && userType === 'representative') {
     return (
@@ -24,7 +32,10 @@ const ButtonsStepsContent = () => {
           svgClass="!w-20 !h-20"
           iconID="#icon_check_ms"
           disabled={isLoading}
-          onClick={() => firstContactMade()}>
+          onClick={() => {
+            firstContactMade()
+            scrollToProgressBar();
+          }}>
           Primeiro Contato Realizado
         </Button>
       </div>
@@ -39,7 +50,7 @@ const ButtonsStepsContent = () => {
           svgClass="!w-20 !h-20"
           iconID="#icon_check_ms"
           disabled={isLoading}
-          onClick={() => technicalVisitMade()}>
+          onClick={() => {technicalVisitMade(); scrollToProgressBar();}}>
           Visita Técnica Realizada
         </Button>
       </div>
@@ -54,7 +65,7 @@ const ButtonsStepsContent = () => {
           svgClass="!w-20 !h-20"
           iconID="#icon_check_ms"
           disabled={isLoading}
-          onClick={() => paymentMade()}>
+          onClick={() => {paymentMade(); scrollToProgressBar();}}>
           Pagamento Realizado
         </Button>
       </div>

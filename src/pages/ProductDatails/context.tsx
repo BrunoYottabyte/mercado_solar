@@ -20,7 +20,7 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
   const {id} = useParams();
   const navigate = useNavigate();
   const [budgetRequestSelected, setBudgetRequestSelected] = useState<string>();
-  const {userType} = useAuthContext();
+  const {userType, isAutheticated} = useAuthContext();
   const [product, setProduct] = useState<IProductProps>();
   const [cart, setCart] = useState<IProductProps[]>([]);
   const [budgetRequests, setBudgetRequests] = useState<IselectProps[]>([]);
@@ -45,7 +45,7 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
         .then(() => {
           setmodalOpen({open: false, id: 'cart', position: 'right'});
           localStorage.removeItem('@SolarPaines:cart');
-          navigate('/paines-solares');
+          setCart([]);
         })
         .catch(() => {});
     }
@@ -141,8 +141,9 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
   };
 
   useEffect(() => {
-    if (!id) {
-      navigate('/');
+    console.log();
+    if (!id && location.pathname.includes('/paines-solares/')) {
+      isAutheticated ? navigate('/') : navigate('/home')
     }
     getProduct();
     getCart();
@@ -167,6 +168,7 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
         addMore,
         removeOne,
         cart,
+        getCart,
         budgetRequestOptions: budgetRequests,
         setBudgetRequestSelected,
         budgetRequestSelected,

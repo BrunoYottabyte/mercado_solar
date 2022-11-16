@@ -57,6 +57,7 @@ interface IProductDetailContextData {
   setBudgetRequestSelected: (value: string | undefined) => void;
   budgetRequestSelected: string | undefined;
   handleCreateBudget;
+  getCart: () => void;
 }
 
 export type {

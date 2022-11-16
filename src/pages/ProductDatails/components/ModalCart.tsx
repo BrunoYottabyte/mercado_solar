@@ -10,9 +10,9 @@ import { GLOBAL } from '../../../utils/GLOBAL';
 import {useProductDetail} from '../context';
 import ItemsCart from './itemsCart';
 
-const ModalCart = () => {
+const ModalCart = ({idDinamic}) => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
-
+  console.log(idDinamic)
   useEffect(() => {
     if (modalOpen.open == false || modalOpen.open == null) {
       // eslint-disable-next-line no-undef
@@ -37,7 +37,7 @@ const ModalCart = () => {
   } = useProductDetail();
   return (
     <Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
-      <ModalContent id="cart">
+      <ModalContent id={idDinamic}>
         <ModalHeader
           text={''}
           close={false}

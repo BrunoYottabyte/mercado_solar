@@ -8,6 +8,7 @@ import {GlobalStorage} from './context/GlobalContext';
 import 'regenerator-runtime';
 import {AuthProvider} from './context/useAuthContext';
 import {CartProvider} from './context/CartContext';
+import { ProductDetailProvider } from './pages/ProductDatails/context';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	// <React.StrictMode>
@@ -15,7 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		<AuthProvider>
 			<CartProvider>
 				<GlobalStorage>
-					<App />
+					<ProductDetailProvider>
+							<App />
+					</ProductDetailProvider>
 				</GlobalStorage>
 			</CartProvider>
 		</AuthProvider>
