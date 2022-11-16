@@ -124,7 +124,7 @@ const HomeContent = () => {
 				{/* HEADER */}
 				<section className="select-none mt-[5rem] grid place-items-center relative bg-[url('/src/assets/images/home/background.png')] bg-bottom w-full h-[calc(100vh-5rem)]">
 					<span className="absolute bg-overlay-home block w-screen h-full left-0 top-0 z-[99999]"></span>
-					<span className="absolute bg-[url('../src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-50 top-0"></span>
+					<span className="absolute bg-[url('/src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-0 opacity-50 top-0"></span>
 					<span className="absolute  block w-screen h-[300px] left-0 z-1 bg-gradient-to-t from-neutral-100/0 to-neutral-100  -top-0"></span>
 
 					<div
@@ -225,7 +225,7 @@ const HomeContent = () => {
 							<img
 								data-aos="fade-up"
 								data-aos-anchor-placement="center-bottom"
-								src="../src/assets/images/home/beneficios.png"
+								src="/src/assets/images/home/beneficios.png"
 								alt="imagem beneficios de contratar"
 								className=""
 							/>
@@ -320,7 +320,7 @@ const HomeContent = () => {
 						</div>
 						<div className="hidden md2:block ">
 							<img
-								src="../src/assets/images/home/default_upload.png"
+								src="/src/assets/images/home/default_upload.png"
 								className="w-full"
 								alt="Imagem de como funciona o processo"
 							/>
@@ -337,7 +337,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[200px] left-[130px] w-[220px] animate-[writeOne_1s_forwards]"
 								/>
 								<img
-									src="../src/assets/images/home/cliente_final.png"
+									src="/src/assets/images/home/cliente_final.png"
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -366,7 +366,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[75px]  left-[160px] w-[200px]"
 								/>
 								<img
-									src="../src/assets/images/home/representante.png"
+									src="/src/assets/images/home/representante.png"
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -391,7 +391,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[30px] left-[170px] w-[200px]"
 								/>
 								<img
-									src="../src/assets/images/home/integradora.png"
+									src="/src/assets/images/home/integradora.png"
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -412,7 +412,7 @@ const HomeContent = () => {
 								data-aos-anchor="#como-funciona"
 								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[150px] -right-[70px]">
 								<img
-									src="../src/assets/images/home/representante.png"
+									src="/src/assets/images/home/representante.png"
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -435,7 +435,7 @@ const HomeContent = () => {
 									classe="absolute bottom-[70px] left-[165px] w-[170px]"
 								/>
 								<img
-									src="../src/assets/images/home/integradora.png"
+									src="/src/assets/images/home/integradora.png"
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -455,7 +455,7 @@ const HomeContent = () => {
 								data-aos-delay="800"
 								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-35px] right-[240px]">
 								<img
-									src="../src/assets/images/home/representante.png"
+									src="/src/assets/images/home/representante.png"
 									className="w-64 h-64 rounded-full"
 								/>
 
@@ -535,7 +535,7 @@ const HomeContent = () => {
 						</div>
 
 						<section className="relative md2:mx-auto">
-							<span className="absolute bg-[url('../src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-64  opacity-50 bottom-[-50px]">
+							<span className="absolute bg-[url('/src/assets/images/home/raios.svg')] bg-cover w-screen h-[300px] z-10 left-64  opacity-50 bottom-[-50px]">
 								<span className="absolute block bg-white w-full h-[300px] z-10 left-[150px]  opacity-40 bottom-[80px]"></span>
 								<span className="absolute block bg-white w-full h-[300px] z-10 right-64 opacity-20 !bottom-[0px]"></span>
 								<span className="absolute block bg-gradient-to-bl from-white to-white/80 w-[200px] h-[300px] left-0 z-10 opacity-40 !bottom-[0px]"></span>
@@ -714,7 +714,7 @@ const HomeContent = () => {
 								<img
 									data-aos="fade-up"
 									data-aos-duration="300"
-									src="../src/assets/images/home/woman.png"
+									src="/src/assets/images/home/woman.png"
 									alt="imagem de uma mulher sorrindo"
 									className="md2:!w-[60%]"
 								/>
@@ -722,7 +722,7 @@ const HomeContent = () => {
 									data-aos="fade-down"
 									data-aos-duration="300"
 									className="relative z-[99] md2:w-[80%]"
-									src="../src/assets/images/home/womans.png"
+									src="/src/assets/images/home/womans.png"
 									alt="imagem de uma mulher sorrindo"
 								/>
 							</div>
