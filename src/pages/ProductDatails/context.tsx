@@ -153,9 +153,9 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
     if (!userType) {
       return;
     }
-    if (userType === 'user') {
-      navigate('/');
-    }
+    // if (userType === 'user') {
+    //   navigate('/');
+    // }
   }, [userType]);
 
   return (
