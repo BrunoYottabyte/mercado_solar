@@ -138,6 +138,18 @@ export const ownerMenu = [
 		svg: '#icon_settings_ms',
 		link: '/',
 	},
+	{
+		title: 'Suporte técnico',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		external: 'https://web.whatsapp.com/send/?phone=5584987227633',
+	},
+	{
+		title: 'Vídeos e FAQ',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		external: 'https://www.youtube.com/channel/UCVCZu2Zn-1A8d0NDBmWzbZQ',
+	},
 ];
 
 export const adminMenu = [
@@ -158,6 +170,12 @@ export const adminMenu = [
 		nivel: 1,
 		svg: '#icon_settings_ms',
 		link: '/livro-caixa',
+	},
+	{
+		title: 'Vídeos e FAQ',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		external: 'https://www.youtube.com/channel/UCVCZu2Zn-1A8d0NDBmWzbZQ',
 	},
 	{
 		title: 'Admin',
@@ -185,6 +203,12 @@ export const inegratorMenu = [
 		nivel: 1,
 		svg: '#icon_settings_ms',
 		link: '/livro-caixa',
+	},
+	{
+		title: 'Vídeos e FAQ',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		external: 'https://www.youtube.com/channel/UCVCZu2Zn-1A8d0NDBmWzbZQ',
 	},
 ];
 

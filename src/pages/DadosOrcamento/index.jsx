@@ -261,6 +261,16 @@ const DadosOrcamentoContent = () => {
 								onClick={openThanksModal}>
 								Enviar para e-mail
 							</Button>
+							<Button
+								svgClass="!w-20 !h-20"
+								iconID="#icon_send_email"
+								className="btn h-48 quaternario md2:w-full">
+								<a
+									href={`whatsapp://send?text=Veja esta proposta
+										\n https://mercado-solar.vercel.app/pre-proposta/${budgetRequest.id}/`}>
+									Enviar via whatsapp
+								</a>
+							</Button>
 						</div>
 
 						{budgetRequest && (

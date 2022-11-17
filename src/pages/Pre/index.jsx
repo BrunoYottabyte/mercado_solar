@@ -34,7 +34,7 @@ const PrePropostaContent = () => {
 	const {setmodalOpen, modalOpen} = useGlobalContext();
 
 	useEffect(() => {
-		setmodalOpen({open: false, id: null})
+		setmodalOpen({open: false, id: null});
 	}, []);
 
 	useEffect(() => {
@@ -53,7 +53,7 @@ const PrePropostaContent = () => {
 		},
 	];
 
-  return (
+	return (
 		<>
 			<Svg />
 			<Modal className={'w-[600px] md2:max-w-[400px] md2:w-[95vw]'}>
@@ -176,9 +176,9 @@ const PrePropostaContent = () => {
 
 						<Button
 							onClick={() =>
-							  handleNavigate(`/dados-de-orcamento/${budgetRequest?.id}`, {
-							    state: { budgetRequestId: budgetRequest?.id }
-							  })
+								handleNavigate(`/dados-de-orcamento/${budgetRequest?.id}`, {
+									state: {budgetRequestId: budgetRequest?.id},
+								})
 							}
 							svgClass="!w-20 !h-20"
 							iconID="#icon_task_list"
@@ -258,6 +258,16 @@ const PrePropostaContent = () => {
 								className="btn h-48 quaternario md2:w-full">
 								Enviar para e-mail
 							</Button>
+							<Button
+								svgClass="!w-20 !h-20"
+								iconID="#icon_send_email"
+								className="btn h-48 quaternario md2:w-full">
+								<a
+									href={`whatsapp://send?text=Veja esta proposta
+										\n https://mercado-solar.vercel.app/dados-de-orcamento/${budgetRequest.id}/`}>
+									Enviar via whatsapp
+								</a>
+							</Button>
 						</div>
 						{budgetRequest && (
 							<>
@@ -314,15 +324,15 @@ const PrePropostaContent = () => {
 				</Card>
 			</div>
 		</>
-  )
-}
+	);
+};
 
 const PreProposta = () => {
-  return (
+	return (
 		<PrePropostaProvider>
 			<PrePropostaContent />
 		</PrePropostaProvider>
-  )
-}
+	);
+};
 
-export default PreProposta
+export default PreProposta;

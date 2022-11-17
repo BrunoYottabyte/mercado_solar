@@ -1,4 +1,5 @@
 import React from 'react';
+import {Navigate, useNavigate} from 'react-router-dom';
 import Button from '../../components/DesignSystem/Button';
 import {Card} from '../../components/DesignSystem/Card';
 import {SelectComponent} from '../../components/DesignSystem/SelectComponent';
@@ -16,6 +17,7 @@ const PedidosOrcamentosContent = () => {
 		downloadRef,
 		handleDownloadPdf,
 	} = usePedidosOrcamento();
+	const navigate = useNavigate();
 	const HeaderRelatorio = ({filter, pageSize, setPageSize}) => {
 		return (
 			<div className="mb-24 flex md2:flex-col md2:gap-16 md2:w-full justify-between items-center md2:items-end">
@@ -58,8 +60,14 @@ const PedidosOrcamentosContent = () => {
 	return (
 		<div className="container" ref={downloadRef}>
 			<Card classe="my-64 px-24 py-32">
-				<header className="flex justify-between md2:flex-col md2:gap-16">
+				<header className="flex justify-between md2:flex-col md2:gap-16 align-center">
 					<h1 className="!title3">{title}</h1>
+					<Button
+						classe="secondary h-48"
+						onClick={() => navigate('/home#orcamento')}
+						iconID={'#icon_arrow_left'}>
+						Nova proposta
+					</Button>
 				</header>
 
 				<div className="mt-32">
