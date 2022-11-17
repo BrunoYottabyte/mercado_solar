@@ -111,7 +111,11 @@ const TimeLine = () => {
                 <span
                   nivel={item.step}
                   onMouseEnter={e => console.log(e)}
-                  className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"></span>
+                  className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+                  style={{
+                    background:
+                      currentStep === item.step ? '#008024' : undefined,
+                  }}></span>
                 <p className="headline3">{item.title}</p>
                 <p className="text-alert-success paragraph3">{item.content}</p>
               </div>

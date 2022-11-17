@@ -2,6 +2,7 @@ import React, {createContext, useContext, useEffect, useState} from 'react';
 import {api} from '../../../../services/api';
 import {useVerProjeto} from '../../context';
 import {CurrentStepType} from '../../types';
+import {format} from 'date-fns';
 
 import {IButtonsStepsProviderProps, IButtonsStepsContextData} from './types';
 
@@ -11,23 +12,14 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
   children,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const {budgetRequest} = useVerProjeto();
+  const {budgetRequest, setBudgetRequest} = useVerProjeto();
   const [currentStep, setCurrentStep] = useState<CurrentStepType>('budget');
-  const steps = [
-    'budget',
-    'creation',
-    'first_contact',
-    'technical_visit',
-    'budget_available',
-    'budget_accepted',
-    'payment_made',
-  ];
 
-  const { setCurrentStep: setStepSelected } = useVerProjeto()
+  const {setCurrentStep: setStepSelected} = useVerProjeto();
 
   useEffect(() => {
     setStepSelected(currentStep);
-  }, [currentStep])
+  }, [currentStep]);
 
   const technicalVisitMade = () => {
     if (!budgetRequest) return;
@@ -38,6 +30,10 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
       })
       .then(() => {
         setCurrentStep('technical_visit');
+        setBudgetRequest({
+          ...budgetRequest,
+          technical_visit_at: format(new Date(), 'yyyy-MM-dd'),
+        });
       })
       .catch(() => {});
     setIsLoading(false);
@@ -52,6 +48,10 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
       })
       .then(() => {
         setCurrentStep('first_contact');
+        setBudgetRequest({
+          ...budgetRequest,
+          first_contact_at: format(new Date(), 'yyyy-MM-dd'),
+        });
       })
       .catch(() => {});
     setIsLoading(false);
@@ -66,6 +66,10 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
       })
       .then(() => {
         setCurrentStep('payment_made');
+        setBudgetRequest({
+          ...budgetRequest,
+          payment_made_at: format(new Date(), 'dd/MM/yyyy'),
+        });
       })
       .catch(() => {});
     setIsLoading(false);
@@ -75,8 +79,6 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
     if (!budgetRequest) return;
     setCurrentStep(budgetRequest?.current_step);
   }, [budgetRequest]);
-
-  
 
   return (
     <ButtonsStepsContext.Provider

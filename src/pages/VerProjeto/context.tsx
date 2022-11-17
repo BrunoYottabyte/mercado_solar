@@ -109,6 +109,7 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
         isRepresentative: userId === budgetRequest?.representative,
         isInegrator: userId === budgetRequest?.integrator,
         isOwner: userId === budgetRequest?.user,
+        setBudgetRequest,
       }}>
       {children}
     </VerProjetoContext.Provider>

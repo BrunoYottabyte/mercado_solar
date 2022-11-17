@@ -155,6 +155,7 @@ interface IVerProjetoContextData {
   isOwner: boolean;
   currentStep: string;
   setCurrentStep: (step: string) => void;
+  setBudgetRequest: (budgetRequest: IBudgetRequest) => void;
 }
 
 export type {
