@@ -267,7 +267,7 @@ const DadosOrcamentoContent = () => {
 								className="btn h-48 quaternario md2:w-full">
 								<a
 									href={`whatsapp://send?text=Veja esta proposta
-										\n https://mercado-solar.vercel.app/pre-proposta/${budgetRequest.id}/`}>
+										\n https://mercado-solar.vercel.app/pre-proposta/${budgetRequest?.id}/`}>
 									Enviar via whatsapp
 								</a>
 							</Button>
