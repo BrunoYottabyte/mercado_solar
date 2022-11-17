@@ -14,6 +14,8 @@ const GeneralObservationContent = () => {
     handleSubmit,
     generalObservation,
   } = useGeneralObservation()
+  const { budget_request, contact_email, contact_name, contact_phone, latitude,longitude,solar_orientation, id } = form.getValues();
+  console.log(form.getValues())
   const message = 'Esse dado vai ser preenchido pelo seu representante ou integrador.';
   return (
     <section className="p-24">
@@ -28,7 +30,7 @@ const GeneralObservationContent = () => {
                 className="input h-40 !bg-white !pl-10 !rounded-md"
                 placeholder="Orientação solar"
               />
-            </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
+            </div> : <p className="paragraph3 text-neutral-70">{solar_orientation || message}</p> }
           </div>
           <div className={`p-24 headline1 flex items-start rounded-md border border-neutral-100-10 gap-10`}>
             <div className="flex-1">
@@ -39,7 +41,7 @@ const GeneralObservationContent = () => {
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder={`${!isRepresentative ? message : 'Latitude'}`}
                 />
-              </div> : <p className="paragraph3 text-neutral-70">{message}</p>
+              </div> : <p className="paragraph3 text-neutral-70">{latitude || message}</p>
               }
             </div>
             <div className="flex-1">
@@ -51,7 +53,7 @@ const GeneralObservationContent = () => {
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Longitude"
                 />
-              </div> : <p className="paragraph3 text-neutral-70">{message}</p>
+              </div> : <p className="paragraph3 text-neutral-70">{longitude || message}</p>
               }
             </div>
           </div>
@@ -82,14 +84,14 @@ const GeneralObservationContent = () => {
                 (<Button classe="btn" disabled={!isRepresentative} onClick={addObservation}>Adicionar</Button>):
                 (<></>)
               }
-            </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
+            </div> : !observations ? <p className="paragraph3 text-neutral-70">{message}</p> : "" }
           </div>
         </article>
 
         <article className="mt-24 p-24 rounded-md border border-neutral-100-10">
           <h3 className="title3 mb-24">Dados de contato</h3>
           <div className="flex md:!items-start md:flex-col gap-24 items-center mb-24">
-            <label>
+            <label className="flex-1">
               Nome
               { isRepresentative ? <div className={`input-container`}>
                 <input
@@ -98,10 +100,10 @@ const GeneralObservationContent = () => {
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Digite seu nome"
                 />
-              </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
+              </div> : <p className="paragraph3 text-neutral-70">{contact_name || message}</p> }
             </label>
 
-            <label>
+            <label className="flex-1">
               Email
               { isRepresentative ? <div className={`input-container`}>
                 <input
@@ -110,10 +112,10 @@ const GeneralObservationContent = () => {
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Digite seu e-mail"
                 />
-              </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
+              </div> : <p className="paragraph3 text-neutral-70">{contact_email || message}</p> }
             </label>
 
-            <label>
+            <label className="flex-1">
               Celular
               { isRepresentative ? <div className={`input-container`}>
                 <input
@@ -122,7 +124,7 @@ const GeneralObservationContent = () => {
                   className="input h-40 !bg-white !pl-10 !rounded-md"
                   placeholder="Digite seu Celular"
                 />
-              </div> : <p className="paragraph3 text-neutral-70">{message}</p> }
+              </div> : <p className="paragraph3 text-neutral-70">{contact_phone || message}</p> }
             </label>
           </div>
 

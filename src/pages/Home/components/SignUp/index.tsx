@@ -9,7 +9,7 @@ import Tabs from './components/Tabs';
 
 const Signup = () => {
   return (
-    <Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
+    // <Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
       <ModalContent id="signup">
         <ModalHeader close={false} classeHeader="bg-white title3" text={''}>
           <div className="title3 flex  w-full justify-between items-center">
@@ -19,7 +19,7 @@ const Signup = () => {
         </ModalHeader>
         <Tabs />
       </ModalContent>
-    </Modal>
+    // </Modal>
   );
 };
 

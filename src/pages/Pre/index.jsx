@@ -32,6 +32,11 @@ const PrePropostaContent = () => {
 	} = usePreProposta();
 
 	const {setmodalOpen, modalOpen} = useGlobalContext();
+
+	useEffect(() => {
+		setmodalOpen({open: false, id: null})
+	}, []);
+
 	useEffect(() => {
 		if (modalOpen.open == false || modalOpen.open == null) {
 			clearTimeout(window.timeOutMateriaPrima);

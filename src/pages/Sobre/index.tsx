@@ -24,6 +24,7 @@ import logoMeglio from "../../assets/images/home/logomeglio.png"
 const Sobre = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
   const navigate = useNavigate();
+  
   useEffect(() => {
     if (modalOpen.open == false || modalOpen.open == null) {
       clearTimeout(window.timeouthome);

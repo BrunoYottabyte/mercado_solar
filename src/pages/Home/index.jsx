@@ -64,7 +64,7 @@ const HomeContent = () => {
 
 	return (
 		<>
-			<Signup />
+
 			<Modal
 				className={
 					'w-[37rem] z-[999999999999999999999999999999999999999999]  md2:max-w-[400px] md2:w-[95vw]'
@@ -124,6 +124,8 @@ const HomeContent = () => {
 						</ul>
 					</section>
 				</ModalContent>
+
+				<Signup />
 			</Modal>
 
 			<main className="homepage w-screen h-full">
