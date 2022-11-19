@@ -21,6 +21,7 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
     setStepSelected(currentStep);
   }, [currentStep]);
 
+
   const technicalVisitMade = () => {
     if (!budgetRequest) return;
     setIsLoading(true);
@@ -29,9 +30,9 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
         current_step: 'technical_visit',
       })
       .then(() => {
-        setCurrentStep('technical_visit');
         setBudgetRequest({
           ...budgetRequest,
+          current_step: 'technical_visit',
           technical_visit_at: format(new Date(), 'yyyy-MM-dd'),
         });
       })
@@ -47,9 +48,9 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
         current_step: 'first_contact',
       })
       .then(() => {
-        setCurrentStep('first_contact');
         setBudgetRequest({
           ...budgetRequest,
+          current_step: 'first_contact',
           first_contact_at: format(new Date(), 'yyyy-MM-dd'),
         });
       })
@@ -65,10 +66,11 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
         current_step: 'payment_made',
       })
       .then(() => {
-        setCurrentStep('payment_made');
+
         setBudgetRequest({
           ...budgetRequest,
-          payment_made_at: format(new Date(), 'dd/MM/yyyy'),
+          current_step: 'payment_made',
+          payment_made_at: format(new Date(), 'yyyy-MM-dd'),
         });
       })
       .catch(() => {});

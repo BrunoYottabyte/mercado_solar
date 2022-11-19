@@ -13,11 +13,12 @@ const TimeLine = () => {
     )?.offsetLeft;
     if (offsetLeft)
       document.querySelector('.progress_bar').style.width = `${
-        offsetLeft + 2
+        offsetLeft + 4
       }px`;
   };
 
   useEffect(() => {
+
     setTimeout(() => {
       updateProgressBar();
     }, 700);
@@ -78,7 +79,6 @@ const TimeLine = () => {
     },
   ];
 
-  setTimeout(() => {}, 500);
 
   return (
     <Card classe="timeline-card p-24 md2:mx-0">
@@ -110,11 +110,10 @@ const TimeLine = () => {
               <div className="grid place-items-center">
                 <span
                   nivel={item.step}
-                  onMouseEnter={e => console.log(e)}
-                  className="point block absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
+                  className="point block transition-all duration-500 absolute -top-[0px] md:!top-0  border-2 border-primary-pure bg-white z-[99] w-18 h-18 rounded-full"
                   style={{
                     background:
-                      currentStep === item.step ? '#008024' : undefined,
+                      currentStep === item.step ? '#905641' : undefined,
                   }}></span>
                 <p className="headline3">{item.title}</p>
                 <p className="text-alert-success paragraph3">{item.content}</p>

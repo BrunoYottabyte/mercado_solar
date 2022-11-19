@@ -12,7 +12,7 @@ const BudgetContext = createContext({} as IBudgetContextData);
 export const BudgetProvider: React.FC<IBudgetProviderProps> = ({children}) => {
   const {setmodalOpen} = useGlobalContext();
   const {showToastify} = GLOBAL;
-  const {budgetRequest} = useVerProjeto();
+  const {budgetRequest, setCurrentStep} = useVerProjeto();
   const [budgets, setBudgets] = useState<IBudget[]>([]);
   const [acceptBudgetId, setAcceptBudgetId] = useState<string | null>(null);
 
@@ -51,6 +51,7 @@ export const BudgetProvider: React.FC<IBudgetProviderProps> = ({children}) => {
         setBudgets(newBudgets);
         setAcceptBudgetId(id);
         setmodalOpen({open: true, id: 'approved'});
+        setCurrentStep('budget_accepted');
       })
       .catch(err => {
         console.log(err);

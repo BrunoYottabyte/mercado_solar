@@ -97,7 +97,7 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
         navigate('/');
       });
   }, []);
-
+  console.log('context', currentStep)
   return (
     <VerProjetoContext.Provider
       value={{
