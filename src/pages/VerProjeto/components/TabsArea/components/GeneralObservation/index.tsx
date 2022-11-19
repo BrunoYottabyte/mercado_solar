@@ -1,10 +1,10 @@
-import React from "react"
-import Button from "../../../../../../components/DesignSystem/Button"
-import { useVerProjeto } from "../../../../context"
-import { GeneralObservationProvider, useGeneralObservation } from "./context"
+import React from 'react';
+import Button from '../../../../../../components/DesignSystem/Button';
+import {useVerProjeto} from '../../../../context';
+import {GeneralObservationProvider, useGeneralObservation} from './context';
 
 const GeneralObservationContent = () => {
-  const { isRepresentative } = useVerProjeto()
+  const {isRepresentative} = useVerProjeto();
   const {
     form,
     observations,
@@ -13,78 +13,129 @@ const GeneralObservationContent = () => {
     currentObservation,
     handleSubmit,
     generalObservation,
-  } = useGeneralObservation()
-  const { budget_request, contact_email, contact_name, contact_phone, latitude,longitude,solar_orientation, id } = form.getValues();
-  console.log(form.getValues())
-  const message = 'Esse dado vai ser preenchido pelo seu representante ou integrador.';
+  } = useGeneralObservation();
+  const {
+    budget_request,
+    contact_email,
+    contact_name,
+    contact_phone,
+    latitude,
+    longitude,
+    solar_orientation,
+    id,
+  } = form.getValues();
+  const message =
+    'Esse dado vai ser preenchido pelo seu representante ou integrador.';
   return (
     <section className="p-24">
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <article className="grid grid-cols-3 gap-16 md:!grid-cols-1">
           <div className="p-24 headline1 rounded-md border border-neutral-100-10">
             Orientação solar
-            {isRepresentative ? <div className={`input-container`}>
-              <input
-                disabled={!isRepresentative}
-                {...form.register("solar_orientation")}
-                className="input h-40 !bg-white !pl-10 !rounded-md"
-                placeholder="Orientação solar"
-              />
-            </div> : <p className="paragraph3 text-neutral-70">{solar_orientation || message}</p> }
+            {isRepresentative ? (
+              <div className={`input-container`}>
+                <input
+                  disabled={!isRepresentative}
+                  {...form.register('solar_orientation')}
+                  className="input h-40 !bg-white !pl-10 !rounded-md"
+                  placeholder="Orientação solar"
+                />
+              </div>
+            ) : (
+              <p className="paragraph3 text-neutral-70">
+                {solar_orientation || message}
+              </p>
+            )}
           </div>
-          <div className={`p-24 headline1 flex items-start rounded-md border border-neutral-100-10 gap-10`}>
+          <div
+            className={`p-24 headline1 flex items-start rounded-md border border-neutral-100-10 gap-10`}>
             <div className="flex-1">
               Latitude
-              {isRepresentative ?  <div className={`input-container ${!isRepresentative ? 'disabled': ''}`}>
-                <input
-                  {...form.register("latitude")}
-                  className="input h-40 !bg-white !pl-10 !rounded-md"
-                  placeholder={`${!isRepresentative ? message : 'Latitude'}`}
-                />
-              </div> : <p className="paragraph3 text-neutral-70">{latitude || message}</p>
-              }
+              {isRepresentative ? (
+                <div
+                  className={`input-container ${
+                    !isRepresentative ? 'disabled' : ''
+                  }`}>
+                  <input
+                    {...form.register('latitude')}
+                    type="number"
+                    min={-90}
+                    max={90}
+                    step={0.0000001}
+                    className="input h-40 !bg-white !pl-10 !rounded-md"
+                    placeholder={`${!isRepresentative ? message : 'Latitude'}`}
+                  />
+                </div>
+              ) : (
+                <p className="paragraph3 text-neutral-70">
+                  {latitude || message}
+                </p>
+              )}
             </div>
             <div className="flex-1">
               Longitude
-              {isRepresentative ? <div className={`input-container`}>
-                <input
-                  disabled={!isRepresentative}
-                  {...form.register("longitude")}
-                  className="input h-40 !bg-white !pl-10 !rounded-md"
-                  placeholder="Longitude"
-                />
-              </div> : <p className="paragraph3 text-neutral-70">{longitude || message}</p>
-              }
+              {isRepresentative ? (
+                <div className={`input-container`}>
+                  <input
+                    disabled={!isRepresentative}
+                    {...form.register('longitude')}
+                    type="number"
+                    min={-150}
+                    max={150}
+                    step={0.0000002}
+                    className="input h-40 !bg-white !pl-10 !rounded-md"
+                    placeholder="Longitude"
+                  />
+                </div>
+              ) : (
+                <p className="paragraph3 text-neutral-70">
+                  {longitude || message}
+                </p>
+              )}
             </div>
           </div>
           <div className="p-24 headline1 rounded-md border border-neutral-100-10">
             Observações
             {observations.map((observation, i) => (
               <>
-              <div className="flex items-center justify-between my-2">
-                <p className="paragraph2" key={`${observation}-${i}`}>{observation.observation}</p>
-                {/* <Button margin="0">X</Button> */}
-              </div>
-              {i !== (observations.length-1) && <hr style={{opacity: 0.1}}/>}
+                <div className="flex items-center justify-between my-2">
+                  <p className="paragraph2" key={`${observation}-${i}`}>
+                    {observation.observation}
+                  </p>
+                  {/* <Button margin="0">X</Button> */}
+                </div>
+                {i !== observations.length - 1 && <hr style={{opacity: 0.1}} />}
               </>
             ))}
-           {isRepresentative ?  <div className={`input-container flex gap-10`}>
-              <input
-                className="input h-40 !bg-white !pl-10 !rounded-md"
-                placeholder={
-                  generalObservation ?
-                  "Adicionar observação":
-                  "Adicione as demais informações"
-                }
-                value={currentObservation}
-                disabled={!generalObservation || !isRepresentative}
-                onChange={(e) => setCurrentObservation(e.target.value)}
-              />
-              {generalObservation ?
-                (<Button classe="btn" disabled={!isRepresentative} onClick={addObservation}>Adicionar</Button>):
-                (<></>)
-              }
-            </div> : !observations ? <p className="paragraph3 text-neutral-70">{message}</p> : "" }
+            {isRepresentative ? (
+              <div className={`input-container flex gap-10`}>
+                <input
+                  className="input h-40 !bg-white !pl-10 !rounded-md"
+                  placeholder={
+                    generalObservation
+                      ? 'Adicionar observação'
+                      : 'Adicione as demais informações'
+                  }
+                  value={currentObservation}
+                  disabled={!generalObservation || !isRepresentative}
+                  onChange={e => setCurrentObservation(e.target.value)}
+                />
+                {generalObservation ? (
+                  <Button
+                    classe="btn"
+                    disabled={!isRepresentative}
+                    onClick={addObservation}>
+                    Adicionar
+                  </Button>
+                ) : (
+                  <></>
+                )}
+              </div>
+            ) : !observations ? (
+              <p className="paragraph3 text-neutral-70">{message}</p>
+            ) : (
+              ''
+            )}
           </div>
         </article>
 
@@ -93,57 +144,81 @@ const GeneralObservationContent = () => {
           <div className="flex md:!items-start md:flex-col gap-24 items-center mb-24">
             <label className="flex-1">
               Nome
-              { isRepresentative ? <div className={`input-container`}>
-                <input
-                  disabled={!isRepresentative}
-                  {...form.register("contact_name")}
-                  className="input h-40 !bg-white !pl-10 !rounded-md"
-                  placeholder="Digite seu nome"
-                />
-              </div> : <p className="paragraph3 text-neutral-70">{contact_name || message}</p> }
+              {isRepresentative ? (
+                <div className={`input-container`}>
+                  <input
+                    disabled={!isRepresentative}
+                    {...form.register('contact_name')}
+                    className="input h-40 !bg-white !pl-10 !rounded-md"
+                    placeholder="Digite seu nome"
+                  />
+                </div>
+              ) : (
+                <p className="paragraph3 text-neutral-70">
+                  {contact_name || message}
+                </p>
+              )}
             </label>
 
             <label className="flex-1">
               Email
-              { isRepresentative ? <div className={`input-container`}>
-                <input
-                  disabled={!isRepresentative}
-                  {...form.register("contact_email")}
-                  className="input h-40 !bg-white !pl-10 !rounded-md"
-                  placeholder="Digite seu e-mail"
-                />
-              </div> : <p className="paragraph3 text-neutral-70">{contact_email || message}</p> }
+              {isRepresentative ? (
+                <div className={`input-container`}>
+                  <input
+                    disabled={!isRepresentative}
+                    {...(form.register('contact_email'), {type: 'email'})}
+                    type="email"
+                    className="input h-40 !bg-white !pl-10 !rounded-md"
+                    placeholder="Digite seu e-mail"
+                  />
+                </div>
+              ) : (
+                <p className="paragraph3 text-neutral-70">
+                  {contact_email || message}
+                </p>
+              )}
             </label>
 
             <label className="flex-1">
               Celular
-              { isRepresentative ? <div className={`input-container`}>
-                <input
-                  disabled={!isRepresentative}
-                  {...form.register("contact_phone")}
-                  className="input h-40 !bg-white !pl-10 !rounded-md"
-                  placeholder="Digite seu Celular"
-                />
-              </div> : <p className="paragraph3 text-neutral-70">{contact_phone || message}</p> }
+              {isRepresentative ? (
+                <div className={`input-container`}>
+                  <input
+                    disabled={!isRepresentative}
+                    {...form.register('contact_phone')}
+                    className="input h-40 !bg-white !pl-10 !rounded-md"
+                    placeholder="Digite seu Celular"
+                  />
+                </div>
+              ) : (
+                <p className="paragraph3 text-neutral-70">
+                  {contact_phone || message}
+                </p>
+              )}
             </label>
           </div>
 
           <div className="w-full flex gap-8 justify-end">
             {/* <Button classe="btn secondary">Cancelar</Button> */}
-            <Button iconID="#icon_edit_ms" type="submit" disabled={!isRepresentative}>Salvar alterações</Button>
+            <Button
+              iconID="#icon_edit_ms"
+              type="submit"
+              disabled={!isRepresentative}>
+              Salvar alterações
+            </Button>
           </div>
         </article>
       </form>
     </section>
-  )
-}
+  );
+};
 
 const GeneralObservation = () => {
   return (
     <GeneralObservationProvider>
       <GeneralObservationContent />
     </GeneralObservationProvider>
-  )
-}
+  );
+};
 
-export default GeneralObservation
+export default GeneralObservation;
