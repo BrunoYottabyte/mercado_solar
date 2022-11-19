@@ -80,9 +80,9 @@ const ButtonsStepsContent = () => {
 
   if (currentStep === 'payment_made' && isRepresentative) {
     return (
-      <div className="w-full flex md:flex-col justify-end items-center">
+      <div className="w-full flex md:flex-col  justify-end items-center">
         <Button
-          className="btn h-56 md2:w-full"
+          className="btn h-56 md:w-full md:justify-center"
           svgClass="!w-20 !h-20"
           iconID="#icon_check_ms"
           disabled={isLoading}

@@ -29,6 +29,46 @@ const VerProjetoContent = () => {
       clearTimeout(window.timeoutProjeto);
     }
   }, [modalOpen]);
+  let sunInit = [
+    {
+      state: 'vazio'
+    },
+    {
+      state: 'vazio'
+    },
+    {
+      state: 'vazio'
+    },
+    {
+      state: 'vazio'
+    },
+    {
+      state: 'vazio'
+    },
+  ]
+  const [sunArr, setSunArr] = useState(sunInit)
+  const [sunClicked, setSunClicked] = useState({
+    state: false,
+    selected: null
+  });
+
+  const handleEnter = (e) => {
+    let indexCurrent = e?.target?.attributes?.sunindex?.value;
+    for (let i = 0; i <= indexCurrent; i++){
+      sunInit[i].state = 'cheio';
+    }
+    setSunClicked(prev => ({
+      ...prev,
+      selected: Number(indexCurrent)+1
+    }));
+
+    setSunArr(sunInit)
+  }
+
+  const handleLeave = (e) => {
+    console.log(sunClicked)
+    !sunClicked.state ? setSunArr(sunInit) : ''
+  }
 
   return (
     <>
@@ -124,17 +164,32 @@ const VerProjetoContent = () => {
                   Avalie sua primeira visita:{' '}
                 </p>
                 <div className="container-sun flex gap-8 items-center">
-                  {[0, 1, 2, 3, 4].map((item, i) =>
-                    i != 4 ? (
+                  {sunArr.map((item, i) =>
+                    item.state == 'cheio' ? (
                       <SvgUse
+                        onMouseEnter={handleEnter}
+                        onClick={() => setSunClicked({
+                          state: !sunClicked.state,
+                          selected: i+1
+                        })}
+                        onMouseLeave={handleLeave}
                         id="#icon_sun_ms"
-                        classe="!w-24 !h-24"
+                        sunindex={i}
+                        classe="!w-24 !h-24 sun-svg"
                         key={`${i}-svg`}
                       />
-                    ) : (
+                    )
+                     : (
                       <SvgUse
+                        onMouseEnter={handleEnter}
+                        onMouseLeave={handleLeave}
+                        onClick={() => setSunClicked({
+                          state: !sunClicked.state,
+                          selected: i+1
+                        })}
                         id="#icon_sun_vazio_ms"
-                        classe="!w-24 !h-24"
+                        classe="!w-24 !h-24 sun-svg"
+                        sunindex={i}
                         key={`${i}-svg`}
                       />
                     ),
