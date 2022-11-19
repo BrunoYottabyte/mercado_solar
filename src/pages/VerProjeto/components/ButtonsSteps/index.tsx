@@ -18,7 +18,7 @@ const ButtonsStepsContent = () => {
 
   const scrollToProgressBar = () => {
     window.scroll({
-      top: document.querySelector('.ancora-timeline')?.offsetTop - 30,
+      top: document.querySelector('.ancora-timeline')?.offsetTop - 80,
       left: 0,
       behavior: 'smooth',
     });

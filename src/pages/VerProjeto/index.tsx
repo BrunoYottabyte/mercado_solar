@@ -15,8 +15,8 @@ import TabsArea from './components/TabsArea';
 import ButtonsSteps from './components/ButtonsSteps';
 import {ModalContent} from '../../components/DesignSystem/Modal/ModalContent';
 
-
-
+import {motion} from 'framer-motion'
+ 
 
 const VerProjetoContent = () => {
   const {budgetRequest, address} = useVerProjeto();
@@ -71,7 +71,12 @@ const VerProjetoContent = () => {
   }
 
   return (
-    <>
+    <motion.div 
+		initial={{translateX: '-20%', opacity: 0}}
+		animate={{translateX: 0, opacity: 1}}
+		exit={{translateX: '-20%', opacity: 0}}
+		transition={{duration: 0.3}}
+		>
       <Modal className={'w-[37rem]  md2:max-w-[400px] md2:w-[95vw]'}>
         <ModalContent id="approved">
           <ModalHeader text={''} close={false} classeHeader="bg-white title3">
@@ -300,7 +305,7 @@ const VerProjetoContent = () => {
 
        
       </div>
-    </>
+      </motion.div>
   );
 };
 

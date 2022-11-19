@@ -5,7 +5,9 @@ import {Card} from '../../components/DesignSystem/Card';
 import {SelectComponent} from '../../components/DesignSystem/SelectComponent';
 import Table from '../../components/DesignSystem/Table';
 import {GlobalFilter} from '../../components/DesignSystem/Table/GlobalFilter';
+import { useAuthContext } from '../../context/useAuthContext';
 import {PedidosOrcamentoProvider, usePedidosOrcamento} from './context';
+import { motion } from "framer-motion"
 
 const PedidosOrcamentosContent = () => {
 	const {
@@ -17,6 +19,11 @@ const PedidosOrcamentosContent = () => {
 		downloadRef,
 		handleDownloadPdf,
 	} = usePedidosOrcamento();
+
+	const {userType} = useAuthContext();
+
+	console.log(userType)
+
 	const navigate = useNavigate();
 	const HeaderRelatorio = ({filter, pageSize, setPageSize}) => {
 		return (
@@ -58,19 +65,28 @@ const PedidosOrcamentosContent = () => {
 	};
 
 	return (
-		<div className="container" ref={downloadRef}>
+		<motion.div 
+		initial={{translateX: '-20%', opacity: 0}}
+		animate={{translateX: 0, opacity: 1}}
+		exit={{translateX: '-20%', opacity: 0}}
+		transition={{duration: 0.4}}
+		className="container" ref={downloadRef}>
 			<Card classe="my-64 px-24 py-32">
-				<header className="flex justify-between md2:flex-col md2:gap-16 align-center">
+				<header className="flex justify-between md:flex-col md2:gap-16 align-center">
 					<h1 className="!title3">{title}</h1>
-					<Button
-						classe="secondary h-48"
-						onClick={() => navigate('/home#orcamento')}
-						iconID={'#icon_arrow_left'}>
-						Nova proposta
-					</Button>
+					{
+						userType === 'user' && (
+							<Button
+								classe="secondary h-48 md:w-full md:justify-center"
+								onClick={() => navigate('/home#orcamento')}
+								iconID={'#icon_arrow_left'}>
+								Nova proposta
+							</Button>
+						)
+					}
 				</header>
 
-				<div className="mt-32">
+				<div className="mt-32 md:mt-16">
 					<Table
 						classeTableContainer="overflow-auto"
 						options={{
@@ -89,7 +105,7 @@ const PedidosOrcamentosContent = () => {
 					</Button>
 				</div>
 			</Card>
-		</div>
+		</motion.div>
 	);
 };
 

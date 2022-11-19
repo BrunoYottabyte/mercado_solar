@@ -484,7 +484,7 @@ const HomeContent = () => {
 				</section>
 
 				{/* Solicite seu orçamento */}
-				<div id="orcamento" className="bg-white h-40 w-full"></div>
+				<div id="orcamento"  className="solicite-orcamento bg-white h-40 w-full"></div>
 				<section
 					data-aos="fade-up"
 					data-aos-delay="350"

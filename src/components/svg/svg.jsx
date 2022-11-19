@@ -10,18 +10,18 @@ const Svg = () => <>
 				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 17h6"></path>
 			</symbol>
 			<symbol id="icon_gestao_producao" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/symbol">
-				<path d="M8.49805 14.2507H17.5018" stroke="var(--cor-1, #F4A155)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-				<path d="M13.0002 14.2505V8.24805" stroke="var(--cor-1, #F4A155)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-				<path d="M16.0012 14.2507V10.249" stroke="var(--cor-1, #F4A155)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-				<path d="M17.0014 22.0039L16.001 18.0022" stroke="var(--cor-1, #F4A155)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-				<path d="M8.99805 22.0039L9.99846 18.0022" stroke="var(--cor-1, #F4A155)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-				<path fillRule="evenodd" clipRule="evenodd" d="M19.9277 18.0022H6.07196C4.92549 18.0022 3.99609 17.0728 3.99609 15.9263V6.0722C3.99609 4.92573 4.92549 3.99634 6.07196 3.99634H19.9267C20.4775 3.99607 21.0057 4.21466 21.3952 4.60399C21.7847 4.99332 22.0036 5.52148 22.0036 6.0722V15.9253C22.0039 16.476 21.7853 17.0043 21.3959 17.3938C21.0066 17.7833 20.4785 18.0022 19.9277 18.0022Z" stroke="var(--cor-1, #F4A155)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-				<path d="M9.99923 14.2505V11.2493" stroke="var(--cor-1, #F4A155)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<path d="M8.49805 14.2507H17.5018" stroke="var(--cor-1, #4B5259)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<path d="M13.0002 14.2505V8.24805" stroke="var(--cor-1, #4B5259)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<path d="M16.0012 14.2507V10.249" stroke="var(--cor-1, #4B5259)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<path d="M17.0014 22.0039L16.001 18.0022" stroke="var(--cor-1, #4B5259)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<path d="M8.99805 22.0039L9.99846 18.0022" stroke="var(--cor-1, #4B5259)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<path fillRule="evenodd" clipRule="evenodd" d="M19.9277 18.0022H6.07196C4.92549 18.0022 3.99609 17.0728 3.99609 15.9263V6.0722C3.99609 4.92573 4.92549 3.99634 6.07196 3.99634H19.9267C20.4775 3.99607 21.0057 4.21466 21.3952 4.60399C21.7847 4.99332 22.0036 5.52148 22.0036 6.0722V15.9253C22.0039 16.476 21.7853 17.0043 21.3959 17.3938C21.0066 17.7833 20.4785 18.0022 19.9277 18.0022Z" stroke="var(--cor-1, #4B5259)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<path d="M9.99923 14.2505V11.2493" stroke="var(--cor-1, #4B5259)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 			</symbol>
 			<symbol id="icon_administrativo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 26 26">
-				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15.041 10.96l-2.51 2.51"></path>
-				<path fillRule="evenodd" stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15.001 6.998v4.001h4.002l4.001-4.001-2.668-1.334-1.333-2.668L15 6.998z" clipRule="evenodd"></path>
-				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4.972A8.524 8.524 0 1021.03 14M17.212 14A4.727 4.727 0 1112 8.789"></path>
+				<path stroke="var(--cor-1, #4B5259)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15.041 10.96l-2.51 2.51"></path>
+				<path fillRule="evenodd" stroke="var(--cor-1, #4B5259)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15.001 6.998v4.001h4.002l4.001-4.001-2.668-1.334-1.333-2.668L15 6.998z" clipRule="evenodd"></path>
+				<path stroke="var(--cor-1, #4B5259)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M12 4.972A8.524 8.524 0 1021.03 14M17.212 14A4.727 4.727 0 1112 8.789"></path>
 			</symbol>
 			<symbol id="icon_vendas_b2b" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 26 26">
 				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M5.97 9.174A8.003 8.003 0 0121.003 13M13 10.545V10M13 15.456v.545"></path>
@@ -44,9 +44,9 @@ const Svg = () => <>
 				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19.3 6.7c1 1 1 2.6 0 3.5-1 .9-2.6 1-3.5 0-.9-1-1-2.6 0-3.5.9-.9 2.5-.9 3.5 0"></path>
 			</symbol>
 			<symbol id="icon_franquias" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 26 26">
-				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8.498 10.75A2.25 2.25 0 016.248 13M13 10.75a2.25 2.25 0 01-4.502 0M17.502 10.75a2.251 2.251 0 01-4.502 0M19.753 13a2.25 2.25 0 01-2.251-2.25M21.003 12.62v9.384M23.004 22.004H2.996M4.996 12.619v9.385"></path>
-				<rect width="4.002" height="3.001" x="14.501" y="16.002" stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" rx="0.5"></rect>
-				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7.998 22.004v-5.502a.5.5 0 01.5-.5H11a.5.5 0 01.5.5v5.502M8.498 10.75v-.751M13 10.75v-.751M17.502 10.75v-.751M21.914 9.999H4.085M19.753 13v0a2.251 2.251 0 002.25-2.25v-.128c0-.408-.11-.808-.32-1.157l-2.101-3.497a2 2 0 00-1.712-.971H8.13a2 2 0 00-1.716.971l-2.1 3.497c-.21.35-.32.75-.318 1.157v.127A2.251 2.251 0 006.247 13v0"></path>
+				<path stroke="var(--cor-1, #4B5259)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8.498 10.75A2.25 2.25 0 016.248 13M13 10.75a2.25 2.25 0 01-4.502 0M17.502 10.75a2.251 2.251 0 01-4.502 0M19.753 13a2.25 2.25 0 01-2.251-2.25M21.003 12.62v9.384M23.004 22.004H2.996M4.996 12.619v9.385"></path>
+				<rect width="4.002" height="3.001" x="14.501" y="16.002" stroke="var(--cor-1, #4B5259)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" rx="0.5"></rect>
+				<path stroke="var(--cor-1, #4B5259)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M7.998 22.004v-5.502a.5.5 0 01.5-.5H11a.5.5 0 01.5.5v5.502M8.498 10.75v-.751M13 10.75v-.751M17.502 10.75v-.751M21.914 9.999H4.085M19.753 13v0a2.251 2.251 0 002.25-2.25v-.128c0-.408-.11-.808-.32-1.157l-2.101-3.497a2 2 0 00-1.712-.971H8.13a2 2 0 00-1.716.971l-2.1 3.497c-.21.35-.32.75-.318 1.157v.127A2.251 2.251 0 006.247 13v0"></path>
 			</symbol>
 			<symbol id="icon_configuracoes" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
 				<path stroke="var(--cor-1, #F4A155)" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 5.5h3.07M10.323 3.732a2.5 2.5 0 11-3.535 3.536 2.5 2.5 0 013.535-3.536M11.06 5.5H21"></path>
@@ -3799,6 +3799,107 @@ const Svg = () => <>
       <path fill="#D78B00" d="M0 0H4V4H0z"></path>
       <path fill="#D78B00" d="M12 0H16V4H12z"></path>
       <path fill="#D78B00" d="M24 0H28V4H24z"></path>
+    </symbol>
+
+
+	<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_support_ms"
+      viewBox="0 0 256 256"
+    >
+      <path fill="none" d="M0 0H256V256H0z"></path>
+      <rect
+        width="208"
+        height="88"
+        x="24"
+        y="72"
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        rx="8"
+      ></rect>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M84 72L172 160"
+      ></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M156 72L232 148"
+      ></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M24 84L100 160"
+      ></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M192 160L192 200"
+      ></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M64 160L64 200"
+      ></path>
+    </symbol>
+
+	<symbol
+      xmlns="http://www.w3.org/2000/svg"
+      id="icon_faq_ms"
+      viewBox="0 0 256 256"
+    >
+      <path fill="none" d="M0 0H256V256H0z"></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M200 176V64a23.9 23.9 0 00-24-24H40"
+      ></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M104 104L168 104"
+      ></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M104 136L168 136"
+      ></path>
+      <path
+        fill="none"
+        stroke="#4B5259"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="16"
+        d="M22.1 80A24 24 0 1164 64v128a24 24 0 1041.9-16h112a24 24 0 01-17.9 40H88"
+      ></path>
     </symbol>
 
 	</svg>

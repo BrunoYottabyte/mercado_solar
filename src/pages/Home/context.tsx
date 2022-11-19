@@ -37,7 +37,6 @@ export const HomeProvider: React.FC<IHomeProviderProps> = ({children}) => {
     resolver: yupResolver(budgetRequestSchema),
     defaultValues: {need_representative: true},
   });
-
   const averageConsumptionForm = useForm<IAverageConsumptionForm>({
     mode: 'all',
     resolver: yupResolver(averageConsumptionSchema),
@@ -46,9 +45,12 @@ export const HomeProvider: React.FC<IHomeProviderProps> = ({children}) => {
   const emailWatch = budgetRequestForm.watch('client_email');
 
   const handleCheckCep = async (cep: string) => {
+    console.log('chamei a função handlecheck')
+    cep = cep.replace(/\D+/g, '')
     if (cep.length !== 8) {
       return;
     }
+    console.log(cep.length)
     setIsLoading(true);
     // const response = await api.get(`/cep/${cep}`);
     api

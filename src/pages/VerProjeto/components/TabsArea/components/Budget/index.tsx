@@ -98,8 +98,8 @@ const BudgetContent = () => {
           <div
             className="p-16 bg-neutral-10 rounded-md border border-neutral-100-10"
             key={`${budget?.id}-tab-panel`}>
-            <div className="flex md:flex-col md:gap-16 justify-between items-center mb-16">
-              <p className="headline1">
+            <div className="flex md:flex-col md:items-start md:gap-16 justify-between items-center mb-16">
+              <p className="headline1 md:px-16">
                 Orçamento{' '}
                 <span className="text-neutral-100">#{budget?.id}</span>
                 {budget?.status == 'disapproved' ? (

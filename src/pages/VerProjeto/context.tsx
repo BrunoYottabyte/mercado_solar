@@ -18,6 +18,7 @@ export const VerProjetoProvider: React.FC<IVerProjetoProviderProps> = ({
   children,
 }) => {
   const {userId} = useAuthContext();
+
   const navigate = useNavigate();
 
   const [budgetRequest, setBudgetRequest] = useState<IBudgetRequest>();

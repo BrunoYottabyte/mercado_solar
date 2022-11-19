@@ -13,7 +13,7 @@ import Charts from 'react-apexcharts';
 import {PrePropostaProvider, usePreProposta} from './context';
 import {options, options2} from './data';
 import Badge from '../../components/DesignSystem/Badge';
-
+import {motion} from 'framer-motion'
 const PrePropostaContent = () => {
 	const {
 		handleNavigate,
@@ -54,7 +54,12 @@ const PrePropostaContent = () => {
 	];
 
 	return (
-		<>
+		<motion.div 
+		initial={{translateX: '-20%', opacity: 0}}
+		animate={{translateX: 0, opacity: 1}}
+		exit={{translateX: '-20%', opacity: 0}}
+		transition={{duration: 0.3}}
+		>
 			<Svg />
 			<Modal className={'w-[600px] md2:max-w-[400px] md2:w-[95vw]'}>
 				<ModalContent id="feedback">
@@ -323,7 +328,7 @@ const PrePropostaContent = () => {
 					</div>
 				</Card>
 			</div>
-		</>
+		</motion.div>
 	);
 };
 

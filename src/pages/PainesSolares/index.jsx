@@ -10,6 +10,7 @@ import {useGlobalContext} from '../../context/GlobalContext';
 import {ProductsProvider, useProducts} from './context';
 import Item from './components/item';
 import ModalCart from '../ProductDatails/components/ModalCart';
+import { motion } from 'framer-motion'
 
 const PainesSolaresContent = () => {
 	const {setmodalOpen, modalOpen} = useGlobalContext();
@@ -40,7 +41,12 @@ const PainesSolaresContent = () => {
 	};
 
 	return (
-		<>
+			<motion.div 
+		initial={{opacity: 0}}
+		animate={{opacity: 1}}
+		exit={{translateX: '-20%', opacity: 0}}
+		transition={{duration: 0.3}}
+		>
 			<Button
 				style={{'--cor-1': '#F69F00'}}
 				iconID="#icon-eye-ms"
@@ -243,7 +249,7 @@ const PainesSolaresContent = () => {
 					</div>
 				</section>
 			</div>
-		</>
+		</motion.div>
 	);
 };
 
