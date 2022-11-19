@@ -200,16 +200,7 @@ const GeneralObservationContent = () => {
 
           <div className="w-full flex gap-8 justify-end">
             {/* <Button classe="btn secondary">Cancelar</Button> */}
-<<<<<<< HEAD
             {isRepresentative && <Button iconID="#icon_edit_ms" type="submit" disabled={!isRepresentative}>Salvar alterações</Button>}
-=======
-            <Button
-              iconID="#icon_edit_ms"
-              type="submit"
-              disabled={!isRepresentative}>
-              Salvar alterações
-            </Button>
->>>>>>> 2a7c5ac19c917927a7b458dd8fbd3745e8cd0dfc
           </div>
         </article>
       </form>
