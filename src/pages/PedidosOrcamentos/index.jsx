@@ -19,7 +19,7 @@ const PedidosOrcamentosContent = () => {
 		downloadRef,
 		handleDownloadPdf,
 	} = usePedidosOrcamento();
-
+	console.log(data);
 	const {userType} = useAuthContext();
 
 	console.log(userType)

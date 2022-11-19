@@ -92,7 +92,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                       />
                       <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
                         <Button
-                          onClick={() => downloadImage(image.image)}
+                          onClick={() => downloadIMG(image.image)}
                           classe="btn secondary h-48 flex-1 justify-center">
                           Download
                         </Button>
@@ -156,7 +156,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                       />
                       <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
                         <Button
-                          onClick={() => downloadImage(image.image)}
+                          onClick={() => downloadIMG(image.image)}
                           classe="btn secondary h-48 flex-1 justify-center">
                           Download
                         </Button>

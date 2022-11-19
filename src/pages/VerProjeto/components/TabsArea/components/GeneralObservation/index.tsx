@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import Button from '../../../../../../components/DesignSystem/Button';
+import { Modal } from '../../../../../../components/DesignSystem/Modal/Modal';
+import { ModalContent } from '../../../../../../components/DesignSystem/Modal/ModalContent';
+import { useGlobalContext } from '../../../../../../context/GlobalContext';
 import { GLOBAL } from '../../../../../../utils/GLOBAL';
 import {useVerProjeto} from '../../../../context';
 import {GeneralObservationProvider, useGeneralObservation} from './context';
@@ -26,12 +29,22 @@ const GeneralObservationContent = () => {
     id,
   } = form.getValues();
   const { setValue, watch } = form;
+  const {setmodalOpen} = useGlobalContext();
+
+  const openModal = (id) => {
+    setmodalOpen({open: true, id});
+  }
+
+  const closeModal = () => {
+    setmodalOpen({open: false, id});
+  }
 
   const message =
     'Esse dado vai ser preenchido pelo seu representante ou integrador.';
   return (
-    <section className="p-24">
-      <form onSubmit={form.handleSubmit(handleSubmit)}>
+    <>
+      <section className="p-24">
+      <form onSubmit={form.handleSubmit((data) => handleSubmit(data, openModal))}>
         <article className="grid grid-cols-3 gap-16 md:!grid-cols-1">
           <div className="p-24 headline1 rounded-md border border-neutral-100-10">
             Orientação solar
@@ -169,7 +182,7 @@ const GeneralObservationContent = () => {
                 <div className={`input-container`}>
                   <input
                     disabled={!isRepresentative}
-                    {...(form.register('contact_email'), {type: 'email'})}
+                    {...(form.register('contact_email'))}
                     type="email"
                     className="input h-40 !bg-white !pl-10 !rounded-md"
                     placeholder="Digite seu e-mail"
@@ -208,6 +221,8 @@ const GeneralObservationContent = () => {
         </article>
       </form>
     </section>
+    </>
+
   );
 };
 

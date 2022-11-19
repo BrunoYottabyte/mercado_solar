@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useEffect} from 'react';
 import Button from '../../components/DesignSystem/Button';
 import {ModalHeader} from '../../components/DesignSystem/Modal';
@@ -14,6 +14,7 @@ import { motion } from 'framer-motion'
 
 const PainesSolaresContent = () => {
 	const {setmodalOpen, modalOpen} = useGlobalContext();
+	const [optionSelected, setOptionSelected] = useState();
 	const {
 		products,
 		brands,
@@ -164,11 +165,16 @@ const PainesSolaresContent = () => {
 						</p>
 						<SelectComponent
 							classe=" !w-[200px] md2:!w-full z-[99]"
-							onChange={e => orderByPrice(e.value)}
+							onChange={e => {
+								orderByPrice(e.value)
+								setOptionSelected(e.value)
+							}}
 							data={[
 								{value: 'price', label: 'Mais Baratos'},
 								{value: '-price', label: 'Mais Caros'},
 							]}
+							value={optionSelected}
+							state={optionSelected}
 						/>
 					</div>
 				</div>

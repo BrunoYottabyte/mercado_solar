@@ -28,12 +28,13 @@ export const GeneralObservationProvider: React.FC<IGeneralObservationProviderPro
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
 
-  const handleSubmit = async (data: IFormProps) => {
+  const handleSubmit = async (data: IFormProps, openModal) => {
     setIsLoading(true)
     
     if (data.id) {
       api.put(`/general_observation/${data.id}/`, data).then(response => {
         setGeneralObservation(response.data)
+        openModal('animation');
       }).catch(error => {
         console.log(error)
       })
@@ -42,6 +43,7 @@ export const GeneralObservationProvider: React.FC<IGeneralObservationProviderPro
       setIsLoading(true)
       await api.post('/general_observation/', data).then(response => {
         setGeneralObservation(response.data)
+        openModal('animation');
       }).catch(error => {
         console.log(error)
       })
@@ -61,7 +63,6 @@ export const GeneralObservationProvider: React.FC<IGeneralObservationProviderPro
     api.post('/observation/', newObservation).then(response => {
       const observationResponse: IObservationProps = response.data
       setObservations([...observations, observationResponse])
-
     })
     setCurrentObservation('')
   }

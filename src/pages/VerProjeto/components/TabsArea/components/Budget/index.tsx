@@ -85,7 +85,10 @@ const BudgetContent = () => {
             </div>
           </main>
         </ModalContent>
+
+    
       </Modal>
+      
       <section className="p-24 flex flex-col gap-24">
         {!budgets.length && (
           <div>
