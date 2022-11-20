@@ -68,7 +68,9 @@ const FooterSite = () => {
 						classe="h-48 mt-12 !w-[13.5rem] whitespace-nowrap"
 						iconID="#icon_raio_circle_ms"
 						svgClass="!w-32 !h-32"
-						onClick={() => navigate('/home#orcamento', {preventScrollReset: true})} 	
+						onClick={() => document.querySelector('.solicite-orcamento').scrollIntoView({
+							behavior: 'smooth'
+						  })} 	
 					>
 						<p className="paragraph1">Peça seu orçamento</p>
 					</Button>

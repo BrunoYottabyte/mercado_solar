@@ -1,6 +1,8 @@
 import React from 'react';
 import {Controller} from 'react-hook-form';
 import Select from 'react-select';
+import CheckBox from '../../../../components/DesignSystem/CheckBox';
+import { GLOBAL } from '../../../../utils/GLOBAL';
 import {useHome} from '../../context';
 import Input from '../Input';
 
@@ -27,6 +29,7 @@ const BudgetForm = () => {
         name="client_name"
         label="Nome"
         placeholder="Digite seu nome"
+        classInputContainer='md2:w-full'
       />
 
       <div className="flex w-full gap-16">
@@ -35,6 +38,7 @@ const BudgetForm = () => {
           label="E-mail"
           name="client_email"
           placeholder="Digite seu e-mail"
+          classInputContainer='md2:w-full'
         />
 
         <Input
@@ -43,6 +47,8 @@ const BudgetForm = () => {
           control={control}
           label="Celular"
           placeholder="(00) 00000-0000"
+          format={GLOBAL.PhoneFormatter}
+          classInputContainer='md2:w-full'
         />
       </div>
 
@@ -53,12 +59,14 @@ const BudgetForm = () => {
           label="CEP"
           onBlur={e => handleCheckCep(e.target.value)}
           placeholder="Digite seu CEP"
+          format={GLOBAL.CepFormatter}
+          classInputContainer='md2:w-full'
         />
 
-        <label className="paragraph2 ">
+        <label className="paragraph2 md2:w-full">
           Tipo de imóvel
           <div
-            className={`select-container lg hover:!border-neutral-30 min-w-[16rem] md2:min-w-[0] md2:w-full`}>
+            className={`select-container lg hover:!border-neutral-30 min-w-[16rem] md2:min-w-[0] md2:w-full `}>
             <Controller
               control={control}
               name="client_imovel"
@@ -69,14 +77,14 @@ const BudgetForm = () => {
                 <>
                   <Select
                     ref={ref}
-                    className={`select-container select-multiple hover:!border hover:border-neutral-30 hover:rounded-md`}
+                    className={`select-container md2:!w-full select-multiple hover:!border hover:border-neutral-30 hover:rounded-md`}
                     placeholder="Selecione o tipo de imóvel"
                     classNamePrefix="select"
                     options={client_imovel_options}
                     isMulti={false}
                     onChange={val => onChange(val?.value)}
                     value={client_imovel_options.find(c => c.value === value)}
-                    closeMenuOnSelect={false}
+                    // closeMenuOnSelect={false}
                   />
                   <sub className="text-alert-error">{error?.message}</sub>
                 </>
@@ -86,7 +94,7 @@ const BudgetForm = () => {
         </label>
       </div>
       <div className="flex w-full gap-16">
-        <label className="paragraph2 ">
+        <label className="paragraph2 md2:w-full">
           Pessoa física ou jurídica?
           <div
             className={`select-container lg hover:!border-neutral-30 min-w-[16rem] md2:min-w-[0] md2:w-full`}>
@@ -107,7 +115,7 @@ const BudgetForm = () => {
                     isMulti={false}
                     onChange={val => onChange(val?.value)}
                     value={cliente_type_options.find(c => c.value === value)}
-                    closeMenuOnSelect={false}
+                    // closeMenuOnSelect={false}
                   />
                   <sub className="text-alert-error">{error?.message}</sub>
                 </>
@@ -127,7 +135,7 @@ const BudgetForm = () => {
                 fieldState: {error},
               }) => (
                 <>
-                  <input type="checkbox" onChange={onChange} checked={value} />
+                  <CheckBox check={value} onChange={onChange} />
                   <sub className="text-alert-error">{error?.message}</sub>
                 </>
               )}

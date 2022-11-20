@@ -59,6 +59,8 @@ import DetailsPaineis from './pages/PainesSolares/detailsPaineis';
 import ProductDatails from './pages/ProductDatails';
 import Integrator from './pages/Integrator';
 
+import {AnimatePresence} from 'framer-motion';
+
 function App() {
 	document.body.addEventListener('DOMContentLoaded', () =>
 		document.body.classList.add('DOMContentLoaded'),
@@ -69,41 +71,48 @@ function App() {
 		return isAutheticated ? children : <Navigate to="/login" />;
 	};
 
+	const location = useLocation();
+
 	return (
-		<Routes>
-			<Route path="/home" element={<Home />} />
-			<Route path="/sobre-nos" element={<Sobre />} />
-			<Route path="/criar-conta" element={<CriarConta />} />
+		<AnimatePresence exitBeforeEnter initial={false}>
+			<Routes location={location} key={location.pathname}>
+				<Route path="/home" element={<Home />} />
+				<Route path="/sobre-nos" element={<Sobre />} />
+				<Route path="/criar-conta" element={<CriarConta />} />
 
-			<Route
-				path="/"
-				element={
-					<PrivateRoute>
-						<AppLayout />
-					</PrivateRoute>
-				}>
-				<Route index element={<PedidosOrcamentos />} />
 				<Route
-					path="/pre-proposta/:budgetRequestId"
-					element={<PreProposta />}
-				/>
-				<Route
-					path="/dados-de-orcamento/:budgetRequestId"
-					element={<DadosOrcamento />}
-				/>
-				<Route path="/ver-projeto/:budgetRequestId/" element={<VerProjeto />} />
-				<Route path="/paines-solares" element={<PainesSolares />} />
-				<Route path="/paines-solares/:id" element={<ProductDatails />} />
-				<Route path="/livro-caixa" element={<LivroCaixa />} />
-				<Route path="/design-system" element={<DesignSystem />} />
-				<Route path="/meu-integrador" element={<Integrator />} />
-			</Route>
+					path="/"
+					element={
+						<PrivateRoute>
+							<AppLayout />
+						</PrivateRoute>
+					}>
+					<Route index element={<PedidosOrcamentos />} />
+					<Route
+						path="/pre-proposta/:budgetRequestId"
+						element={<PreProposta />}
+					/>
+					<Route
+						path="/dados-de-orcamento/:budgetRequestId"
+						element={<DadosOrcamento />}
+					/>
+					<Route
+						path="/ver-projeto/:budgetRequestId/"
+						element={<VerProjeto />}
+					/>
+					<Route path="/paines-solares" element={<PainesSolares />} />
+					<Route path="/paines-solares/:id" element={<ProductDatails />} />
+					<Route path="/livro-caixa" element={<LivroCaixa />} />
+					<Route path="/design-system" element={<DesignSystem />} />
+					<Route path="/meu-integrador" element={<Integrator />} />
+				</Route>
 
-			<Route
-				path="/login"
-				element={!isAutheticated ? <Login /> : <Navigate to="/" />}
-			/>
-		</Routes>
+				<Route
+					path="/login"
+					element={!isAutheticated ? <Login /> : <Navigate to="/" />}
+				/>
+			</Routes>
+		</AnimatePresence>
 	);
 }
 

@@ -135,19 +135,19 @@ export const ownerMenu = [
 	{
 		title: 'Orçamentos e Projetos',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_gestao_producao',
 		link: '/',
 	},
 	{
 		title: 'Suporte técnico',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_support_ms',
 		external: 'https://web.whatsapp.com/send/?phone=5584987227633',
 	},
 	{
 		title: 'Vídeos e FAQ',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_faq_ms',
 		external: 'https://www.youtube.com/channel/UCVCZu2Zn-1A8d0NDBmWzbZQ',
 	},
 ];
@@ -156,19 +156,19 @@ export const adminMenu = [
 	{
 		title: 'Todas as Oportunidades',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_administrativo',
 		link: '/',
 	},
 	{
 		title: 'E-commerce',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_franquias',
 		link: '/paines-solares',
 	},
 	{
 		title: 'Financeiro',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_dollar_ms',
 		link: '/livro-caixa',
 	},
 	{
@@ -189,7 +189,7 @@ export const inegratorMenu = [
 	{
 		title: 'Minhas Oportunidades',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_administrativo',
 		link: '/',
 	},
 	{
@@ -201,19 +201,19 @@ export const inegratorMenu = [
 	{
 		title: 'E-commerce',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_franquias',
 		link: '/paines-solares',
 	},
 	{
 		title: 'Financeiro',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_dollar_ms',
 		link: '/livro-caixa',
 	},
 	{
 		title: 'Vídeos e FAQ',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_faq_ms',
 		external: 'https://www.youtube.com/channel/UCVCZu2Zn-1A8d0NDBmWzbZQ',
 	},
 ];
@@ -222,19 +222,19 @@ export const representativeMenu = [
 	{
 		title: 'Minhas oportunidades',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_administrativo',
 		link: '/',
 	},
 	{
 		title: 'E-commerce',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_franquias',
 		link: '/paines-solares',
 	},
 	{
 		title: 'Financeiro',
 		nivel: 1,
-		svg: '#icon_settings_ms',
+		svg: '#icon_dollar_ms',
 		link: '/livro-caixa',
 	},
 ];

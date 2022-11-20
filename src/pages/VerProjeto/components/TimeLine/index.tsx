@@ -27,6 +27,8 @@ const TimeLine = () => {
     });
   }, [currentStep]);
 
+
+
   const steps = [
     {
       step: 'budget',

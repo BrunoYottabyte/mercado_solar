@@ -70,8 +70,8 @@ const budgetRequestSchema = yup.object({
   client_postal_code: yup
     .string()
     .required('Obrigatório')
-    .matches(/^[0-9]{5}[0-9]{3}$/, 'CEP inválido')
-    .max(8, 'CEP inválido'),
+    .matches(/\d{5}\-\d{3}/, 'CEP inválido')
+    .max(9, 'CEP inválido'),
   // client_type: yup.string().required('Obrigatório'),
   client_imovel: yup.string().required('Obrigatório'),
   client_type: yup.string().required('Obrigatório'),

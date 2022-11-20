@@ -14,6 +14,7 @@ import {InputDate} from '../../components/DesignSystem/InputDate';
 import {GlobalFilter} from '../../components/DesignSystem/Table/GlobalFilter';
 import {api} from '../../services/api';
 import {format} from 'date-fns';
+import {motion} from 'framer-motion'
 
 const LivroCaixa = () => {
 	const [inputs, setInputs] = useState([]);
@@ -152,7 +153,7 @@ const LivroCaixa = () => {
 
 	const series2 = [
 		{
-			name: 'series1',
+			name: 'seriesAAA',
 			data: [0, 10, 20, 17, 23, 20, 25],
 		},
 	];
@@ -599,217 +600,224 @@ const LivroCaixa = () => {
 	}, []);
 
 	return (
-		<div className="container">
-			<Card classe="my-64 px-24 py-32">
-				<header className="flex justify-between md2:flex-col md2:gap-16 mb-20">
-					<Title classe="text-neutral-90 gap-8 font-medium">
-						<div>
-							<div className="flex items-center gap-8">
-								<SvgUse id="#icon-title-caixa-geral" classe="w-20" />
-								<p className="block text-neutral-90 font-medium">
-									Livro caixa-geral
-								</p>
+		<motion.div 
+		initial={{translateX: '-20%', opacity: 0}}
+		animate={{translateX: 0, opacity: 1}}
+		exit={{translateX: '-20%', opacity: 0}}
+		transition={{duration: 0.3}}
+		>
+			<div className="container">
+				<Card classe="my-64 px-24 py-32">
+					<header className="flex justify-between md2:flex-col md2:gap-16 mb-20">
+						<Title classe="text-neutral-90 gap-8 font-medium">
+							<div>
+								<div className="flex items-center gap-8">
+									<SvgUse id="#icon-title-caixa-geral" classe="w-20" />
+									<p className="block text-neutral-90 font-medium">
+										Livro caixa-geral
+									</p>
+								</div>
 							</div>
-						</div>
-					</Title>
+						</Title>
 
-					<div className="flex items-center gap-16">
-						<Dropdowns>
-							<DropdownItem classe="h-40">
-								<Button
-									iconID="#icon_config_filter"
-									classe="secondary"
-									onClick={openFilter}>
-									Filtrar
-								</Button>
-							</DropdownItem>
+						<div className="flex items-center gap-16">
+							<Dropdowns>
+								<DropdownItem classe="h-40">
+									<Button
+										iconID="#icon_config_filter"
+										classe="secondary"
+										onClick={openFilter}>
+										Filtrar
+									</Button>
+								</DropdownItem>
 
-							<DropdownContainer classe="!max-w-[370px] md:left-0 md:!w-[85vw] md2:!w-[85vw] !w-[370px] !p-0 rounded-tr-md rounded-tl-md mt-4 shadow-sm border border-neutral-30">
-								<div className="flex flex-col gap-16 p-16 w-[370px] md:!w-[85vw] md2:!w-[85vw] max-w-[370px]">
-									<label className="text-neutral-80 font-medium">
-										Agrupar por período
-										<SelectComponent
-											setStateCurrent={setSelected}
-											state={selected}
-											data={dataSelect}
-											classe="w-full"
-										/>
-									</label>
+								<DropdownContainer classe="!max-w-[370px] md:left-0 md:!w-[85vw] md2:!w-[85vw] !w-[370px] !p-0 rounded-tr-md rounded-tl-md mt-4 shadow-sm border border-neutral-30">
+									<div className="flex flex-col gap-16 p-16 w-[370px] md:!w-[85vw] md2:!w-[85vw] max-w-[370px]">
+										<label className="text-neutral-80 font-medium">
+											Agrupar por período
+											<SelectComponent
+												setStateCurrent={setSelected}
+												state={selected}
+												data={dataSelect}
+												classe="w-full"
+											/>
+										</label>
 
-									<label className="text-neutral-80 font-medium">
-										Receita/despesa
-										<SelectComponent
-											setStateCurrent={setReceita}
-											state={receita}
-											data={dataReceita}
-											classe="w-full"
-										/>
-									</label>
+										<label className="text-neutral-80 font-medium">
+											Receita/despesa
+											<SelectComponent
+												setStateCurrent={setReceita}
+												state={receita}
+												data={dataReceita}
+												classe="w-full"
+											/>
+										</label>
 
-									<label className="text-neutral-80 font-medium">
-										Conta contábil
-										<SelectComponent
-											setStateCurrent={setContabil}
-											state={contabil}
-											data={dataContabil}
-											classe="w-full"
-										/>
-									</label>
+										<label className="text-neutral-80 font-medium">
+											Conta contábil
+											<SelectComponent
+												setStateCurrent={setContabil}
+												state={contabil}
+												data={dataContabil}
+												classe="w-full"
+											/>
+										</label>
 
-									<label className="text-neutral-80 font-medium">
-										Banco
-										<SelectComponent
-											setStateCurrent={setBanco}
-											state={banco}
-											data={dataBanco}
-											classe="w-full"
-										/>
-									</label>
+										<label className="text-neutral-80 font-medium">
+											Banco
+											<SelectComponent
+												setStateCurrent={setBanco}
+												state={banco}
+												data={dataBanco}
+												classe="w-full"
+											/>
+										</label>
 
-									<div
-										onClick={handleClick}
-										className="text-neutral-80 font-medium">
-										Unidade
-										<SelectComponent
-											setStateCurrent={setUnidade}
-											state={unidade}
-											data={dataUnidade}
-											classe="w-full  relative unidade"
-											onMenuOpen={overrideDatePicker}
-											onMenuClose={onClose}
-										/>
-									</div>
-
-									<div className="flex gap-16 ">
 										<div
 											onClick={handleClick}
 											className="text-neutral-80 font-medium">
-											De
-											<InputDate
-												classe="w-full"
-												containerClass="w-[100%] z-[20] caixa-geral"
-												startDate={startDate}
-												setStartDate={setStartDate}
-												placeholder="dd/mm/aaaa"
+											Unidade
+											<SelectComponent
+												setStateCurrent={setUnidade}
+												state={unidade}
+												data={dataUnidade}
+												classe="w-full  relative unidade"
+												onMenuOpen={overrideDatePicker}
+												onMenuClose={onClose}
 											/>
 										</div>
 
-										<div
-											className="text-neutral-80 font-medium"
-											onClick={handleClick}>
-											Até
-											<InputDate
-												classe="w-full"
-												containerClass="w-[100%] z-[20] caixa-geral"
-												startDate={startDate}
-												setStartDate={setStartDate}
-												placeholder="dd/mm/aaaa"
-											/>
+										<div className="flex gap-16 ">
+											<div
+												onClick={handleClick}
+												className="text-neutral-80 font-medium">
+												De
+												<InputDate
+													classe="w-full"
+													containerClass="w-[100%] z-[20] caixa-geral"
+													startDate={startDate}
+													setStartDate={setStartDate}
+													placeholder="dd/mm/aaaa"
+												/>
+											</div>
+
+											<div
+												className="text-neutral-80 font-medium"
+												onClick={handleClick}>
+												Até
+												<InputDate
+													classe="w-full"
+													containerClass="w-[100%] z-[20] caixa-geral"
+													startDate={startDate}
+													setStartDate={setStartDate}
+													placeholder="dd/mm/aaaa"
+												/>
+											</div>
+										</div>
+
+										{/* <p className='text-neutral-70 font-semibold text-center'>* Os filtros são referentes à data de pagamento*</p> */}
+
+										<div className="mt-24 flex gap-16">
+											<Button
+												classe="btn-cancel secondary !h-48 flex-1 justify-center"
+												onClick={() => {
+													closeFilter();
+												}}>
+												Cancelar
+											</Button>
+
+											<Button classe="!h-48 flex-1 justify-center">
+												Filtrar
+											</Button>
 										</div>
 									</div>
+								</DropdownContainer>
+							</Dropdowns>
+							<p className="font-medium text-primary-pure cursor-pointer">
+								Limpar filtros
+							</p>
+						</div>
+					</header>
 
-									{/* <p className='text-neutral-70 font-semibold text-center'>* Os filtros são referentes à data de pagamento*</p> */}
-
-									<div className="mt-24 flex gap-16">
-										<Button
-											classe="btn-cancel secondary !h-48 flex-1 justify-center"
-											onClick={() => {
-												closeFilter();
-											}}>
-											Cancelar
-										</Button>
-
-										<Button classe="!h-48 flex-1 justify-center">
-											Filtrar
-										</Button>
+					<div className="flex gap-24 md2:flex-col overflow-hidden">
+						<div className="flex-1">
+							<Charts options={options} series={series} height={400} />
+						</div>
+						<div className="flex flex-col gap-8 w-[272px] md2:flex-row md2:w-full md:flex-col">
+							<div className="md2:flex-1 h-max flex gap-16 relative border min-h-[130px] max-h-[130px] border-neutral-20 rounded-md shadow overflow-hidden">
+								<div className="w-[50%] flex items-center">
+									<div className="absolute px-24 bg-[#fff]">
+										<h1 className="tracking-wider text-alert-green font-bold mb-16">
+											RECEITAS
+										</h1>
+										<p className="flex gap-8">
+											<span className="text-neutral-70 font-semibold">R$</span>
+											<span className="text-neutral-90 text-2xl"> 10.000,00</span>
+										</p>
 									</div>
 								</div>
-							</DropdownContainer>
-						</Dropdowns>
-						<p className="font-medium text-primary-pure cursor-pointer">
-							Limpar filtros
-						</p>
-					</div>
-				</header>
-
-				<div className="flex gap-24 md2:flex-col overflow-hidden">
-					<div className="flex-1">
-						<Charts options={options} series={series} height={400} />
-					</div>
-					<div className="flex flex-col gap-8 w-[272px] md2:flex-row md2:w-full md:flex-col">
-						<div className="md2:flex-1 h-max flex gap-16 relative border min-h-[130px] max-h-[130px] border-neutral-20 rounded-md shadow overflow-hidden">
-							<div className="w-[50%] flex items-center">
-								<div className="absolute px-24 bg-[#fff]">
-									<h1 className="tracking-wider text-alert-green font-bold mb-16">
-										RECEITAS
-									</h1>
-									<p className="flex gap-8">
-										<span className="text-neutral-70 font-semibold">R$</span>
-										<span className="text-neutral-90 text-2xl"> 10.000,00</span>
-									</p>
+								<div className="!flex-[70%]">
+									<Charts
+										options={receitasOptions}
+										series={series2}
+										height={100}
+										type="area"
+									/>
 								</div>
 							</div>
-							<div className="!flex-[70%]">
-								<Charts
-									options={receitasOptions}
-									series={series2}
-									height={100}
-									type="area"
-								/>
-							</div>
-						</div>
 
-						<div className="md2:flex-1 h-max flex gap-16 relative border min-h-[130px] max-h-[130px] border-neutral-20 rounded-md shadow overflow-hidden">
-							<div className="w-[50%] flex items-center">
-								<div className="absolute px-24 bg-[#fff]">
-									<h1 className="tracking-wider text-alert-red-100 font-bold mb-16">
-										DESPESAS
-									</h1>
-									<p className="flex gap-8">
-										<span className="text-neutral-70 font-semibold">R$</span>
-										<span className="text-neutral-90 text-2xl"> 100,00</span>
-									</p>
+							<div className="md2:flex-1 h-max flex gap-16 relative border min-h-[130px] max-h-[130px] border-neutral-20 rounded-md shadow overflow-hidden">
+								<div className="w-[50%] flex items-center">
+									<div className="absolute px-24 bg-[#fff]">
+										<h1 className="tracking-wider text-alert-red-100 font-bold mb-16">
+											DESPESAS
+										</h1>
+										<p className="flex gap-8">
+											<span className="text-neutral-70 font-semibold">R$</span>
+											<span className="text-neutral-90 text-2xl"> 100,00</span>
+										</p>
+									</div>
+								</div>
+								<div className="!flex-[70%]">
+									<Charts
+										options={despesasOptions}
+										series={series2}
+										height={100}
+										type="area"
+									/>
 								</div>
 							</div>
-							<div className="!flex-[70%]">
-								<Charts
-									options={despesasOptions}
-									series={series2}
-									height={100}
-									type="area"
-								/>
-							</div>
-						</div>
 
-						<div className="md2:flex-1 h-max flex gap-16 relative border min-h-[130px] max-h-[130px] border-neutral-20 rounded-md shadow overflow-hidden">
-							<div className="w-[50%] flex items-center">
-								<div className="absolute px-24 bg-[#fff]">
-									<h1 className="tracking-wider text-primary-pure font-bold mb-16">
-										SALDO
-									</h1>
-									<p className="flex gap-8">
-										<span className="text-neutral-70 font-semibold">R$</span>
-										<span className="text-neutral-90 text-2xl">9.900,00</span>
-									</p>
+							<div className="md2:flex-1 h-max flex gap-16 relative border min-h-[130px] max-h-[130px] border-neutral-20 rounded-md shadow overflow-hidden">
+								<div className="w-[50%] flex items-center">
+									<div className="absolute px-24 bg-[#fff]">
+										<h1 className="tracking-wider text-primary-pure font-bold mb-16">
+											SALDO
+										</h1>
+										<p className="flex gap-8">
+											<span className="text-neutral-70 font-semibold">R$</span>
+											<span className="text-neutral-90 text-2xl">9.900,00</span>
+										</p>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 
-				<div className="mt-32">
-					<Table
-						options={{
-							download: false,
-							headerChildren: true,
-						}}
-						HeaderCustom={HeaderLivroCaixa}
-						arrData={inputs}
-						arrColumns={columns}
-					/>
-				</div>
-			</Card>
-		</div>
+					<div className="mt-32">
+						<Table
+							options={{
+								download: false,
+								headerChildren: true,
+							}}
+							HeaderCustom={HeaderLivroCaixa}
+							arrData={inputs}
+							arrColumns={columns}
+						/>
+					</div>
+				</Card>
+			</div>
+		</motion.div>
 	);
 };
 

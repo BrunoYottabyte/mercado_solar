@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useEffect} from 'react';
 import Button from '../../components/DesignSystem/Button';
 import {ModalHeader} from '../../components/DesignSystem/Modal';
@@ -10,9 +10,11 @@ import {useGlobalContext} from '../../context/GlobalContext';
 import {ProductsProvider, useProducts} from './context';
 import Item from './components/item';
 import ModalCart from '../ProductDatails/components/ModalCart';
+import { motion } from 'framer-motion'
 
 const PainesSolaresContent = () => {
 	const {setmodalOpen, modalOpen} = useGlobalContext();
+	const [optionSelected, setOptionSelected] = useState();
 	const {
 		products,
 		brands,
@@ -40,7 +42,12 @@ const PainesSolaresContent = () => {
 	};
 
 	return (
-		<>
+			<motion.div 
+		initial={{opacity: 0}}
+		animate={{opacity: 1}}
+		exit={{translateX: '-20%', opacity: 0}}
+		transition={{duration: 0.3}}
+		>
 			<Button
 				style={{'--cor-1': '#F69F00'}}
 				iconID="#icon-eye-ms"
@@ -158,11 +165,16 @@ const PainesSolaresContent = () => {
 						</p>
 						<SelectComponent
 							classe=" !w-[200px] md2:!w-full z-[99]"
-							onChange={e => orderByPrice(e.value)}
+							onChange={e => {
+								orderByPrice(e.value)
+								setOptionSelected(e.value)
+							}}
 							data={[
 								{value: 'price', label: 'Mais Baratos'},
 								{value: '-price', label: 'Mais Caros'},
 							]}
+							value={optionSelected}
+							state={optionSelected}
 						/>
 					</div>
 				</div>
@@ -243,7 +255,7 @@ const PainesSolaresContent = () => {
 					</div>
 				</section>
 			</div>
-		</>
+		</motion.div>
 	);
 };
 

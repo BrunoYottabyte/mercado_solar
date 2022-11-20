@@ -50,6 +50,8 @@ export const GLOBAL = {
 		}
 	},
 
+	
+
 	CPFFormatter: (value) => {
 		if (!Number(value.replaceAll('.','').replaceAll('-',''))) return "";
 
@@ -80,11 +82,24 @@ export const GLOBAL = {
 	},
 
 	CepFormatter: (v) => {
-		v=v.replace(/\D/g,"")                
+		v=String(v).replace(/\D/g,"")                
 		.replace(/^(\d{5})(\d)/,"$1-$2") 
 		return v;
 	},
 
+	PhoneFormatter: (v) => {
+		v = String(v).replace(/\D/g, '')
+		.replace(/(\d{2})(\d)/, '($1) $2')
+		.replace(/(\d{5})(\d)/, '$1-$2')
+		.replace(/(-\d{4})\d+?$/, '$1');
+		return v;
+	},
+
+	GeoFormatter: (v) => {
+		v = String(v).replace(/\D/g, '')
+		.replace(/(\d{2})(\d)/, '$1.$2');
+		return v;
+	},
 	validarPorLength: (value, tamanho) => value?.length > tamanho,
 
 	showToastify: (text, duration = 3500, classe, style) => {
@@ -96,8 +111,6 @@ export const GLOBAL = {
 			style: style ? style : {}
 		}).showToast();
 	},
-
-	
 
 	stringToNumber: (string) => {
 		return Number(string.replace(',', '.').replace(/\./g, '')).toFixed(0)

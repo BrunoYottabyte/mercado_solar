@@ -53,7 +53,7 @@ const options = {
   responsive: [
     {
   
-      breakpoint: 1000,
+      breakpoint: 480,
       options: {
         chart: {
           type: 'bar',

@@ -15,10 +15,11 @@ import TabsArea from './components/TabsArea';
 import ButtonsSteps from './components/ButtonsSteps';
 import {ModalContent} from '../../components/DesignSystem/Modal/ModalContent';
 
-
-
+import {motion} from 'framer-motion'
+ 
 
 const VerProjetoContent = () => {
+  
   const {budgetRequest, address} = useVerProjeto();
   const [loading, setLoading] = useState(false);
   const {setmodalOpen, modalOpen} = useGlobalContext();
@@ -29,6 +30,14 @@ const VerProjetoContent = () => {
       clearTimeout(window.timeoutProjeto);
     }
   }, [modalOpen]);
+
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
+  }, [])
+
   let sunInit = [
     {
       state: 'vazio'
@@ -70,9 +79,13 @@ const VerProjetoContent = () => {
     !sunClicked.state ? setSunArr(sunInit) : ''
   }
 
+  const closeModal = () => {
+    setmodalOpen({open: false, id: null})
+  }
+
   return (
     <>
-      <Modal className={'w-[37rem]  md2:max-w-[400px] md2:w-[95vw]'}>
+     <Modal className={'w-[37rem]  md2:max-w-[400px] md2:w-[95vw]'}>
         <ModalContent id="approved">
           <ModalHeader text={''} close={false} classeHeader="bg-white title3">
             <div className="title3 flex  w-full justify-between items-center">
@@ -273,7 +286,59 @@ const VerProjetoContent = () => {
             </div>
           </main>
         </ModalContent>
-      </Modal>
+
+        <ModalContent id="animation">
+					<div className="p-24">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="120"
+							height="120"
+							fill="none"
+							className="svg-animate-check mx-auto mb-24 mt-16"
+							viewBox="0 0 120 120"
+						>
+							<path
+								fill="#F69F00"
+								stroke="#e8eaf1"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="15"
+								d="M7.5 60.128c0 28.634 23.212 51.847 51.847 51.847h1.306c28.634 0 51.847-23.213 51.847-51.847S89.287 8.281 60.653 8.281h-1.306C30.712 8.281 7.5 31.494 7.5 60.128z"
+								className="path-1"
+							></path>
+							<path
+								stroke="#fff"
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth="8"
+								d="M45 60.13l11.25 11.086L75 52.738"
+								className="path-2"
+							></path>
+						</svg>
+						<p className="text-base font-semibold text-center mx-auto mt-8 text-primary-pure">
+							Salvo com Sucesso
+						</p>
+
+
+						<Button
+							onClick={() => closeModal()}
+							classe="mt-16 w-full h-56 text-center justify-center"
+							svgClass="rotate-180"
+							iconID="#icon_arrow_left"
+						>
+							Fechar
+						</Button>
+
+					</div>
+				</ModalContent>
+     </Modal>
+    <motion.div 
+		initial={{translateX: '-20%', opacity: 0}}
+		animate={{translateX: 0, opacity: 1}}
+		exit={{translateX: '-20%', opacity: 0}}
+		transition={{duration: 0.3}}
+		>
+     
       <div className="container my-64  flex flex-col gap-16">
         <ButtonsSteps />
         {budgetRequest && (
@@ -300,7 +365,8 @@ const VerProjetoContent = () => {
 
        
       </div>
-    </>
+      </motion.div>
+      </>
   );
 };
 

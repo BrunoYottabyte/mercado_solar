@@ -55,9 +55,9 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
     <section className="p-24 flex flex-col gap-48 select-none">
       <div>
         <p className="headline1 mb-16">{title}</p>
-        <div className="flex md:flex-col gap-24">
+        <div className="flex sm:flex-col gap-24 sm:justify-center">
           {isRepresentative && (
-            <div className="min-w-[275px] cursor-pointer relative w-[275px] h-[315px] border hover:brightness-95 transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center gap-16">
+            <div className="min-w-[275px] xs:w-full cursor-pointer relative w-[275px] h-[315px] border hover:brightness-95 transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center gap-16">
               <div className="w-40 h-40 rounded-md grid place-items-center bg-primary-pure/10">
                 <SvgUse id="#icon_add_ms" classe="!w-20 !h-20" />
               </div>
@@ -75,7 +75,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
           <Swiper
             spaceBetween={8}
             direction="horizontal"
-            className="!h-[315px] w-full md:hidden block"
+            className="!h-[315px] w-full sm:hidden block"
             slidesPerView={'auto'}
             touchStartPreventDefault={false}
             mousewheel>
@@ -92,7 +92,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                       />
                       <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
                         <Button
-                          onClick={() => downloadImage(image.image)}
+                          onClick={() => downloadIMG(image.image)}
                           classe="btn secondary h-48 flex-1 justify-center">
                           Download
                         </Button>
@@ -116,7 +116,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                   .fill()
                   .map((item, i) => (
                     <SwiperSlide className="!w-max" key={i}>
-                      <div className="relative grid place-items-center">
+                      <div className="relative sm:!w-full grid place-items-center">
                         <p className="absolute z-[99] text-center text-primary-darkness/60">
                           Esse dado vai ser preenchido pelo seu representante ou
                           integrador.
@@ -128,7 +128,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                           duration={3.5}>
                           <Skeleton
                             direction="ltr"
-                            className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center"></Skeleton>
+                            className="w-[275px] sm:!w-full overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center"></Skeleton>
                         </SkeletonTheme>
                       </div>
                     </SwiperSlide>
@@ -139,7 +139,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
           <Swiper
             spaceBetween={8}
             direction="vertical"
-            className="!h-[400px] w-full hidden md:block"
+            className={`!h-[400px] ${images.length == 0 && isRepresentative ? '!h-[0px]' : ''} w-full hidden sm:flex`}
             slidesPerView={'auto'}
             touchStartPreventDefault={false}
             mousewheel>
@@ -149,14 +149,14 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                     key={`${i}-${image.image}-mobile`}
                     className="!h-max"
                     >
-                    <div className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
+                    <div className="w-[275px] xs:w-full overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure-10 flex flex-col items-center justify-center">
                       <img
                         src={image.image}
                         className=" w-full  h-[220px] object-cover"
                       />
                       <div className="w-full bg-white !min-h-[96px] p-24 !h-[96px] flex gap-16 justify-center items-center">
                         <Button
-                          onClick={() => downloadImage(image.image)}
+                          onClick={() => downloadIMG(image.image)}
                           classe="btn secondary h-48 flex-1 justify-center">
                           Download
                         </Button>
@@ -180,7 +180,7 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                   .fill()
                   .map((item, i) => (
                     <SwiperSlide className="!w-max" key={i}>
-                      <div className="relative grid place-items-center">
+                      <div className="relative w-full sm:w-full grid place-items-center">
                         <p className="absolute z-[99] text-center text-primary-darkness/60">
                           Esse dado vai ser preenchido pelo seu representante ou
                           integrador.
@@ -189,10 +189,12 @@ const Slide = ({images, title, type, openModal}: ISlideProps) => {
                         <SkeletonTheme
                           baseColor="#b1722f5b"
                           highlightColor="#88521787"
-                          duration={3.5}>
+                          duration={3.5}
+                          >
+                          
                           <Skeleton
                             direction="ltr"
-                            className="w-[275px] overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center"></Skeleton>
+                            className="w-[275px]  overflow-hidden h-[315px] border relative transition-all border-dotted border-primary-pure rounded-md bg-primary-pure/5 flex flex-col items-center justify-center"></Skeleton>
                         </SkeletonTheme>
                       </div>
                     </SwiperSlide>
