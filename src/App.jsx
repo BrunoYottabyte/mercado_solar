@@ -1,9 +1,9 @@
 import React from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import {Routes, Route, Navigate, useLocation} from 'react-router-dom';
 import DesignSystem from './components/DesignSystem';
 import AppLayout from './pages/Layout/AppLayout';
 import Login from './pages/Login';
-import { useAuthContext } from './context/useAuthContext';
+import {useAuthContext} from './context/useAuthContext';
 import VendasB2B from './pages/VendasB2B';
 import ListagemCardapio from './pages/VendasB2B/Cardapio';
 import CardapioDirecionado from './pages/VendasB2B/Cardapio/CardapioDirecionado';
@@ -57,14 +57,15 @@ import VerProjeto from './pages/VerProjeto';
 import PainesSolares from './pages/PainesSolares';
 import DetailsPaineis from './pages/PainesSolares/detailsPaineis';
 import ProductDatails from './pages/ProductDatails';
+import Integrator from './pages/Integrator';
 
 function App() {
 	document.body.addEventListener('DOMContentLoaded', () =>
 		document.body.classList.add('DOMContentLoaded'),
 	);
-	const { setNavigateFn, isAutheticated } = useAuthContext();
+	const {setNavigateFn, isAutheticated} = useAuthContext();
 
-	const PrivateRoute = ({ children }) => {
+	const PrivateRoute = ({children}) => {
 		return isAutheticated ? children : <Navigate to="/login" />;
 	};
 
@@ -81,21 +82,22 @@ function App() {
 						<AppLayout />
 					</PrivateRoute>
 				}>
-					<Route index element={<PedidosOrcamentos />} />
-					<Route
-						path="/pre-proposta/:budgetRequestId"
-						element={<PreProposta />}
-					/>
-					<Route
-						path="/dados-de-orcamento/:budgetRequestId"
-						element={<DadosOrcamento />}
-					/>
-					<Route path="/ver-projeto/:budgetRequestId/" element={<VerProjeto />} />
-					<Route path="/paines-solares" element={<PainesSolares />} />
-					<Route path="/paines-solares/:id" element={<ProductDatails />} />
-					<Route path="/livro-caixa" element={<LivroCaixa />} />
-					<Route path="/design-system" element={<DesignSystem />} />
-				</Route>
+				<Route index element={<PedidosOrcamentos />} />
+				<Route
+					path="/pre-proposta/:budgetRequestId"
+					element={<PreProposta />}
+				/>
+				<Route
+					path="/dados-de-orcamento/:budgetRequestId"
+					element={<DadosOrcamento />}
+				/>
+				<Route path="/ver-projeto/:budgetRequestId/" element={<VerProjeto />} />
+				<Route path="/paines-solares" element={<PainesSolares />} />
+				<Route path="/paines-solares/:id" element={<ProductDatails />} />
+				<Route path="/livro-caixa" element={<LivroCaixa />} />
+				<Route path="/design-system" element={<DesignSystem />} />
+				<Route path="/meu-integrador" element={<Integrator />} />
+			</Route>
 
 			<Route
 				path="/login"

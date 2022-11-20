@@ -193,6 +193,12 @@ export const inegratorMenu = [
 		link: '/',
 	},
 	{
+		title: 'Meu integrador',
+		nivel: 1,
+		svg: '#icon_settings_ms',
+		link: '/meu-integrador',
+	},
+	{
 		title: 'E-commerce',
 		nivel: 1,
 		svg: '#icon_settings_ms',
