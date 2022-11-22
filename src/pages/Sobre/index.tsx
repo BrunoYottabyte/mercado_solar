@@ -16,6 +16,8 @@ import FooterSite from '../Home/components/Footer';
 import {useNavigate} from 'react-router-dom';
 import logoMeglio from '../../assets/images/home/logomeglio.png';
 import {AboutProvider, useAbout} from './context';
+import img1 from '../../assets/images/sobre-nos/img1.png'
+import img2 from '../../assets/images/sobre-nos/img2.png'
 
 const SobreContent = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
@@ -104,7 +106,7 @@ const SobreContent = () => {
               </div>
               <p className="title3 md2:headline1">{selectedAbout?.name}</p>
             </div>
-            <img src={logoMeglio} alt="logo meglio" />
+            <img className='max-w-[120px] max-h-[48px] rounded-md' src={selectedAbout?.photo ? selectedAbout.photo : logoMeglio} alt="logo" />
           </div>
           <div className="flex justify-between md2:flex-col md2:gap-24 gap-[13rem] items-start mt-16">
             <h2 className="title2 whitespace-nowrap">Sobre empresa</h2>
@@ -120,11 +122,11 @@ const SobreContent = () => {
           <div className="md2:px-24 md2:w-[100vw] w-[1100px] z-[999] flex justify-center items-center relative bg-gradient-sobre-nos h-full">
             <div className="flex flex-col gap-32 w-[50rem] overflow-x-auto">
               <img
-                className="max-h-[25rem] mainImg"
+                className="max-h-[25rem] mainImg rounded-md"
                 src={
                   selectedAbout?.images.length
                     ? selectedAbout?.images[0].image
-                    : ''
+                    : img1
                 }
                 alt=""
               />
@@ -135,15 +137,22 @@ const SobreContent = () => {
                   className="w-full md2:gap-24"
                   spaceBetween={32}
                   slidesPerView={'auto'}>
-                  {selectedAbout?.images.map((item, i) => {
+                  {selectedAbout?.images.length ? selectedAbout?.images.map((item, i) => {
                     return (
                       <SwiperSlide
                         className="!w-max cursor-pointer"
                         onClick={() => changeViewImg(item.image)}>
-                        <img src={item.image} alt="" />
+                        <img src={item.image} className="max-w-[176px] max-h-[87px] rounded-md" alt="" />
                       </SwiperSlide>
                     );
-                  })}
+                  }) : [img1,img2,img1,img2,img2,img1,img2].map((item, i) => (
+                      <SwiperSlide
+                        key={i}
+                        className="!w-max cursor-pointer"
+                        onClick={() => changeViewImg(item)}>
+                        <img src={item} className="max-w-[176px] max-h-[87px] rounded-md" alt="" />
+                      </SwiperSlide>
+                  ))}
                 </Swiper>
               </div>
             </div>

@@ -61,6 +61,7 @@ const FooterSite = () => {
 					<Button
 						iconID="#icon_user_ms"
 						svgClass="!w-24 !h-24"
+						onClick={() => navigate('/login')}
 						classe="secondary h-48 hover:bg-white !w-[13.5rem] border !border-primary-pure justify-center">
 						Entrar
 					</Button>
