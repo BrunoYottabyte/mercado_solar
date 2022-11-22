@@ -5,7 +5,7 @@ interface IIntegratorForm {
   id?: string;
   name: string;
   about: string;
-  photo: File;
+  photo: any;
   services_offered: string;
   brands_and_equipment: string;
   service_regions: string;

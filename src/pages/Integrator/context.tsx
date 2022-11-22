@@ -18,27 +18,30 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
   const {userId, userType} = useAuthContext();
   const form = useForm<IIntegratorForm>();
   const navigate = useNavigate();
-  const saveIntegrator = (data: IIntegratorForm) => {
-    const photo = data.photo && data.photo.length ? data.photo[0] : null;
-    const formData = {...data, photo, user: userId};
-    if (data.id) {
-      api
-        .put(`/integrator-create/${data.id}/`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then(() => {});
-    } else {
-      api
-        .post('/integrator-create/', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        .then(() => {})
-        .catch(() => {});
-    }
+  const saveIntegrator = (data: IIntegratorForm, images: []) => {
+    console.log(images);
+    console.log('data completo', data);
+
+    // const photo = data.photo && data.photo.length ? data.photo[0] : null;
+    // const formData = {...data, photo, user: userId};
+    // if (data.id) {
+    //   api
+    //     .put(`/integrator-create/${data.id}/`, formData, {
+    //       headers: {
+    //         'Content-Type': 'multipart/form-data',
+    //       },
+    //     })
+    //     .then(() => {});
+    // } else {
+    //   api
+    //     .post('/integrator-create/', formData, {
+    //       headers: {
+    //         'Content-Type': 'multipart/form-data',
+    //       },
+    //     })
+    //     .then(() => {})
+    //     .catch(() => {});
+    // }
   };
 
   useEffect(() => {
@@ -56,6 +59,7 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
         const integrator = response.data.results[0];
 
         if (integrator) {
+          console.log('dataaa',integrator);
           api.get(integrator.photo).then(response => {
             form.reset(integrator);
             var dt = new DataTransfer();

@@ -4,7 +4,31 @@
 		scroll-behavior: smooth !important;
 		
 	}
+	.not-allowed{
+		border: 1px dashed red !important;
+		background-color: rgba(255, 0, 0, 0.095);
+		color: red;
+	}
+	.text-not-allowed{
+		color: red !important;
+	}
 
+	.allowed{
+		border: 1px dashed #008024 !important;
+		background-color: #00802423 !important;
+	}
+
+	.text-allowed{
+		color: #008024 !important;
+	}
+
+	.upload-initial{
+		border-color: #F69F00;
+		background-color: transparent;
+	}
+	.text-upload-initial{
+		color: #F69F00;
+	}
 
 	body {
 		--width-menu: 21.5rem;
