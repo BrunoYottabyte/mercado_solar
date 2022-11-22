@@ -110,9 +110,10 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
   };
 
   const getProduct = async () => {
-    api.get(`/products/${id}/`).then(response => {
-      setProduct({...response.data, quantity: 1});
-    });
+    id &&
+      api.get(`/products/${id}/`).then(response => {
+        setProduct({...response.data, quantity: 1});
+      });
   };
 
   const getCart = () => {
@@ -125,7 +126,6 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
 
   const getBudgetRequests = () => {
     api.get('/budget_request_filtered/').then(response => {
-
       const budgetRequestsResponse: IBudgetProps[] = response.data.results;
       const budgetRequestsResponseFormatted = budgetRequestsResponse.map(
         (item: IBudgetProps) => {
@@ -142,7 +142,7 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
   useEffect(() => {
     console.log();
     if (!id && location.pathname.includes('/paines-solares/')) {
-      isAutheticated ? navigate('/') : navigate('/home')
+      isAutheticated ? navigate('/') : navigate('/home');
     }
     getProduct();
     getCart();

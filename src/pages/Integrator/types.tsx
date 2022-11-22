@@ -12,12 +12,26 @@ interface IIntegratorForm {
   federative_unit: string;
   city: string;
 }
+
+interface IGaleryForm {
+  images: FileList;
+}
 interface IIntegratorProviderProps {
   children: ReactNode;
 }
+
 interface IIntegratorContextData {
   form: UseFormReturn<IIntegratorForm, any>;
+  galeryForm: UseFormReturn<IGaleryForm, any>;
   saveIntegrator: (data: IIntegratorForm) => void;
+  multipleImages: any[];
+  setMultipleImages: (images: any[]) => void;
+  profileUrl: string;
 }
 
-export type {IIntegratorProviderProps, IIntegratorContextData, IIntegratorForm};
+export type {
+  IIntegratorProviderProps,
+  IIntegratorContextData,
+  IIntegratorForm,
+  IGaleryForm,
+};

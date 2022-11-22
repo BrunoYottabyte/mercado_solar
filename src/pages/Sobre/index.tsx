@@ -13,18 +13,15 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import FooterSite from '../Home/components/Footer';
-import { useNavigate } from 'react-router-dom';
-import principal from '../../assets/images/sobre-nos/img1.png'
-import img2 from '../../assets/images/sobre-nos/img2.png'
-import img3 from '../../assets/images/sobre-nos/img3.png'
-import img4 from '../../assets/images/sobre-nos/img4.png'
-import img5 from '../../assets/images/sobre-nos/img5.png'
-import logoMeglio from "../../assets/images/home/logomeglio.png"
+import {useNavigate} from 'react-router-dom';
+import logoMeglio from '../../assets/images/home/logomeglio.png';
+import {AboutProvider, useAbout} from './context';
 
-const Sobre = () => {
+const SobreContent = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
   const navigate = useNavigate();
-  
+  const {selectedAbout, abouts} = useAbout();
+
   useEffect(() => {
     if (modalOpen.open == false || modalOpen.open == null) {
       clearTimeout(window.timeouthome);
@@ -35,9 +32,9 @@ const Sobre = () => {
     setmodalOpen({open: true, id, position: 'right'});
   };
 
-  const changeViewImg = (img) => {
-    document.querySelector('.mainImg').src = img
-  }
+  const changeViewImg = img => {
+    document.querySelector('.mainImg').src = img;
+  };
   return (
     <>
       <Modal
@@ -62,23 +59,23 @@ const Sobre = () => {
           </ModalHeader>
 
           <section className="p-24">
-						<ul className="flex flex-col gap-24 text-xl">
-							<li onClick={() => {
-                navigate('/home');
-                setmodalOpen({open: false, id: false, position: 'right'});
-              }}>
-									Home
-							</li>
-							<li
-								onClick={() => {
-									setmodalOpen({open: false, id: false, position: 'right'});
-									navigate('/login');
-								}}>
-								Entrar
-							</li>
-						
-						</ul>
-					</section>
+            <ul className="flex flex-col gap-24 text-xl">
+              <li
+                onClick={() => {
+                  navigate('/home');
+                  setmodalOpen({open: false, id: false, position: 'right'});
+                }}>
+                Home
+              </li>
+              <li
+                onClick={() => {
+                  setmodalOpen({open: false, id: false, position: 'right'});
+                  navigate('/login');
+                }}>
+                Entrar
+              </li>
+            </ul>
+          </section>
         </ModalContent>
       </Modal>
       <main className="w-screen h-full">
@@ -105,28 +102,14 @@ const Sobre = () => {
                   ),
                 )}
               </div>
-              <p className="title3 md2:headline1">Megliosole Energia Renovavel Ltda</p>
+              <p className="title3 md2:headline1">{selectedAbout?.name}</p>
             </div>
-            <img
-              src={logoMeglio}
-              alt="logo meglio"
-            />
+            <img src={logoMeglio} alt="logo meglio" />
           </div>
           <div className="flex justify-between md2:flex-col md2:gap-24 gap-[13rem] items-start mt-16">
             <h2 className="title2 whitespace-nowrap">Sobre empresa</h2>
 
-            <p className="paragraph1 text-neutral-70">
-              Somos especialistas em sistemas de geração de energia solar,
-              focados no atendimento personalizado de nossos clientes,
-              residenciais ou empresariais, que desejem economizar sem abrir mão
-              da qualidade, confiança e de um projeto que atenda integralmente à
-              sua demanda atual e futura. A MeglioSole realiza um trabalho
-              diferenciado no atendimento às necessidades do cliente, com
-              profissionais qualificados para que todos os benefícios da Energia
-              Solar sejam obtidos, desde a concepção do projeto, aprovação junto
-              à concessionária de energia, aquisição dos materiais e,
-              principalmente, qualidade da instalação.
-            </p>
+            <p className="paragraph1 text-neutral-70">{selectedAbout?.about}</p>
           </div>
         </section>
 
@@ -138,7 +121,11 @@ const Sobre = () => {
             <div className="flex flex-col gap-32 w-[50rem] overflow-x-auto">
               <img
                 className="max-h-[25rem] mainImg"
-                src={principal}
+                src={
+                  selectedAbout?.images.length
+                    ? selectedAbout?.images[0].image
+                    : ''
+                }
                 alt=""
               />
 
@@ -148,13 +135,12 @@ const Sobre = () => {
                   className="w-full md2:gap-24"
                   spaceBetween={32}
                   slidesPerView={'auto'}>
-                  {[img2, img3, img4, img5].map((item, i) => {
+                  {selectedAbout?.images.map((item, i) => {
                     return (
-                      <SwiperSlide className="!w-max cursor-pointer" onClick={() => changeViewImg(item)}>
-                        <img
-                          src={item}
-                          alt=""
-                        />
+                      <SwiperSlide
+                        className="!w-max cursor-pointer"
+                        onClick={() => changeViewImg(item.image)}>
+                        <img src={item.image} alt="" />
                       </SwiperSlide>
                     );
                   })}
@@ -172,7 +158,7 @@ const Sobre = () => {
                 Serviços Ofertados
               </h3>
               <p className="paragraph1 mt-16 text-neutral-70">
-                Projeto, fornecimento e instalação de sistemas fotovoltaicos.
+                {selectedAbout?.services_offered}
               </p>
             </div>
             <div className="flex-1 p-24">
@@ -181,8 +167,7 @@ const Sobre = () => {
                 Marcas e equipamentos
               </h3>
               <p className="paragraph1 mt-16 text-neutral-70">
-                Placas Solares -Canadian -Longi -Risen. Inversores: -Sungrow
-                -Sofar -Fronius
+                {selectedAbout?.brands_and_equipment}
               </p>
             </div>
             <div className="flex-1 p-24">
@@ -190,7 +175,9 @@ const Sobre = () => {
                 <SvgUse id="#icon_location_ms" classe="w-24 h-24" />
                 Regiões de atendimento
               </h3>
-              <p className="paragraph1 mt-16 text-neutral-70">MT</p>
+              <p className="paragraph1 mt-16 text-neutral-70">
+                {selectedAbout?.service_regions}
+              </p>
             </div>
           </div>
           <div className="flex md2:my-24 my-48 items-center flex-col gap-8">
@@ -202,23 +189,23 @@ const Sobre = () => {
               className="w-full"
               spaceBetween={32}
               slidesPerView={'auto'}>
-              {[0, 1, 2, 3,4,5].map((item, i) => {
+              {abouts.map((item, i) => {
                 return (
                   <SwiperSlide className="!w-max">
                     <div className="overflow-hidden md2:min-h-[16rem] min-h-[21.25rem] w-[17.5rem] border border-neutral-30 rounded-md">
-                      <div className='h-[12rem] md2:h-[10rem] bg-white flex items-center'>
-												<img
-													src="/src/assets/images/sobre-nos/megliobig.png"
-													alt=""
-													className=' object-cover'
-												/>
-											</div>
+                      <div className="h-[12rem] md2:h-[10rem] bg-white flex items-center">
+                        <img
+                          src={item.photo}
+                          alt=""
+                          className=" object-cover"
+                        />
+                      </div>
                       <div className="p-16 paragraph1 border border-transparent h-full border-t-neutral-30 bg-white">
-                        HS Energia Solar e Instalações Elétricas
+                        {item.name}
                         <div className="mt-24 ">
                           <p className="headline3">Endereço</p>
                           <p className="paragraph2 text-neutral-70">
-                            Cuiabá - Mato Grosso
+                            {`${item.city} - ${item.federative_unit}`}
                           </p>
                         </div>
                       </div>
@@ -228,13 +215,19 @@ const Sobre = () => {
               })}
             </Swiper>
           </div>
-
-
         </section>
 
-				<FooterSite />
+        <FooterSite />
       </main>
     </>
+  );
+};
+
+const Sobre = () => {
+  return (
+    <AboutProvider>
+      <SobreContent />
+    </AboutProvider>
   );
 };
 

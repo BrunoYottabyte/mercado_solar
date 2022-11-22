@@ -78,6 +78,7 @@ function App() {
 			<Routes location={location} key={location.pathname}>
 				<Route path="/home" element={<Home />} />
 				<Route path="/sobre-nos" element={<Sobre />} />
+				<Route path="/sobre-nos/:integratorId" element={<Sobre />} />
 				<Route path="/criar-conta" element={<CriarConta />} />
 
 				<Route
