@@ -7,7 +7,7 @@ import {IAboutProviderProps, IAboutContextData, IAboutProps} from './types';
 const AboutContext = createContext({} as IAboutContextData);
 
 export const AboutProvider: React.FC<IAboutProviderProps> = ({children}) => {
-  const {integratorId} = useParams();
+  const {slug} = useParams();
   const navigate = useNavigate();
   const [abouts, setAbout] = useState<IAboutProps[]>([]);
   const [selectedAbout, setSelectedAbout] = useState<IAboutProps>();
@@ -24,9 +24,9 @@ export const AboutProvider: React.FC<IAboutProviderProps> = ({children}) => {
       console.log('about', aboutResponse);
     });
 
-    if (integratorId) {
+    if (slug) {
       api
-        .get(`/integrator/${integratorId}`)
+        .get(`/integrator/${slug}`)
         .then(response => {
           const aboutResponse: IAboutProps = response.data;
           setSelectedAbout(aboutResponse);
