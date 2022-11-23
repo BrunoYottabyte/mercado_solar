@@ -14,6 +14,7 @@ import { ModalContent } from '../../components/DesignSystem/Modal/ModalContent';
 import { useGlobalContext } from '../../context/GlobalContext';
 import { ModalHeader } from '../../components/DesignSystem/Modal/ModalHeader';
 
+
 const IntegratorContent = () => {
   const {
     profileUrl,
@@ -225,185 +226,190 @@ const IntegratorContent = () => {
             </div>
             </ModalContent>
         </Modal>
-        <div className="container">
-      <Card classe="my-64 px-24 py-32">
-        <header className="flex justify-between md2:flex-col md2:gap-16 align-center">
-          <h1 className="!title3">Meu Integrador</h1>
-        </header>
+        <motion.div 
+          initial={{translateX: '-20%', opacity: 0}}
+          animate={{translateX: 0, opacity: 1}}
+          exit={{translateX: '-20%', opacity: 0}}
+          transition={{duration: 0.4}}
+          className="container">
+            <Card classe="my-64 px-24 py-32">
+              <header className="flex justify-between md2:flex-col md2:gap-16 align-center">
+                <h1 className="!title3">Meu Integrador</h1>
+              </header>
 
-        <form onSubmit={handleSubmit(saveIntegrator)}>
-          <div className="flex flex-col gap-24 mb-24">
-            <div className="flex flex-col gap-8">
-              <div className="flex-1 md2:w-full">
-                <label className="!label">Logo</label>
-                {photoWatch && photoWatch.length ? (
-                  <img
-                    src={photoWatch[0] && URL.createObjectURL(photoWatch[0])}
-                    // src={photoWatch && URL.createObjectURL(photoWatch)}
-                    width={100}
-                    className="avatar-container"
-                  />
-                ) : (
-                  <img
-                    src={profileUrl}
-                    width={100}
-                    className="avatar-container"
-                  />
-                )}
-                <div className="flex mt-10">
-                  <input type="file" {...register('photo')} />
-                </div>
-              </div>
-            </div>
-            <div className="flex gap-16 items-start md2:flex-col">
-              <Input
-                classe="flex-1 md2:w-full"
-                control={control}
-                name={'name'}
-                label={'Nome'}
-              />
-              <Input
-                classe="flex-1 md2:w-full"
-                control={control}
-                name={'about'}
-                label={'Sobre'}
-              />
-            </div>
-            <div className='w-[calc(50%-8px)] md2:w-full my-16 h-[80px] rounded-md'>
-                  <p>Uploads realizados</p>
-                  <Swiper
-                spaceBetween={16}
-                direction="horizontal"
-                className="h-[80px] w-full px-8 rounded-md bg-primary-pure/10"
-                slidesPerView={'auto'}
-         
-                mousewheel>
-                    {
-                     savedImages?.map(item => {
-                        return(
-                          <SwiperSlide className="flex items-center w-max" key={item.id}>
-                            <div className="relative">
-                              <div
-                                onClick={() => setmodalOpen({open: true, id: 'confirm', idImage: item.id})}
-                                className="cursor-pointer absolute right-0 top-0 w-24 h-24 bg-primary-pure grid place-items-center rounded-tr-md rounded-bl-md">
-                                x
+              <form onSubmit={handleSubmit(saveIntegrator)}>
+                <div className="flex flex-col gap-24 mb-24">
+                  <div className="flex flex-col gap-8">
+                    <div className="flex-1 md2:w-full">
+                      <label className="!label">Logo</label>
+                      {photoWatch && photoWatch.length ? (
+                        <img
+                          src={photoWatch[0] && URL.createObjectURL(photoWatch[0])}
+                          // src={photoWatch && URL.createObjectURL(photoWatch)}
+                          width={100}
+                          className="avatar-container"
+                        />
+                      ) : (
+                        <img
+                          src={profileUrl}
+                          width={100}
+                          className="avatar-container"
+                        />
+                      )}
+                      <div className="flex mt-10">
+                        <input type="file" {...register('photo')} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex gap-16 items-start md2:flex-col">
+                    <Input
+                      classe="flex-1 md2:w-full"
+                      control={control}
+                      name={'name'}
+                      label={'Nome'}
+                    />
+                    <Input
+                      classe="flex-1 md2:w-full"
+                      control={control}
+                      name={'about'}
+                      label={'Sobre'}
+                    />
+                  </div>
+                  <div className='w-[calc(50%-8px)] md2:w-full my-16 h-[80px] rounded-md'>
+                        <p>Uploads realizados</p>
+                        <Swiper
+                      spaceBetween={16}
+                      direction="horizontal"
+                      className="h-[80px] w-full px-8 rounded-md bg-primary-pure/10"
+                      slidesPerView={'auto'}
+              
+                      mousewheel>
+                          {
+                          savedImages?.map(item => {
+                              return(
+                                <SwiperSlide className="flex items-center w-max" key={item.id}>
+                                  <div className="relative">
+                                    <div
+                                      onClick={() => setmodalOpen({open: true, id: 'confirm', idImage: item.id})}
+                                      className="cursor-pointer absolute right-0 top-0 w-24 h-24 bg-primary-pure grid place-items-center rounded-tr-md rounded-bl-md">
+                                      x
+                                    </div>
+                                    <motion.div
+                                      initial={{scale: 0, opacity: '0'}}
+                                      animate={{scale: 1, opacity: 1}}
+                                      exit={{scale: 0, opacity: 0}}
+                                      transition={{duration: 0.3}}>
+                                      <img
+                                        className=" h-full max-h-[75px] max-w-[100px] rounded-md"
+                                        src={item.image}
+                                        alt=""
+                                      />
+                                    </motion.div>
+                                  </div>
+                                </SwiperSlide>
+                              )
+                            }) 
+                          }
+        
+                    </Swiper>
+                  </div>
+                  <div className="flex gap-16 items-start md2:flex-col">
+                    <div
+                      onDragEnter={onDragEnter}
+                      onDrop={onDrop}
+                      onDragOver={onDragEnter}
+                      onDragLeave={onDragLeave}
+                      ref={wrapperRef}
+                      className="w-full cursor-pointer h-[150px] container-drag border border-primary-dark border-dashed rounded-md relative grid place-items-center">
+                      <input
+                        className="flex-1 absolute w-full h-full opacity-0 file"
+                        multiple
+                        accept="image"
+                        type="file"
+                        {...galeryForm.register('images', {
+                          required: true,
+                          onChange: e => onFilesDrops(e.target.files),
+                        })}
+                        onClick={clearFile}
+                      />
+                      <div className="container-img flex items-center flex-col-reverse gap-10">
+                        <p className="text-primary-pure title_upload">
+                          Arraste ou selecione seus arquivos
+                        </p>
+                      </div>
+                    </div>
+
+                    <Swiper
+                      spaceBetween={16}
+                      direction="horizontal"
+                      className="h-[150px] w-full px-8 rounded-md bg-primary-pure/10"
+                      slidesPerView={'auto'}
+            
+                      >
+                      <div className="w-full grid place-items-center relative">
+                        {multipleImages.map((img, i) => {
+                          let urlFormated = img.type ? URL.createObjectURL(img) : img;
+                          return (
+                            <SwiperSlide className="flex items-center w-max" key={i}>
+                              <div className="relative">
+                                <div
+                                  onClick={() => removeImg(img)}
+                                  className="absolute right-0 top-0 w-24 h-24 bg-primary-pure grid place-items-center rounded-tr-md rounded-bl-md">
+                                  x
+                                </div>
+                                <motion.div
+                                  initial={{scale: 0, opacity: '0'}}
+                                  animate={{scale: 1, opacity: 1}}
+                                  exit={{scale: 0, opacity: 0}}
+                                  transition={{duration: 0.3}}>
+                                  <img
+                                    className=" h-[130px] max-w-[200px] rounded-md"
+                                    src={urlFormated}
+                                    alt=""
+                                  />
+                                </motion.div>
                               </div>
-                              <motion.div
-                                initial={{scale: 0, opacity: '0'}}
-                                animate={{scale: 1, opacity: 1}}
-                                exit={{scale: 0, opacity: 0}}
-                                transition={{duration: 0.3}}>
-                                <img
-                                  className=" h-full max-h-[75px] max-w-[100px] rounded-md"
-                                  src={item.image}
-                                  alt=""
-                                />
-                              </motion.div>
-                            </div>
-                          </SwiperSlide>
-                        )
-                      }) 
-                    }
-   
-              </Swiper>
-            </div>
-            <div className="flex gap-16 items-start md2:flex-col">
-              <div
-                onDragEnter={onDragEnter}
-                onDrop={onDrop}
-                onDragOver={onDragEnter}
-                onDragLeave={onDragLeave}
-                ref={wrapperRef}
-                className="w-full cursor-pointer h-[150px] container-drag border border-primary-dark border-dashed rounded-md relative grid place-items-center">
-                <input
-                  className="flex-1 absolute w-full h-full opacity-0 file"
-                  multiple
-                  accept="image"
-                  type="file"
-                  {...galeryForm.register('images', {
-                    required: true,
-                    onChange: e => onFilesDrops(e.target.files),
-                  })}
-                  onClick={clearFile}
-                />
-                <div className="container-img flex items-center flex-col-reverse gap-10">
-                  <p className="text-primary-pure title_upload">
-                    Arraste ou selecione seus arquivos
-                  </p>
+                            </SwiperSlide>
+                          );
+                        })}
+                      </div>
+                    </Swiper>
+                  </div>
+                  <div className="flex gap-16 md2:flex-col">
+                    <Input
+                      classe="flex-1"
+                      control={control}
+                      name={'services_offered'}
+                      label={'Serviços ofertados'}
+                    />
+                    <Input
+                      classe="flex-1"
+                      control={control}
+                      name={'brands_and_equipment'}
+                      label={'Marcas e equipamentos'}
+                    />
+                  </div>
+                  <div className="flex gap-16 md2:flex-col">
+                    <Input
+                      classe="flex-1"
+                      control={control}
+                      name={'service_regions'}
+                      label={'Regiões atendidas'}
+                    />
+                    <Input
+                      classe="flex-1"
+                      control={control}
+                      name={'federative_unit'}
+                      label={'Estado'}
+                    />
+                  </div>
+                  <Input control={control} name={'city'} label={'Cidade'} />
                 </div>
-              </div>
 
-              <Swiper
-                spaceBetween={16}
-                direction="horizontal"
-                className="h-[150px] w-full px-8 rounded-md bg-primary-pure/10"
-                slidesPerView={'auto'}
-       
-                >
-                <div className="w-full grid place-items-center relative">
-                  {multipleImages.map((img, i) => {
-                    let urlFormated = img.type ? URL.createObjectURL(img) : img;
-                    return (
-                      <SwiperSlide className="flex items-center w-max" key={i}>
-                        <div className="relative">
-                          <div
-                            onClick={() => removeImg(img)}
-                            className="absolute right-0 top-0 w-24 h-24 bg-primary-pure grid place-items-center rounded-tr-md rounded-bl-md">
-                            x
-                          </div>
-                          <motion.div
-                            initial={{scale: 0, opacity: '0'}}
-                            animate={{scale: 1, opacity: 1}}
-                            exit={{scale: 0, opacity: 0}}
-                            transition={{duration: 0.3}}>
-                            <img
-                              className=" h-[130px] max-w-[200px] rounded-md"
-                              src={urlFormated}
-                              alt=""
-                            />
-                          </motion.div>
-                        </div>
-                      </SwiperSlide>
-                    );
-                  })}
-                </div>
-              </Swiper>
-            </div>
-            <div className="flex gap-16 md2:flex-col">
-              <Input
-                classe="flex-1"
-                control={control}
-                name={'services_offered'}
-                label={'Serviços ofertados'}
-              />
-              <Input
-                classe="flex-1"
-                control={control}
-                name={'brands_and_equipment'}
-                label={'Marcas e equipamentos'}
-              />
-            </div>
-            <div className="flex gap-16 md2:flex-col">
-              <Input
-                classe="flex-1"
-                control={control}
-                name={'service_regions'}
-                label={'Regiões atendidas'}
-              />
-              <Input
-                classe="flex-1"
-                control={control}
-                name={'federative_unit'}
-                label={'Estado'}
-              />
-            </div>
-            <Input control={control} name={'city'} label={'Cidade'} />
-          </div>
-
-          <Button disabled={loading} type="submit" classe={`${loading ? 'is-loading' : ''}`} >Salvar</Button>
-        </form>
-      </Card>
-        </div>
+                <Button disabled={loading} type="submit" classe={`${loading ? 'is-loading' : ''}`} >Salvar</Button>
+              </form>
+            </Card>
+        </motion.div>
     </>
    
   );
