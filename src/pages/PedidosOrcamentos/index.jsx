@@ -74,16 +74,14 @@ const PedidosOrcamentosContent = () => {
 			<Card classe="my-64 px-24 py-32">
 				<header className="flex justify-between md:flex-col md2:gap-16 align-center">
 					<h1 className="!title3">{title}</h1>
-					{
-						userType === 'user' && (
+					
 							<Button
 								classe="secondary h-48 md:w-full md:justify-center"
 								onClick={() => navigate('/home#orcamento')}
 								iconID={'#icon_arrow_left'}>
 								Nova proposta
 							</Button>
-						)
-					}
+				
 				</header>
 
 				<div className="mt-32 md:mt-16">

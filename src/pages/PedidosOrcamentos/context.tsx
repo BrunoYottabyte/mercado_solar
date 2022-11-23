@@ -69,6 +69,39 @@ export const PedidosOrcamentoProvider: React.FC<
     }
   };
 
+   const StatusCurrentTable = (step) => {
+          let stepAtual = '';
+            switch(step) {
+            case 'budget':
+              stepAtual = 'Orçamento'
+              break;
+            
+            case 'creation':
+              stepAtual = 'Criação'
+              break;
+  
+            case 'first_contact':
+            stepAtual = 'Primeiro Contato'
+              break;
+            case 'technical_visit':
+            stepAtual = 'Visita Técnica'
+             break;
+        
+            case 'budget_available':
+            stepAtual = 'Orçamento Disponibilizado'
+              break;
+            case 'budget_accepted':
+            stepAtual = 'Orçamento aceito'
+              break;
+            case 'payment_made':
+            stepAtual = 'Orçamento Aprovado'
+              break;
+            default:
+              break;
+          }
+          return stepAtual;
+        }
+
   const columns: ITableProps[] = [
     {
       Header: () => <div className="w-[96px]">ID</div>,
@@ -115,35 +148,13 @@ export const PedidosOrcamentoProvider: React.FC<
       Header: 'Status',
       accessor: 'status',
       Cell: v => {
-        const budgetRequestStatus = v.row.original.budget_request_status;
-        if (budgetRequestStatus === 'Reprovada') {
-          return (
-            <Badge
-              iconID={''}
-              title={budgetRequestStatus}
-              classeTitle={`font-medium text-alert-error`}
-              classe={'bg-alert-error-10'}
-            />
-          );
-        }
+
         return (
           <Badge
             iconID={''}
-            title={v.value}
-            classeTitle={`font-medium ${
-              v.value === 'Aprovada'
-                ? 'text-alert-success'
-                : v.value === 'Em Progresso'
-                ? 'text-alert-warning-100'
-                : 'text-alert-error'
-            } `}
-            classe={
-              v.value == 'Aprovada'
-                ? '!text-[#ccc] bg-alert-success-10'
-                : v.value === 'Em Progresso'
-                ? 'bg-alert-warning-10'
-                : 'bg-alert-error-10'
-            }
+            title={StatusCurrentTable(v.row.original.current_step)}
+            classeTitle={'text-alert-success'}
+            classe={`bg-alert-success-10`}
           />
         );
       },
@@ -205,6 +216,10 @@ export const PedidosOrcamentoProvider: React.FC<
     },
   ];
 
+
+    
+  
+
   useEffect(() => {
     api
       .get('/budget_request/', {params})
@@ -227,9 +242,13 @@ export const PedidosOrcamentoProvider: React.FC<
                   : pedido.status === 'pending'
                   ? 'Em Progresso'
                   : 'Reprovada',
+              
             };
           },
         );
+        
+       
+ 
         setPedidosOrcamento(pedidosResponseParser);
         setCount(response.data.count ?? 0);
       })
@@ -249,6 +268,8 @@ export const PedidosOrcamentoProvider: React.FC<
       setTitle('Todas as solicitações de orçamento');
     }
   }, [userType]);
+
+  console.log(pedidosOrcamento);
 
   return (
     <PedidosOrcamentoContext.Provider
