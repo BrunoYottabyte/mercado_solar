@@ -9,17 +9,27 @@ import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import {motion} from 'framer-motion';
+import { Modal } from '../../components/DesignSystem/Modal/Modal';
+import { ModalContent } from '../../components/DesignSystem/Modal/ModalContent';
+import { useGlobalContext } from '../../context/GlobalContext';
+import { ModalHeader } from '../../components/DesignSystem/Modal/ModalHeader';
 
 const IntegratorContent = () => {
   const {
     profileUrl,
     galeryForm,
-    form: {control, watch, handleSubmit, register},
+    form: {control, watch, handleSubmit, register, getValues},
     saveIntegrator,
+    savedImages,
+    removeImageSaved,
+    loading,
     multipleImages,
     setMultipleImages,
   } = useIntegrator();
-
+  const {setmodalOpen, modalOpen} = useGlobalContext();
+  const closeModal = () => {
+    setmodalOpen({open: false, id: null});
+  }
   const photoWatch = watch('photo');
 
   const removeImg = img => {
@@ -30,9 +40,8 @@ const IntegratorContent = () => {
     arrUpdated.splice(index, 1);
     setMultipleImages(arrUpdated);
   };
-
+  
   // DRAG AND DROP
-
   const wrapperRef = useRef(null);
 
   const onDragEnter = e => {
@@ -102,7 +111,121 @@ const IntegratorContent = () => {
   };
 
   return (
-    <div className="container">
+    <>
+        <Modal className={'w-[37rem]  md2:max-w-[400px] md2:w-[95vw]'}>
+            <ModalContent id="animation-saved">
+              <div className="p-24">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="120"
+                  height="120"
+                  fill="none"
+                  className="svg-animate-check mx-auto mb-24 mt-16"
+                  viewBox="0 0 120 120"
+                >
+                  <path
+                    fill="#F69F00"
+                    stroke="#e8eaf1"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="15"
+                    d="M7.5 60.128c0 28.634 23.212 51.847 51.847 51.847h1.306c28.634 0 51.847-23.213 51.847-51.847S89.287 8.281 60.653 8.281h-1.306C30.712 8.281 7.5 31.494 7.5 60.128z"
+                    className="path-1"
+                  ></path>
+                  <path
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="8"
+                    d="M45 60.13l11.25 11.086L75 52.738"
+                    className="path-2"
+                  ></path>
+                </svg>
+                <p className="text-base font-semibold text-center mx-auto mt-8 text-primary-pure">
+                  Salvo com Sucesso
+                </p>
+
+
+                <Button
+                  onClick={() => closeModal()}
+                  classe="mt-16 w-full h-56 text-center justify-center"
+                  svgClass="rotate-180"
+                  iconID="#icon_arrow_left"
+                >
+                  Fechar
+                </Button>
+
+              </div>
+            </ModalContent>
+
+            <ModalContent id="animation-removed">
+              <div className="p-24">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="120"
+                  height="120"
+                  fill="none"
+                  className="svg-animate-check mx-auto mb-24 mt-16"
+                  viewBox="0 0 120 120"
+                >
+                  <path
+                    fill="#F69F00"
+                    stroke="#e8eaf1"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="15"
+                    d="M7.5 60.128c0 28.634 23.212 51.847 51.847 51.847h1.306c28.634 0 51.847-23.213 51.847-51.847S89.287 8.281 60.653 8.281h-1.306C30.712 8.281 7.5 31.494 7.5 60.128z"
+                    className="path-1"
+                  ></path>
+                  <path
+                    stroke="#fff"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="8"
+                    d="M45 60.13l11.25 11.086L75 52.738"
+                    className="path-2"
+                  ></path>
+                </svg>
+                <p className="text-base font-semibold text-center mx-auto mt-8 text-primary-pure">
+                  Removido com Sucesso
+                </p>
+
+
+                <Button
+                  onClick={() => closeModal()}
+                  classe="mt-16 w-full h-56 text-center justify-center"
+                  svgClass="rotate-180"
+                  iconID="#icon_arrow_left"
+                >
+                  Fechar
+                </Button>
+
+              </div>
+            </ModalContent>
+
+            <ModalContent id="confirm">
+              <ModalHeader text="Deseja realmente apagar essa imagem?" />
+
+              <div className="w-full md:flex-col md2:gap-0 flex gap-24 p-24">
+              <Button
+                svgClass="!w-24 !h-24"
+                className={`btn h-48 justify-center secondary mt-8 w-full`}
+                onClick={closeModal}>
+                Cancelar
+              </Button>
+              <Button
+                onClick={() => {
+                  removeImageSaved(modalOpen.idImage)
+                }}
+                className={`btn h-48 w-full justify-center mt-8 !bg-alert-error/30 hover:border-alert-error hover:text-alert-error text-alert-error border-transparent ${
+                  loading ? 'is-loading' : ''
+                }`}>
+                Continuar
+              </Button>
+            </div>
+            </ModalContent>
+        </Modal>
+        <div className="container">
       <Card classe="my-64 px-24 py-32">
         <header className="flex justify-between md2:flex-col md2:gap-16 align-center">
           <h1 className="!title3">Meu Integrador</h1>
@@ -146,6 +269,44 @@ const IntegratorContent = () => {
                 label={'Sobre'}
               />
             </div>
+            <div className='w-[calc(50%-8px)] md2:w-full my-16 h-[80px] rounded-md'>
+                  <p>Uploads realizados</p>
+                  <Swiper
+                spaceBetween={16}
+                direction="horizontal"
+                className="h-[80px] w-full px-8 rounded-md bg-primary-pure/10"
+                slidesPerView={'auto'}
+         
+                mousewheel>
+                    {
+                     savedImages?.map(item => {
+                        return(
+                          <SwiperSlide className="flex items-center w-max" key={item.id}>
+                            <div className="relative">
+                              <div
+                                onClick={() => setmodalOpen({open: true, id: 'confirm', idImage: item.id})}
+                                className="cursor-pointer absolute right-0 top-0 w-24 h-24 bg-primary-pure grid place-items-center rounded-tr-md rounded-bl-md">
+                                x
+                              </div>
+                              <motion.div
+                                initial={{scale: 0, opacity: '0'}}
+                                animate={{scale: 1, opacity: 1}}
+                                exit={{scale: 0, opacity: 0}}
+                                transition={{duration: 0.3}}>
+                                <img
+                                  className=" h-full max-h-[75px] max-w-[100px] rounded-md"
+                                  src={item.image}
+                                  alt=""
+                                />
+                              </motion.div>
+                            </div>
+                          </SwiperSlide>
+                        )
+                      }) 
+                    }
+   
+              </Swiper>
+            </div>
             <div className="flex gap-16 items-start md2:flex-col">
               <div
                 onDragEnter={onDragEnter}
@@ -177,8 +338,8 @@ const IntegratorContent = () => {
                 direction="horizontal"
                 className="h-[150px] w-full px-8 rounded-md bg-primary-pure/10"
                 slidesPerView={'auto'}
-                touchStartPreventDefault={false}
-                mousewheel>
+       
+                >
                 <div className="w-full grid place-items-center relative">
                   {multipleImages.map((img, i) => {
                     let urlFormated = img.type ? URL.createObjectURL(img) : img;
@@ -239,10 +400,12 @@ const IntegratorContent = () => {
             <Input control={control} name={'city'} label={'Cidade'} />
           </div>
 
-          <Button type="submit">Salvar</Button>
+          <Button disabled={loading} type="submit" classe={`${loading ? 'is-loading' : ''}`} >Salvar</Button>
         </form>
       </Card>
-    </div>
+        </div>
+    </>
+   
   );
 };
 

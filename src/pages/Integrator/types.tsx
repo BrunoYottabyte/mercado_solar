@@ -24,6 +24,9 @@ interface IIntegratorContextData {
   form: UseFormReturn<IIntegratorForm, any>;
   galeryForm: UseFormReturn<IGaleryForm, any>;
   saveIntegrator: (data: IIntegratorForm) => void;
+  savedImages: any[];
+  loading: boolean;
+  removeImageSaved: (id: string) => void;
   multipleImages: any[];
   setMultipleImages: (images: any[]) => void;
   profileUrl: string;

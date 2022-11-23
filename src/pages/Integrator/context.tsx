@@ -1,6 +1,7 @@
 import React, {createContext, useContext, useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {useNavigate} from 'react-router-dom';
+import {useGlobalContext} from '../../context/GlobalContext';
 import {useAuthContext} from '../../context/useAuthContext';
 import {api} from '../../services/api';
 
@@ -23,8 +24,23 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
   const galeryForm = useForm<IGaleryForm>();
   const navigate = useNavigate();
 
+  const [savedImages, setSavedImages] = useState<any[]>([]);
   const [multipleImages, setMultipleImages] = useState<any[]>([]);
   const [profileUrl, setProfileUrl] = useState('');
+  const {setmodalOpen, modalOpen} = useGlobalContext();
+  const [loading, setLoading] = useState(false);
+
+  const openModal = id => {
+    setmodalOpen({open: true, id});
+  };
+
+  const updateFilesSaved = () => {
+    api.get(`/integrator/?user=${userId}`).then(response => {
+      console.log(response.data);
+      const integrator = response.data.results[0];
+      if (integrator) setSavedImages(integrator.images);
+    });
+  };
 
   const saveIntegrator = (data: IIntegratorForm) => {
     const photo = data.photo && data.photo.length ? data.photo[0] : null;
@@ -32,6 +48,7 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
     if (!photo) {
       delete formData['photo'];
     }
+    setLoading(true);
     if (data.id) {
       api
         .put(`/integrator-create/${data.id}/`, formData, {
@@ -39,18 +56,28 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
             'Content-Type': 'multipart/form-data',
           },
         })
-        .then(() => {
+        .then(async () => {
           for (let i = 0; i < multipleImages.length; i++) {
             const newData = {
               image: multipleImages[i],
               integrator: data.id,
             };
-            api.post(`/integrator-image/`, newData, {
+            await api.post(`/integrator-image/`, newData, {
               headers: {
                 'Content-Type': 'multipart/form-data',
               },
             });
           }
+        })
+        .then(() => {
+          openModal('animation-saved');
+          setMultipleImages([])
+          updateFilesSaved();
+          setLoading(false);
+        }).catch((err) => {
+          setLoading(false);
+        }).finally(() => {
+          setLoading(false);
         });
     } else {
       api
@@ -73,7 +100,31 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
             });
           }
         })
-        .catch(() => {});
+        .then(() => {
+          openModal('animation-saved');
+          setMultipleImages([])
+          updateFilesSaved();
+          setLoading(false);
+        }).catch((err) => {
+          setLoading(false);
+        }).finally(() => {
+          setLoading(false);
+        });
+    }
+  };
+
+  const removeImageSaved = async (id: string) => {
+    setLoading(true);
+    try {
+      await api.delete(`/integrator-image/${id}`);
+      openModal('animation-removed');
+
+      // removendo a imagme localmente
+      setSavedImages(prev => prev.filter(img => img.id !== id));
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -90,12 +141,11 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
       .get(`/integrator/?user=${userId}`)
       .then(response => {
         const integrator = response.data.results[0];
-
+        setSavedImages(integrator.images);
         if (integrator) {
           form.reset({...integrator, photo: null});
           api.get(integrator.photo).then(response => {
             setProfileUrl(integrator.photo);
-
             const imgName = integrator.photo.split('/').pop();
             new Blob([response.data], {type: 'image/jpeg'})
               .arrayBuffer()
@@ -120,9 +170,12 @@ export const IntegratorProvider: React.FC<IIntegratorProviderProps> = ({
     <IntegratorContext.Provider
       value={{
         form,
+        loading,
         galeryForm,
+        savedImages,
         saveIntegrator,
         multipleImages,
+        removeImageSaved,
         setMultipleImages,
         profileUrl,
       }}>
