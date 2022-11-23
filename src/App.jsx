@@ -77,8 +77,8 @@ function App() {
 		<AnimatePresence exitBeforeEnter initial={false}>
 			<Routes location={location} key={location.pathname}>
 				<Route path="/home" element={<Home />} />
-				<Route path="/sobre-nos" element={<Sobre />} />
-				<Route path="/sobre-nos/:integratorId" element={<Sobre />} />
+				<Route path="/integradores" element={<Sobre />} />
+				<Route path="/integradores/:integratorId" element={<Sobre />} />
 				<Route path="/criar-conta" element={<CriarConta />} />
 
 				<Route

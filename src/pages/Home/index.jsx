@@ -25,13 +25,13 @@ import Signup from './components/SignUp';
 SwiperCore.use([Keyboard, Mousewheel]);
 
 // images
-import beneficiosIMG from "../../assets/images/home/beneficios.png";
-import defaultUpload from "../../assets/images/home/default_upload.png"
-import clienteFinalIMG from "../../assets/images/home/cliente_final.png"
-import representanteIMG from "../../assets/images/home/representante.png"
-import integradoraIMG from "../../assets/images/home/integradora.png"
-import womanIMG from "../../assets/images/home/woman.png"
-import womansIMG from "../../assets/images/home/womans.png"
+import beneficiosIMG from '../../assets/images/home/beneficios.png';
+import defaultUpload from '../../assets/images/home/default_upload.png';
+import clienteFinalIMG from '../../assets/images/home/cliente_final.png';
+import representanteIMG from '../../assets/images/home/representante.png';
+import integradoraIMG from '../../assets/images/home/integradora.png';
+import womanIMG from '../../assets/images/home/woman.png';
+import womansIMG from '../../assets/images/home/womans.png';
 
 const HomeContent = () => {
 	const {handleSubmit, averageConsumptionForm, formsAreValids, isLoading} =
@@ -50,21 +50,20 @@ const HomeContent = () => {
 	};
 
 	function hashHandler() {
-		const id = window.location.hash.slice(1) // remove leading '#'
-		console.log('id',id);
-		const el = document.getElementById(id)
+		const id = window.location.hash.slice(1); // remove leading '#'
+		console.log('id', id);
+		const el = document.getElementById(id);
 		if (el) {
-			el.scrollIntoView()
+			el.scrollIntoView();
 		}
 	}
 	useEffect(() => {
 		hashHandler();
 		window.addEventListener('hashchange', hashHandler, false);
-	}, [])
+	}, []);
 
 	return (
 		<>
-
 			<Modal
 				className={
 					'w-[37rem] z-[999999999999999999999999999999999999999999]  md2:max-w-[400px] md2:w-[95vw]'
@@ -100,9 +99,9 @@ const HomeContent = () => {
 							<li
 								onClick={() => {
 									setmodalOpen({open: false, id: false, position: 'right'});
-									navigate('/sobre-nos');
+									navigate('/integradores');
 								}}>
-								<a>Sobre nós </a>
+								<a>Integradores </a>
 							</li>
 							<li
 								onClick={() => {
@@ -347,10 +346,7 @@ const HomeContent = () => {
 									id="#arrow_line_ms"
 									classe="absolute bottom-[200px] left-[130px] w-[220px] animate-[writeOne_1s_forwards]"
 								/>
-								<img
-									src={clienteFinalIMG}
-									className="w-64 h-64 rounded-full"
-								/>
+								<img src={clienteFinalIMG} className="w-64 h-64 rounded-full" />
 
 								<div className="text-center">
 									<p className="headline1 text-white">Cliente final</p>
@@ -401,10 +397,7 @@ const HomeContent = () => {
 									id="#arrow_line_ms3"
 									classe="absolute bottom-[30px] left-[170px] w-[200px]"
 								/>
-								<img
-									src={integradoraIMG}
-									className="w-64 h-64 rounded-full"
-								/>
+								<img src={integradoraIMG} className="w-64 h-64 rounded-full" />
 
 								<div className="text-center">
 									<p className="headline1 text-white ">Integradora</p>
@@ -445,10 +438,7 @@ const HomeContent = () => {
 									id="#arrow_line_ms5"
 									classe="absolute bottom-[70px] left-[165px] w-[170px]"
 								/>
-								<img
-									src={integradoraIMG}
-									className="w-64 h-64 rounded-full"
-								/>
+								<img src={integradoraIMG} className="w-64 h-64 rounded-full" />
 
 								<div className="text-center">
 									<p className="headline1 text-white ">Integradora</p>
@@ -484,7 +474,9 @@ const HomeContent = () => {
 				</section>
 
 				{/* Solicite seu orçamento */}
-				<div id="orcamento"  className="solicite-orcamento bg-white h-40 w-full"></div>
+				<div
+					id="orcamento"
+					className="solicite-orcamento bg-white h-40 w-full"></div>
 				<section
 					data-aos="fade-up"
 					data-aos-delay="350"

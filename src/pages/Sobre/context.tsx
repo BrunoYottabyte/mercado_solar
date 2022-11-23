@@ -21,7 +21,7 @@ export const AboutProvider: React.FC<IAboutProviderProps> = ({children}) => {
       setAbout(aboutResponse);
       aboutResponse.length && setSelectedAbout(aboutResponse[0]);
 
-      console.log('about', aboutResponse)
+      console.log('about', aboutResponse);
     });
 
     if (integratorId) {
@@ -30,10 +30,10 @@ export const AboutProvider: React.FC<IAboutProviderProps> = ({children}) => {
         .then(response => {
           const aboutResponse: IAboutProps = response.data;
           setSelectedAbout(aboutResponse);
-          console.log('abouyt integrator', aboutResponse)
+          console.log('abouyt integrator', aboutResponse);
         })
         .catch(() => {
-          navigate('/sobre-nos');
+          navigate('/integradores');
         });
     }
   }, []);

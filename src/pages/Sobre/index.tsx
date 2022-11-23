@@ -197,7 +197,7 @@ const SobreContent = () => {
                 className="btn h-48 quaternario md2:w-full">
                 <a
                   href={`whatsapp://send?text=Veja essa pré proposta do Mercado Solar
-										\n https://mercado-solar.vercel.app/sobre-nos/${selectedAbout?.id}/`}>
+										\n https://mercado-solar.vercel.app/integradores/${selectedAbout?.slug}/`}>
                   Compartilhar via whatsapp
                 </a>
               </Button>
@@ -224,7 +224,7 @@ const SobreContent = () => {
                         />
                       </div>
                       <div
-                        onClick={() => navigate(`/sobre-nos/${item.id}/`)}
+                        onClick={() => navigate(`/integradores/${item.slug}/`)}
                         className="p-16 paragraph1 cursor-pointer border border-transparent h-full border-t-neutral-30 bg-white">
                         {item.name}
                         <div className="mt-24 ">
