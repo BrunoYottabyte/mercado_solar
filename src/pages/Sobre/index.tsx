@@ -16,8 +16,9 @@ import FooterSite from '../Home/components/Footer';
 import {useNavigate} from 'react-router-dom';
 import logoMeglio from '../../assets/images/home/logomeglio.png';
 import {AboutProvider, useAbout} from './context';
-import img1 from '../../assets/images/sobre-nos/img1.png'
-import img2 from '../../assets/images/sobre-nos/img2.png'
+import img1 from '../../assets/images/sobre-nos/img1.png';
+import img2 from '../../assets/images/sobre-nos/img2.png';
+import Button from '../../components/DesignSystem/Button';
 
 const SobreContent = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
@@ -106,7 +107,11 @@ const SobreContent = () => {
               </div>
               <p className="title3 md2:headline1">{selectedAbout?.name}</p>
             </div>
-            <img className='max-w-[120px] max-h-[48px] rounded-md' src={selectedAbout?.photo ? selectedAbout.photo : logoMeglio} alt="logo" />
+            <img
+              className="max-w-[120px] max-h-[48px] rounded-md"
+              src={selectedAbout?.photo ? selectedAbout.photo : logoMeglio}
+              alt="logo"
+            />
           </div>
           <div className="flex justify-between md2:flex-col md2:gap-24 gap-[13rem] items-start mt-16">
             <h2 className="title2 whitespace-nowrap">Sobre empresa</h2>
@@ -137,22 +142,34 @@ const SobreContent = () => {
                   className="w-full md2:gap-24"
                   spaceBetween={32}
                   slidesPerView={'auto'}>
-                  {selectedAbout?.images.length ? selectedAbout?.images.map((item, i) => {
-                    return (
-                      <SwiperSlide
-                        className="!w-max cursor-pointer"
-                        onClick={() => changeViewImg(item.image)}>
-                        <img src={item.image} className="max-w-[176px] max-h-[87px] rounded-md" alt="" />
-                      </SwiperSlide>
-                    );
-                  }) : [img1,img2,img1,img2,img2,img1,img2].map((item, i) => (
-                      <SwiperSlide
-                        key={i}
-                        className="!w-max cursor-pointer"
-                        onClick={() => changeViewImg(item)}>
-                        <img src={item} className="max-w-[176px] max-h-[87px] rounded-md" alt="" />
-                      </SwiperSlide>
-                  ))}
+                  {selectedAbout?.images.length
+                    ? selectedAbout?.images.map((item, i) => {
+                        return (
+                          <SwiperSlide
+                            className="!w-max cursor-pointer"
+                            onClick={() => changeViewImg(item.image)}>
+                            <img
+                              src={item.image}
+                              className="max-w-[176px] max-h-[87px] rounded-md"
+                              alt=""
+                            />
+                          </SwiperSlide>
+                        );
+                      })
+                    : [img1, img2, img1, img2, img2, img1, img2].map(
+                        (item, i) => (
+                          <SwiperSlide
+                            key={i}
+                            className="!w-max cursor-pointer"
+                            onClick={() => changeViewImg(item)}>
+                            <img
+                              src={item}
+                              className="max-w-[176px] max-h-[87px] rounded-md"
+                              alt=""
+                            />
+                          </SwiperSlide>
+                        ),
+                      )}
                 </Swiper>
               </div>
             </div>
@@ -187,6 +204,18 @@ const SobreContent = () => {
               <p className="paragraph1 mt-16 text-neutral-70">
                 {selectedAbout?.service_regions}
               </p>
+            </div>
+            <div className="flex flex-col justify-center">
+              <Button
+                svgClass="!w-20 !h-20"
+                iconID="#icon_send_email"
+                className="btn h-48 quaternario md2:w-full">
+                <a
+                  href={`whatsapp://send?text=Veja essa pré proposta do Mercado Solar
+										\n https://mercado-solar.vercel.app/sobre-nos/${selectedAbout?.id}/`}>
+                  Compartilhar via whatsapp
+                </a>
+              </Button>
             </div>
           </div>
           <div className="flex md2:my-24 my-48 items-center flex-col gap-8">

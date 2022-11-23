@@ -125,18 +125,19 @@ export const ProductDetailProvider: React.FC<IProductDetailProviderProps> = ({
   };
 
   const getBudgetRequests = () => {
-    api.get('/budget_request_filtered/').then(response => {
-      const budgetRequestsResponse: IBudgetProps[] = response.data.results;
-      const budgetRequestsResponseFormatted = budgetRequestsResponse.map(
-        (item: IBudgetProps) => {
-          return {
-            value: item.id,
-            label: `Requisição #${item.id} - ${item.client_name}`,
-          };
-        },
-      );
-      setBudgetRequests(budgetRequestsResponseFormatted);
-    });
+    isAutheticated &&
+      api.get('/budget_request_filtered/').then(response => {
+        const budgetRequestsResponse: IBudgetProps[] = response.data.results;
+        const budgetRequestsResponseFormatted = budgetRequestsResponse.map(
+          (item: IBudgetProps) => {
+            return {
+              value: item.id,
+              label: `Requisição #${item.id} - ${item.client_name}`,
+            };
+          },
+        );
+        setBudgetRequests(budgetRequestsResponseFormatted);
+      });
   };
 
   useEffect(() => {

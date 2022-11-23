@@ -5,6 +5,7 @@ interface IImage {
   image: string;
 }
 interface IAboutProps {
+  id: string;
   name: string;
   about: string;
   photo: string;
