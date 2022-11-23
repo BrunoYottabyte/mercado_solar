@@ -36,7 +36,7 @@ const Navbar = ({classContainer, openModal, sobre}) => {
 								onClick={() => {
 									navigate('/integradores');
 								}}>
-								Sobre nós
+								Integradores
 								<span className="absolute top-0 -right-20 w-1 h-24 block bg-neutral-100-10"></span>
 							</li>
 						)}

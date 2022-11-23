@@ -26,13 +26,6 @@ api.interceptors.response.use(
   },
   error => {
     if (error.response.status === 401) {
-      console.log('error 401');
-      console.log('error 401');
-      console.log('error 401');
-      console.log('error 401');
-      console.log('error 401');
-      console.log('error 401');
-
       api.defaults.headers.common['Authorization'] = undefined;
       destroyCookie(null, 'mr.cookie');
     }
