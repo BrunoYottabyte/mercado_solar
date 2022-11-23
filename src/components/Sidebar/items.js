@@ -139,12 +139,6 @@ export const ownerMenu = [
 		link: '/',
 	},
 	{
-		title: 'Suporte técnico',
-		nivel: 1,
-		svg: '#icon_support_ms',
-		external: 'https://web.whatsapp.com/send/?phone=5584987227633',
-	},
-	{
 		title: 'Vídeos e FAQ',
 		nivel: 1,
 		svg: '#icon_faq_ms',

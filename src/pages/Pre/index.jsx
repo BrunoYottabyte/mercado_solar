@@ -31,7 +31,7 @@ const PrePropostaContent = () => {
 		handleFeedback,
 	} = usePreProposta();
 
-	const {setmodalOpen, modalOpen} = useGlobalContext();
+	const {setmodalOpen, modalOpen, isMobile} = useGlobalContext();
 
 	useEffect(() => {
 		setmodalOpen({open: false, id: null});
@@ -259,19 +259,34 @@ const PrePropostaContent = () => {
 									Baixar
 								</Button>
 
-								<Button
-									svgClass="!w-20 !h-20"
-									iconID="#icon_send_email"
-									className="btn h-48 quaternario md2:w-full">
-									Enviar para e-mail
-								</Button>
+								<a
+									href={`mailto:?body=Veja essa proposta do Mercado Solar: 
+									https://mercado-solar.vercel.app/dados-de-orcamento/${budgetRequest?.id}/}&subject=Pré proposta Mercado Solar`}>
+									<Button
+										svgClass="!w-20 !h-20"
+										iconID="#icon_send_email"
+										className="btn h-48 quaternario md2:w-full">
+										Enviar para e-mail
+									</Button>
+								</a>
 								<Button
 									svgClass="!w-20 !h-20"
 									iconID="#icon_send_email"
 									className="btn h-48 quaternario md2:w-full">
 									<a
-										href={`whatsapp://send?text=Veja essa pré proposta do Mercado Solar
-										\n https://mercado-solar.vercel.app/dados-de-orcamento/${budgetRequest?.id}/`}>
+										href={
+											isMobile
+												? `whatsapp://send?text=Veja essa pré proposta do Mercado Solar%0https://mercado-solar.vercel.app/dados-de-orcamento/${budgetRequest?.id}/`
+												: undefined
+										}
+										onClick={() => {
+											if (!isMobile) {
+												window.open(
+													`https://web.whatsapp.com/send?text=Veja esta proposta %0ahttps://mercado-solar.vercel.app/pre-proposta/${budgetRequest?.id}/`,
+													'_blank',
+												);
+											}
+										}}>
 										Enviar via whatsapp
 									</a>
 								</Button>

@@ -14,15 +14,13 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import FooterSite from '../Home/components/Footer';
 import {useNavigate} from 'react-router-dom';
-import logoMeglio from '../../assets/images/home/logomeglio.png';
 import {AboutProvider, useAbout} from './context';
-import img1 from '../../assets/images/sobre-nos/img1.png';
-import img2 from '../../assets/images/sobre-nos/img2.png';
 import Button from '../../components/DesignSystem/Button';
 
 const SobreContent = () => {
   const {setmodalOpen, modalOpen} = useGlobalContext();
   const navigate = useNavigate();
+  const {isMobile} = useGlobalContext();
   const {selectedAbout, abouts} = useAbout();
 
   useEffect(() => {
@@ -109,7 +107,7 @@ const SobreContent = () => {
             </div>
             <img
               className="max-w-[120px] max-h-[48px] rounded-md"
-              src={selectedAbout?.photo ? selectedAbout.photo : logoMeglio}
+              src={selectedAbout?.photo ? selectedAbout.photo : ''}
               alt="logo"
             />
           </div>
@@ -131,7 +129,7 @@ const SobreContent = () => {
                 src={
                   selectedAbout?.images.length
                     ? selectedAbout?.images[0].image
-                    : img1
+                    : ''
                 }
                 alt=""
               />
@@ -196,8 +194,18 @@ const SobreContent = () => {
                 iconID="#icon_send_email"
                 className="btn h-48 quaternario md2:w-full">
                 <a
-                  href={`whatsapp://send?text=Veja essa pré proposta do Mercado Solar
-										\n https://mercado-solar.vercel.app/integradores/${selectedAbout?.slug}/`}>
+                  href={
+                    isMobile
+                      ? `whatsapp://send?text=Veja esse integrador do Mercado Solar %0ahttps://mercado-solar.vercel.app/integradores/${selectedAbout?.slug}/`
+                      : undefined
+                  }
+                  onClick={() => {
+                    if (!isMobile) {
+                      window.open(
+                        `https://web.whatsapp.com/send?text=Veja esse integrador do Mercado Solar %0ahttps://mercado-solar.vercel.app/integradores/${selectedAbout?.slug}/`,
+                      );
+                    }
+                  }}>
                   Compartilhar via whatsapp
                 </a>
               </Button>
