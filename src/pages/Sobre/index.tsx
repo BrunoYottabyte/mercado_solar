@@ -142,34 +142,19 @@ const SobreContent = () => {
                   className="w-full md2:gap-24"
                   spaceBetween={32}
                   slidesPerView={'auto'}>
-                  {selectedAbout?.images.length
-                    ? selectedAbout?.images.map((item, i) => {
-                        return (
-                          <SwiperSlide
-                            className="!w-max cursor-pointer"
-                            onClick={() => changeViewImg(item.image)}>
-                            <img
-                              src={item.image}
-                              className="max-w-[176px] max-h-[87px] rounded-md"
-                              alt=""
-                            />
-                          </SwiperSlide>
-                        );
-                      })
-                    : [img1, img2, img1, img2, img2, img1, img2].map(
-                        (item, i) => (
-                          <SwiperSlide
-                            key={i}
-                            className="!w-max cursor-pointer"
-                            onClick={() => changeViewImg(item)}>
-                            <img
-                              src={item}
-                              className="max-w-[176px] max-h-[87px] rounded-md"
-                              alt=""
-                            />
-                          </SwiperSlide>
-                        ),
-                      )}
+                  {selectedAbout?.images.map((item, i) => {
+                    return (
+                      <SwiperSlide
+                        className="!w-max cursor-pointer"
+                        onClick={() => changeViewImg(item.image)}>
+                        <img
+                          src={item.image}
+                          className="max-w-[176px] max-h-[87px] rounded-md"
+                          alt=""
+                        />
+                      </SwiperSlide>
+                    );
+                  })}
                 </Swiper>
               </div>
             </div>
@@ -239,9 +224,7 @@ const SobreContent = () => {
                         />
                       </div>
                       <div
-                        onClick={() =>
-                          navigate(`/sobre-nos/${selectedAbout?.id}/`)
-                        }
+                        onClick={() => navigate(`/sobre-nos/${item.id}/`)}
                         className="p-16 paragraph1 cursor-pointer border border-transparent h-full border-t-neutral-30 bg-white">
                         {item.name}
                         <div className="mt-24 ">
