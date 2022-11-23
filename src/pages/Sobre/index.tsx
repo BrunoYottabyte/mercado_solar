@@ -238,7 +238,11 @@ const SobreContent = () => {
                           className=" object-cover"
                         />
                       </div>
-                      <div className="p-16 paragraph1 border border-transparent h-full border-t-neutral-30 bg-white">
+                      <div
+                        onClick={() =>
+                          navigate(`/sobre-nos/${selectedAbout?.id}/`)
+                        }
+                        className="p-16 paragraph1 cursor-pointer border border-transparent h-full border-t-neutral-30 bg-white">
                         {item.name}
                         <div className="mt-24 ">
                           <p className="headline3">Endereço</p>
