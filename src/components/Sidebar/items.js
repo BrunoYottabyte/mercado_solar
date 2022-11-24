@@ -144,6 +144,12 @@ export const ownerMenu = [
 		svg: '#icon_faq_ms',
 		external: 'https://www.youtube.com/channel/UCVCZu2Zn-1A8d0NDBmWzbZQ',
 	},
+	{
+		title: 'Suporte',
+		nivel: 1,
+		svg: '#icon_support_ms',
+		external: 'https://web.whatsapp.com/send/?phone=5584987227633',
+	},
 ];
 
 export const adminMenu = [

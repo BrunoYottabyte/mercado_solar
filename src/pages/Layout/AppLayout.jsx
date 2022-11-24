@@ -17,16 +17,12 @@ const AppLayout = () => {
 	const {userType} = useAuthContext();
 	const {isMobile} = useGlobalContext();
 	let menuList;
-	const [suportOption, setSuportOption] = React.useState({
-		title: 'Suporte técnico',
-		nivel: 1,
-		svg: '#icon_support_ms',
-		external: 'https://web.whatsapp.com/send/?phone=5584987227633',
-	});
+
+	const [ownerMenuList, setOwnerMenuList] = React.useState(ownerMenu);
 
 	let typesUsers = {
-		'': ownerMenu,
-		user: ownerMenu,
+		'': ownerMenuList,
+		user: ownerMenuList,
 		admin: adminMenu,
 		integrator: inegratorMenu,
 		representative: representativeMenu,
@@ -38,18 +34,17 @@ const AppLayout = () => {
 
 	useEffect(() => {
 		if (isMobile) {
-			setSuportOption({
-				title: 'Suporte',
-				nivel: 1,
-				svg: '#icon_support_ms',
-				external: 'https://api.whatsapp.com/send/?phone=5584987227633',
-			});
+			setOwnerMenuList([
+				...ownerMenuList.slice(0, 2),
+				{
+					title: 'Suporte',
+					nivel: 1,
+					svg: '#icon_support_ms',
+					external: 'https://api.whatsapp.com/send/?phone=5584987227633',
+				},
+			]);
 		}
 	}, [isMobile]);
-
-	useEffect(() => {
-		ownerMenu.push(suportOption);
-	}, []);
 
 	return (
 		<div>
