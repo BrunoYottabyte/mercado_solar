@@ -21,7 +21,6 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
     setStepSelected(currentStep);
   }, [currentStep]);
 
-
   const technicalVisitMade = () => {
     if (!budgetRequest) return;
     setIsLoading(true);
@@ -66,11 +65,46 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
         current_step: 'payment_made',
       })
       .then(() => {
-
         setBudgetRequest({
           ...budgetRequest,
           current_step: 'payment_made',
           payment_made_at: format(new Date(), 'yyyy-MM-dd'),
+        });
+      })
+      .catch(() => {});
+    setIsLoading(false);
+  };
+
+  const saleFinished = () => {
+    if (!budgetRequest) return;
+    setIsLoading(true);
+    api
+      .patch(`/budget_request/${budgetRequest.id}/`, {
+        current_step: 'sale_finished',
+      })
+      .then(() => {
+        setBudgetRequest({
+          ...budgetRequest,
+          current_step: 'sale_finished',
+          sale_finished_at: format(new Date(), 'yyyy-MM-dd'),
+        });
+      })
+      .catch(() => {});
+    setIsLoading(false);
+  };
+
+  const instalationFinished = () => {
+    if (!budgetRequest) return;
+    setIsLoading(true);
+    api
+      .patch(`/budget_request/${budgetRequest.id}/`, {
+        current_step: 'installation_finished',
+      })
+      .then(() => {
+        setBudgetRequest({
+          ...budgetRequest,
+          current_step: 'installation_finished',
+          installation_finished_at: format(new Date(), 'yyyy-MM-dd'),
         });
       })
       .catch(() => {});
@@ -90,6 +124,8 @@ export const ButtonsStepsProvider: React.FC<IButtonsStepsProviderProps> = ({
         firstContactMade,
         technicalVisitMade,
         paymentMade,
+        saleFinished,
+        instalationFinished,
       }}>
       {children}
     </ButtonsStepsContext.Provider>

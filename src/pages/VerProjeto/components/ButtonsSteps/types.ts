@@ -10,6 +10,8 @@ interface IButtonsStepsContextData {
   firstContactMade: VoidFunction;
   technicalVisitMade: VoidFunction;
   paymentMade: VoidFunction;
+  saleFinished: VoidFunction;
+  instalationFinished: VoidFunction;
 }
 
 export type {IButtonsStepsProviderProps, IButtonsStepsContextData};

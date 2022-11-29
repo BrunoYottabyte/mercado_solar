@@ -12,9 +12,11 @@ const ButtonsStepsContent = () => {
     firstContactMade,
     technicalVisitMade,
     paymentMade,
+    saleFinished,
+    instalationFinished,
   } = useButtonsSteps();
 
-  const {isRepresentative} = useVerProjeto();
+  const {isRepresentative, isOwner} = useVerProjeto();
 
   const scrollToProgressBar = () => {
     window.scroll({
@@ -78,7 +80,7 @@ const ButtonsStepsContent = () => {
     );
   }
 
-  if (currentStep === 'payment_made' && isRepresentative) {
+  if (currentStep === 'payment_made' && isOwner) {
     return (
       <div className="w-full flex md:flex-col  justify-end items-center">
         <Button
@@ -86,7 +88,46 @@ const ButtonsStepsContent = () => {
           svgClass="!w-20 !h-20"
           iconID="#icon_check_ms"
           disabled={isLoading}
-          onClick={() => setmodalOpen({open: true, id: 'feedbackTechnical'})}>
+          onClick={() => {
+            saleFinished();
+            scrollToProgressBar();
+          }}>
+          Venda Finalizada
+        </Button>
+      </div>
+    );
+  }
+
+  if (currentStep === 'sale_finished' && isOwner) {
+    return (
+      <div className="w-full flex md:flex-col  justify-end items-center">
+        <Button
+          className="btn h-56 md:w-full md:justify-center"
+          svgClass="!w-20 !h-20"
+          iconID="#icon_check_ms"
+          disabled={isLoading}
+          onClick={() => {
+            instalationFinished();
+            scrollToProgressBar();
+          }}>
+          Instalação concluída
+        </Button>
+      </div>
+    );
+  }
+
+  if (currentStep === 'installation_finished' && isOwner) {
+    return (
+      <div className="w-full flex md:flex-col  justify-end items-center">
+        <Button
+          className="btn h-56 md:w-full md:justify-center"
+          svgClass="!w-20 !h-20"
+          iconID="#icon_check_ms"
+          disabled={isLoading}
+          onClick={() => {
+            setmodalOpen({open: true, id: 'feedbackTechnical'});
+            scrollToProgressBar();
+          }}>
           Avaliar técnico
         </Button>
       </div>

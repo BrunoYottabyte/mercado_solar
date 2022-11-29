@@ -102,7 +102,9 @@ type CurrentStepType =
   | 'technical_visit'
   | 'budget_available'
   | 'budget_accepted'
-  | 'payment_made';
+  | 'payment_made'
+  | 'sale_finished'
+  | 'installation_finished';
 
 interface IBudgetRequest {
   id: string;
@@ -132,6 +134,8 @@ interface IBudgetRequest {
   budget_available_at: string;
   budget_accepted_at: string;
   payment_made_at: string;
+  sale_finished_at: string;
+  installation_finished_at: string;
 }
 
 interface IStateProps {

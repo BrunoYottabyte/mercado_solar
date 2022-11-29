@@ -18,7 +18,6 @@ const TimeLine = () => {
   };
 
   useEffect(() => {
-
     setTimeout(() => {
       updateProgressBar();
     }, 700);
@@ -26,8 +25,6 @@ const TimeLine = () => {
       updateProgressBar();
     });
   }, [currentStep]);
-
-
 
   const steps = [
     {
@@ -74,13 +71,29 @@ const TimeLine = () => {
     },
     {
       step: 'payment_made',
-      title: 'Orçamento Aprovado',
+      title: 'Pagamento Realizado',
       content: budgetRequest?.payment_made_at
         ? format(new Date(budgetRequest?.payment_made_at), 'dd/MM/yyyy')
         : 'Aguardando',
     },
+    {
+      step: 'sale_finished',
+      title: 'Venda finalizada',
+      content: budgetRequest?.sale_finished_at
+        ? format(new Date(budgetRequest?.sale_finished_at), 'dd/MM/yyyy')
+        : 'Aguardando',
+    },
+    {
+      step: 'installation_finished',
+      title: 'Instalação Concluída',
+      content: budgetRequest?.installation_finished_at
+        ? format(
+            new Date(budgetRequest?.installation_finished_at),
+            'dd/MM/yyyy',
+          )
+        : 'Aguardando',
+    },
   ];
-
 
   return (
     <Card classe="timeline-card p-24 md2:mx-0">
