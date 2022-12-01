@@ -59,7 +59,7 @@ const GeneralObservationContent = () => {
               </div>
             ) : (
               <p className="paragraph3 text-neutral-70">
-                {solar_orientation || message}
+                {generalObservation.solar_orientation || message}
               </p>
             )}
           </div>
@@ -83,7 +83,7 @@ const GeneralObservationContent = () => {
                 </div>
               ) : (
                 <p className="paragraph3 text-neutral-70">
-                  {latitude || message}
+                  {generalObservation.latitude || message}
                 </p>
               )}
             </div>
@@ -105,7 +105,7 @@ const GeneralObservationContent = () => {
                 </div>
               ) : (
                 <p className="paragraph3 text-neutral-70">
-                  {longitude || message}
+                  {generalObservation.longitude || message}
                 </p>
               )}
             </div>
@@ -171,7 +171,7 @@ const GeneralObservationContent = () => {
                 </div>
               ) : (
                 <p className="paragraph3 text-neutral-70">
-                  {contact_name || message}
+                  {generalObservation.contact_name || message}
                 </p>
               )}
             </label>
@@ -190,7 +190,7 @@ const GeneralObservationContent = () => {
                 </div>
               ) : (
                 <p className="paragraph3 text-neutral-70">
-                  {contact_email || message}
+                  {generalObservation.contact_email || message}
                 </p>
               )}
             </label>
@@ -208,7 +208,7 @@ const GeneralObservationContent = () => {
                 </div>
               ) : (
                 <p className="paragraph3 text-neutral-70">
-                  {contact_phone || message}
+                  {generalObservation.contact_phone || message}
                 </p>
               )}
             </label>

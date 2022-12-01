@@ -60,6 +60,7 @@ import ProductDatails from './pages/ProductDatails';
 import Integrator from './pages/Integrator';
 
 import {AnimatePresence} from 'framer-motion';
+import NotFound from './pages/NotFound';
 
 function App() {
 	document.body.addEventListener('DOMContentLoaded', () =>
@@ -80,7 +81,7 @@ function App() {
 				<Route path="/integradores" element={<Sobre />} />
 				<Route path="/integradores/:slug" element={<Sobre />} />
 				<Route path="/criar-conta" element={<CriarConta />} />
-
+				<Route path="*" element={<NotFound />} />
 				<Route
 					path="/"
 					element={

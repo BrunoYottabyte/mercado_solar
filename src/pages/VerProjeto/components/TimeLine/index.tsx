@@ -130,7 +130,7 @@ const TimeLine = () => {
                     background:
                       currentStep === item.step ? '#905641' : undefined,
                   }}></span>
-                <p className="headline3">{item.title}</p>
+                <p className="headline3 whitespace-nowrap">{item.title}</p>
                 <p className="text-alert-success paragraph3">{item.content}</p>
               </div>
             );

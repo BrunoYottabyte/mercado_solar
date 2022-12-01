@@ -96,6 +96,13 @@ export const PedidosOrcamentoProvider: React.FC<
             case 'payment_made':
             stepAtual = 'Orçamento Aprovado'
               break;
+
+            case 'sale_finished':
+              stepAtual = 'Venda finalizada'
+              break;
+              
+            case 'installation_finished':
+              stepAtual = 'Instalação Concluída'
             default:
               break;
           }

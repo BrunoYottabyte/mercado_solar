@@ -344,7 +344,7 @@ const HomeContent = () => {
 								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] top-[125px] -left-[100px]">
 								<SvgUse
 									id="#arrow_line_ms"
-									classe="absolute bottom-[200px] left-[130px] w-[220px] animate-[writeOne_1s_forwards]"
+									classe="absolute bottom-[200px] left-[130px] w-[220px] animate-[writeOne_1s_forwards] min2xl:bottom-[220px] min2xl:left-[135px]"
 								/>
 								<img src={clienteFinalIMG} className="w-64 h-64 rounded-full" />
 
@@ -358,7 +358,7 @@ const HomeContent = () => {
 								</div>
 								<SvgUse
 									id="#arrow_line_ms4"
-									classe="absolute bottom-[-50px] left-[240px] w-[100px] animate-[write_5s_forwards]"
+									classe="absolute bottom-[-50px] left-[240px] w-[100px] animate-[write_5s_forwards] min2xl:left-[255px]"
 								/>
 							</div>
 
@@ -370,7 +370,7 @@ const HomeContent = () => {
 								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] -top-[45px] left-[180px]">
 								<SvgUse
 									id="#arrow_line_ms2"
-									classe="absolute bottom-[75px]  left-[160px] w-[200px]"
+									classe="absolute bottom-[75px]  left-[160px] w-[200px] min2xl:bottom-[95px] min2xl:left-[175px]"
 								/>
 								<img
 									src={representanteIMG}
@@ -395,7 +395,7 @@ const HomeContent = () => {
 								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] -top-[40px] left-[470px]">
 								<SvgUse
 									id="#arrow_line_ms3"
-									classe="absolute bottom-[30px] left-[170px] w-[200px]"
+									classe="absolute bottom-[30px] left-[170px] w-[200px] min2xl:bottom-[55px]"
 								/>
 								<img src={integradoraIMG} className="w-64 h-64 rounded-full" />
 
@@ -414,7 +414,7 @@ const HomeContent = () => {
 								data-aos-duration="500"
 								data-aos-delay="1600"
 								data-aos-anchor="#como-funciona"
-								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[150px] -right-[70px]">
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[150px] -right-[70px] min2xl:bottom-[130px]">
 								<img
 									src={representanteIMG}
 									className="w-64 h-64 rounded-full"
@@ -433,10 +433,10 @@ const HomeContent = () => {
 								data-aos="fade-up"
 								data-aos-duration="500"
 								data-aos-delay="600"
-								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-25px] left-[165px]">
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-25px] min2xl:bottom-[-90px] left-[165px] min2xl:left-[180px]">
 								<SvgUse
 									id="#arrow_line_ms5"
-									classe="absolute bottom-[70px] left-[165px] w-[170px]"
+									classe="absolute bottom-[70px] min2xl:bottom-[100px] left-[165px] w-[170px] min2xl:left-[190px]"
 								/>
 								<img src={integradoraIMG} className="w-64 h-64 rounded-full" />
 
@@ -454,7 +454,7 @@ const HomeContent = () => {
 								data-aos="fade-up"
 								data-aos-duration="500"
 								data-aos-delay="800"
-								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-35px] right-[240px]">
+								className="flex items-center flex-col gap-16 absolute w-[16.5rem] z-[999999] bottom-[-35px] min2xl:bottom-[-90px] right-[240px] min2xl:right-[175px]">
 								<img
 									src={representanteIMG}
 									className="w-64 h-64 rounded-full"

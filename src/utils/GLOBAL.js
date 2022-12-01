@@ -96,9 +96,11 @@ export const GLOBAL = {
 	},
 
 	GeoFormatter: (v) => {
+		let num = String(v).indexOf('-');
+		console.log(num);
 		v = String(v).replace(/\D/g, '')
 		.replace(/(\d{2})(\d)/, '$1.$2');
-		return v;
+		return num == 0 ? `-${v}` :  v;
 	},
 	validarPorLength: (value, tamanho) => value?.length > tamanho,
 
