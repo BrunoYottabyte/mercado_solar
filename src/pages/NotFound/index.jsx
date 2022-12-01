@@ -11,7 +11,7 @@ const NotFound = () => {
        </div>
        <h1 className='text-[48px] text-primary-pure shadow-inner '>404</h1>
        <Button
-        onClick={() => navigate('/home')} 
+        onClick={() => navigate('/')} 
         classe="h-56 secondary border border-solid transition-all duration-300 !border-primary-pure/20 hover:!border-primary-pure">Voltar ao Home :)</Button>
     </div>
   )
