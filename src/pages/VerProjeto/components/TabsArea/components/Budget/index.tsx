@@ -17,7 +17,7 @@ const BudgetContent = () => {
 
   return (
     <>
-      <Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
+      {/* <Modal className={`w-[37rem]  md2:max-w-[400px] md2:w-[95vw]`}>
         <ModalContent id="approved">
           <ModalHeader close={false} classeHeader="bg-white title3" text="">
             <div className="title3 flex  w-full justify-between items-center">
@@ -88,7 +88,7 @@ const BudgetContent = () => {
 
     
       </Modal>
-      
+       */}
       <section className="p-24 flex flex-col gap-24">
         {!budgets.length && (
           <div>

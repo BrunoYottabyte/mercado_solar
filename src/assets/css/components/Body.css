@@ -232,7 +232,7 @@
 		.timeline-horizontal-container{
 			display: flex;
 			width: 100%;
-			/* justify-content: space-around; */
+			justify-content: space-between;
 			gap: 40px;
 			position: relative;
 			padding: 20px 0;
