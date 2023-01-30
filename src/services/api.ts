@@ -9,7 +9,7 @@ const api = axios.create({
   baseURL:
     process.env.NODE_ENV !== 'production'
       ? 'http://localhost:8000/api/'
-      : 'https://mercado-solar.dokku.outboxsistemas.com/',
+      : 'https://mercado-solar.dokku.outboxsistemas.com/api/',
   // baseURL: "https://mercado-solar.herokuapp.com/api/",
   // headers: {
   // 	Authorization: `${cookies ? `Bearer ${cookies}` : ""}`,
